@@ -13,13 +13,13 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - RoundCutterReverse
+  - BladeReverseTop
+  - BladeReverseBottom
+  - Ground
+  - Player
+  - Invincible
   - 
   - 
   - 
