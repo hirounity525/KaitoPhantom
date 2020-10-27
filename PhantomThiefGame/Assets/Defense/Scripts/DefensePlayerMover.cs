@@ -12,10 +12,12 @@ public class DefensePlayerMover : MonoBehaviour
     private Transform playerTrans;
     private bool canMove=true;
     [SerializeField] private float moveWaitTime;
-
+    private DefensePlayerCore playerCore;
+    
     // Start is called before the first frame update
     void Start()
     {
+        playerCore = GetComponent<DefensePlayerCore>();
         movePosNum = nowPosNum;
         playerTrans = GetComponent<Transform>();
         playerTrans.position = moveTrans[nowPosNum].position;
@@ -39,10 +41,12 @@ public class DefensePlayerMover : MonoBehaviour
                         if (movePosNum >= (row * column)) movePosNum = nowPosNum;
                         break;
                     case InputArrow.LEFT:
+                        playerCore.isRight = false;
                         movePosNum--;
                         if (nowPosNum % row == 0) movePosNum = nowPosNum;
                         break;
                     case InputArrow.RIGHT:
+                        playerCore.isRight = true;
                         movePosNum++;
                         if (nowPosNum % row == row - 1) movePosNum = nowPosNum;
                         break;
