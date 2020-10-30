@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DefenseEnemyControler : MonoBehaviour
+public class DefenseEnemyMover : MonoBehaviour
 {
     [SerializeField] private float enemySpeed;
     private Rigidbody rb;
     private Transform enemyTrans;
+    [SerializeField] private Transform[] moveTrans;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +16,7 @@ public class DefenseEnemyControler : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
         rb.velocity = enemyTrans.right * enemySpeed;
     }
