@@ -13,6 +13,7 @@ public class DefensePlayerMover : MonoBehaviour
     private bool canMove=true;
     [SerializeField] private float moveWaitTime;
     private DefensePlayerCore playerCore;
+    private bool moveDelay;
     
     // Start is called before the first frame update
     void Start()
@@ -26,43 +27,49 @@ public class DefensePlayerMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canMove)
+        moveDelay = playerCore.canMove;
+
+        if (moveDelay)
         {
-            if (inputProvider.isMoveButtonDown)
+            if (canMove)
             {
-                switch (inputProvider.moveArrow)
+                if (inputProvider.isMoveButtonDown)
                 {
-                    case InputArrow.UP:
-                        movePosNum -= row;
-                        if (movePosNum < 0) movePosNum = nowPosNum;
-                        break;
-                    case InputArrow.DOWN:
-                        movePosNum += row;
-                        if (movePosNum >= (row * column)) movePosNum = nowPosNum;
-                        break;
-                    case InputArrow.LEFT:
-                        playerCore.isRight = false;
-                        movePosNum--;
-                        if (nowPosNum % row == 0) movePosNum = nowPosNum;
-                        break;
-                    case InputArrow.RIGHT:
-                        playerCore.isRight = true;
-                        movePosNum++;
-                        if (nowPosNum % row == row - 1) movePosNum = nowPosNum;
-                        break;
+                    switch (inputProvider.moveArrow)
+                    {
+                        case InputArrow.UP:
+                            movePosNum -= row;
+                            if (movePosNum < 0) movePosNum = nowPosNum;
+                            break;
+                        case InputArrow.DOWN:
+                            movePosNum += row;
+                            if (movePosNum >= (row * column)) movePosNum = nowPosNum;
+                            break;
+                        case InputArrow.LEFT:
+                            playerCore.isRight = false;
+                            movePosNum--;
+                            if (nowPosNum % row == 0) movePosNum = nowPosNum;
+                            break;
+                        case InputArrow.RIGHT:
+                            playerCore.isRight = true;
+                            movePosNum++;
+                            if (nowPosNum % row == row - 1) movePosNum = nowPosNum;
+                            break;
+                    }
+
+                    if (movePosNum != nowPosNum)
+                    {
+                        nowPosNum = movePosNum;
+                        playerTrans.position = moveTrans[nowPosNum].position;
+
+                        StartCoroutine(StartMove());
+                    }
+
+
                 }
-
-                if (movePosNum != nowPosNum) 
-                {
-                    nowPosNum = movePosNum;
-                    playerTrans.position = moveTrans[nowPosNum].position;
-
-                    StartCoroutine(StartMove());
-                }
-
-               
             }
         }
+
         
     }
 

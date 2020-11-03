@@ -33,7 +33,7 @@ MonoBehaviour:
     createTime: 8
   - createPos: 5
     enemyType: 0
-    createTime: 8
+    createTime: 9
   - createPos: 1
     enemyType: 0
     createTime: 12

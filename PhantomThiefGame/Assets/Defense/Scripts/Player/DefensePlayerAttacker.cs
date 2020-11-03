@@ -8,7 +8,7 @@ public class DefensePlayerAttacker : MonoBehaviour
     [SerializeField] private DefenseInputProvider inputProvider;
     [SerializeField]private Transform gunNozzlePosTrans;
     [SerializeField] private float shootWaitTime;
-    private bool canShoot=true;
+    public bool canShoot=true;
     // Start is called before the first frame update
     void Start()
     {

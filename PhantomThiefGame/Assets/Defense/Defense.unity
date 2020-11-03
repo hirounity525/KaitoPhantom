@@ -467,7 +467,8 @@ MonoBehaviour:
   bulletPool: {fileID: 910234243}
   inputProvider: {fileID: 1400705496}
   gunNozzlePosTrans: {fileID: 2013025270}
-  shootWaitTime: 0.35
+  shootWaitTime: 0.25
+  canShoot: 1
 --- !u!114 &406926776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -481,6 +482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRight: 0
+  canMove: 0
 --- !u!114 &406926777
 MonoBehaviour:
   m_ObjectHideFlags: 0
