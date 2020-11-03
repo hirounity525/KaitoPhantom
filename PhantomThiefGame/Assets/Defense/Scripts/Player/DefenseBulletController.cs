@@ -16,9 +16,14 @@ public class DefenseBulletController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void OnCollisionEnter(Collision collision)
     {
-        
+        GameObject enemyObj=collision.gameObject;
+        if (enemyObj.tag == "Enemy")
+        {
+            enemyObj.GetComponent<DefenseEnemyHPControler>().AddDamage();
+            gameObject.SetActive(false);
+        }
     }
 
     public void MoveBullet()

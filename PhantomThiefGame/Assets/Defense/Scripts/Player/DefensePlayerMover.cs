@@ -10,11 +10,10 @@ public class DefensePlayerMover : MonoBehaviour
     [SerializeField] private int  nowPosNum = 0;
     private int movePosNum;
     private Transform playerTrans;
-    private bool canMove=true;
+    private bool moveDelay;
     [SerializeField] private float moveWaitTime;
     private DefensePlayerCore playerCore;
-    private bool moveDelay;
-    
+    private bool canMove=true;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,11 +26,11 @@ public class DefensePlayerMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveDelay = playerCore.canMove;
 
-        if (moveDelay)
+        canMove = !playerCore.isShoot;
+        if (canMove)
         {
-            if (canMove)
+            if (!moveDelay)
             {
                 if (inputProvider.isMoveButtonDown)
                 {
@@ -68,17 +67,19 @@ public class DefensePlayerMover : MonoBehaviour
 
                 }
             }
+
+
+
         }
 
-        
     }
 
     private IEnumerator StartMove()
     {
-        canMove = false;
+        moveDelay = true;
 
         yield return new WaitForSeconds(moveWaitTime);
 
-        canMove = true;
+        moveDelay = false;
     }
 }

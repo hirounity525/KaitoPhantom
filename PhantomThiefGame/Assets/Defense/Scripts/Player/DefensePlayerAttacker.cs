@@ -8,32 +8,37 @@ public class DefensePlayerAttacker : MonoBehaviour
     [SerializeField] private DefenseInputProvider inputProvider;
     [SerializeField]private Transform gunNozzlePosTrans;
     [SerializeField] private float shootWaitTime;
-    public bool canShoot=true;
+    public bool isShoot;
+    private DefensePlayerCore playerCore;
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerCore = GetComponent<DefensePlayerCore>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(canShoot)
-        if (inputProvider.isAttackButtonDown) 
+        if (!isShoot)
         {
-            GameObject bullet = bulletPool.GetObject();
-            bullet.transform.position = gunNozzlePosTrans.position;
-            bullet.transform.rotation = gunNozzlePosTrans.rotation;
-            bullet.GetComponent<DefenseBulletController>().MoveBullet();
+            if (inputProvider.isAttackButtonDown)
+            {
+                GameObject bullet = bulletPool.GetObject();
+                bullet.transform.position = gunNozzlePosTrans.position;
+                bullet.transform.rotation = gunNozzlePosTrans.rotation;
+                bullet.GetComponent<DefenseBulletController>().MoveBullet();
                 StartCoroutine(StartMove());
             }
+        }
+
+        playerCore.isShoot = isShoot;
     }
     private IEnumerator StartMove()
     {
-        canShoot = false;
+        isShoot = true;
 
         yield return new WaitForSeconds(shootWaitTime);
 
-        canShoot = true;
+        isShoot = false;
     }
 }
