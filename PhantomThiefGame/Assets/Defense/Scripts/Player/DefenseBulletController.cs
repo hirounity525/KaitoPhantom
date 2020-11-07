@@ -16,7 +16,7 @@ public class DefenseBulletController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         GameObject enemyObj=collision.gameObject;
         if (enemyObj.tag == "Enemy")

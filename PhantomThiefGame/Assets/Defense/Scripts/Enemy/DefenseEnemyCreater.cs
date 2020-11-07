@@ -42,6 +42,7 @@ public class DefenseEnemyCreater : MonoBehaviour
                 if (currentEnemyData.createPos % 2 == 1)
                 {
                     createEnemyObj.transform.rotation = Quaternion.Euler(0, 180, 0);
+
                 }
                 else
                 {
