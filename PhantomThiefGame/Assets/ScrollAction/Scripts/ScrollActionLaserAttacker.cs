@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScrollActionLaser : MonoBehaviour
+public class ScrollActionLaserAttacker : MonoBehaviour
 {
-    [Header("Playerレイヤー")][SerializeField] private LayerMask playerLayer;
-    [Header("レーザーの長さ")][SerializeField] private float rayLength;
+    [Header("Playerレイヤー")] [SerializeField] private LayerMask playerLayer;
+    [Header("レーザーの長さ")] [SerializeField] private float rayLength;
     public bool isLaserHit;
     private Ray ray;
     private RaycastHit hit;
@@ -21,7 +21,7 @@ public class ScrollActionLaser : MonoBehaviour
     {
         Debug.DrawRay(ray.origin, ray.direction * rayLength, Color.red);
         ray = new Ray(transform.position, -transform.up);
-        if (Physics.Raycast(ray, out hit,rayLength,playerLayer))
+        if (Physics.Raycast(ray, out hit, rayLength, playerLayer))
         {
             isLaserHit = true;
             Debug.Log("hit");
@@ -31,6 +31,4 @@ public class ScrollActionLaser : MonoBehaviour
             isLaserHit = false;
         }
     }
-
 }
-

@@ -6,7 +6,7 @@ public class ScrollActionPlayerCore : MonoBehaviour
 {
     [SerializeField] private int life;
     [SerializeField] private float invincibleTime;
-    [SerializeField] ScrollActionLaser scrollActionLaser;
+    [SerializeField] ScrollActionLaserAttacker scrollActionLaserAttacker;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +17,7 @@ public class ScrollActionPlayerCore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (scrollActionLaser.isLaserHit)
+        if (scrollActionLaserAttacker.isLaserHit)
         {
             life -= 1;
             StartCoroutine(Invincible());
