@@ -5,7 +5,7 @@ using UnityEngine;
 public class DefenseFriendHPControler : MonoBehaviour
 {
     [SerializeField] private int maxHitpoints;
-    private int hitPoints;
+    public int hitPoints;
     // Start is called before the first frame update
     private void OnEnable()
     {
