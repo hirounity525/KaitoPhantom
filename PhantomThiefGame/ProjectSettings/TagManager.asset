@@ -15,12 +15,12 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - Ground
+  - Player
+  - Invincible
+  - Pendulum
+  - Hole
   - 
   - 
   - 
