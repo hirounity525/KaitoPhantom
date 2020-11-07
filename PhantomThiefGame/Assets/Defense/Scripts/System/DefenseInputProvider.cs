@@ -11,7 +11,7 @@ public enum InputArrow
     RIGHT
 }
 
-public class DefensePlayerInputProvider : MonoBehaviour
+public class DefenseInputProvider : MonoBehaviour
 {
     public InputArrow moveArrow;
     public bool isMoveButtonDown;

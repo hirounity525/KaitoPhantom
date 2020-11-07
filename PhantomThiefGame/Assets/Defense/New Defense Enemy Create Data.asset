@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1ee01f16e713245bc69b0242a07360, type: 3}
+  m_Name: New Defense Enemy Create Data
+  m_EditorClassIdentifier: 
+  enemyDatas:
+  - createPos: 4
+    enemyType: 0
+    createTime: 2
+  - createPos: 2
+    enemyType: 0
+    createTime: 3
+  - createPos: 1
+    enemyType: 0
+    createTime: 4
+  - createPos: 5
+    enemyType: 0
+    createTime: 6
+  - createPos: 0
+    enemyType: 0
+    createTime: 7
+  - createPos: 3
+    enemyType: 0
+    createTime: 8
+  - createPos: 5
+    enemyType: 0
+    createTime: 9
+  - createPos: 1
+    enemyType: 0
+    createTime: 12
+  - createPos: 0
+    enemyType: 0
+    createTime: 13
+  - createPos: 2
+    enemyType: 0
+    createTime: 14
+  - createPos: 4
+    enemyType: 0
+    createTime: 15
+  - createPos: 0
+    enemyType: 0
+    createTime: 16
+  - createPos: 1
+    enemyType: 0
+    createTime: 17
+  - createPos: 4
+    enemyType: 0
+    createTime: 18
+  - createPos: 3
+    enemyType: 0
+    createTime: 19
+  - createPos: 1
+    enemyType: 0
+    createTime: 20
+  - createPos: 3
+    enemyType: 0
+    createTime: 21
+  - createPos: 2
+    enemyType: 0
+    createTime: 22
+  - createPos: 4
+    enemyType: 0
+    createTime: 23
+  - createPos: 5
+    enemyType: 0
+    createTime: 24
