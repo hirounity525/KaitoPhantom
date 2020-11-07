@@ -38,6 +38,7 @@ public class DefenseEnemyCreater : MonoBehaviour
                         break;
                 }
 
+                createEnemyObj.GetComponent<DefenseEnemyMover>().enemySpeed = currentEnemyData.moveSpeed;
                 createEnemyObj.transform.position = createTrans[currentEnemyData.createPos].position;
                 if (currentEnemyData.createPos % 2 == 1)
                 {
