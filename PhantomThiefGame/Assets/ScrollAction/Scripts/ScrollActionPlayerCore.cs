@@ -6,6 +6,7 @@ public class ScrollActionPlayerCore : MonoBehaviour
 {
     [SerializeField] private int life;
     [SerializeField] private float invincibleTime;
+    [SerializeField] ScrollActionLaser scrollActionLaser;
 
     // Start is called before the first frame update
     void Start()
@@ -16,18 +17,29 @@ public class ScrollActionPlayerCore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(life == 0)
+        if (scrollActionLaser.isLaserHit)
         {
-
+            life -= 1;
+            StartCoroutine(Invincible());
+            Debug.Log(life);
         }
     }
 
+
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Hole"))
+        {
+            life = 0;
+            Debug.Log(life);
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             life -= 1;
-            StartCoroutine("Invincible");
+            StartCoroutine(Invincible());
             Debug.Log(life);
         }
     }

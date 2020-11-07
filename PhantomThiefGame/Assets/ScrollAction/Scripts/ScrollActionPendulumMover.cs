@@ -4,42 +4,56 @@ using UnityEngine;
 
 public class ScrollActionPendulumMover : MonoBehaviour
 {
-    [SerializeField] private float maxAngularVelocity;
-    [SerializeField] private float rotateAcceleration;
+    [SerializeField] private float firstSpeed;
+    [SerializeField] private Transform rotationCenterTrans;
     private Rigidbody rb;
-    private float angularVelocity;
-    private bool isRight;
+    private bool isFirstAngle0 = true;
+    private Vector3 addSpeed;
+    private bool isLeft = true;
 
-    private void Start()
+
+    // Start is called before the first frame update
+    void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.centerOfMass = Vector3.zero;
+        rb.velocity = new Vector3(firstSpeed, 0, 0);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
     }
 
     private void FixedUpdate()
     {
-        if(angularVelocity >= maxAngularVelocity)
+        float world_angle_z = rotationCenterTrans.eulerAngles.z;
+
+        if (isFirstAngle0)
         {
-            isRight = false;
-        }
-        else if(angularVelocity <= -maxAngularVelocity)
-        {
-            isRight = true;
+            if(world_angle_z <= 5)
+            {
+                addSpeed = rb.velocity;
+                isFirstAngle0 = false;
+            }
         }
 
-        if (isRight)
+        if(isLeft)
         {
-            angularVelocity += rotateAcceleration * Time.fixedDeltaTime;
+            if(world_angle_z <= 5)
+            {
+                rb.velocity = addSpeed;
+                isLeft = false;
+            }
         }
         else
         {
-            angularVelocity -= rotateAcceleration * Time.fixedDeltaTime;
+            if (world_angle_z >= 355)
+            {
+                rb.velocity = -addSpeed;
+                isLeft = true;
+            }
         }
-
-        rb.angularVelocity = Vector3.forward * angularVelocity;
-
     }
-}//角度
-//最大速度
-//秒数
-//これらを変えるだけで実装する
+}
