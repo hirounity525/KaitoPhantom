@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class DefenseWabeManager : MonoBehaviour
 {
-
+    public DefenseEnemyCreateData[] wabe;
+    private int nowWabeNum;
     // Start is called before the first frame update
     void Start()
     {
@@ -12,8 +13,5 @@ public class DefenseWabeManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

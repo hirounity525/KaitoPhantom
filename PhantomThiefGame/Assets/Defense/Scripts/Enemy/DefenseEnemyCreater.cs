@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DefenseEnemyCreater : MonoBehaviour
 {
-   [SerializeField] private DefenseEnemyCreateData createData;
+    public DefenseEnemyCreateData createData;
    [SerializeField] private Transform[] createTrans;
    [SerializeField]  private ObjectPool straighterPool;
     private float createTimer;
@@ -12,7 +12,7 @@ public class DefenseEnemyCreater : MonoBehaviour
     private int currentDataNum;
     private GameObject createEnemyObj;
     private bool getsEnemyData=true;
-    private bool stopCreate=false;
+    public bool stopCreate=false;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,50 +21,55 @@ public class DefenseEnemyCreater : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!stopCreate)
-        {
-            if (getsEnemyData)
+            if (!stopCreate)
             {
-                currentEnemyData = createData.enemyDatas[currentDataNum];
-                getsEnemyData = false;
+                if (getsEnemyData)
+                {
+                    currentEnemyData = createData.enemyDatas[currentDataNum];
+                    getsEnemyData = false;
+                }
+
+                if (createTimer >= currentEnemyData.createTime)
+                {
+                    switch (currentEnemyData.enemyType)
+                    {
+                        case DefenseEnemyType.STRAIGHTER:
+                            createEnemyObj = straighterPool.GetObject();
+                            break;
+                    }
+
+                    createEnemyObj.GetComponent<DefenseEnemyMover>().enemySpeed = currentEnemyData.moveSpeed;
+                    createEnemyObj.transform.position = createTrans[currentEnemyData.createPos].position;
+                    if (currentEnemyData.createPos % 2 == 1)
+                    {
+                        createEnemyObj.transform.rotation = Quaternion.Euler(0, 180, 0);
+
+                    }
+                    else
+                    {
+                        createEnemyObj.transform.rotation = Quaternion.Euler(0, 0, 0);
+                    }
+                    currentDataNum++;
+                    if (currentDataNum >= createData.enemyDatas.Length)
+                    {
+                        stopCreate = true;
+                        createTimer = 0;
+                        currentDataNum = 0;
+                        getsEnemyData = true;
+                        stopCreate = false;
+                    }
+                    else
+                    {
+                        getsEnemyData = true;
+                    }
+
+                }
+                createTimer += Time.deltaTime;
             }
-
-            if (createTimer >= currentEnemyData.createTime)
-            {
-                switch (currentEnemyData.enemyType)
-                {
-                    case DefenseEnemyType.STRAIGHTER:
-                        createEnemyObj = straighterPool.GetObject();
-                        break;
-                }
-
-                createEnemyObj.GetComponent<DefenseEnemyMover>().enemySpeed = currentEnemyData.moveSpeed;
-                createEnemyObj.transform.position = createTrans[currentEnemyData.createPos].position;
-                if (currentEnemyData.createPos % 2 == 1)
-                {
-                    createEnemyObj.transform.rotation = Quaternion.Euler(0, 180, 0);
-
-                }
-                else
-                {
-                    createEnemyObj.transform.rotation = Quaternion.Euler(0, 0, 0);
-                }
-                currentDataNum++;
-                if (currentDataNum >= createData.enemyDatas.Length)
-                {
-                    stopCreate = true;
-                }
-                else
-                {
-                    getsEnemyData = true;
-                }
-
-            }
-
-            createTimer += Time.deltaTime;
         }
+       
 
 
 
-    }
+    
 }
