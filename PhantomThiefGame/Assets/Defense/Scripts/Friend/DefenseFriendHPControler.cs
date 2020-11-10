@@ -6,6 +6,7 @@ public class DefenseFriendHPControler : MonoBehaviour
 {
     public int maxHitpoints;
     public int hitPoints;
+
     // Start is called before the first frame update
     private void OnEnable()
     {

@@ -5,6 +5,7 @@ using UnityEngine;
 public class DefenseEnemyCreater : MonoBehaviour
 {
     public DefenseEnemyCreateData createData;
+    [SerializeField] private GameObject friendObj;
    [SerializeField] private Transform[] createTrans;
    [SerializeField]  private ObjectPool straighterPool;
     private float createTimer;
@@ -21,6 +22,8 @@ public class DefenseEnemyCreater : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (friendObj.activeSelf)
+        {
             if (!stopCreate)
             {
                 if (getsEnemyData)
@@ -67,6 +70,8 @@ public class DefenseEnemyCreater : MonoBehaviour
                 createTimer += Time.deltaTime;
             }
         }
+
+    }
        
 
 
