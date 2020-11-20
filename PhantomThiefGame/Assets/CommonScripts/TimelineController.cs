@@ -5,7 +5,15 @@ using UnityEngine.Playables;
 
 public class TimelineController : MonoBehaviour
 {
-    PlayableDirector playableDirector;
+    private PlayableDirector playableDirector;
+
+    public PlayableDirector PlayableDirector
+    {
+        get
+        {
+            return playableDirector;
+        }
+    }
 
     public bool isFinish;
 
@@ -26,17 +34,17 @@ public class TimelineController : MonoBehaviour
         }
     }
 
-    public void PlayTimeline()
+    public void Play()
     {
         playableDirector.Play();
     }
 
-    public void SkipTimeline(float skipTime)
+    public void Skip(float skipTime)
     {
         playableDirector.time = skipTime;
     }
 
-    public float timelineTime()
+    public float PlayTime()
     {
         return (float)playableDirector.time;
     }

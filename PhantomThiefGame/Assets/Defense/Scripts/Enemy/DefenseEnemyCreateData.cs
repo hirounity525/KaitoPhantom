@@ -14,6 +14,7 @@ public struct DefenseEnemyData
     [Range(0,5)]public int createPos;
     public DefenseEnemyType enemyType;
     public float createTime;
+    public float moveSpeed;
 }
 
 [CreateAssetMenu(menuName ="Defense/EnemyCreateData")]
