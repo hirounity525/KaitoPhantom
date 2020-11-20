@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class DefenseEnemyMover : MonoBehaviour
 {
-    [SerializeField] private float enemySpeed;
+    [SerializeField] public float enemySpeed;
     private Rigidbody rb;
     private Transform enemyTrans;
     [SerializeField] private Transform[] moveTrans;
+    private DefenseEnemyData enemyData;
     // Start is called before the first frame update
     void Start()
     {
