@@ -32,7 +32,7 @@ public class ShootingEnemyAttacker : MonoBehaviour
                     if (rapidFire)
                     {
                         GameObject bullet = bulletPool.GetObject();
-                        bullet.transform.position = gunNozzlePos.position;
+                    bullet.transform.position = gunNozzlePos.position;
                         StartCoroutine(AttackSpeed());
                     }
                 }
