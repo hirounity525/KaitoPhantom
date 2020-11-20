@@ -13,7 +13,7 @@ public class ShootingEnemyAttacker : MonoBehaviour
     private ShootingAttackRange attackRange;
     private bool isShoot = false;
     private bool rapidFire = true;
-    private int i;
+    private int attackNowNum;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,16 +27,22 @@ public class ShootingEnemyAttacker : MonoBehaviour
         {
             if (attackRange.isAttack == true)//攻撃範囲にはいったら
             {
-                for (i = 0;i < attackNum;i++ )//攻撃回数
+                if (attackNowNum < attackNum)
                 {
                     if (rapidFire)
                     {
                         GameObject bullet = bulletPool.GetObject();
-                    bullet.transform.position = gunNozzlePos.position;
+                        bullet.transform.position = gunNozzlePos.position;
                         StartCoroutine(AttackSpeed());
+                        attackNowNum++;
                     }
                 }
-                StartCoroutine(AttackWaitTime());
+                else
+                {
+                    StartCoroutine(AttackWaitTime());
+                    attackNowNum = 0;
+                }
+                
             }
         }
 

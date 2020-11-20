@@ -16,7 +16,7 @@ public class ShootingAttackRange : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         GameObject Enemy = other.gameObject;
-        if (Enemy.tag == "Enemy")
+        if (Enemy.tag == "Attack")
         {
             isAttack = true;
         }
