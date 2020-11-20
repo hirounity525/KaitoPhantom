@@ -6,7 +6,8 @@ public class ScrollActionPlayerCore : MonoBehaviour
 {
     [SerializeField] private int life;
     [SerializeField] private float invincibleTime;
-    [SerializeField] ScrollActionLaserAttacker scrollActionLaserAttacker;
+    [SerializeField] private ScrollActionLaserAttacker scrollActionLaserAttacker;
+    [SerializeField] private ScrollActionPlayerMover scrollActionPlayerMover;
 
     // Start is called before the first frame update
     void Start()
@@ -41,11 +42,13 @@ public class ScrollActionPlayerCore : MonoBehaviour
             life -= 1;
             StartCoroutine(Invincible());
             Debug.Log(life);
+            //scrollActionPlayerMover.KnockBack();
         }
     }
 
     IEnumerator Invincible()
     {
+        scrollActionPlayerMover.KnockBack();
         gameObject.layer = LayerMask.NameToLayer("Invincible");
         yield return new WaitForSeconds(invincibleTime);
         gameObject.layer = LayerMask.NameToLayer("Player");

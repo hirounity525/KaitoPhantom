@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class ScrollActionLaserAttacker : MonoBehaviour
 {
+    public bool isLaserHit;
     [Header("Playerレイヤー")] [SerializeField] private LayerMask playerLayer;
     [Header("レーザーの長さ")] [SerializeField] private float rayLength;
-    public bool isLaserHit;
+    private LineRenderer lineRenderer;
     private Ray ray;
     private RaycastHit hit;
+    //private Vector3 hitPos;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        lineRenderer = GetComponent<LineRenderer>();
     }
 
     // Update is called once per frame
@@ -30,5 +32,19 @@ public class ScrollActionLaserAttacker : MonoBehaviour
         {
             isLaserHit = false;
         }
+
+        lineRenderer.SetPosition(0,gameObject.transform.position);
+        lineRenderer.SetPosition(1, gameObject.transform.position + -transform.up * rayLength);
+
+        /*if (Physics.Raycast(ray,out hit, rayLength))
+        {
+            hitPos = hit.point;
+            lineRenderer.SetPosition(1, hitPos);
+        }
+        else
+        {
+            lineRenderer.SetPosition(1,gameObject.transform.position + -transform.up * rayLength);
+        }*/
+
     }
 }

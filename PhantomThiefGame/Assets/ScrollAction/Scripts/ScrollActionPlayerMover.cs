@@ -23,6 +23,15 @@ public class ScrollActionPlayerMover : MonoBehaviour
     [SerializeField] private float hitDistance;
     [SerializeField] private LayerMask hitLayer;
 
+    [SerializeField] private GameObject phantom_chan;
+
+    [Header("ノックバック")]
+    [SerializeField,Tooltip("プレイヤーが右を向いているときのノックバックする力")] private Vector3 knockBackPower2;
+    [SerializeField,Tooltip("プレイヤーが左を向いているときのノックバックする力")] private Vector3 knockBackPower3;
+    //[SerializeField] private float knockBackPower;
+    [SerializeField] private float canNotMoveTime;
+    private bool isKockBack = false;
+
     private Rigidbody rb;
     private Transform playerTrans;
 
@@ -41,6 +50,8 @@ public class ScrollActionPlayerMover : MonoBehaviour
 
     private bool startsFall;
 
+    private bool playerDirectionIsRight = true;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -49,104 +60,115 @@ public class ScrollActionPlayerMover : MonoBehaviour
 
     void Update()
     {
-        //ジャンプボタン押した時
-        if (inputProvider.isJumpButtonDown)
+        if (!isKockBack)
         {
-            startsJump = true;
-        }
+            //ジャンプボタン押した時
+            if (inputProvider.isJumpButtonDown)
+            {
+                startsJump = true;
+            }
 
-        //ジャンプボタン離した時
-        if (inputProvider.isJumpButtonUp)
-        {
-            endsJump = true;
+            //ジャンプボタン離した時
+            if (inputProvider.isJumpButtonUp)
+            {
+                endsJump = true;
+            }
         }
     }
 
     private void FixedUpdate()
     {
-        //地面についているか
-        isGround = IsGround();
-
-        //横方向の移動の入力・正規化
-        Vector3 moveVec = Vector3.right * inputProvider.moveHorizontal;
-        moveVec = moveVec.normalized;
-
-        //地面についている時かつジャンプできる状態の時
-        if (isGround && !forbidsJump)
+        if (!isKockBack)
         {
-            //移動速度代入
-            moveVec.x *= moveSpeed;
+            //地面についているか
+            isGround = IsGround();
 
-            if (startsJump)
+            //横方向の移動の入力・正規化
+            Vector3 moveVec = Vector3.right * inputProvider.moveHorizontal;
+            moveVec = moveVec.normalized;
+
+            //地面についている時かつジャンプできる状態の時
+            if (isGround && !forbidsJump)
             {
-                //即ジャンプ禁止
-                StartCoroutine(StartJump());
+                //移動速度代入
+                moveVec.x *= moveSpeed;
 
-                //リセット
-                nowJumpPower = jumpPower;
-                jumpTimer = 0;
+                if (startsJump)
+                {
+                    //即ジャンプ禁止
+                    StartCoroutine(StartJump());
 
-                //ジャンプ力代入
-                moveVec.y = nowJumpPower;
+                    //リセット
+                    nowJumpPower = jumpPower;
+                    jumpTimer = 0;
 
-                //現在の移動速度保存
-                moveVecTempX = moveVec.x;
+                    //ジャンプ力代入
+                    moveVec.y = nowJumpPower;
 
-                isJump = true;
-                startsJump = false;
-                endsJump = false;
-            }
+                    //現在の移動速度保存
+                    moveVecTempX = moveVec.x;
 
-            
-        }
-        else
-        {
-            //ジャンプ中に押しても意味がないようにする
-            startsJump = false;
+                    isJump = true;
+                    startsJump = false;
+                    endsJump = false;
+                }
 
-            //空中時の移動速度変化
-            if (moveVec.x >= 0.1f)
-            {
-                moveVecTempX += airMoveRate;
-            }
-            else if (moveVec.x <= -0.1f)
-            {
-                moveVecTempX -= airMoveRate;
+
             }
             else
             {
-                if (moveVecTempX >= 0.1f)
+                //ジャンプ中に押しても意味がないようにする
+                startsJump = false;
+
+                //空中時の移動速度変化
+                if (moveVec.x >= 0.1f)
                 {
-                    moveVecTempX -= airMoveLinearDrag;
+                    moveVecTempX += airMoveRate;
                 }
-                else if (moveVecTempX <= -0.1f)
+                else if (moveVec.x <= -0.1f)
                 {
-                    moveVecTempX += airMoveLinearDrag;
+                    moveVecTempX -= airMoveRate;
                 }
-            }
-
-            //最大移動速度内に修正・代入
-            moveVecTempX = Mathf.Clamp(moveVecTempX, -moveSpeed, moveSpeed);
-            moveVec.x = moveVecTempX;
-
-            //落ち始めたら
-            if (startsFall)
-            {
-                isJump = false;
-                startsFall = false;
-            }
-
-            //ジャンプ時
-            if (isJump)
-            {
-                jumpTimer += Time.fixedDeltaTime;
-
-                if (jumpTimer < jumpTime)
+                else
                 {
-                    if (!endsJump)
+                    if (moveVecTempX >= 0.1f)
                     {
-                        nowJumpPower = jumpPower - (jumpPower * (jumpTimer / jumpTime));
-                        moveVec.y = nowJumpPower;
+                        moveVecTempX -= airMoveLinearDrag;
+                    }
+                    else if (moveVecTempX <= -0.1f)
+                    {
+                        moveVecTempX += airMoveLinearDrag;
+                    }
+                }
+
+                //最大移動速度内に修正・代入
+                moveVecTempX = Mathf.Clamp(moveVecTempX, -moveSpeed, moveSpeed);
+                moveVec.x = moveVecTempX;
+
+                //落ち始めたら
+                if (startsFall)
+                {
+                    isJump = false;
+                    startsFall = false;
+                }
+
+                //ジャンプ時
+                if (isJump)
+                {
+                    jumpTimer += Time.fixedDeltaTime;
+
+                    if (jumpTimer < jumpTime)
+                    {
+                        if (!endsJump)
+                        {
+                            nowJumpPower = jumpPower - (jumpPower * (jumpTimer / jumpTime));
+                            moveVec.y = nowJumpPower;
+                        }
+                        else
+                        {
+                            startsFall = true;
+                            endsJump = false;
+                        }
                     }
                     else
                     {
@@ -156,20 +178,25 @@ public class ScrollActionPlayerMover : MonoBehaviour
                 }
                 else
                 {
-                    startsFall = true;
-                    endsJump = false;
+                    //rb.AddForce(Vector3.down * gravityScale, ForceMode.Acceleration);
+                    moveVec.y = rb.velocity.y;
                 }
             }
-            else
-            {
-                //rb.AddForce(Vector3.down * gravityScale, ForceMode.Acceleration);
-                moveVec.y = rb.velocity.y;
-            }
+
+            //速度代入
+            rb.velocity = moveVec;
         }
 
-        //速度代入
-        rb.velocity = moveVec;
-
+        if(inputProvider.moveHorizontal > 0)
+        {
+            playerDirectionIsRight = true;
+            phantom_chan.transform.localEulerAngles = new Vector3(0, 90, 0);
+        }
+        else if(inputProvider.moveHorizontal < 0)
+        {
+            playerDirectionIsRight = false;
+            phantom_chan.transform.localEulerAngles = new Vector3(0, -90, 0);
+        }
     }
 
     private bool IsGround()
@@ -191,5 +218,28 @@ public class ScrollActionPlayerMover : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position + Vector3.down * hitDistance, hitRadius);
+    }
+
+    public void KnockBack()
+    {
+        isKockBack = true;
+        rb.velocity = Vector3.zero;
+        if (playerDirectionIsRight)
+        {
+            rb.AddForce(knockBackPower2, ForceMode.VelocityChange);
+        }
+        else if (!playerDirectionIsRight)
+        {
+            rb.AddForce(knockBackPower3, ForceMode.VelocityChange);
+        }
+        //rb.AddForce(-transform.right * knockBackPower, ForceMode.VelocityChange);
+        StartCoroutine(CanNotMove());
+        //Debug.Log(transform.right);
+    }
+
+    private IEnumerator CanNotMove()
+    {
+        yield return new WaitForSeconds(canNotMoveTime);
+        isKockBack = false;
     }
 }
