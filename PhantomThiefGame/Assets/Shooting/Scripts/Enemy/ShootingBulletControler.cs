@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShootingBulletControler : MonoBehaviour
 {
-    [SerializeField] private float enemySpeed;
+    [SerializeField] private float bulletSpeed;
 
     private Rigidbody rb;
     // Start is called before the first frame update
@@ -16,6 +16,6 @@ public class ShootingBulletControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = new Vector3(-enemySpeed, 0, 0);//弾の速さ
+        rb.velocity = new Vector3(bulletSpeed, 0, 0);//弾の速さ
     }
 }

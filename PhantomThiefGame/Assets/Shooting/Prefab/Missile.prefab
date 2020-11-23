@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6398819668128730549}
   - component: {fileID: 6398819668128730537}
   - component: {fileID: 6398819668128730536}
+  - component: {fileID: 5281883596724554857}
   m_Layer: 0
   m_Name: Missile
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 6398819668128730550}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 5.01, y: 3.64, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.4, z: 0.6}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -92,8 +93,8 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6398819668128730550}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
+  m_IsTrigger: 1
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -127,4 +128,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTrans: {fileID: 5405271549001589089, guid: 83f30a32a3c21394c827b238084059a0, type: 3}
   missileSpeed: 3
-  chaseTime: 4
+  chaseTime: 10
+--- !u!114 &5281883596724554857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6398819668128730550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8096755fe172dc04eae39b107ada4fe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
