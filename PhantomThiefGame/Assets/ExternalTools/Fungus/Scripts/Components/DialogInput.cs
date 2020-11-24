@@ -3,6 +3,7 @@
 
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.UI;
 
 namespace Fungus
 {
@@ -44,7 +45,7 @@ namespace Fungus
 
         protected float ignoreClickTimer;
 
-        protected StandaloneInputModule currentStandaloneInputModule;
+        protected InputSystemUIInputModule currentStandaloneInputModule;
 
         protected Writer writer;
 
@@ -81,16 +82,16 @@ namespace Fungus
 
             if (currentStandaloneInputModule == null)
             {
-                currentStandaloneInputModule = EventSystem.current.GetComponent<StandaloneInputModule>();
+                currentStandaloneInputModule = EventSystem.current.GetComponent<InputSystemUIInputModule>();
             }
 
             if (writer != null && writer.IsWriting)
             {
-                if (Input.GetButtonDown(currentStandaloneInputModule.submitButton) ||
+                /*if (Input.GetButtonDown(currentStandaloneInputModule) ||
                     (cancelEnabled && Input.GetButton(currentStandaloneInputModule.cancelButton)))
                 {
                     SetNextLineFlag();
-                }
+                }*/
             }
 
             switch (clickMode)
@@ -98,10 +99,10 @@ namespace Fungus
             case ClickMode.Disabled:
                 break;
             case ClickMode.ClickAnywhere:
-                if (Input.GetMouseButtonDown(0))
+                /*if (Input.GetMouseButtonDown(0))
                 {
                     SetNextLineFlag();
-                }
+                }*/
                 break;
             case ClickMode.ClickOnDialog:
                 if (dialogClickedFlag)
