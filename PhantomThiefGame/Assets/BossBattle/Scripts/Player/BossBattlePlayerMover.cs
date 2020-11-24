@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BossBattlePlayerMover : MonoBehaviour
 {
+    public bool playerDirectionIsRight = true;
+
     [SerializeField] private BossBattleInputProvider inputProvider2;
 
     [Header("移動")]
@@ -49,8 +51,6 @@ public class BossBattlePlayerMover : MonoBehaviour
     private float moveVecTempX;
 
     private bool startsFall;
-
-    private bool playerDirectionIsRight = true;
 
     void Start()
     {

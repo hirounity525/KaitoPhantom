@@ -17,14 +17,7 @@ public class BossBattleBossAttacker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SummonGuards();
-        SummonGuards();
-        SummonGuards();
-        SummonGuards();
-        SummonRock();
-        SummonRock();
-        SummonRock();
-        SummonRock();
+        
     }
 
     // Update is called once per frame

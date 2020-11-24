@@ -555,6 +555,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Attack",
+                    "type": "Value",
+                    "id": "249580a6-543f-421a-abec-226f291270cb",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -599,6 +607,17 @@
                     "processors": "",
                     "groups": "Keybord",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f762ceac-1cb6-4942-ab05-58bd8d9d9876",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keybord",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

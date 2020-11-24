@@ -8,6 +8,7 @@ public class BossBattleInputProvider : MonoBehaviour
     public float moveHorizontal2;
     public bool isJumpButtonDown2;
     public bool isJumpButtonUp2;
+    public float isAttackButtonDown;
 
     private PlayerInput playerInput;
     private InputActionMap actionMap;
@@ -38,6 +39,11 @@ public class BossBattleInputProvider : MonoBehaviour
 
         //ジャンプボタンを離した瞬間
         jumpButtonValue = actionMap["Jump"].ReadValue<float>();
+        
+        //攻撃ボタンを押した瞬間
+        isAttackButtonDown = actionMap["Attack"].ReadValue<float>();
+
+
 
         if (jumpButtonValue >= defaultButtonPressPoint)
         {
