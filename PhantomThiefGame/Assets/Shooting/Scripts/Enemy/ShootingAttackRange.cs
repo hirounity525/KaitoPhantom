@@ -20,5 +20,12 @@ public class ShootingAttackRange : MonoBehaviour
         {
             isAttack = true;
         }
+
+        if (Enemy.tag == "StopAttack")
+        {
+            isAttack = false;
+        }
     }
+
+
 }

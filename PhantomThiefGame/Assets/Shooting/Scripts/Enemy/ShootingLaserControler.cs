@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShootingLaserControler : MonoBehaviour
 {
-    [SerializeField] private Transform playerTrans;
+    public Transform playerTrans;
     [SerializeField]private float laserSpeed;
 
     private Rigidbody rb;
