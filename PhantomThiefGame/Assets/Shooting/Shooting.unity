@@ -533,6 +533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpeed: 2
+  returnMoveTime: 37
 --- !u!136 &184621095
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -739,6 +740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpeed: 2
+  returnMoveTime: 37
 --- !u!136 &315761048
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -915,6 +917,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpeed: 2
+  returnMoveTime: 37
 --- !u!136 &326539991
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1380,6 +1383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpeed: 2
+  returnMoveTime: 37
 --- !u!136 &573392407
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1586,6 +1590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpeed: 2
+  returnMoveTime: 37
 --- !u!136 &663852530
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1762,6 +1767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpeed: 2
+  returnMoveTime: 37
 --- !u!136 &714821092
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1983,6 +1989,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpeed: 2
+  returnMoveTime: 37
 --- !u!136 &780809481
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2381,6 +2388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpeed: 2
+  returnMoveTime: 37
 --- !u!136 &887497654
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2948,7 +2956,6 @@ GameObject:
   - component: {fileID: 996821911}
   - component: {fileID: 996821910}
   - component: {fileID: 996821909}
-  - component: {fileID: 996821916}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -2968,6 +2975,7 @@ Transform:
   m_LocalScale: {x: 0.7, y: 0.55, z: 1}
   m_Children:
   - {fileID: 1725821989}
+  - {fileID: 1229178876}
   m_Father: {fileID: 1404810686}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2983,7 +2991,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a95817c93a5dcd441b80d49c9281272f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMaxHitPoint: 3
+  playerMaxHitPoint: 5
   unavailableColliderTime: 2
 --- !u!114 &996821910
 MonoBehaviour:
@@ -3041,7 +3049,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.35427296
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -3094,18 +3102,49 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 996821907}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &996821916
+--- !u!1 &1229178875
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1229178876}
+  - component: {fileID: 1229178877}
+  m_Layer: 10
+  m_Name: LimitMove
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1229178876
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229178875}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 996821908}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1229178877
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 996821907}
+  m_GameObject: {fileID: 1229178875}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.99999994, y: 1.9999999, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1243301911
 GameObject:
@@ -3665,6 +3704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpeed: 2
+  returnMoveTime: 37
 --- !u!136 &1535974808
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3841,6 +3881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpeed: 2
+  returnMoveTime: 37
 --- !u!136 &1554601258
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4371,6 +4412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpeed: 2
+  returnMoveTime: 37
 --- !u!136 &1716966766
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4739,6 +4781,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpeed: 2
+  returnMoveTime: 37
 --- !u!136 &1907243650
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4812,6 +4855,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2008292649}
   - component: {fileID: 2008292648}
+  - component: {fileID: 2008292650}
   m_Layer: 0
   m_Name: EnemyStopAttackLine
   m_TagString: StopAttack
@@ -4846,6 +4890,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2008292650
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2008292647}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 10, z: 1}
+  m_Center: {x: 9.5, y: 0, z: 0}
 --- !u!1 &2024638035
 GameObject:
   m_ObjectHideFlags: 0
