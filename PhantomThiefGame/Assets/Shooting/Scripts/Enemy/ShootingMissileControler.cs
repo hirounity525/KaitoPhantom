@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShootingMissileControler : MonoBehaviour
 {
-    [SerializeField] private Transform playerTrans;
+    public Transform playerTrans;
     [SerializeField] private float missileSpeed;
     [SerializeField] private float chaseTime;
 

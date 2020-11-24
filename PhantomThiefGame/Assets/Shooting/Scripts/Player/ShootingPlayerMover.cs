@@ -16,23 +16,8 @@ public class ShootingPlayerMover : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (inputProvider.moveHorizon > 0 )
-        {
-            rb.velocity = new Vector3(moveSpeed, 0, 0);
-        }
-        else if (inputProvider.moveHorizon < 0)
-        {
-            rb.velocity = new Vector3(-moveSpeed,0,0);
-        }
-        else if (inputProvider.moveVertical > 0)
-        {
-            rb.velocity = new Vector3(0, moveSpeed, 0);
-        }
-        else if (inputProvider.moveVertical < 0)
-        {
-            rb.velocity = new Vector3(moveSpeed,0, 0);
-        }
+        rb.velocity = new Vector3(inputProvider.moveHorizon, inputProvider.moveVertical, 0) * moveSpeed;
     }
 }

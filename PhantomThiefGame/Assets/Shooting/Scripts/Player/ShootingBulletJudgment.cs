@@ -13,6 +13,11 @@ public class ShootingBulletJudgment : MonoBehaviour
             Enemy.GetComponent<ShootingEnemyHPControler>().AddDamage();
             gameObject.SetActive(false);
         }
+
+        if (Enemy.tag == "LimitAttackLine")
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame

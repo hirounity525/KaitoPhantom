@@ -7,7 +7,7 @@ public class ShootingInputProvider : MonoBehaviour
 {
     public float moveHorizon;
     public float moveVertical;
-    public bool isAttackButtonDown=false;
+    public float isAttackButtunDown;
 
     private PlayerInput playerInput;
     private InputActionMap actionMap;
@@ -22,8 +22,9 @@ public class ShootingInputProvider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        isAttackButtunDown = actionMap["Attack"].ReadValue<float>();
 
-
-        isAttackButtonDown = actionMap["Attack"].triggered;
+        moveHorizon = actionMap["MoveHorizon"].ReadValue<float>();
+        moveVertical = actionMap["MoveVertical"].ReadValue<float>();
     }
 }

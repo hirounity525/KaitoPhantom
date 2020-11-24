@@ -8,6 +8,10 @@ TagManager:
   - ToTarget
   - Attack
   - Bullet
+  - StopAttack
+  - Laser
+  - Missile
+  - LimitAttackLine
   layers:
   - Default
   - TransparentFX
@@ -23,7 +27,7 @@ TagManager:
   - Invincible
   - Pendulum
   - Hole
-  - 
+  - PlayerLimitMove
   - 
   - 
   - 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShootingEnemyAttacker : MonoBehaviour
 {
+    [SerializeField] private Transform nowPlayerTrans;
     [SerializeField] private Transform gunNozzlePos;
     [SerializeField] private ObjectPool bulletPool;
     [SerializeField] private float attackWaitTime;
@@ -33,6 +34,16 @@ public class ShootingEnemyAttacker : MonoBehaviour
                     {
                         GameObject bullet = bulletPool.GetObject();
                         bullet.transform.position = gunNozzlePos.position;
+
+                        if (bullet.tag=="Laser")
+                        {
+                            bullet.GetComponent<ShootingLaserControler>().playerTrans = nowPlayerTrans;
+                        }
+                        else if (bullet.tag=="Missile")
+                        {
+                            bullet.GetComponent<ShootingMissileControler>().playerTrans = nowPlayerTrans;
+                        }
+
                         StartCoroutine(AttackSpeed());
                         attackNowNum++;
                     }

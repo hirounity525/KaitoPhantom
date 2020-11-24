@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShootingPlayerHPControler : MonoBehaviour
 {
     [SerializeField] private int playerMaxHitPoint;
+    [SerializeField] private float unavailableColliderTime;
     private int playerNowHitPoint;
 
 
@@ -27,5 +28,16 @@ public class ShootingPlayerHPControler : MonoBehaviour
     public void AddDamage()
     {
         playerNowHitPoint--;
+
+        StartCoroutine(UnavailableCollider());
+    }
+
+    private IEnumerator UnavailableCollider()
+    {
+        this.GetComponent<Collider>().enabled = false;
+
+        yield return new WaitForSeconds(unavailableColliderTime);
+
+        this.GetComponent<Collider>().enabled = true;
     }
 }
