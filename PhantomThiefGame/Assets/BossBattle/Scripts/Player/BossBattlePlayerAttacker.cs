@@ -35,7 +35,6 @@ public class BossBattlePlayerAttacker : MonoBehaviour
             {
                 ShootAttack();
                 isShoot = true;
-                ShootAttack();
                 
             }
             shootRateTimeTemp += Time.deltaTime;

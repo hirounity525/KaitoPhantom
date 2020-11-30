@@ -17,14 +17,30 @@ public class BossBattleBulletController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == LayerMask.NameToLayer("Boss"))
+        if(other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
+            gameObject.SetActive(false);
+        }
 
+        else if (other.gameObject.layer == LayerMask.NameToLayer("Boss"))
+        {
+            gameObject.SetActive(false);
+        }
+
+        else if (other.gameObject.layer == LayerMask.NameToLayer("Wall"))
+        {
+            gameObject.SetActive(false);
+        }
+
+        else if (other.gameObject.layer == LayerMask.NameToLayer("Rock"))
+        {
+            gameObject.SetActive(false);
         }
     }
 
+
     public void MoveBullet()
-    {
+    {/*
         if (playerMover.playerDirectionIsRight)
         {
             rb.velocity = bulletTrans.right * bulletSpeed;
@@ -33,5 +49,7 @@ public class BossBattleBulletController : MonoBehaviour
         {
             rb.velocity = bulletTrans.right * -bulletSpeed;
         }
+        */
+        rb.velocity = bulletTrans.right * bulletSpeed;
     }
 }

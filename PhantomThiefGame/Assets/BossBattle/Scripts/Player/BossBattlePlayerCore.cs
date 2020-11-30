@@ -34,6 +34,13 @@ public class BossBattlePlayerCore : MonoBehaviour
             life = 0;
             Debug.Log(life);
         }
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Rock"))
+        {
+            life--;
+            StartCoroutine(Invincible());
+            Debug.Log(life);
+        }
     }
     private void OnTriggerEnter(Collider other)
     {

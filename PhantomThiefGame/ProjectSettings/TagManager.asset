@@ -29,9 +29,9 @@ TagManager:
   - Hole
   - PlayerLimitMove
   - Wall
-  - 
-  - 
-  - 
+  - Bullet
+  - Boss
+  - Rock
   - 
   - 
   - 
