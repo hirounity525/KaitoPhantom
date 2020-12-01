@@ -126,5 +126,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DisappearBossBulletTime: 4
-  bossBulletSpeed: 5
+  bossBulletSpeed: 4
   bossBalletVec: {x: 0, y: 0, z: 0}

@@ -10,10 +10,15 @@ public class BossBattleBossBulletCore : MonoBehaviour
     private Rigidbody rb;
     public Vector3 bossBalletVec;
 
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        //rb = GetComponent<Rigidbody>();
         StartCoroutine(DisappearBossBullet());
 
     }
@@ -41,7 +46,7 @@ public class BossBattleBossBulletCore : MonoBehaviour
     public void MoveBossBullet()
     {
         //bossBalletVec = bossBattleBossAttacker.bossBulletVec2;
-        rb.velocity = bossBalletVec * bossBulletSpeed;
         Debug.Log("move" + bossBalletVec);
+        rb.velocity = bossBalletVec * bossBulletSpeed;
     }
 }

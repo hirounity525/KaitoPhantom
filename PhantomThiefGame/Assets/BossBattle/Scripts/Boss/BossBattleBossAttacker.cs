@@ -65,7 +65,7 @@ public class BossBattleBossAttacker : MonoBehaviour
         GameObject bossBullet = bossBulletsPool.GetObject();
         bossBullet.transform.position = bossGunNozzlePosTrans.position;
         bossBullet.transform.rotation = bossGunNozzlePosTrans.rotation;
-        bossBullet.GetComponent<BossBattleBossBulletCore>().bossBalletVec = bossBulletVec2;
+        bossBullet.GetComponent<BossBattleBossBulletCore>().bossBalletVec = bossBulletVec2.normalized;
         bossBullet.GetComponent<BossBattleBossBulletCore>().MoveBossBullet();
     }
 }
