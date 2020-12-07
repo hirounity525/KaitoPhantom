@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ShootingEnemyMover : MonoBehaviour
 {
+    [SerializeField] private float positionX;
+    [SerializeField] private float positionZ;
+    [SerializeField] private float moveRadius;
    [SerializeField] private float enemySpeed;
    [SerializeField] private float returnMoveTime;
 
@@ -16,12 +19,18 @@ public class ShootingEnemyMover : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         nowReturnMoveTime = returnMoveTime;
-        rb.velocity = new Vector3(-1 * enemySpeed, 0, 0);
+
+        this.transform.position = new Vector3(moveRadius*Mathf.Sin(positionX),0, moveRadius * Mathf.Sin(positionZ));
+
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        rb.velocity = new Vector3(-enemySpeed * moveRadius * Mathf.Sin(enemySpeed * Time.time + positionX), 0, -enemySpeed * moveRadius * Mathf.Cos(enemySpeed * Time.time + positionX));
+
         countTime = Time.time;
         if (countTime >= nowReturnMoveTime)
         {
