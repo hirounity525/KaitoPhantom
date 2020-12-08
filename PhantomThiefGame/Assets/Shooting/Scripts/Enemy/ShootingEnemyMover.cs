@@ -10,24 +10,27 @@ public class ShootingEnemyMover : MonoBehaviour
    [SerializeField] private float enemySpeed;
    [SerializeField] private float returnMoveTime;
     [SerializeField] private float moveStraightSpeed;
-
+    [SerializeField] private float moveCircleSpeed;
     [SerializeField] private float resetRadian;
 
     private Rigidbody rb;
 
+    private Transform enemyTrans;
+
     private float countTime;
     private float nowReturnMoveTime;
+    private float nowRadian;
+    private int resetTrans;
 
     private bool canMoveStraight=false;
     // Start is called before the first frame update
     void Start()
     {
+        enemyTrans = GetComponent<Transform>();
         rb = GetComponent<Rigidbody>();
         nowReturnMoveTime = returnMoveTime;
 
-        this.transform.position = new Vector3(moveRadius*Mathf.Cos(startRadian),0, -moveRadius * Mathf.Sin(startRadian));
-
-
+        this.transform.position = new Vector3(moveRadius*Mathf.Cos(startRadian),startTransY, -moveRadius * Mathf.Sin(startRadian));
 
     }
 
@@ -36,7 +39,7 @@ public class ShootingEnemyMover : MonoBehaviour
     {
         if (!canMoveStraight)
         {
-            rb.velocity = new Vector3(-enemySpeed * moveRadius * Mathf.Sin(enemySpeed * resetRadian + startRadian), 0, -enemySpeed * moveRadius * Mathf.Cos(enemySpeed * resetRadian + startRadian));
+            rb.velocity = new Vector3(-enemySpeed * moveRadius * Mathf.Sin(moveCircleSpeed * nowRadian + startRadian), 0, -enemySpeed * moveRadius * Mathf.Cos(moveCircleSpeed * nowRadian + startRadian));
         }
         else
         {
@@ -44,7 +47,7 @@ public class ShootingEnemyMover : MonoBehaviour
         }
 
 
-        resetRadian = resetRadian+Time.deltaTime;
+        nowRadian = nowRadian+Time.deltaTime;
         countTime = Time.time;
         if (countTime >= nowReturnMoveTime)
         {
@@ -63,11 +66,13 @@ public class ShootingEnemyMover : MonoBehaviour
             if (!canMoveStraight)
             {
                 canMoveStraight = true;
+                this.transform.position = new Vector3(enemyTrans.position.x, enemyTrans.position.y, 0);
             }
             else
             {
                 canMoveStraight = false;
-                resetRadian = 10;
+                nowRadian = resetRadian;
+                startRadian = 0;
             }
         }
     }

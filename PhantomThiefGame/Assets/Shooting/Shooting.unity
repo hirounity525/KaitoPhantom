@@ -647,7 +647,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &184621094
 MonoBehaviour:
@@ -663,11 +663,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startTransY: 0
   startRadian: 0
-  moveRadius: 0
-  enemySpeed: 2
+  moveRadius: 23
+  enemySpeed: 0.3
   returnMoveTime: 50
-  moveStraightSpeed: 0
-  resetRadian: 0
+  moveStraightSpeed: 2
+  resetRadian: 10.4
 --- !u!136 &184621095
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -829,7 +829,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &300012152
 MonoBehaviour:
@@ -845,11 +845,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startTransY: 0
   startRadian: 0
-  moveRadius: 0
-  enemySpeed: 2
+  moveRadius: 23
+  enemySpeed: 0.3
   returnMoveTime: 50
-  moveStraightSpeed: 0
-  resetRadian: 0
+  moveStraightSpeed: 2
+  resetRadian: 10.4
 --- !u!136 &300012153
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1041,7 +1041,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &315761047
 MonoBehaviour:
@@ -1055,13 +1055,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f8058bf53d356a4ea1598160e147ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTransY: 0
-  startRadian: 0
-  moveRadius: 0
-  enemySpeed: 2
+  startTransY: -3
+  startRadian: -0.3
+  moveRadius: 23
+  enemySpeed: 0.3
   returnMoveTime: 50
-  moveStraightSpeed: 0
-  resetRadian: 0
+  moveStraightSpeed: 2
+  resetRadian: 10.4
 --- !u!136 &315761048
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1223,7 +1223,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &326539990
 MonoBehaviour:
@@ -1239,11 +1239,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startTransY: 0
   startRadian: 0
-  moveRadius: 0
-  enemySpeed: 2
+  moveRadius: 23
+  enemySpeed: 0.3
   returnMoveTime: 50
-  moveStraightSpeed: 0
-  resetRadian: 0
+  moveStraightSpeed: 2
+  resetRadian: 10.4
 --- !u!136 &326539991
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1790,7 +1790,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &573392406
 MonoBehaviour:
@@ -1804,13 +1804,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f8058bf53d356a4ea1598160e147ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTransY: 0
-  startRadian: 0
-  moveRadius: 0
-  enemySpeed: 2
+  startTransY: 3
+  startRadian: -2.5
+  moveRadius: 23
+  enemySpeed: 0.3
   returnMoveTime: 50
-  moveStraightSpeed: 0
-  resetRadian: 0
+  moveStraightSpeed: 2
+  resetRadian: 10.4
 --- !u!136 &573392407
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2062,7 +2062,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &663852529
 MonoBehaviour:
@@ -2078,11 +2078,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startTransY: 0
   startRadian: 0
-  moveRadius: 0
-  enemySpeed: 2
+  moveRadius: 23
+  enemySpeed: 0.3
   returnMoveTime: 50
-  moveStraightSpeed: 0
-  resetRadian: 0
+  moveStraightSpeed: 2
+  resetRadian: 10.4
 --- !u!136 &663852530
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2372,7 +2372,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &714821091
 MonoBehaviour:
@@ -2388,11 +2388,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startTransY: 0
   startRadian: 0
-  moveRadius: 0
-  enemySpeed: 2
+  moveRadius: 23
+  enemySpeed: 0.3
   returnMoveTime: 50
-  moveStraightSpeed: 0
-  resetRadian: 0
+  moveStraightSpeed: 2
+  resetRadian: 10.4
 --- !u!136 &714821092
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2695,7 +2695,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &780809480
 MonoBehaviour:
@@ -2709,13 +2709,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f8058bf53d356a4ea1598160e147ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTransY: 0
-  startRadian: 0
-  moveRadius: 0
-  enemySpeed: 2
+  startTransY: -3
+  startRadian: -2.5
+  moveRadius: 23
+  enemySpeed: 0.3
   returnMoveTime: 50
-  moveStraightSpeed: 0
-  resetRadian: 0
+  moveStraightSpeed: 2
+  resetRadian: 10.4
 --- !u!136 &780809481
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3129,7 +3129,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &887497653
 MonoBehaviour:
@@ -3143,13 +3143,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f8058bf53d356a4ea1598160e147ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTransY: 0
-  startRadian: 0
-  moveRadius: 0
-  enemySpeed: 2
+  startTransY: 3
+  startRadian: -0.3
+  moveRadius: 23
+  enemySpeed: 0.3
   returnMoveTime: 50
-  moveStraightSpeed: 0
-  resetRadian: 0
+  moveStraightSpeed: 2
+  resetRadian: 10.4
 --- !u!136 &887497654
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3437,7 +3437,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &912299147
 MonoBehaviour:
@@ -3453,11 +3453,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startTransY: 0
   startRadian: 0
-  moveRadius: 0
-  enemySpeed: 2
+  moveRadius: 23
+  enemySpeed: 0.3
   returnMoveTime: 50
-  moveStraightSpeed: 0
-  resetRadian: 0
+  moveStraightSpeed: 2
+  resetRadian: 10.4
 --- !u!136 &912299148
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3811,7 +3811,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 961103446}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 10, z: 1}
@@ -4287,7 +4287,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &1028293727
 MonoBehaviour:
@@ -4303,11 +4303,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startTransY: 0
   startRadian: 0
-  moveRadius: 0
-  enemySpeed: 2
+  moveRadius: 23
+  enemySpeed: 0.3
   returnMoveTime: 50
-  moveStraightSpeed: 0
-  resetRadian: 0
+  moveStraightSpeed: 2
+  resetRadian: 10.4
 --- !u!136 &1028293728
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4574,7 +4574,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &1138958817
 MonoBehaviour:
@@ -4590,11 +4590,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startTransY: 0
   startRadian: 0
-  moveRadius: 0
-  enemySpeed: 2
+  moveRadius: 23
+  enemySpeed: 0.3
   returnMoveTime: 50
-  moveStraightSpeed: 0
-  resetRadian: 0
+  moveStraightSpeed: 2
+  resetRadian: 10.4
 --- !u!136 &1138958818
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5087,7 +5087,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &1297964312
 MonoBehaviour:
@@ -5103,11 +5103,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startTransY: 0
   startRadian: 0
-  moveRadius: 0
-  enemySpeed: 2
+  moveRadius: 23
+  enemySpeed: 0.3
   returnMoveTime: 50
-  moveStraightSpeed: 0
-  resetRadian: 0
+  moveStraightSpeed: 2
+  resetRadian: 10.4
 --- !u!136 &1297964313
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5693,7 +5693,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &1535974807
 MonoBehaviour:
@@ -5709,11 +5709,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startTransY: 0
   startRadian: 0
-  moveRadius: 0
-  enemySpeed: 2
+  moveRadius: 23
+  enemySpeed: 0.3
   returnMoveTime: 50
-  moveStraightSpeed: 0
-  resetRadian: 0
+  moveStraightSpeed: 2
+  resetRadian: 10.4
 --- !u!136 &1535974808
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5875,7 +5875,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &1554601257
 MonoBehaviour:
@@ -5890,12 +5890,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startTransY: 0
-  startRadian: 0
-  moveRadius: 0
-  enemySpeed: 2
+  startRadian: -2.5
+  moveRadius: 23
+  enemySpeed: 0.3
   returnMoveTime: 50
-  moveStraightSpeed: 0
-  resetRadian: 0
+  moveStraightSpeed: 2
+  resetRadian: 10.4
 --- !u!136 &1554601258
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6639,12 +6639,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startTransY: 0
-  startRadian: 0
+  startRadian: -0.1
   moveRadius: 23
   enemySpeed: 0.3
   returnMoveTime: 50
   moveStraightSpeed: 5
-  resetRadian: 3
+  resetRadian: 10.4
 --- !u!136 &1716966766
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6864,7 +6864,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1766490112}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 10, z: 1}
@@ -7109,7 +7109,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &1907243649
 MonoBehaviour:
@@ -7125,11 +7125,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startTransY: 0
   startRadian: 0
-  moveRadius: 0
-  enemySpeed: 2
+  moveRadius: 23
+  enemySpeed: 0.3
   returnMoveTime: 50
-  moveStraightSpeed: 0
-  resetRadian: 0
+  moveStraightSpeed: 2
+  resetRadian: 10.4
 --- !u!136 &1907243650
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7219,7 +7219,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2008292647}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.1, y: 10, z: 0}
@@ -7246,7 +7246,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2008292647}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.1, y: 10, z: 1}
@@ -7671,7 +7671,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &2130223351
 MonoBehaviour:
@@ -7687,11 +7687,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startTransY: 0
   startRadian: 0
-  moveRadius: 0
-  enemySpeed: 2
+  moveRadius: 23
+  enemySpeed: 0.3
   returnMoveTime: 50
-  moveStraightSpeed: 0
-  resetRadian: 0
+  moveStraightSpeed: 2
+  resetRadian: 10.4
 --- !u!136 &2130223352
 CapsuleCollider:
   m_ObjectHideFlags: 0
