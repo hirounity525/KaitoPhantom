@@ -12,6 +12,7 @@ TagManager:
   - Laser
   - Missile
   - LimitAttackLine
+  - MoveStraight
   layers:
   - Default
   - TransparentFX
