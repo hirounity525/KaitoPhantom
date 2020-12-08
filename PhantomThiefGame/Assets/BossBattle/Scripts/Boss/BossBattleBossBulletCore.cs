@@ -46,7 +46,7 @@ public class BossBattleBossBulletCore : MonoBehaviour
     public void MoveBossBullet()
     {
         //bossBalletVec = bossBattleBossAttacker.bossBulletVec2;
-        Debug.Log("move" + bossBalletVec);
+        //Debug.Log("move" + bossBalletVec);
         rb.velocity = bossBalletVec * bossBulletSpeed;
     }
 }

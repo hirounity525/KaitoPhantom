@@ -125,6 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3dd66d9a4226544980d60e4e5adcbd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DisappearBossBulletTime: 4
-  bossBulletSpeed: 4
+  DisappearBossBulletTime: 5
+  bossBulletSpeed: 7
   bossBalletVec: {x: 0, y: 0, z: 0}

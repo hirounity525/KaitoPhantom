@@ -23,10 +23,19 @@ public class BossBattleBossAttacker : MonoBehaviour
     [SerializeField] private Transform playerTrans;
     public Vector3 bossBulletVec2;
 
+    private Rigidbody rb;
+    private bool isBossPosRight = true;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float maxLeftBossPos;
+    [SerializeField] private float maxRightBossPos;
+    [SerializeField] private Vector3 bossJumpPowerToLeft;
+    [SerializeField] private Vector3 bossJumpPowerToRight;
+
     // Start is called before the first frame update
     void Start()
     {
-        SummonGuards();
+        rb = GetComponent<Rigidbody>();
+        /*SummonGuards();
         SummonGuards();
         SummonGuards();
         SummonGuards();
@@ -34,16 +43,30 @@ public class BossBattleBossAttacker : MonoBehaviour
         SummonRock();
         SummonRock();
         SummonRock();
-        GunAttack();
+        GunAttack();*/
+        //BossMove();
+        //BossJump();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (gameObject.transform.position.x < maxLeftBossPos)
+        {
+            rb.velocity = Vector3.zero;
+            gameObject.transform.localEulerAngles = new Vector3(0,180,0);
+            isBossPosRight = false;
+        }
+
+        else if (gameObject.transform.position.x > maxRightBossPos)
+        {
+            rb.velocity = Vector3.zero;
+            gameObject.transform.localEulerAngles = new Vector3(0,0,0);
+            isBossPosRight = true;
+        }
     }
 
-    void SummonGuards()
+    public void SummonGuards()
     {
         //Instantiate(guardPrefab, new Vector3(Random.Range(summonGuardsXposMin,summonGuardsXposMax), summonGuardsYpos, 0), Quaternion.identity);
         GameObject guard = guardsPool.GetObject();
@@ -51,7 +74,7 @@ public class BossBattleBossAttacker : MonoBehaviour
         guard.transform.rotation = Quaternion.identity;
     }
 
-    void SummonRock()
+    public void SummonRock()
     {
         //Instantiate(rockPrefabs, new Vector3(Random.Range(summonRockXposMin, summonRockXposMax), summonRockYpos, 0), Quaternion.identity);
         GameObject rock = rocksPool.GetObject();
@@ -59,7 +82,7 @@ public class BossBattleBossAttacker : MonoBehaviour
         rock.transform.rotation = Quaternion.Euler(Random.Range(0,90), Random.Range(0, 90), Random.Range(0, 90));
     }
 
-    void GunAttack()
+    public void GunAttack()
     {
         bossBulletVec2 = playerTrans.position - gameObject.transform.position;
         GameObject bossBullet = bossBulletsPool.GetObject();
@@ -67,5 +90,41 @@ public class BossBattleBossAttacker : MonoBehaviour
         bossBullet.transform.rotation = bossGunNozzlePosTrans.rotation;
         bossBullet.GetComponent<BossBattleBossBulletCore>().bossBalletVec = bossBulletVec2.normalized;
         bossBullet.GetComponent<BossBattleBossBulletCore>().MoveBossBullet();
+    }
+
+    public void BossMove()
+    {
+        if (isBossPosRight)
+        {
+            rb.velocity = new Vector3(-1, 0, 0) * moveSpeed;
+            /*if(gameObject.transform.position.x < maxLeftBossPos)
+            {
+                rb.velocity = Vector3.zero;
+                isBossPosRight = false;
+            }*/
+        }
+
+        else if (!isBossPosRight)
+        {
+            rb.velocity = new Vector3(1, 0, 0) * moveSpeed;
+            /*if(gameObject.transform.position.x > maxRightBossPos)
+            {
+                rb.velocity = Vector3.zero;
+                isBossPosRight = true;
+            }*/
+        }
+    }
+
+    public void BossJump()
+    {
+        if (isBossPosRight)
+        {
+            rb.AddForce(bossJumpPowerToLeft);
+        }
+
+        else if (!isBossPosRight)
+        {
+            rb.AddForce(bossJumpPowerToRight);
+        }
     }
 }
