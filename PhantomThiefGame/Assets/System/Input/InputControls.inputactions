@@ -731,6 +731,52 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "2DRun",
+            "id": "898f5a87-fcbb-45fa-8438-d8862a59d726",
+            "actions": [
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "68bf1c60-b133-42b7-ba0c-37d37ca35388",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Sliding",
+                    "type": "Button",
+                    "id": "119a1c86-94a5-4136-b3f5-845f798e1bed",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "76cb5e35-243f-46c0-bafb-26c8fe4658fd",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keybord",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "926d3a35-0680-47ce-9d93-376eb1af04df",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keybord",
+                    "action": "Sliding",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

@@ -667,6 +667,7 @@ MonoBehaviour:
   enemySpeed: 0.3
   returnMoveTime: 50
   moveStraightSpeed: 2
+  moveCircleSpeed: 0
   resetRadian: 10.4
 --- !u!136 &184621095
 CapsuleCollider:
@@ -849,6 +850,7 @@ MonoBehaviour:
   enemySpeed: 0.3
   returnMoveTime: 50
   moveStraightSpeed: 2
+  moveCircleSpeed: 0
   resetRadian: 10.4
 --- !u!136 &300012153
 CapsuleCollider:
@@ -1061,6 +1063,7 @@ MonoBehaviour:
   enemySpeed: 0.3
   returnMoveTime: 50
   moveStraightSpeed: 2
+  moveCircleSpeed: 0.1
   resetRadian: 10.4
 --- !u!136 &315761048
 CapsuleCollider:
@@ -1243,6 +1246,7 @@ MonoBehaviour:
   enemySpeed: 0.3
   returnMoveTime: 50
   moveStraightSpeed: 2
+  moveCircleSpeed: 0
   resetRadian: 10.4
 --- !u!136 &326539991
 CapsuleCollider:
@@ -1810,6 +1814,7 @@ MonoBehaviour:
   enemySpeed: 0.3
   returnMoveTime: 50
   moveStraightSpeed: 2
+  moveCircleSpeed: 0.1
   resetRadian: 10.4
 --- !u!136 &573392407
 CapsuleCollider:
@@ -2082,6 +2087,7 @@ MonoBehaviour:
   enemySpeed: 0.3
   returnMoveTime: 50
   moveStraightSpeed: 2
+  moveCircleSpeed: 0
   resetRadian: 10.4
 --- !u!136 &663852530
 CapsuleCollider:
@@ -2392,6 +2398,7 @@ MonoBehaviour:
   enemySpeed: 0.3
   returnMoveTime: 50
   moveStraightSpeed: 2
+  moveCircleSpeed: 0
   resetRadian: 10.4
 --- !u!136 &714821092
 CapsuleCollider:
@@ -2715,6 +2722,7 @@ MonoBehaviour:
   enemySpeed: 0.3
   returnMoveTime: 50
   moveStraightSpeed: 2
+  moveCircleSpeed: 0.1
   resetRadian: 10.4
 --- !u!136 &780809481
 CapsuleCollider:
@@ -3149,6 +3157,7 @@ MonoBehaviour:
   enemySpeed: 0.3
   returnMoveTime: 50
   moveStraightSpeed: 2
+  moveCircleSpeed: 0
   resetRadian: 10.4
 --- !u!136 &887497654
 CapsuleCollider:
@@ -3457,6 +3466,7 @@ MonoBehaviour:
   enemySpeed: 0.3
   returnMoveTime: 50
   moveStraightSpeed: 2
+  moveCircleSpeed: 0
   resetRadian: 10.4
 --- !u!136 &912299148
 CapsuleCollider:
@@ -4307,6 +4317,7 @@ MonoBehaviour:
   enemySpeed: 0.3
   returnMoveTime: 50
   moveStraightSpeed: 2
+  moveCircleSpeed: 0
   resetRadian: 10.4
 --- !u!136 &1028293728
 CapsuleCollider:
@@ -4594,6 +4605,7 @@ MonoBehaviour:
   enemySpeed: 0.3
   returnMoveTime: 50
   moveStraightSpeed: 2
+  moveCircleSpeed: 0
   resetRadian: 10.4
 --- !u!136 &1138958818
 CapsuleCollider:
@@ -5107,6 +5119,7 @@ MonoBehaviour:
   enemySpeed: 0.3
   returnMoveTime: 50
   moveStraightSpeed: 2
+  moveCircleSpeed: 0
   resetRadian: 10.4
 --- !u!136 &1297964313
 CapsuleCollider:
@@ -5713,6 +5726,7 @@ MonoBehaviour:
   enemySpeed: 0.3
   returnMoveTime: 50
   moveStraightSpeed: 2
+  moveCircleSpeed: 0
   resetRadian: 10.4
 --- !u!136 &1535974808
 CapsuleCollider:
@@ -5895,6 +5909,7 @@ MonoBehaviour:
   enemySpeed: 0.3
   returnMoveTime: 50
   moveStraightSpeed: 2
+  moveCircleSpeed: 0.1
   resetRadian: 10.4
 --- !u!136 &1554601258
 CapsuleCollider:
@@ -6644,6 +6659,7 @@ MonoBehaviour:
   enemySpeed: 0.3
   returnMoveTime: 50
   moveStraightSpeed: 5
+  moveCircleSpeed: 0.1
   resetRadian: 10.4
 --- !u!136 &1716966766
 CapsuleCollider:
@@ -6855,6 +6871,7 @@ MonoBehaviour:
   enemySpeed: 0
   returnMoveTime: 0
   moveStraightSpeed: 0
+  moveCircleSpeed: 0
   resetRadian: 0
 --- !u!65 &1766490115
 BoxCollider:
@@ -7129,6 +7146,7 @@ MonoBehaviour:
   enemySpeed: 0.3
   returnMoveTime: 50
   moveStraightSpeed: 2
+  moveCircleSpeed: 0
   resetRadian: 10.4
 --- !u!136 &1907243650
 CapsuleCollider:
@@ -7691,6 +7709,7 @@ MonoBehaviour:
   enemySpeed: 0.3
   returnMoveTime: 50
   moveStraightSpeed: 2
+  moveCircleSpeed: 0
   resetRadian: 10.4
 --- !u!136 &2130223352
 CapsuleCollider:
