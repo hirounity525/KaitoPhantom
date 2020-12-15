@@ -10,7 +10,7 @@ public class BossBattleRocksCore : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //StartCoroutine(DisappearRock());
+        // StartCoroutine(DisappearRock());
     }
 
     // Update is called once per frame

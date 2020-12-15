@@ -31,6 +31,8 @@ public class BossBattleBossAttacker : MonoBehaviour
     [SerializeField] private Vector3 bossJumpPowerToLeft;
     [SerializeField] private Vector3 bossJumpPowerToRight;
 
+    [SerializeField] private ObjectPool bigBeamPool;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -116,6 +118,19 @@ public class BossBattleBossAttacker : MonoBehaviour
     }
 
     public void BossJump()
+    {
+        if (isBossPosRight)
+        {
+            rb.AddForce(bossJumpPowerToLeft);
+        }
+
+        else if (!isBossPosRight)
+        {
+            rb.AddForce(bossJumpPowerToRight);
+        }
+    }
+
+    public void BigBeam()
     {
         if (isBossPosRight)
         {

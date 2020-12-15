@@ -12,12 +12,14 @@ public class BossBattleBossCore : MonoBehaviour
     [SerializeField] private float stateSUMMONGUARDSTime;
     [SerializeField] private float stateSUMMONROCKTime;
     [SerializeField] private float stateGUNATTACKTime;
+    [SerializeField] private float stateBIGBEAMTime;
     private float stateWAITTimeTemp;
     private float stateMOVETimeTemp;
     private float stateJUMPTimeTemp;
     private float stateSUMMONGUARDSTimeTemp;
     private float stateSUMMONROCKTimeTemp;
     private float stateGUNATTACKTimeTemp;
+    private float stateBIGBEAMTimeTemp;
 
     [SerializeField] private BossAIState bossAIState = BossAIState.WAIT;
 
@@ -32,7 +34,8 @@ public class BossBattleBossCore : MonoBehaviour
         JUMP = 2,  //ジャンプ
         SUMMONGUARDS = 3,  //警備兵召喚
         SUMMONROCK = 4, //岩召喚
-        GUNATTACK = 5 //銃攻撃
+        GUNATTACK = 5, //銃攻撃
+        BIGBEAM = 6  //大きいビーム
     }
 
     // Start is called before the first frame update
@@ -117,6 +120,17 @@ public class BossBattleBossCore : MonoBehaviour
             }
         }
 
+        else if (bossAIState == BossAIState.BIGBEAM)
+        {
+            stateBIGBEAMTimeTemp += Time.fixedDeltaTime;
+            if (stateBIGBEAMTime <= stateBIGBEAMTimeTemp)
+            {
+                stateBIGBEAMTimeTemp = 0;
+                oneActionFinished = false;
+                bossAIState += (int)bossAIState * -1 + rnd.Next(0, 6);
+            }
+        }
+
         switch (bossAIState)
         {
             case BossAIState.WAIT:
@@ -173,6 +187,14 @@ public class BossBattleBossCore : MonoBehaviour
                 {
                     Debug.Log(bossAIState);
                     bossAttacker.GunAttack();
+                    oneActionFinished = true;
+                }
+                break;
+            case BossAIState.BIGBEAM:
+                if (!oneActionFinished)
+                {
+                    Debug.Log(bossAIState);
+                    bossAttacker.BigBeam();
                     oneActionFinished = true;
                 }
                 break;
