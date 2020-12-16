@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class StageAnimator : MonoBehaviour
 {
-    [SerializeField] private Vector3 enlargeVec;
+    [SerializeField] private Vector3 scaleUpVec;
     [SerializeField] private float animTime;
 
     private StageCore stageCore;
@@ -34,7 +34,7 @@ public class StageAnimator : MonoBehaviour
             {
                 isShrinkAnim = false;
 
-                stageTrans.DOScale(enlargeVec, animTime);
+                stageTrans.DOScale(scaleUpVec, animTime);
 
                 isEnlargeAnim = true;
             }

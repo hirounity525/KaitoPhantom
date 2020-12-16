@@ -14,6 +14,10 @@ public class SoundConfigurer : MonoBehaviour
 {
     public SoundConfig nowSelectedSC;
 
+    public bool isBack;
+
+    public bool canSoundConfig;
+
     [SerializeField] private TitleInputProvider titleInput;
 
     [SerializeField] private SoundConfig firstSelectedSC;
@@ -31,6 +35,11 @@ public class SoundConfigurer : MonoBehaviour
 
     private void Update()
     {
+        if (!canSoundConfig)
+        {
+            return;
+        }
+
         if(selectedVC == null)
         {
             if (titleInput.isMoveButtonDown)
@@ -69,6 +78,7 @@ public class SoundConfigurer : MonoBehaviour
                         selectedVC.canConfig = true;
                         break;
                     case SoundConfig.BACK:
+                        isBack = true;
                         break;
                 }
             }

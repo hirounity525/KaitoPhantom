@@ -5,7 +5,10 @@ using UnityEngine;
 public enum TitleState
 {
     TITLE,
+    CONFIG,
+    EXIT,
     SAVEDATASELECT,
+    NAMEINPUT,
     STAGESELECT,
     STAGEINFO
 }
@@ -17,9 +20,15 @@ public class TitleManager : MonoBehaviour
     [SerializeField] private TitleState titleState;
 
     [SerializeField] private TitleInputProvider titleInput;
+    [SerializeField] private TitleEventSystemController eventSystemController;
+    [SerializeField] private TimelineController timelineController;
 
     [Header("Title")]
-    [SerializeField] private TimelineController titleTimeline;
+    [SerializeField] private TitleMenuSelecter titleMenuSelecter;
+    private bool isStateFirstPlay;
+
+    [Header("Config")]
+    [SerializeField] private SoundConfigurer soundConfigurer;
 
     [Header("StageSelect")]
     [SerializeField] private StageDrawer stageDrawer;
@@ -33,6 +42,8 @@ public class TitleManager : MonoBehaviour
     private StageDataReader stageDataReader;
 
     private int selectedStageNum;
+
+    private bool startsTimeline;
 
     private bool startsTitleTimeline;
     private bool isStageSelectFirstPlay;
@@ -57,21 +68,49 @@ public class TitleManager : MonoBehaviour
         switch (titleState)
         {
             case TitleState.TITLE:
-                if (!startsTitleTimeline)
+
+                if (!isStateFirstPlay)
                 {
-                    if (titleInput.isSelectButtonDown)
+                    titleMenuSelecter.isSelect = false;
+                    isStateFirstPlay = true;
+                }
+
+                if (titleMenuSelecter.isSelect)
+                {
+                    switch (titleMenuSelecter.nowSelectedTitleMenu)
                     {
-                        titleTimeline.Play();
-                        startsTitleTimeline = true;
+                        case TitleMenu.START:
+                            StartStateTransition("TitleToSaveDataSelect", TitleState.SAVEDATASELECT);
+                            break;
+                        case TitleMenu.CONFIG:
+                            StartStateTransition("TitleToConfig", TitleState.CONFIG);
+                            break;
+                        case TitleMenu.EXIT:
+                            titleState = TitleState.EXIT;
+                            break;
                     }
                 }
-                else
+
+                break;
+            case TitleState.CONFIG:
+
+                if (!isStateFirstPlay)
                 {
-                    if (titleTimeline.isFinish)
-                    {
-                        titleState = TitleState.STAGESELECT;
-                    }
+                    soundConfigurer.nowSelectedSC = SoundConfig.MASTER;
+                    soundConfigurer.canSoundConfig = true;
+                    soundConfigurer.isBack = false;
+                    isStateFirstPlay = true;
                 }
+
+                if (soundConfigurer.isBack)
+                {
+                    soundConfigurer.canSoundConfig = false;
+                    StartStateTransition("ConfigToTitle", TitleState.TITLE);
+                }
+
+                break;
+            case TitleState.EXIT:
+
 
                 break;
             case TitleState.SAVEDATASELECT:
@@ -126,6 +165,26 @@ public class TitleManager : MonoBehaviour
 
 
                 break;
+        }
+    }
+
+    private void StartStateTransition(string timelineName,TitleState transitionState)
+    {
+        if (!startsTimeline)
+        {
+            timelineController.PlayByName(timelineName);
+            startsTimeline = true;
+        }
+        else
+        {
+            if (timelineController.isFinish)
+            {
+                titleState = transitionState;
+
+                timelineController.ResetTimeline();
+                isStateFirstPlay = false;
+                startsTimeline = false;
+            }
         }
     }
 }

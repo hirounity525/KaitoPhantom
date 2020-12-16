@@ -1,10 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.Timeline;
+
+[System.Serializable]
+public struct TimelineData
+{
+    public string name;
+    public TimelineAsset timelineAsset;
+}
 
 public class TimelineController : MonoBehaviour
 {
+    [SerializeField] private TimelineData[] timelineDatas;
+
     private PlayableDirector playableDirector;
 
     public PlayableDirector PlayableDirector
@@ -39,6 +50,20 @@ public class TimelineController : MonoBehaviour
         playableDirector.Play();
     }
 
+    public void PlayByName(string timelineName)
+    {
+        if(timelineDatas.Length != 0)
+        {
+            TimelineAsset playTimeline = timelineDatas.FirstOrDefault(timeline => timeline.name == timelineName).timelineAsset;
+
+            if (playTimeline != null)
+            {
+                playableDirector.playableAsset = playTimeline;
+                Play();
+            }
+        }
+    }
+
     public void Skip(float skipTime)
     {
         playableDirector.time = skipTime;
@@ -47,5 +72,10 @@ public class TimelineController : MonoBehaviour
     public float PlayTime()
     {
         return (float)playableDirector.time;
+    }
+
+    public void ResetTimeline()
+    {
+        isFinish = false;
     }
 }
