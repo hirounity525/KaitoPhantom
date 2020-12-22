@@ -5,22 +5,19 @@ using UnityEngine;
 public class ShootingEnemyMover : MonoBehaviour
 {
     [SerializeField] private float startTransY;
-    [SerializeField] private float startRadian;
+    [SerializeField] private float startDegree;
     [SerializeField] private float moveRadius;
-   [SerializeField] private float enemySpeed;
-   [SerializeField] private float returnMoveTime;
+    [SerializeField] private float returnMoveTime;
     [SerializeField] private float moveStraightSpeed;
     [SerializeField] private float moveCircleSpeed;
-    [SerializeField] private float resetRadian;
 
     private Rigidbody rb;
 
     private Transform enemyTrans;
 
+    private float plusDegree;
     private float countTime;
     private float nowReturnMoveTime;
-    private float nowRadian;
-    private int resetTrans;
 
     private bool canMoveStraight=false;
     // Start is called before the first frame update
@@ -30,7 +27,7 @@ public class ShootingEnemyMover : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         nowReturnMoveTime = returnMoveTime;
 
-        this.transform.position = new Vector3(moveRadius*Mathf.Cos(startRadian),startTransY, -moveRadius * Mathf.Sin(startRadian));
+        this.transform.position = new Vector3(moveRadius*Mathf.Cos(Mathf.PI/180*startDegree),startTransY, -moveRadius * Mathf.Sin(Mathf.PI / 180 * startDegree));
 
     }
 
@@ -39,15 +36,15 @@ public class ShootingEnemyMover : MonoBehaviour
     {
         if (!canMoveStraight)
         {
-            rb.velocity = new Vector3(-enemySpeed * moveRadius * Mathf.Sin(moveCircleSpeed * nowRadian + startRadian), 0, -enemySpeed * moveRadius * Mathf.Cos(moveCircleSpeed * nowRadian + startRadian));
+            this.transform.position = new Vector3(moveRadius * Mathf.Cos(Mathf.PI / 180 * (startDegree+plusDegree)), startTransY, -moveRadius * Mathf.Sin(Mathf.PI / 180 * (startDegree+plusDegree)));
         }
         else
         {
             rb.velocity = new Vector3(-moveStraightSpeed, 0, 0);
         }
 
+        plusDegree = plusDegree + moveCircleSpeed;
 
-        nowRadian = nowRadian+Time.deltaTime;
         countTime = Time.time;
         if (countTime >= nowReturnMoveTime)
         {
@@ -71,8 +68,7 @@ public class ShootingEnemyMover : MonoBehaviour
             else
             {
                 canMoveStraight = false;
-                nowRadian = resetRadian;
-                startRadian = 0;
+                startDegree = 0;
             }
         }
     }

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class RunPlayerHPController : MonoBehaviour
 {
-    [SerializeField] private int playerFirstHP;
+    [SerializeField] public int playerMaxHP;
     [SerializeField] private float unavailableColliderTime;
 
     private Transform playerTrans;
 
-    [SerializeField] private int playerNowHP;
+    [SerializeField] public int playerNowHP;
 
     private bool unavailable = false;
 
@@ -18,7 +18,7 @@ public class RunPlayerHPController : MonoBehaviour
     {
         playerTrans = GetComponent<Transform>();
 
-        playerNowHP = playerFirstHP;
+        playerNowHP = playerMaxHP;
     }
 
     // Update is called once per frame
