@@ -7,13 +7,16 @@ public class ShootingEnemyMover : MonoBehaviour
     [SerializeField] private float startTransY;
     [SerializeField] private float startDegree;
     [SerializeField] private float moveRadius;
-    [SerializeField] private float returnMoveTime;
     [SerializeField] private float moveStraightSpeed;
     [SerializeField] private float moveCircleSpeed;
+    [SerializeField] private float returnMoveTime;
 
     private Rigidbody rb;
 
     private Transform enemyTrans;
+
+    private Vector3 enemyLastTrans;
+    private Vector3 enemyVector;
 
     private float plusDegree;
     private float countTime;
@@ -25,7 +28,10 @@ public class ShootingEnemyMover : MonoBehaviour
     {
         enemyTrans = GetComponent<Transform>();
         rb = GetComponent<Rigidbody>();
+
         nowReturnMoveTime = returnMoveTime;
+
+        enemyLastTrans = enemyTrans.position;
 
         this.transform.position = new Vector3(moveRadius*Mathf.Cos(Mathf.PI/180*startDegree),startTransY, -moveRadius * Mathf.Sin(Mathf.PI / 180 * startDegree));
 
@@ -48,9 +54,11 @@ public class ShootingEnemyMover : MonoBehaviour
         countTime = Time.time;
         if (countTime >= nowReturnMoveTime)
         {
+            plusDegree = plusDegree * -1;
             rb.velocity = rb.velocity * -1;
             nowReturnMoveTime += returnMoveTime;
         }
+
 
     }
 
@@ -68,7 +76,8 @@ public class ShootingEnemyMover : MonoBehaviour
             else
             {
                 canMoveStraight = false;
-                startDegree = 0;
+                startDegree = 180;
+                plusDegree = 0;
             }
         }
     }
