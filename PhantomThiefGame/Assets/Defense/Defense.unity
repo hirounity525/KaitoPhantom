@@ -353,6 +353,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wabe:
+  - {fileID: 11400000, guid: 368dd9690b2bff24d93fc4bac3101f2f, type: 2}
+  - {fileID: 11400000, guid: 380869245b0bbfd418bd503189c08d1d, type: 2}
   - {fileID: 11400000, guid: a306af39438d5db4981fe23eccd503a3, type: 2}
 --- !u!1 &366922694
 GameObject:

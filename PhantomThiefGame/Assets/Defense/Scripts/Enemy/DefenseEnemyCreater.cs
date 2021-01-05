@@ -12,11 +12,13 @@ public class DefenseEnemyCreater : MonoBehaviour
     private DefenseEnemyData currentEnemyData;
     private int currentDataNum;
     private GameObject createEnemyObj;
-    private bool getsEnemyData=true;
-    public bool stopCreate=false;
+    private bool getsEnemyData = true;
+    public bool stopCreate = false;
+    private DefenseWabeManager wabeManager;
     // Start is called before the first frame update
     void Start()
     {
+        wabeManager = GetComponent<DefenseWabeManager>();
     }
 
     // Update is called once per frame
@@ -24,6 +26,23 @@ public class DefenseEnemyCreater : MonoBehaviour
     {
         if (friendObj.activeSelf)
         {
+
+            if (currentDataNum >= createData.enemyDatas.Length)
+            {
+                wabeManager.currentWabeNum++;
+                createData = wabeManager.wabe[wabeManager.currentWabeNum];
+                stopCreate = true;
+                createTimer = 0;
+                getsEnemyData = true;
+                currentDataNum = 0;
+                stopCreate = false;
+            }
+            else
+            {
+                getsEnemyData = true;
+            }
+
+
             if (!stopCreate)
             {
                 if (getsEnemyData)
@@ -52,19 +71,9 @@ public class DefenseEnemyCreater : MonoBehaviour
                     {
                         createEnemyObj.transform.rotation = Quaternion.Euler(0, 0, 0);
                     }
+
+
                     currentDataNum++;
-                    if (currentDataNum >= createData.enemyDatas.Length)
-                    {
-                        stopCreate = true;
-                        createTimer = 0;
-                        currentDataNum = 0;
-                        getsEnemyData = true;
-                        stopCreate = false;
-                    }
-                    else
-                    {
-                        getsEnemyData = true;
-                    }
 
                 }
                 createTimer += Time.deltaTime;

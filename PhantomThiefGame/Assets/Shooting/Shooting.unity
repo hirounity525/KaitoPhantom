@@ -2043,7 +2043,7 @@ MonoBehaviour:
   bulletPool: {fileID: 164437217}
   attackWaitTime: 1
   attackSpeed: 0.1
-  attackNum: 20
+  attackNum: 10
 --- !u!114 &184621092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2224,7 +2224,7 @@ MonoBehaviour:
   bulletPool: {fileID: 164437217}
   attackWaitTime: 1
   attackSpeed: 0.1
-  attackNum: 20
+  attackNum: 10
 --- !u!114 &186703123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5456,7 +5456,7 @@ MonoBehaviour:
   bulletPool: {fileID: 164437217}
   attackWaitTime: 1
   attackSpeed: 0.1
-  attackNum: 20
+  attackNum: 10
 --- !u!114 &512524967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7152,7 +7152,7 @@ MonoBehaviour:
   bulletPool: {fileID: 164437217}
   attackWaitTime: 1
   attackSpeed: 0.1
-  attackNum: 20
+  attackNum: 10
 --- !u!114 &702390885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7429,7 +7429,7 @@ MonoBehaviour:
   bulletPool: {fileID: 164437217}
   attackWaitTime: 1
   attackSpeed: 0.1
-  attackNum: 20
+  attackNum: 10
 --- !u!114 &728364228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7610,7 +7610,7 @@ MonoBehaviour:
   bulletPool: {fileID: 164437217}
   attackWaitTime: 1
   attackSpeed: 0.1
-  attackNum: 30
+  attackNum: 10
 --- !u!114 &732059881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9270,7 +9270,7 @@ MonoBehaviour:
   bulletPool: {fileID: 164437217}
   attackWaitTime: 1
   attackSpeed: 0.1
-  attackNum: 20
+  attackNum: 10
 --- !u!114 &807840517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9571,7 +9571,7 @@ MonoBehaviour:
   bulletPool: {fileID: 164437217}
   attackWaitTime: 1
   attackSpeed: 0.1
-  attackNum: 20
+  attackNum: 10
 --- !u!114 &848664880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10928,7 +10928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a95817c93a5dcd441b80d49c9281272f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMaxHitPoint: 10
+  playerMaxHitPoint: 5
   unavailableColliderTime: 2
   playerNowHitPoint: 0
 --- !u!114 &996821910
@@ -11860,7 +11860,7 @@ MonoBehaviour:
   bulletPool: {fileID: 164437217}
   attackWaitTime: 1
   attackSpeed: 0.1
-  attackNum: 20
+  attackNum: 10
 --- !u!114 &1123025514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12655,7 +12655,7 @@ MonoBehaviour:
   bulletPool: {fileID: 164437217}
   attackWaitTime: 1
   attackSpeed: 0.1
-  attackNum: 20
+  attackNum: 10
 --- !u!114 &1204723708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15342,7 +15342,7 @@ MonoBehaviour:
   bulletPool: {fileID: 164437217}
   attackWaitTime: 1
   attackSpeed: 0.1
-  attackNum: 20
+  attackNum: 10
 --- !u!114 &1437856508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16497,7 +16497,7 @@ MonoBehaviour:
   bulletPool: {fileID: 164437217}
   attackWaitTime: 1
   attackSpeed: 0.1
-  attackNum: 20
+  attackNum: 10
 --- !u!114 &1550841062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17437,7 +17437,7 @@ MonoBehaviour:
   bulletPool: {fileID: 164437217}
   attackWaitTime: 1
   attackSpeed: 0.1
-  attackNum: 20
+  attackNum: 10
 --- !u!114 &1673096380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19774,7 +19774,7 @@ MonoBehaviour:
   bulletPool: {fileID: 164437217}
   attackWaitTime: 1
   attackSpeed: 0.1
-  attackNum: 20
+  attackNum: 10
 --- !u!114 &1826434937
 MonoBehaviour:
   m_ObjectHideFlags: 0
