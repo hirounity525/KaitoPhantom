@@ -231,7 +231,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -496,7 +496,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &385382437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -543,6 +543,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volumeSlider: {fileID: 1668087547}
+  handle: {fileID: 0}
+  selectColor: {r: 0, g: 0, b: 0, a: 0}
+  submitColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &436421850
 GameObject:
   m_ObjectHideFlags: 0
@@ -561,7 +564,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &436421851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -681,7 +684,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -723,17 +726,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 461121905}
   m_CullTransparentMesh: 0
---- !u!114 &691930149 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8636029247017183362, guid: 4f90b87d51c6f194a8516d04c784e60c, type: 3}
-  m_PrefabInstance: {fileID: 8636029246632488103}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &786706305
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,15 +769,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 260aceb144a361b49bffd79d43375b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saveDataControllers: []
+  saveDataNum: 0
   saveData:
     playerName: "\u305F\u308D\u3046"
     clearStageNum: 3
-  loadData:
-    playerName: 
-    clearStageNum: 0
-  saveDataNum: 0
   isSave: 0
-  isLoad: 0
 --- !u!1 &795861795
 GameObject:
   m_ObjectHideFlags: 0
@@ -947,7 +936,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &996987613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -994,6 +983,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volumeSlider: {fileID: 1223234213}
+  handle: {fileID: 0}
+  selectColor: {r: 0, g: 0, b: 0, a: 0}
+  submitColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1055243721
 GameObject:
   m_ObjectHideFlags: 0
@@ -1027,7 +1019,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1235,8 +1227,8 @@ RectTransform:
   m_Father: {fileID: 2017468428}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1595,7 +1587,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1260635946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1609,6 +1601,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nowSelectedSC: 0
+  isBack: 0
+  canSoundConfig: 0
   titleInput: {fileID: 1211115086}
   firstSelectedSC: 0
   masterVC: {fileID: 996987613}
@@ -1660,8 +1654,8 @@ RectTransform:
   m_Father: {fileID: 207614184}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1720,7 +1714,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1323409370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2344,7 +2338,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1691869658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2391,6 +2385,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volumeSlider: {fileID: 2141322517}
+  handle: {fileID: 0}
+  selectColor: {r: 0, g: 0, b: 0, a: 0}
+  submitColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1706256089
 GameObject:
   m_ObjectHideFlags: 0
@@ -2495,8 +2492,8 @@ RectTransform:
   m_Father: {fileID: 275763880}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2572,8 +2569,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9a0687d2863fc242b8ceded482574e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNameText: {fileID: 691930149}
   playerName: 
+  isDecide: 0
+  maxNameLength: 0
   titleInput: {fileID: 1211115086}
 --- !u!4 &1879875624
 Transform:

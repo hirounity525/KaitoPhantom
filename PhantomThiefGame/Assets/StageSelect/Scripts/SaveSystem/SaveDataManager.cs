@@ -5,46 +5,45 @@ using System.IO;
 
 public class SaveDataManager : MonoBehaviour
 {
-    [SerializeField] private SaveData saveData;
-    [SerializeField] private SaveData loadData;
+    [SerializeField] private SaveDataController[] saveDataControllers;
+
     [SerializeField] private int saveDataNum;
+    [SerializeField] private SaveData saveData;
+
     public bool isSave;
-    public bool isLoad;
 
     private void Update()
     {
         if (isSave)
         {
-            Save(saveDataNum);
+            Save(saveDataNum, saveData);
             isSave = false;
-        }
-
-        if (isLoad)
-        {
-            Load(saveDataNum);
-            isLoad = false;
         }
     }
 
-    public void Save(int saveDataNum)
+    public void AllLoad()
     {
-        StreamWriter streamWriter = new StreamWriter(Application.dataPath + "/SaveData/SaveData" +saveDataNum+ ".json");
+        foreach(SaveDataController saveDataController in saveDataControllers)
+        {
+            saveDataController.Load();
+        }
+    }
+
+    public void Save(int saveDataNum, SaveData saveData)
+    {
+        StreamWriter streamWriter = new StreamWriter(Application.dataPath + "/SaveData/SaveData" + saveDataNum + ".json");
         string json = JsonUtility.ToJson(saveData);
         streamWriter.Write(json);
         streamWriter.Close();
     }
 
-    public void Load(int saveDataNum)
+    public void NewSave(int saveDataNum, string playerName)
     {
-        if (!File.Exists(Application.dataPath + "/SaveData/SaveData" + saveDataNum + ".json")){
-            Debug.Log("ありません");
-            return;
-        }
+        SaveData newSaveData;
 
-        StreamReader streamReader = new StreamReader(Application.dataPath + "/SaveData/SaveData" +saveDataNum+ ".json");
-        string json = streamReader.ReadToEnd();
-        streamReader.Close();
+        newSaveData.clearStageNum = 0;
+        newSaveData.playerName = playerName;
 
-        loadData = JsonUtility.FromJson<SaveData>(json);
+        Save(saveDataNum, newSaveData);
     }
 }
