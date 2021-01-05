@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ShootingPlayerHPControler : MonoBehaviour
 {
-    [SerializeField] private int playerMaxHitPoint;
+    [SerializeField] public int playerMaxHitPoint;
     [SerializeField] private float unavailableColliderTime;
-    private int playerNowHitPoint;
+    public int playerNowHitPoint;
 
 
     // Start is called before the first frame update

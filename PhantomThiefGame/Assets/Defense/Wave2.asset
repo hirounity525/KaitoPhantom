@@ -1,0 +1,135 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1ee01f16e713245bc69b0242a07360, type: 3}
+  m_Name: Wave2
+  m_EditorClassIdentifier: 
+  enemyDatas:
+  - createPos: 1
+    enemyType: 0
+    createTime: 4
+    moveSpeed: 2
+  - createPos: 3
+    enemyType: 0
+    createTime: 6
+    moveSpeed: 2
+  - createPos: 4
+    enemyType: 0
+    createTime: 8
+    moveSpeed: 2
+  - createPos: 5
+    enemyType: 0
+    createTime: 10
+    moveSpeed: 2
+  - createPos: 2
+    enemyType: 0
+    createTime: 11
+    moveSpeed: 0.5
+  - createPos: 3
+    enemyType: 0
+    createTime: 12
+    moveSpeed: 2
+  - createPos: 0
+    enemyType: 0
+    createTime: 14
+    moveSpeed: 2
+  - createPos: 4
+    enemyType: 0
+    createTime: 15
+    moveSpeed: 0.7
+  - createPos: 5
+    enemyType: 0
+    createTime: 17
+    moveSpeed: 2
+  - createPos: 1
+    enemyType: 0
+    createTime: 19
+    moveSpeed: 2
+  - createPos: 0
+    enemyType: 0
+    createTime: 21
+    moveSpeed: 2
+  - createPos: 4
+    enemyType: 0
+    createTime: 23
+    moveSpeed: 2
+  - createPos: 3
+    enemyType: 0
+    createTime: 25
+    moveSpeed: 2
+  - createPos: 5
+    enemyType: 0
+    createTime: 27
+    moveSpeed: 2
+  - createPos: 1
+    enemyType: 0
+    createTime: 29
+    moveSpeed: 2
+  - createPos: 2
+    enemyType: 0
+    createTime: 31
+    moveSpeed: 2
+  - createPos: 4
+    enemyType: 0
+    createTime: 32
+    moveSpeed: 0.8
+  - createPos: 3
+    enemyType: 0
+    createTime: 33
+    moveSpeed: 3
+  - createPos: 0
+    enemyType: 0
+    createTime: 35
+    moveSpeed: 0.5
+  - createPos: 5
+    enemyType: 0
+    createTime: 36
+    moveSpeed: 2.3
+  - createPos: 2
+    enemyType: 0
+    createTime: 37
+    moveSpeed: 0.7
+  - createPos: 1
+    enemyType: 0
+    createTime: 38
+    moveSpeed: 2.4
+  - createPos: 4
+    enemyType: 0
+    createTime: 39
+    moveSpeed: 1
+  - createPos: 3
+    enemyType: 0
+    createTime: 40
+    moveSpeed: 1.6
+  - createPos: 0
+    enemyType: 0
+    createTime: 41
+    moveSpeed: 0.8
+  - createPos: 2
+    enemyType: 0
+    createTime: 42
+    moveSpeed: 0.6
+  - createPos: 5
+    enemyType: 0
+    createTime: 43
+    moveSpeed: 1.4
+  - createPos: 3
+    enemyType: 0
+    createTime: 44
+    moveSpeed: 2.3
+  - createPos: 1
+    enemyType: 0
+    createTime: 45
+    moveSpeed: 2
+  - createPos: 4
+    enemyType: 0
+    createTime: 46
+    moveSpeed: 1.3
