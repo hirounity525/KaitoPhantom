@@ -6,7 +6,7 @@ public class BossBattleBossBulletCore : MonoBehaviour
 {
     [SerializeField] private float DisappearBossBulletTime;
     [SerializeField] private float bossBulletSpeed;
-    private BossBattleBossAttacker bossBattleBossAttacker;
+    //private BossBattleBossAttacker bossBattleBossAttacker;
     private Rigidbody rb;
     public Vector3 bossBalletVec;
 

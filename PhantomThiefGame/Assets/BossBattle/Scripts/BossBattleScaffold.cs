@@ -21,20 +21,20 @@ public class BossBattleScaffold : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("トリガー");
+        //Debug.Log("トリガー");
         if (other.gameObject.layer == LayerMask.NameToLayer("PlayerFoot"))
         {
-            Debug.Log("トリガーオフ");
+            //Debug.Log("トリガーオフ");
             boxCollider.isTrigger = false;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("コリジョン");
+        //Debug.Log("コリジョン");
         if (other.gameObject.layer == LayerMask.NameToLayer("PlayerFoot"))
         {
-            Debug.Log("トリガーオン");
+            //Debug.Log("トリガーオン");
             boxCollider.isTrigger = true;
         }
     }
