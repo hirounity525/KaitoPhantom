@@ -86,7 +86,7 @@ public class BossBattleBossAttacker : MonoBehaviour
         //Instantiate(guardPrefab, new Vector3(Random.Range(summonGuardsXposMin,summonGuardsXposMax), summonGuardsYpos, 0), Quaternion.identity);
         GameObject guard = guardsPool.GetObject();
         guard.transform.position = new Vector3(Random.Range(summonGuardsXposMin, summonGuardsXposMax), summonGuardsYpos, 0);
-        guard.transform.rotation = Quaternion.identity;
+        guard.transform.rotation = Quaternion.Euler(0,90,0);
     }
 
     public void SummonRock()
