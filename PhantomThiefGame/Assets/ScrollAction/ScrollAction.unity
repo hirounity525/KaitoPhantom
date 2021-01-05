@@ -231,6 +231,7 @@ GameObject:
   - component: {fileID: 127512050}
   - component: {fileID: 127512051}
   - component: {fileID: 127512052}
+  - component: {fileID: 127512054}
   m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
@@ -390,6 +391,7 @@ MonoBehaviour:
   knockBackPower2: {x: -2, y: -2, z: 0}
   knockBackPower3: {x: 2, y: -2, z: 0}
   canNotMoveTime: 0.5
+  playerInfo: {fileID: 127512054}
 --- !u!54 &127512053
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -406,6 +408,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!114 &127512054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127512045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c07d92f0ea08f5041813fc1fc8de0334, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMove: 0
+  isJump: 0
 --- !u!1 &216062988
 GameObject:
   m_ObjectHideFlags: 0
@@ -3755,6 +3771,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4092261606254774003}
+  - component: {fileID: 3711373544999443530}
+  - component: {fileID: 3711373544999443531}
   m_Layer: 0
   m_Name: phantom_chan
   m_TagString: Untagged
@@ -3762,6 +3780,38 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &3711373544999443530
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3711373544999443529}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: a981b4e0edba01742a1e26c6c146536a, type: 3}
+  m_Controller: {fileID: 9100000, guid: cd0dac8c958b64e409396bd7ea5ecdf0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3711373544999443531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3711373544999443529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6482acd7eeb21144d8c63d3261e1da49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInfo: {fileID: 127512054}
 --- !u!1 &3713742842738776021
 GameObject:
   m_ObjectHideFlags: 0

@@ -56,6 +56,7 @@ public class BossBattlePlayerMover : MonoBehaviour
 
     private bool startsFall;
 
+    [SerializeField] private BossBattlePlayerInfo playerInfo;
 
     void Start()
     {
@@ -65,6 +66,18 @@ public class BossBattlePlayerMover : MonoBehaviour
 
     void Update()
     {
+        if (inputProvider2.moveHorizontal2 == 0)
+        {
+            isMove = false;
+        }
+
+        else
+        {
+            isMove = true;
+        }
+
+        playerInfo.isMove = isMove;
+
         if (!isKockBack)
         {
             //ジャンプボタン押した時
@@ -83,6 +96,7 @@ public class BossBattlePlayerMover : MonoBehaviour
 
     private void FixedUpdate()
     {
+
         if (!isKockBack)
         {
             //地面についているか

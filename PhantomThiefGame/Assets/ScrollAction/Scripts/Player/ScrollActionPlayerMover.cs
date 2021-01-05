@@ -52,6 +52,8 @@ public class ScrollActionPlayerMover : MonoBehaviour
 
     private bool playerDirectionIsRight = true;
 
+    [SerializeField] private ScrollActionPlayerInfo playerInfo;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -60,6 +62,19 @@ public class ScrollActionPlayerMover : MonoBehaviour
 
     void Update()
     {
+
+        if (inputProvider.moveHorizontal == 0)
+        {
+            isMove = false;
+        }
+
+        else
+        {
+            isMove = true;
+        }
+
+        playerInfo.isMove = isMove;
+
         if (!isKockBack)
         {
             //ジャンプボタン押した時
@@ -185,6 +200,8 @@ public class ScrollActionPlayerMover : MonoBehaviour
 
             //速度代入
             rb.velocity = moveVec;
+
+            playerInfo.isJump = !isGround;
         }
 
         if(inputProvider.moveHorizontal > 0)
