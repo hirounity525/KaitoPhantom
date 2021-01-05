@@ -6,6 +6,7 @@ public class DefensePlayerAnimater : MonoBehaviour
 {
     private DefensePlayerCore playerCore;
     private Transform playertrans;
+    [SerializeField] private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,5 +25,8 @@ public class DefensePlayerAnimater : MonoBehaviour
         {
             playertrans.rotation = Quaternion.Euler(0, 180, 0);
         }
+
+
+            animator.SetBool("GunPlay", playerCore.isShoot);
     }
 }

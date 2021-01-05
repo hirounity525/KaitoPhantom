@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class RunObjectRotation : MonoBehaviour
 {
+    [SerializeField] private float rotationDegree;
+
     private Transform objTrans;
 
-    private int objRotation;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +17,7 @@ public class RunObjectRotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        objTrans.rotation = new Quaternion(0, 0, 0, 0);
+        //objTrans.rotation = Quaternion.AngleAxis(rotationDegree, Vector3.right);
+        objTrans.Rotate(Vector3.right * rotationDegree);
     }
 }
