@@ -28,12 +28,12 @@ TagManager:
   - Pendulum
   - Hole
   - PlayerLimitMove
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Wall
+  - Bullet
+  - Boss
+  - Rock
+  - PlayerFoot
+  - InputLR
   - 
   - 
   - 

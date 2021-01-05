@@ -20,10 +20,14 @@ public class BossBattlePlayerMover : MonoBehaviour
     [SerializeField, Tooltip("方向キー入力時、1フレーム当たりの増減量")] private float airMoveRate;
     [SerializeField, Tooltip("未入力時、1フレーム当たりの減衰量")] private float airMoveLinearDrag;
 
+    //レイは足場の判定上いらない
     [Header("Ray")]
     [SerializeField] private float hitRadius;
     [SerializeField] private float hitDistance;
     [SerializeField] private LayerMask hitLayer;
+    //
+
+    [SerializeField] private BossBattlePlayerFoot bossBattlePlayerFoot;
 
     [SerializeField] private GameObject phantom_chan;
 
@@ -51,6 +55,7 @@ public class BossBattlePlayerMover : MonoBehaviour
     private float moveVecTempX;
 
     private bool startsFall;
+
 
     void Start()
     {
@@ -201,8 +206,9 @@ public class BossBattlePlayerMover : MonoBehaviour
 
     private bool IsGround()
     {
-        RaycastHit hit;
-        bool isGround = Physics.SphereCast(playerTrans.position, hitRadius, Vector3.down, out hit, hitDistance, hitLayer);
+        bool isGround = bossBattlePlayerFoot.isGround;
+        //RaycastHit hit;
+        //bool isGround = Physics.SphereCast(playerTrans.position, hitRadius, Vector3.down, out hit, hitDistance, hitLayer);
         return isGround;
     }
 
