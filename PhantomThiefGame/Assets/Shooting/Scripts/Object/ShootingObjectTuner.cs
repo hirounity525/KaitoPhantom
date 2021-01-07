@@ -6,16 +6,17 @@ public class ShootingObjectTuner : MonoBehaviour
 {
     [SerializeField] private float tuneSpeed;
 
-    private Rigidbody rb;
+    private Transform objTrans;
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.angularVelocity = new Vector3(0, tuneSpeed, 0);
+        objTrans = GetComponent<Transform>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        objTrans.Rotate(Vector3.up * tuneSpeed);
+
     }
 }

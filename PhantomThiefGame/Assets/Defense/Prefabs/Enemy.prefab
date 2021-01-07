@@ -224,6 +224,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: keibiin
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: ff8284f99ec2fd84ab952388e441ba17, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: a056467036b021146adf6b25489f63e1, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff8284f99ec2fd84ab952388e441ba17, type: 3}
 --- !u!4 &5560968797403278456 stripped
