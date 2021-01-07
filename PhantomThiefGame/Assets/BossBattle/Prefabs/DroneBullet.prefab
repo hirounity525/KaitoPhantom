@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2991005216253232170}
   - component: {fileID: 941053250129330156}
   - component: {fileID: 5219284508621450920}
+  - component: {fileID: -6814852019292857631}
   m_Layer: 8
   m_Name: DroneBullet
   m_TagString: Untagged
@@ -110,5 +111,20 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 8
   m_CollisionDetection: 0
+--- !u!114 &-6814852019292857631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3062400055415446806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af22b9b896e23f94c8c387c5ef943a63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  one: 1
+  bulletSpeed: 6
+  disappearTime: 5

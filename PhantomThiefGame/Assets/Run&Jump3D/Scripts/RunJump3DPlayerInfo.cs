@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossBattlePlayerInfo : MonoBehaviour
+public class RunJump3DPlayerInfo : MonoBehaviour
 {
-
-    public bool isMove;
     public bool isJump;
-    public bool isKnockBack;
+    public bool isCrouch;
 }

@@ -13,6 +13,7 @@ public class BossBattleBossCore : MonoBehaviour
     [SerializeField] private float stateSUMMONROCKTime;
     [SerializeField] private float stateGUNATTACKTime;
     [SerializeField] private float stateBIGBEAMTime;
+    [SerializeField] private float stateDRONEATTACKTime;
     private float stateWAITTimeTemp;
     private float stateMOVETimeTemp;
     private float stateJUMPTimeTemp;
@@ -20,12 +21,15 @@ public class BossBattleBossCore : MonoBehaviour
     private float stateSUMMONROCKTimeTemp;
     private float stateGUNATTACKTimeTemp;
     private float stateBIGBEAMTimeTemp;
+    private float stateDRONEATTACKTimeTemp;
 
     [SerializeField] private BossAIState bossAIState = BossAIState.WAIT;
 
     [SerializeField] private BossBattleBossAttacker bossAttacker;
     private System.Random rnd = new System.Random();
     private bool oneActionFinished = false;
+
+    private int bossAIStateNum = 6;
 
     public enum BossAIState
     {
@@ -35,7 +39,8 @@ public class BossBattleBossCore : MonoBehaviour
         SUMMONGUARDS = 3,  //警備兵召喚
         SUMMONROCK = 4, //岩召喚
         GUNATTACK = 5, //銃攻撃
-        BIGBEAM = 6  //大きいビーム
+        DRONEATTACK = 6,  //ドローン攻撃
+        BIGBEAM = 7 //大きいビーム
     }
 
     // Start is called before the first frame update
@@ -61,7 +66,8 @@ public class BossBattleBossCore : MonoBehaviour
             {
                 stateWAITTimeTemp = 0;
                 oneActionFinished = false;
-                bossAIState += (int)bossAIState * -1 + rnd.Next(0, 6);
+                //bossAIState = BossAIState.DRONEATTACK;
+                bossAIState += (int)bossAIState * -1 + rnd.Next(0, bossAIStateNum + 1);
             }
         }
 
@@ -72,7 +78,7 @@ public class BossBattleBossCore : MonoBehaviour
             {
                 stateMOVETimeTemp = 0;
                 oneActionFinished = false;
-                bossAIState += (int)bossAIState * -1 + rnd.Next(0, 6);
+                bossAIState += (int)bossAIState * -1 + rnd.Next(0, bossAIStateNum + 1);
             }
         }
 
@@ -83,7 +89,7 @@ public class BossBattleBossCore : MonoBehaviour
             {
                 stateJUMPTimeTemp = 0;
                 oneActionFinished = false;
-                bossAIState += (int)bossAIState * -1 + rnd.Next(0, 6);
+                bossAIState += (int)bossAIState * -1 + rnd.Next(0, bossAIStateNum + 1);
             }
         }
 
@@ -94,7 +100,7 @@ public class BossBattleBossCore : MonoBehaviour
             {
                 stateSUMMONGUARDSTimeTemp = 0;
                 oneActionFinished = false;
-                bossAIState += (int)bossAIState * -1 + rnd.Next(0, 6);
+                bossAIState += (int)bossAIState * -1 + rnd.Next(0, bossAIStateNum + 1);
             }
         }
 
@@ -105,7 +111,7 @@ public class BossBattleBossCore : MonoBehaviour
             {
                 stateSUMMONROCKTimeTemp = 0;
                 oneActionFinished = false;
-                bossAIState += (int)bossAIState * -1 + rnd.Next(0, 6);
+                bossAIState += (int)bossAIState * -1 + rnd.Next(0, bossAIStateNum + 1);
             }
         }
 
@@ -116,7 +122,19 @@ public class BossBattleBossCore : MonoBehaviour
             {
                 stateGUNATTACKTimeTemp = 0;
                 oneActionFinished = false;
-                bossAIState += (int)bossAIState * -1 + rnd.Next(0, 6);
+                bossAIState += (int)bossAIState * -1 + rnd.Next(0, bossAIStateNum + 1);
+            }
+        }
+
+        else if (bossAIState == BossAIState.DRONEATTACK)
+        {
+            stateDRONEATTACKTimeTemp += Time.fixedDeltaTime;
+            if (stateDRONEATTACKTime <= stateDRONEATTACKTimeTemp)
+            {
+                stateDRONEATTACKTimeTemp = 0;
+                oneActionFinished = false;
+                //bossAIState = BossAIState.DRONEATTACK;
+                bossAIState += (int)bossAIState * -1 + rnd.Next(0, bossAIStateNum + 1);
             }
         }
 
@@ -127,9 +145,11 @@ public class BossBattleBossCore : MonoBehaviour
             {
                 stateBIGBEAMTimeTemp = 0;
                 oneActionFinished = false;
-                bossAIState += (int)bossAIState * -1 + rnd.Next(0, 6);
+                bossAIState += (int)bossAIState * -1 + rnd.Next(0, bossAIStateNum + 1);
             }
         }
+
+        
 
         switch (bossAIState)
         {
@@ -190,6 +210,14 @@ public class BossBattleBossCore : MonoBehaviour
                     oneActionFinished = true;
                 }
                 break;
+            case BossAIState.DRONEATTACK:
+                if (!oneActionFinished)
+                {
+                    Debug.Log(bossAIState);
+                    bossAttacker.DroneAttack();
+                    oneActionFinished = true;
+                }
+                break;
             case BossAIState.BIGBEAM:
                 if (!oneActionFinished)
                 {
@@ -198,6 +226,7 @@ public class BossBattleBossCore : MonoBehaviour
                     oneActionFinished = true;
                 }
                 break;
+            
         }
     }
 

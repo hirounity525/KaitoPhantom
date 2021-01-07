@@ -77,6 +77,7 @@ public class BossBattlePlayerMover : MonoBehaviour
         }
 
         playerInfo.isMove = isMove;
+        playerInfo.isKnockBack = isKockBack;
 
         if (!isKockBack)
         {
@@ -204,6 +205,8 @@ public class BossBattlePlayerMover : MonoBehaviour
 
             //速度代入
             rb.velocity = moveVec;
+
+            playerInfo.isJump = !isGround;
         }
 
         if (inputProvider2.moveHorizontal2 > 0)

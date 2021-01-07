@@ -9,12 +9,13 @@ public class BossBattleDroneMissileController : MonoBehaviour
     public bool isChase;
     [SerializeField] private float chaseTime;
     [SerializeField] private float missileSpeed;
-    [SerializeField] private BossBattleBossAttacker bossBattleBossAttacker;
+    //[SerializeField] private BossBattleBossAttacker bossBattleBossAttacker;
+    [SerializeField] private float disappearTime;
+    private float disappearTimeTemp;
     private float chaseTimeTemp;
     private Rigidbody rb;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
@@ -27,10 +28,18 @@ public class BossBattleDroneMissileController : MonoBehaviour
 
     private void FixedUpdate()
     {
+
+        disappearTimeTemp += Time.fixedDeltaTime;
+        if (disappearTimeTemp > disappearTime)
+        {
+            disappearTimeTemp = 0;
+            gameObject.SetActive(false);
+        }
+
         if (isChase)
         {
             chaseTimeTemp = Time.fixedDeltaTime;
-            if(chaseTime < chaseTimeTemp)
+            if(chaseTimeTemp < chaseTime)
             {
                 this.transform.LookAt(playerTrans);
                 rb.AddForce(transform.forward * missileSpeed);
@@ -38,11 +47,11 @@ public class BossBattleDroneMissileController : MonoBehaviour
                 //rb.velocity = droneMissileVec * missileSpeed;
             }
 
-            else if (chaseTime > chaseTimeTemp)
+            else if (chaseTimeTemp > chaseTime)
             {
                 chaseTimeTemp = 0;
                 isChase = false;
-                bossBattleBossAttacker.isMissileChase = false;
+                //bossBattleBossAttacker.isMissileChase = false;
             }
         }
     }

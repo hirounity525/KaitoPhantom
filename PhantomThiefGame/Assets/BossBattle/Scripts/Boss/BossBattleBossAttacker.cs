@@ -48,6 +48,8 @@ public class BossBattleBossAttacker : MonoBehaviour
     [SerializeField] private int missileShotNum;
     private int missileShotNumTemp;
 
+    private int dronePattern;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -76,8 +78,8 @@ public class BossBattleBossAttacker : MonoBehaviour
     {
         if (isMissileChase)
         {
-            GameObject droneMissile = droneMissilePool.GetObject();
-            droneMissile.GetComponent<BossBattleDroneMissileController>().playerTrans = playerTrans;
+            //GameObject droneMissile = droneMissilePool.GetObject();
+            //droneMissile.GetComponent<BossBattleDroneMissileController>().playerTrans = playerTrans;
         } 
     }
 
@@ -158,8 +160,12 @@ public class BossBattleBossAttacker : MonoBehaviour
 
     public void DroneAttack()
     {
-        if(Random.Range(0,3) == 0)//弾を前方に飛ばす
+        dronePattern = Random.Range(0, 3);
+        Debug.Log("ドローンパターン："+dronePattern);
+
+        if(dronePattern == 0)//弾を前方に飛ばす
         {
+            
             GameObject droneBullet = droneBulletPool.GetObject();
             droneBullet.transform.position = bossDroneNozzlePosTrans.position;
             droneBullet.transform.rotation = bossDroneNozzlePosTrans.rotation;
@@ -176,23 +182,24 @@ public class BossBattleBossAttacker : MonoBehaviour
             StartCoroutine(DroneBulletIntervalTime());
         }
 
-        else if (Random.Range(0, 3) == 1)//プレイヤーを直接狙うレーザーを発射する
+        else if (dronePattern == 1)//プレイヤーを直接狙うレーザーを発射する
         {
             droneLaserVec2 = playerTrans.position - bossDroneNozzlePosTrans.position;
             GameObject droneLaser = droneLaserPool.GetObject();
-            droneLaserPool.transform.position = bossDroneNozzlePosTrans.position;
-            droneLaserPool.transform.rotation = bossDroneNozzlePosTrans.rotation;
+            droneLaser.transform.position = bossDroneNozzlePosTrans.position;
+            droneLaser.transform.rotation = bossDroneNozzlePosTrans.rotation;
+            droneLaser.GetComponent<BossBattleDroneLaserController>().playerTrans = playerTrans;
             droneLaser.GetComponent<BossBattleDroneLaserController>().droneLaserVec = droneLaserVec2.normalized;
             droneLaser.GetComponent<BossBattleDroneLaserController>().MoveDroneLaser();
         }
 
-        else if (Random.Range(0, 3) == 2)//追尾するミサイルを発射する
+        else if (dronePattern == 2)//追尾するミサイルを発射する
         {
             //droneMissileVec2 = 
             isMissileChase = true;
             GameObject droneMissile = droneMissilePool.GetObject();
-            droneMissilePool.transform.position = bossDroneNozzlePosTrans.position;
-            droneMissilePool.transform.rotation = bossDroneNozzlePosTrans.rotation;
+            droneMissile.transform.position = bossDroneNozzlePosTrans.position;
+            droneMissile.transform.rotation = bossDroneNozzlePosTrans.rotation;
             //droneMissile.GetComponent<BossBattleDroneMissileController>().droneMissileVec = droneMissileVec2.normalized;
             droneMissile.GetComponent<BossBattleDroneMissileController>().playerTrans = playerTrans;
             droneMissile.GetComponent<BossBattleDroneMissileController>().isChase = true;
@@ -224,7 +231,7 @@ public class BossBattleBossAttacker : MonoBehaviour
         }
         else
         {
-            bulletShotNum = 0;
+            bulletShotNumTemp = 0;
         }
     }
 

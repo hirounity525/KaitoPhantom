@@ -16,13 +16,15 @@ public class RunJump3DPlayerMover : MonoBehaviour
     [SerializeField] private float clouchTime;
     private float clouchTimeTemp;
 
+    [SerializeField] private RunJump3DPlayerInfo playerInfo;
+
     private Transform playerTrans;
     private Rigidbody rb;
     private bool isGround;
     private bool isCrouch;
     private CapsuleCollider capsuleCollider;
     private BoxCollider boxCollider;
-    private int playerMoveDirection = 1;
+    public int playerMoveDirection = 1;
     /*
      * 0 : -x
      * 1 : +z
@@ -30,10 +32,14 @@ public class RunJump3DPlayerMover : MonoBehaviour
      * 3 : -z
      */
 
+    [SerializeField] private RunJump3DInputProvider inputProvider;
+
+    ///シーン統合したら消す***************
     [SerializeField] bool isInputJTemp;
     [SerializeField] bool isInputCTemp;
     [SerializeField] bool isInputLTemp;
     [SerializeField] bool isInputRTemp;
+    ///***********************************
 
     private bool goLeft;
     private bool goRight;
@@ -50,7 +56,8 @@ public class RunJump3DPlayerMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(rb.velocity);
+        playerInfo.isJump = !isGround;
+        playerInfo.isCrouch = isCrouch;
     }
 
     private void FixedUpdate()
@@ -92,7 +99,7 @@ public class RunJump3DPlayerMover : MonoBehaviour
 
     private void Jump()
     {
-        if (isInputJTemp)
+        if (isInputJTemp || inputProvider.isJumpButton3)
         {
             if (isGround)
             {
@@ -115,7 +122,7 @@ public class RunJump3DPlayerMover : MonoBehaviour
 
     private void Crouch()
     {
-        if (isInputCTemp)
+        if (isInputCTemp || inputProvider.isCrouchButton)
         {
             //Debug.Log("isInputCTemp");
             if (isGround)
@@ -138,13 +145,13 @@ public class RunJump3DPlayerMover : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("InputLR"))
         {
-            if (isInputLTemp)
+            if (isInputLTemp || inputProvider.isLeftButton)
             {
                 goLeft = true;
                 goRight = false;
             }
 
-            else if (isInputRTemp)
+            else if (isInputRTemp || inputProvider.isRightButton)
             {
                 goRight = true;
                 goLeft = false;
