@@ -74,6 +74,7 @@ public class ScrollActionPlayerMover : MonoBehaviour
         }
 
         playerInfo.isMove = isMove;
+        playerInfo.isKnockBack = isKockBack;
 
         if (!isKockBack)
         {

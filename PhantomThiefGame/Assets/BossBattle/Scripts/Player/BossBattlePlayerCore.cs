@@ -8,6 +8,7 @@ public class BossBattlePlayerCore : MonoBehaviour
     [SerializeField] private float invincibleTime;
     //[SerializeField] private ScrollActionLaserAttacker scrollActionLaserAttacker;
     [SerializeField] private BossBattlePlayerMover bossBattlePlayerMover;
+    private bool isInvicible;
 
     // Start is called before the first frame update
     void Start()
@@ -44,20 +45,26 @@ public class BossBattlePlayerCore : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        //Debug.Log("トリガー");
+        if (!isInvicible)
         {
-            life -= 1;
-            StartCoroutine(Invincible());
-            Debug.Log(life);
-            //scrollActionPlayerMover.KnockBack();
+            if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            {
+                life -= 1;
+                StartCoroutine(Invincible());
+                Debug.Log(life);
+                //scrollActionPlayerMover.KnockBack();
+            }
         }
     }
 
     IEnumerator Invincible()
     {
+        isInvicible = true;
         bossBattlePlayerMover.KnockBack();
         gameObject.layer = LayerMask.NameToLayer("Invincible");
         yield return new WaitForSeconds(invincibleTime);
         gameObject.layer = LayerMask.NameToLayer("Player");
+        isInvicible = false;
     }
 }

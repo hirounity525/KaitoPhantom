@@ -19,5 +19,6 @@ public class ScrollActionPlayerAnimation : MonoBehaviour
     {
         playerAnimator.SetBool("isRun", playerInfo.isMove);
         playerAnimator.SetBool("isJump", playerInfo.isJump);
+        playerAnimator.SetBool("isKnockBack", playerInfo.isKnockBack);
     }
 }
