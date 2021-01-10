@@ -42,15 +42,14 @@ public class TitleManager : MonoBehaviour
     [SerializeField] private YesNoSelecter checkYesNoSelecter;
 
     [Header("StageSelect")]
+    [SerializeField] private StageManager stageManager;
+    [SerializeField] private StageSelecter stageSelecter;
+    [SerializeField] private StageDataReader stageDataReader;
     [SerializeField] private StageDrawer stageDrawer;
     [SerializeField] private TimelineController stageSelectedTimeline;
 
     [Header("StageInfo")]
     [SerializeField] private TimelineController stageStartTimeline;
-
-    private StageManager stageManager;
-    private StageSelecter stageSelecter;
-    private StageDataReader stageDataReader;
 
     private bool isStateFirstPlay;
     private bool isTransitionFirstPlay;
@@ -67,13 +66,18 @@ public class TitleManager : MonoBehaviour
 
     private void Awake()
     {
-        stageManager = GetComponent<StageManager>();
-        stageSelecter = GetComponent<StageSelecter>();
-        stageDataReader = GetComponent<StageDataReader>();
+
     }
 
     private void Start()
     {
+        if (DebugModeInfo.Instance.isBackTitle)
+        {
+            titleState = TitleState.SAVEDATASELECT;
+            stageManager.SetAllActiveStages();
+            return;
+        }
+
         stageManager.SetActiveStages(clearStageNum);
     }
 
@@ -95,6 +99,12 @@ public class TitleManager : MonoBehaviour
                     switch (titleMenuSelecter.nowSelectedTitleMenu)
                     {
                         case TitleMenu.START:
+
+                            if (DebugModeInfo.Instance.isTtoSSMode)
+                            {
+                                StartStateTransition("TitleToStageSelect", TitleState.STAGESELECT);
+                                return;
+                            }
 
                             if (!isTransitionFirstPlay)
                             {
@@ -138,6 +148,8 @@ public class TitleManager : MonoBehaviour
 
                 break;
             case TitleState.EXIT:
+
+                Application.Quit();
 
                 break;
             case TitleState.SAVEDATASELECT:
@@ -247,33 +259,18 @@ public class TitleManager : MonoBehaviour
 
                 break;
             case TitleState.STAGESELECT:
-                if (!isSelectStage)
+                if (!isStageSelectFirstPlay)
                 {
-                    if (!isStageSelectFirstPlay)
-                    {
-                        stageDrawer.DrawStage(clearStageNum);
-                        isStageSelectFirstPlay = true;
-                    }
-
-                    if (stageDrawer.FinishDraw())
-                    {
-                        stageSelecter.canStageSelect = true;
-                    }
-
-                    if (titleInput.isSelectButtonDown)
-                    {
-                        selectedStageNum = stageSelecter.nowViewStageCore.stageNum;
-                        stageDataReader.ChangeStageInfo(selectedStageNum);
-                        stageSelectedTimeline.Play();
-                        isSelectStage = true;
-                    }
+                    stageSelecter.canStageSelect = true;
+                    isStageSelectFirstPlay = true;
                 }
-                else
+
+                if (titleInput.isSelectButtonDown)
                 {
-                    if (stageSelectedTimeline.isFinish)
-                    {
-                        titleState = TitleState.STAGEINFO;
-                    }
+                    selectedStageNum = stageSelecter.nowViewStageCore.stageNum;
+                    stageDataReader.ChangeStageInfo(selectedStageNum);
+                    stageSelectedTimeline.Play();
+                    isSelectStage = true;
                 }
 
                 break;

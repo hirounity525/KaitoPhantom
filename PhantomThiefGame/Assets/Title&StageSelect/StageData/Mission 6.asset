@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1005a85b387770488fa751ead901eb0, type: 3}
-  m_Name: Mission 2
+  m_Name: Mission 6
   m_EditorClassIdentifier: 
-  stageNum: 3
-  stageImage: {fileID: 21300000, guid: a6b0467a1bd613545be61dd0698755ab, type: 3}
-  stageName: "\u307B\u304B\u3093\u3053\u306B\u305F\u3069\u308A\u3064\u3051"
+  stageNum: 6
+  stageImage: {fileID: 21300000, guid: 5f0dbdd201596d841be3a58d6f497626, type: 3}
+  stageName: "\u3060\u3063\u3057\u3085\u3064\u3057\u308D"
   stageType: 1
-  outline: "\u308F\u306A\u3092\u304B\u3044\u304F\u3050\u308A\u307B\u304B\u3093\u3053\u306B\u305F\u3069\u308A\u3064\u3051"
-  sceneName: ScrollAction
+  outline: "\u306F\u304F\u3076\u3064\u304B\u3093\u304B\u3089\u3060\u3063\u3057\u3085\u3064\u3057\u3088\u3046"
+  sceneName: Run&Jump3D

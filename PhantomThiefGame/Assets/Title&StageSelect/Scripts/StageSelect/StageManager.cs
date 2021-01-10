@@ -13,4 +13,12 @@ public class StageManager : MonoBehaviour
             stageObjs[i].SetActive(true);
         }
     }
+
+    public void SetAllActiveStages()
+    {
+        for (int i = 0; i < stageObjs.Length; i++)
+        {
+            stageObjs[i].SetActive(true);
+        }
+    }
 }

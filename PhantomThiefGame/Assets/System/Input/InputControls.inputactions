@@ -1028,6 +1028,44 @@
                     "isPartOfComposite": true
                 }
             ]
+        },
+        {
+            "name": "Debug",
+            "id": "726a7a48-8c90-4d94-b2d9-c5cb1f65d916",
+            "actions": [
+                {
+                    "name": "TitleBack",
+                    "type": "Button",
+                    "id": "760eaaca-7eaa-407c-a51b-d019f2d22250",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "14d64033-668f-497d-8cb0-198db08fbe2a",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keybord",
+                    "action": "TitleBack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e8593000-3576-406d-91d2-95d24a185a45",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "TitleBack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

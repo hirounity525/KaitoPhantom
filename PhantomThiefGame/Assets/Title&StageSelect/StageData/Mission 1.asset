@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1005a85b387770488fa751ead901eb0, type: 3}
-  m_Name: Mission 3
+  m_Name: Mission 1
   m_EditorClassIdentifier: 
-  stageNum: 5
-  stageImage: {fileID: 21300000, guid: 76e3e4dc32205f94b83b423317799856, type: 3}
-  stageName: "\u3042\u3044\u307C\u3046\u3092\u307E\u3082\u308C"
+  stageNum: 1
+  stageImage: {fileID: 21300000, guid: ed62455cd6d2fce428b81d8b63af3811, type: 3}
+  stageName: "\u304B\u30FC\u3069\u304D\u30FC\u3092\u3046\u3070\u3048"
   stageType: 1
-  outline: "\u305B\u307E\u308A\u304F\u308B\u3066\u304D\u304B\u3089\u3042\u3044\u307C\u3046\u3092\u307E\u3082\u308D\u3046"
-  sceneName: Defense
+  outline: "\u3051\u3044\u3073\u306B\u3070\u308C\u305A\u306B\u304B\u30FC\u3069\u304D\u30FC\u3092\u3046\u3070\u304A\u3046"
+  sceneName: Sneaking
