@@ -5,7 +5,8 @@ using UnityEngine;
 public class StageSelecter : MonoBehaviour
 {
     public StageCore nowViewStageCore;
-    public bool canStageSelect;
+    public bool canSelect;
+    public bool isSelect;
 
     [SerializeField] private TitleInputProvider titleInput;
 
@@ -19,7 +20,7 @@ public class StageSelecter : MonoBehaviour
 
     private void Update()
     {
-        if (canStageSelect)
+        if (canSelect && !isSelect)
         {
             SelectStage();
         }
@@ -57,6 +58,13 @@ public class StageSelecter : MonoBehaviour
                 nowViewStageCore.isViewed = false;
                 nowViewStageCore = nextStageCore;
             }
+        }
+
+        if (titleInput.isSelectButtonDown)
+        {
+            nowViewStageCore.isViewed = false;
+            canSelect = false;
+            isSelect = true;
         }
     }
 }

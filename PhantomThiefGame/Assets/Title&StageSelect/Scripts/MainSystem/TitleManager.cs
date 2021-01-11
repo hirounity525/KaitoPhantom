@@ -46,7 +46,6 @@ public class TitleManager : MonoBehaviour
     [SerializeField] private StageSelecter stageSelecter;
     [SerializeField] private StageDataReader stageDataReader;
     [SerializeField] private StageDrawer stageDrawer;
-    [SerializeField] private TimelineController stageSelectedTimeline;
 
     [Header("StageInfo")]
     [SerializeField] private TimelineController stageStartTimeline;
@@ -59,15 +58,7 @@ public class TitleManager : MonoBehaviour
 
     private bool startsTimeline;
 
-    private bool startsTitleTimeline;
-    private bool isStageSelectFirstPlay;
-    private bool isSelectStage;
     private bool startsStageStartTimeline;
-
-    private void Awake()
-    {
-
-    }
 
     private void Start()
     {
@@ -112,7 +103,7 @@ public class TitleManager : MonoBehaviour
                                 isTransitionFirstPlay = true;
                             }
 
-                            StartStateTransition("TitleToSaveDataSelect", TitleState.SAVEDATASELECT);
+                            StartStateTransition("TitleToSaveData", TitleState.SAVEDATASELECT);
 
                             break;
                         case TitleMenu.CONFIG:
@@ -165,7 +156,7 @@ public class TitleManager : MonoBehaviour
 
                 if (isStateBack)
                 {
-                    StartStateTransition("SaveDataSelectToTitle", TitleState.TITLE);
+                    StartStateTransition("SaveDataToTitle", TitleState.TITLE);
                     return;
                 }
 
@@ -186,7 +177,7 @@ public class TitleManager : MonoBehaviour
                             isTransitionFirstPlay = true;
                         }
 
-                        StartStateTransition("SaveDataSelectToNameInput", TitleState.NAMEINPUT);
+                        StartStateTransition("SaveDataToNameInput", TitleState.NAMEINPUT);
                     }
                     else
                     {
@@ -208,7 +199,7 @@ public class TitleManager : MonoBehaviour
 
                 if (isStateBack)
                 {
-                    StartStateTransition("NameInputToSaveDataSelect", TitleState.SAVEDATASELECT);
+                    StartStateTransition("NameInputToSaveData", TitleState.SAVEDATASELECT);
                     return;
                 }
 
@@ -259,24 +250,59 @@ public class TitleManager : MonoBehaviour
 
                 break;
             case TitleState.STAGESELECT:
-                if (!isStageSelectFirstPlay)
+
+                if (!isStateFirstPlay)
                 {
-                    stageSelecter.canStageSelect = true;
-                    isStageSelectFirstPlay = true;
+                    stageSelecter.canSelect = true;
+                    stageSelecter.isSelect = false;
+
+                    isStateFirstPlay = true;
                 }
 
-                if (titleInput.isSelectButtonDown)
+                //修正対象
+                if (isStateBack)
+                {
+                    StartStateTransition("StageSelectToTitle", TitleState.TITLE);
+                    return;
+                }
+
+                if (!startsTimeline)
+                {
+                    if (titleInput.isCancelButtonDown)
+                    {
+                        isStateBack = true;
+                        return;
+                    }
+                }
+                //
+
+                if (stageSelecter.isSelect)
                 {
                     selectedStageNum = stageSelecter.nowViewStageCore.stageNum;
-                    stageDataReader.ChangeStageInfo(selectedStageNum);
-                    stageSelectedTimeline.Play();
-                    isSelectStage = true;
+                    //stageDataReader.ChangeStageInfo(selectedStageNum);
+                    //トランジション用のenum作るのあり
+                    StartStateTransition("StageSelectToStageInfo", TitleState.STAGEINFO);
                 }
 
                 break;
             case TitleState.STAGEINFO:
+
+                //修正対象
+
+                if (isStateBack)
+                {
+                    StartStateTransition("StageInfoToStageSelect", TitleState.STAGESELECT);
+                    return;
+                }
+
                 if (!startsStageStartTimeline)
                 {
+                    if (titleInput.isCancelButtonDown)
+                    {
+                        isStateBack = true;
+                        return;
+                    }
+
                     if (titleInput.isSelectButtonDown)
                     {
                         stageStartTimeline.Play();
@@ -290,6 +316,7 @@ public class TitleManager : MonoBehaviour
                         stageDataReader.LoadStageScene(selectedStageNum);
                     }
                 }
+                //
 
 
                 break;
