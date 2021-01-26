@@ -44,6 +44,9 @@ public class RunJump3DPlayerMover : MonoBehaviour
     private bool goLeft;
     private bool goRight;
 
+    public bool goPlus;
+    public bool goMinus;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -166,6 +169,7 @@ public class RunJump3DPlayerMover : MonoBehaviour
             if (goRight)
             {
                 playerMoveDirection++;
+                goPlus = true;
                 if(playerMoveDirection == 4)
                 {
                     playerMoveDirection = 0;
@@ -176,6 +180,7 @@ public class RunJump3DPlayerMover : MonoBehaviour
             else if (goLeft)
             {
                 playerMoveDirection--;
+                goMinus = true;
                 if(playerMoveDirection == -1)
                 {
                     playerMoveDirection = 3;
