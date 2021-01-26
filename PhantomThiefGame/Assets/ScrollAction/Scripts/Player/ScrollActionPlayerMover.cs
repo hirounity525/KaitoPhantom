@@ -74,7 +74,9 @@ public class ScrollActionPlayerMover : MonoBehaviour
         }
 
         playerInfo.isMove = isMove;
+        playerInfo.isJump = isJump;
         playerInfo.isKnockBack = isKockBack;
+        playerInfo.isGround = isGround;
 
         if (!isKockBack)
         {
@@ -94,11 +96,11 @@ public class ScrollActionPlayerMover : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //地面についているか
+        isGround = IsGround();
+
         if (!isKockBack)
         {
-            //地面についているか
-            isGround = IsGround();
-
             //横方向の移動の入力・正規化
             Vector3 moveVec = Vector3.right * inputProvider.moveHorizontal;
             moveVec = moveVec.normalized;
@@ -201,8 +203,6 @@ public class ScrollActionPlayerMover : MonoBehaviour
 
             //速度代入
             rb.velocity = moveVec;
-
-            playerInfo.isJump = !isGround;
         }
 
         if(inputProvider.moveHorizontal > 0)
@@ -241,6 +241,8 @@ public class ScrollActionPlayerMover : MonoBehaviour
     public void KnockBack()
     {
         isKockBack = true;
+        isJump = false;
+
         rb.velocity = Vector3.zero;
         if (playerDirectionIsRight)
         {

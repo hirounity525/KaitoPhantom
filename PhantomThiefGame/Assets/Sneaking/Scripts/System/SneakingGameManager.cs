@@ -23,21 +23,6 @@ public class SneakingGameManager : MonoBehaviour
         {
             case GameState.START:
 
-                //スタート演出
-                //タイムラインの再生
-                if (!isFirstStatePlay)
-                {
-                    startTimeline.Play();
-                    isFirstStatePlay = true;
-                }
-
-                //再生後に、メインに移動
-                if (startTimeline.isFinish)
-                {
-                    gameState = GameState.MAIN;
-                    isFirstStatePlay = false;
-                }
-
                 break;
             case GameState.MAIN:
                 //インプット使えるようにする

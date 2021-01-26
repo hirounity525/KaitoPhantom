@@ -31,6 +31,7 @@ public class SneakingPlayerAnimator : MonoBehaviour
             if (!isHideAnim)
             {
                 playerTrans.LookAt(playerTrans.position + Vector3.forward);
+                animator.SetInteger("HideType", (int)playerCore.nowHideObjectType);
                 animator.SetBool("isHide", true);
                 isHideAnim = true;
             }

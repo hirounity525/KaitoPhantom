@@ -1,9 +1,8 @@
-// This code is part of the Fungus library (http://fungusgames.com) maintained by Chris Gregan (http://twitter.com/gofungus).
+// This code is part of the Fungus library (https://github.com/snozbot/fungus)
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem.UI;
 
 namespace Fungus
 {
@@ -45,7 +44,7 @@ namespace Fungus
 
         protected float ignoreClickTimer;
 
-        protected InputSystemUIInputModule currentStandaloneInputModule;
+        protected StandaloneInputModule currentStandaloneInputModule;
 
         protected Writer writer;
 
@@ -82,16 +81,16 @@ namespace Fungus
 
             if (currentStandaloneInputModule == null)
             {
-                currentStandaloneInputModule = EventSystem.current.GetComponent<InputSystemUIInputModule>();
+                currentStandaloneInputModule = EventSystem.current.GetComponent<StandaloneInputModule>();
             }
 
             if (writer != null && writer.IsWriting)
             {
-                /*if (Input.GetButtonDown(currentStandaloneInputModule) ||
+                if (Input.GetButtonDown(currentStandaloneInputModule.submitButton) ||
                     (cancelEnabled && Input.GetButton(currentStandaloneInputModule.cancelButton)))
                 {
                     SetNextLineFlag();
-                }*/
+                }
             }
 
             switch (clickMode)
@@ -99,10 +98,10 @@ namespace Fungus
             case ClickMode.Disabled:
                 break;
             case ClickMode.ClickAnywhere:
-                /*if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0))
                 {
                     SetNextLineFlag();
-                }*/
+                }
                 break;
             case ClickMode.ClickOnDialog:
                 if (dialogClickedFlag)
