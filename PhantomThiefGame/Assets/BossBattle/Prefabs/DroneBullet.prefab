@@ -127,4 +127,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   one: 1
   bulletSpeed: 6
-  disappearTime: 5
+  disappearTime: 4
