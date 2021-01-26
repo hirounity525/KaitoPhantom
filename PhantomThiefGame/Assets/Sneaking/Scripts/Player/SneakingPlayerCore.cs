@@ -7,4 +7,5 @@ public class SneakingPlayerCore : MonoBehaviour
     public bool isMove;
     public Vector3 moveVec;
     public bool isHide;
+    public HideObjectType nowHideObjectType;
 }

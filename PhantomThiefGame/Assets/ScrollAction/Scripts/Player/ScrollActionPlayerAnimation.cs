@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ScrollActionPlayerAnimation : MonoBehaviour
 {
-
     private Animator playerAnimator;
     [SerializeField] private ScrollActionPlayerInfo playerInfo;
 
@@ -20,5 +19,6 @@ public class ScrollActionPlayerAnimation : MonoBehaviour
         playerAnimator.SetBool("isRun", playerInfo.isMove);
         playerAnimator.SetBool("isJump", playerInfo.isJump);
         playerAnimator.SetBool("isKnockBack", playerInfo.isKnockBack);
+        playerAnimator.SetBool("isGround", playerInfo.isGround);
     }
 }

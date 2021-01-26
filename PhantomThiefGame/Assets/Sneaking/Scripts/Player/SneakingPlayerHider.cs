@@ -10,7 +10,9 @@ public class SneakingPlayerHider : MonoBehaviour
     [SerializeField] private float hideTime;
 
     [SerializeField] private GameObject defaultVC;
-    [SerializeField] private GameObject hideVC;
+    [SerializeField] private GameObject statueHideVC;
+    [SerializeField] private GameObject paintingHideVC;
+    [SerializeField] private GameObject boxHideVC;
 
     private SneakingPlayerCore playerCore;
     private Transform playerTrans;
@@ -20,8 +22,17 @@ public class SneakingPlayerHider : MonoBehaviour
     private bool isHide;
     private bool canHide;
 
-    private Vector3 beforeHidePoint;
+    private bool isMotion;
+
+    private GameObject nowHideVC;
+
+    private HideObjectType nowHideObjectType;
     private Vector3 hidePoint;
+    private Quaternion hideRotation;
+
+    private Vector3 beforeHidePoint;
+    private Quaternion beforeHideRotation;
+
 
     private void Awake()
     {
@@ -40,40 +51,66 @@ public class SneakingPlayerHider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isHide)
+        if (!isMotion)
         {
-            if (canHide)
+            if (!isHide)
+            {
+                if (canHide)
+                {
+                    if (inputProvider.isHideButtonDown)
+                    {
+                        coll.enabled = false;
+                        rb.useGravity = false;
+                        rb.velocity = Vector3.zero;
+
+                        beforeHidePoint = playerTrans.position;
+                        playerTrans.DOMoveX(hidePoint.x, hideTime);
+                        playerTrans.DOMoveZ(hidePoint.z, hideTime);
+
+                        beforeHideRotation = playerTrans.rotation;
+                        playerTrans.DORotate(hideRotation.eulerAngles, hideTime);
+
+                        defaultVC.SetActive(false);
+
+                        switch (nowHideObjectType)
+                        {
+                            case HideObjectType.STATUE:
+                                statueHideVC.SetActive(true);
+                                nowHideVC = statueHideVC;
+                                break;
+                            case HideObjectType.PAINTING:
+                                paintingHideVC.SetActive(true);
+                                nowHideVC = paintingHideVC;
+                                break;
+                            case HideObjectType.BOX:
+                                boxHideVC.SetActive(true);
+                                nowHideVC = boxHideVC;
+                                break;
+                        }
+
+                        isHide = true;
+
+                        StartCoroutine(StartMotion());
+                    }
+                }
+            }
+            else
             {
                 if (inputProvider.isHideButtonDown)
                 {
-                    coll.enabled = false;
-                    rb.useGravity = false;
-                    rb.velocity = Vector3.zero;
+                    coll.enabled = true;
+                    rb.useGravity = true;
 
-                    beforeHidePoint = playerTrans.position;
-                    playerTrans.DOMoveX(hidePoint.x, hideTime);
-                    playerTrans.DOMoveZ(hidePoint.z, hideTime);
+                    playerTrans.DOMove(beforeHidePoint, hideTime);
+                    playerTrans.DORotate(beforeHideRotation.eulerAngles, hideTime);
 
-                    defaultVC.SetActive(false);
-                    hideVC.SetActive(true);
+                    defaultVC.SetActive(true);
+                    nowHideVC.SetActive(false);
 
-                    isHide = true;
+                    isHide = false;
+
+                    StartCoroutine(StartMotion());
                 }
-            }
-        }
-        else
-        {
-            if (inputProvider.isHideButtonDown)
-            {
-                coll.enabled = true;
-                rb.useGravity = true;
-
-                playerTrans.DOMove(beforeHidePoint, hideTime);
-
-                defaultVC.SetActive(true);
-                hideVC.SetActive(false);
-
-                isHide = false;
             }
         }
 
@@ -82,18 +119,38 @@ public class SneakingPlayerHider : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "ToTarget")
+        SneakingHideObjectInfo hideObjectInfo = other.GetComponent<SneakingHideObjectInfo>();
+
+        if(hideObjectInfo != null)
         {
             canHide = true;
             hidePoint = other.transform.position;
+            hideRotation = other.transform.root.rotation;
+
+            nowHideObjectType = hideObjectInfo.hideObjectType;
+            playerCore.nowHideObjectType = nowHideObjectType;
+
+            hideObjectInfo.isHideTarget = true;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "ToTarget")
+        SneakingHideObjectInfo hideObjectInfo = other.GetComponent<SneakingHideObjectInfo>();
+
+        if (hideObjectInfo != null)
         {
             canHide = false;
+            hideObjectInfo.isHideTarget = false;
         }
+    }
+
+    private IEnumerator StartMotion()
+    {
+        isMotion = true;
+
+        yield return new WaitForSeconds(hideTime);
+
+        isMotion = false;
     }
 }
