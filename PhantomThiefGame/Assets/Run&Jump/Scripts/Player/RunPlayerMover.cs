@@ -9,16 +9,16 @@ public class RunPlayerMover : MonoBehaviour
     [SerializeField] private float rotationAngle;
     [SerializeField] private float slidingTime;
 
+    private RunPlayerCore playerCore;
     private Rigidbody rb;
     private Transform playerTrans;
 
-    private bool isJump = true;
-    private bool isSliding = false;
     private bool canSliding = true;
     private int jumpCount;
     // Start is called before the first frame update
     void Start()
     {
+        playerCore = GetComponent<RunPlayerCore>();
         rb = GetComponent<Rigidbody>();
         playerTrans = GetComponent<Transform>();
     }
@@ -27,7 +27,7 @@ public class RunPlayerMover : MonoBehaviour
     void Update()
     {
 
-        if (isJump)
+        if (playerCore.isJump)
         {
             if (inputProvider.isJumpButtunDown)
             {
@@ -38,13 +38,13 @@ public class RunPlayerMover : MonoBehaviour
 
                 if (jumpCount >= 2)
                 {
-                    isJump = false;
+                    playerCore.isJump = false;
                 }
                
             }
         }
 
-        if ((inputProvider.isSlidingButtunDown > 0 && canSliding) || isSliding )
+        if ((inputProvider.isSlidingButtunDown > 0 && canSliding) || playerCore.isSliding )
         {
             StartCoroutine(StartSliding());
         }
@@ -57,7 +57,7 @@ public class RunPlayerMover : MonoBehaviour
         if (groundObj.tag == "Ground")
         {
             canSliding = true;
-            isJump = true;
+            playerCore.isJump = true;
             jumpCount = 0;
         }
     }
@@ -66,13 +66,13 @@ public class RunPlayerMover : MonoBehaviour
     {
         playerTrans.rotation = Quaternion.Euler(0, 0, rotationAngle);
 
-        isJump = false;
-        isSliding = true;
+        playerCore.isJump = false;
+        playerCore.isSliding = true;
 
         yield return new WaitForSeconds(slidingTime);
 
-        isJump = true;
-        isSliding = false;
+        playerCore.isJump = true;
+        playerCore.isSliding = false;
 
         playerTrans.rotation = new Quaternion(0, 0, 0, 0);
     }
