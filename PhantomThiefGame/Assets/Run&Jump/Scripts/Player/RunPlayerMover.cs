@@ -13,7 +13,6 @@ public class RunPlayerMover : MonoBehaviour
     private Transform playerTrans;
 
     private bool isJump = true;
-    private bool isSliding = false;
     private bool canSliding = true;
     private int jumpCount;
     // Start is called before the first frame update
@@ -44,9 +43,13 @@ public class RunPlayerMover : MonoBehaviour
             }
         }
 
-        if ((inputProvider.isSlidingButtunDown > 0 && canSliding) || isSliding )
+        if ((inputProvider.isSlidingButtunDown > 0 && canSliding))
         {
+            canSliding = false;
+
             StartCoroutine(StartSliding());
+
+            canSliding = true;
         }
 
     }
@@ -64,17 +67,16 @@ public class RunPlayerMover : MonoBehaviour
 
     private IEnumerator StartSliding()
     {
-        playerTrans.rotation = Quaternion.Euler(0, 0, rotationAngle);
-
         isJump = false;
-        isSliding = true;
+
+        playerTrans.rotation = Quaternion.Euler(0, 0, rotationAngle);
 
         yield return new WaitForSeconds(slidingTime);
 
-        isJump = true;
-        isSliding = false;
+        playerTrans.rotation = Quaternion.Euler(0, -35, 0);
 
-        playerTrans.rotation = new Quaternion(0, 0, 0, 0);
+        isJump = true;
+
     }
 
 }
