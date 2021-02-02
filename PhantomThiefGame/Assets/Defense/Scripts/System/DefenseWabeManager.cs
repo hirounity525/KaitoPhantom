@@ -5,8 +5,8 @@ using UnityEngine;
 public class DefenseWabeManager : MonoBehaviour
 {
     public DefenseEnemyCreateData[] wabe;
-    private int nowWabeNum;
     private DefenseEnemyCreater enemyCreater;
+
     public int currentWabeNum = 0;
     // Start is called before the first frame update
     void Start()

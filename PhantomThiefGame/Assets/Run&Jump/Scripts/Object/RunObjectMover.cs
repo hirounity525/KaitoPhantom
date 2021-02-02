@@ -14,8 +14,9 @@ public class RunObjectMover : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
         rb.velocity = new Vector3(-moveSpeed, 0, 0);
     }
+
 }
