@@ -12,6 +12,7 @@ public class RunPlayerMover : MonoBehaviour
     private Rigidbody rb;
     private Transform playerTrans;
 
+    private bool isSliding = false;
     private bool isJump = true;
     private bool canSliding = true;
     private int jumpCount;
@@ -43,13 +44,13 @@ public class RunPlayerMover : MonoBehaviour
             }
         }
 
-        if ((inputProvider.isSlidingButtunDown > 0 && canSliding))
+        if ((inputProvider.isSlidingButtunDown > 0 && canSliding)&&!isSliding)
         {
-            canSliding = false;
+
 
             StartCoroutine(StartSliding());
 
-            canSliding = true;
+
         }
 
     }
@@ -67,6 +68,8 @@ public class RunPlayerMover : MonoBehaviour
 
     private IEnumerator StartSliding()
     {
+        isSliding = true;
+
         isJump = false;
 
         playerTrans.rotation = Quaternion.Euler(0, 0, rotationAngle);
@@ -77,6 +80,7 @@ public class RunPlayerMover : MonoBehaviour
 
         isJump = true;
 
+        isSliding = false;
     }
 
 }
