@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class SneakingInputProvider : MonoBehaviour
 {
+    public bool canInput;
     public Vector2 moveVec;
     public bool isHideButtonDown;
 
@@ -18,10 +19,16 @@ public class SneakingInputProvider : MonoBehaviour
         actionMap = playerInput.currentActionMap;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        moveVec = actionMap["Move"].ReadValue<Vector2>();
-        isHideButtonDown = actionMap["Hide"].triggered;
+        if (canInput)
+        {
+            moveVec = actionMap["Move"].ReadValue<Vector2>();
+            isHideButtonDown = actionMap["Hide"].triggered;
+        }
+        else
+        {
+            moveVec = Vector2.zero;
+        }
     }
 }

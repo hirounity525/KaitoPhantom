@@ -13,4 +13,5 @@ public class SneakingHideObjectInfo : MonoBehaviour
 {
     public HideObjectType hideObjectType;
     public bool isHideTarget;
+    public GameObject hideVC;
 }

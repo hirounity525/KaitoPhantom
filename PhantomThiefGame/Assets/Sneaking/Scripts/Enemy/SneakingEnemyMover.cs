@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public enum RotateDirection
 {
@@ -14,79 +15,155 @@ public enum RotateDirection
 public struct SneakingEnemyMoveData
 {
     public RotateDirection rotateDirection;
-    public float moveTime;
+    public float moveDistance;
 }
 
 public class SneakingEnemyMover : MonoBehaviour
 {
     [SerializeField] private SneakingEnemyMoveData[] moveDatas;
     [SerializeField] private float moveSpeed;
-    [SerializeField] private bool canMove;
+    [SerializeField] private float waitTime;
+    [SerializeField] private float rotateTime;
 
+    private SneakingEnemyCore enemyCore;
     private Transform enemyTrans;
     private Rigidbody rb;
 
     private SneakingEnemyMoveData nowMoveData;
     private int nowMoveDataNum;
 
+    private bool isMove;
+
+    private float moveTime;
     private float moveTimer;
+
+    private Tweener rotationTweener;
 
     private bool isLoadMoveData;
 
+    //Gizmos
+    private Vector3 startPos;
+    private Vector3 endPos;
+
     private void Awake()
     {
+        enemyCore = GetComponent<SneakingEnemyCore>();
         enemyTrans = GetComponent<Transform>();
         rb = GetComponent<Rigidbody>();
     }
 
+    private void Update()
+    {
+        enemyCore.isMove = isMove;
+    }
+
     private void FixedUpdate()
     {
-        if (canMove)
+        if (!enemyCore.isDiscovery)
         {
             if (!isLoadMoveData)
             {
                 nowMoveData = moveDatas[nowMoveDataNum];
 
+                moveTime = nowMoveData.moveDistance / moveSpeed;
+
+                float rotationTemp = 0;
+
                 switch (nowMoveData.rotateDirection)
                 {
                     case RotateDirection.FORWORD:
-                        enemyTrans.rotation = Quaternion.Euler(0, 0, 0);
+                        rotationTemp = 0;
                         break;
                     case RotateDirection.RIGHT:
-                        enemyTrans.rotation = Quaternion.Euler(0, 90, 0);
+                        rotationTemp = 90;
                         break;
                     case RotateDirection.BACK:
-                        enemyTrans.rotation = Quaternion.Euler(0, 180, 0);
+                        rotationTemp = 180;
                         break;
                     case RotateDirection.LEFT:
-                        enemyTrans.rotation = Quaternion.Euler(0, -90, 0);
+                        rotationTemp = 270;
                         break;
                 }
+
+                rotationTweener = enemyTrans.DORotate(Vector3.up * rotationTemp, rotateTime)
+                   .OnComplete(() =>
+                   {
+                       isMove = true;
+                   });
 
                 isLoadMoveData = true;
             }
 
-            if (moveTimer >= nowMoveData.moveTime)
+            if (isMove)
             {
-                nowMoveDataNum++;
-
-                if (nowMoveDataNum == moveDatas.Length)
+                if (moveTimer >= moveTime)
                 {
-                    nowMoveDataNum = 0;
+                    isMove = false;
+                    StartCoroutine(StopWalking());
                 }
-
-                moveTimer = 0;
-                isLoadMoveData = false;
-            }
-            else
-            {
-                rb.velocity = enemyTrans.forward * moveSpeed;
-                moveTimer += Time.fixedDeltaTime;
+                else
+                {
+                    rb.velocity = enemyTrans.forward * moveSpeed;
+                    moveTimer += Time.fixedDeltaTime;
+                }
             }
         }
         else
         {
+            isMove = false;
+            rotationTweener.Kill();
             rb.velocity = Vector3.zero;
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+        }
+    }
+
+    private IEnumerator StopWalking()
+    {
+        rb.velocity = Vector3.zero;
+
+        yield return new WaitForSeconds(waitTime);
+
+        nowMoveDataNum++;
+        if(nowMoveDataNum >= moveDatas.Length)
+        {
+            nowMoveDataNum = 0;
+        }
+
+        moveTimer = 0;
+
+        isLoadMoveData = false;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        startPos = transform.position;
+        endPos = Vector3.zero;
+
+        for(int i = 0; i < moveDatas.Length; i++)
+        {
+            startPos += endPos;
+
+            Vector3 dir = Vector3.zero;
+
+            switch (moveDatas[i].rotateDirection)
+            {
+                case RotateDirection.FORWORD:
+                    dir = Vector3.forward;
+                    break;
+                case RotateDirection.RIGHT:
+                    dir = Vector3.right;
+                    break;
+                case RotateDirection.BACK:
+                    dir = Vector3.back;
+                    break;
+                case RotateDirection.LEFT:
+                    dir = Vector3.left;
+                    break;
+            }
+
+            endPos = dir.normalized * moveDatas[i].moveDistance;
+
+            Gizmos.DrawLine(startPos, startPos + endPos);
         }
     }
 }

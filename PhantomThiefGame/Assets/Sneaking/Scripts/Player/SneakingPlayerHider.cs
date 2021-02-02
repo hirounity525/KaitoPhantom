@@ -9,10 +9,7 @@ public class SneakingPlayerHider : MonoBehaviour
 
     [SerializeField] private float hideTime;
 
-    [SerializeField] private GameObject defaultVC;
-    [SerializeField] private GameObject statueHideVC;
-    [SerializeField] private GameObject paintingHideVC;
-    [SerializeField] private GameObject boxHideVC;
+    [SerializeField] private GameObject mainVC;
 
     private SneakingPlayerCore playerCore;
     private Transform playerTrans;
@@ -70,23 +67,8 @@ public class SneakingPlayerHider : MonoBehaviour
                         beforeHideRotation = playerTrans.rotation;
                         playerTrans.DORotate(hideRotation.eulerAngles, hideTime);
 
-                        defaultVC.SetActive(false);
-
-                        switch (nowHideObjectType)
-                        {
-                            case HideObjectType.STATUE:
-                                statueHideVC.SetActive(true);
-                                nowHideVC = statueHideVC;
-                                break;
-                            case HideObjectType.PAINTING:
-                                paintingHideVC.SetActive(true);
-                                nowHideVC = paintingHideVC;
-                                break;
-                            case HideObjectType.BOX:
-                                boxHideVC.SetActive(true);
-                                nowHideVC = boxHideVC;
-                                break;
-                        }
+                        mainVC.SetActive(false);
+                        nowHideVC.SetActive(true);
 
                         isHide = true;
 
@@ -104,7 +86,7 @@ public class SneakingPlayerHider : MonoBehaviour
                     playerTrans.DOMove(beforeHidePoint, hideTime);
                     playerTrans.DORotate(beforeHideRotation.eulerAngles, hideTime);
 
-                    defaultVC.SetActive(true);
+                    mainVC.SetActive(true);
                     nowHideVC.SetActive(false);
 
                     isHide = false;
@@ -129,6 +111,8 @@ public class SneakingPlayerHider : MonoBehaviour
 
             nowHideObjectType = hideObjectInfo.hideObjectType;
             playerCore.nowHideObjectType = nowHideObjectType;
+
+            nowHideVC = hideObjectInfo.hideVC;
 
             hideObjectInfo.isHideTarget = true;
         }
