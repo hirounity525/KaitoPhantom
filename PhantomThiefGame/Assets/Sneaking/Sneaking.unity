@@ -601,7 +601,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1049600
+    m_Bits: 2098176
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1565,7 +1565,7 @@ GameObject:
   m_Component:
   - component: {fileID: 880086912}
   - component: {fileID: 880086913}
-  m_Layer: 20
+  m_Layer: 21
   m_Name: PlayerUIVC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4185,7 +4185,7 @@ GameObject:
   - component: {fileID: 1555740642}
   - component: {fileID: 1555740641}
   - component: {fileID: 1555740640}
-  m_Layer: 20
+  m_Layer: 21
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
