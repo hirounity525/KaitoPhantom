@@ -20,8 +20,8 @@ public class ScrollActionBladeFromBelowMover : MonoBehaviour
     private float firstPosY;
     private float pushLimitPoint;
 
-    private bool isPush;
-    private bool isPull;
+    public bool isPush;
+    public bool isPull;
 
     // Start is called before the first frame update
     void Start()

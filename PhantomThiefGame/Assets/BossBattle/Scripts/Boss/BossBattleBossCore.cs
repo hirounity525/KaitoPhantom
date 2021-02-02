@@ -31,6 +31,8 @@ public class BossBattleBossCore : MonoBehaviour
 
     private int bossAIStateNum = 6;
 
+    [SerializeField] private BossBattleBossInfo bossInfo;
+
     public enum BossAIState
     {
         WAIT = 0,  //行動を一旦停止
@@ -66,19 +68,24 @@ public class BossBattleBossCore : MonoBehaviour
             {
                 stateWAITTimeTemp = 0;
                 oneActionFinished = false;
+                bossAIState = BossAIState.MOVE;
+                //bossAIState = BossAIState.JUMP;
                 //bossAIState = BossAIState.DRONEATTACK;
-                bossAIState += (int)bossAIState * -1 + rnd.Next(0, bossAIStateNum + 1);
+                //bossAIState += (int)bossAIState * -1 + rnd.Next(0, bossAIStateNum + 1);
             }
         }
 
         else if (bossAIState == BossAIState.MOVE)
         {
             stateMOVETimeTemp += Time.fixedDeltaTime;
+
             if (stateMOVETime <= stateMOVETimeTemp)
             {
                 stateMOVETimeTemp = 0;
                 oneActionFinished = false;
-                bossAIState += (int)bossAIState * -1 + rnd.Next(0, bossAIStateNum + 1);
+                bossInfo.isMove = false;
+                //bossAIState += (int)bossAIState * -1 + rnd.Next(0, bossAIStateNum + 1);
+                bossAIState = BossAIState.WAIT;
             }
         }
 
@@ -89,6 +96,7 @@ public class BossBattleBossCore : MonoBehaviour
             {
                 stateJUMPTimeTemp = 0;
                 oneActionFinished = false;
+                bossInfo.isJump = false;
                 bossAIState += (int)bossAIState * -1 + rnd.Next(0, bossAIStateNum + 1);
             }
         }
@@ -165,6 +173,7 @@ public class BossBattleBossCore : MonoBehaviour
                 {
                     Debug.Log(bossAIState);
                     bossAttacker.BossMove();
+                    bossInfo.isMove = true;
                     oneActionFinished = true;
                 }
                 break;
@@ -173,6 +182,7 @@ public class BossBattleBossCore : MonoBehaviour
                 {
                     Debug.Log(bossAIState);
                     bossAttacker.BossJump();
+                    bossInfo.isJump = true;
                     oneActionFinished = true;
                 }
                 break;
