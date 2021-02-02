@@ -6,8 +6,8 @@ public class DefenseEnemyCreater : MonoBehaviour
 {
     public DefenseEnemyCreateData createData;
     [SerializeField] private GameObject friendObj;
-   [SerializeField] private Transform[] createTrans;
-   [SerializeField]  private ObjectPool straighterPool;
+    [SerializeField] private Transform[] createTrans;
+    [SerializeField] private ObjectPool straighterPool;
     private float createTimer;
     private DefenseEnemyData currentEnemyData;
     private int currentDataNum;
@@ -42,6 +42,12 @@ public class DefenseEnemyCreater : MonoBehaviour
                 getsEnemyData = true;
             }
 
+            if (wabeManager.currentWabeNum == 4)
+            {
+                stopCreate = true;
+
+                //クリア
+            }
 
             if (!stopCreate)
             {
