@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class BossBattleBossBulletCore : MonoBehaviour
 {
-    [SerializeField] private float DisappearBossBulletTime;
     [SerializeField] private float bossBulletSpeed;
+    [SerializeField] private float DisappearBossBulletTime;
+    private float DisappearBossBulletTimeTemp;
     //private BossBattleBossAttacker bossBattleBossAttacker;
     private Rigidbody rb;
     public Vector3 bossBalletVec;
@@ -18,8 +19,6 @@ public class BossBattleBossBulletCore : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //rb = GetComponent<Rigidbody>();
-        StartCoroutine(DisappearBossBullet());
 
     }
 
@@ -29,18 +28,23 @@ public class BossBattleBossBulletCore : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void FixedUpdate()
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        DisappearBossBulletTimeTemp += Time.fixedDeltaTime;
+        if (DisappearBossBulletTime < DisappearBossBulletTimeTemp)
         {
+            DisappearBossBulletTimeTemp = 0;
             gameObject.SetActive(false);
         }
     }
 
-    IEnumerator DisappearBossBullet()
+    private void OnTriggerEnter(Collider other)
     {
-        yield return new WaitForSeconds(DisappearBossBulletTime);
-        gameObject.SetActive(false);
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            DisappearBossBulletTimeTemp = 0;
+            gameObject.SetActive(false);
+        }
     }
 
     public void MoveBossBullet()

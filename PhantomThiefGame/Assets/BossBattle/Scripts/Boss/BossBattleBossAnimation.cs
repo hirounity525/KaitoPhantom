@@ -18,5 +18,8 @@ public class BossBattleBossAnimation : MonoBehaviour
     {
         bossAnimator.SetBool("isMove", bossInfo.isMove);
         bossAnimator.SetBool("isJump", bossInfo.isJump);
+        bossAnimator.SetBool("isSummonGuards", bossInfo.isSummonGuards);
+        bossAnimator.SetBool("isSummonRock", bossInfo.isSummonRock);
+        bossAnimator.SetBool("isGunAttack", bossInfo.isGunAttack);
     }
 }

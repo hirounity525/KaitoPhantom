@@ -33,6 +33,10 @@ public class BossBattleBossCore : MonoBehaviour
 
     [SerializeField] private BossBattleBossInfo bossInfo;
 
+    [SerializeField] private float blowAnimationTime; //この時間がたった後に警備員が呼び出される
+    [SerializeField] private float stompAnimationTime;//この時間がたった後に物が降ってくる
+    [SerializeField] private float gunAttackAnimationTime;//この時間がたった後に銃で攻撃する
+
     public enum BossAIState
     {
         WAIT = 0,  //行動を一旦停止
@@ -59,7 +63,6 @@ public class BossBattleBossCore : MonoBehaviour
 
     private void FixedUpdate()
     {
-        int i = 0;
         //Debug.Log(bossAIState);
         if(bossAIState == BossAIState.WAIT)
         {
@@ -68,9 +71,12 @@ public class BossBattleBossCore : MonoBehaviour
             {
                 stateWAITTimeTemp = 0;
                 oneActionFinished = false;
-                bossAIState = BossAIState.MOVE;
+                //bossAIState = BossAIState.MOVE;
                 //bossAIState = BossAIState.JUMP;
-                //bossAIState = BossAIState.DRONEATTACK;
+                //bossAIState = BossAIState.SUMMONGUARDS;
+                //bossAIState = BossAIState.SUMMONROCK;
+                //bossAIState = BossAIState.GUNATTACK;
+                bossAIState = BossAIState.DRONEATTACK;
                 //bossAIState += (int)bossAIState * -1 + rnd.Next(0, bossAIStateNum + 1);
             }
         }
@@ -97,7 +103,8 @@ public class BossBattleBossCore : MonoBehaviour
                 stateJUMPTimeTemp = 0;
                 oneActionFinished = false;
                 bossInfo.isJump = false;
-                bossAIState += (int)bossAIState * -1 + rnd.Next(0, bossAIStateNum + 1);
+                //bossAIState += (int)bossAIState * -1 + rnd.Next(0, bossAIStateNum + 1);
+                bossAIState = BossAIState.WAIT;
             }
         }
 
@@ -108,7 +115,9 @@ public class BossBattleBossCore : MonoBehaviour
             {
                 stateSUMMONGUARDSTimeTemp = 0;
                 oneActionFinished = false;
-                bossAIState += (int)bossAIState * -1 + rnd.Next(0, bossAIStateNum + 1);
+                //bossInfo.isSummonGuards = false;//笛を吹くアニメーション終了
+                //bossAIState += (int)bossAIState * -1 + rnd.Next(0, bossAIStateNum + 1);
+                bossAIState = BossAIState.WAIT;
             }
         }
 
@@ -119,7 +128,9 @@ public class BossBattleBossCore : MonoBehaviour
             {
                 stateSUMMONROCKTimeTemp = 0;
                 oneActionFinished = false;
-                bossAIState += (int)bossAIState * -1 + rnd.Next(0, bossAIStateNum + 1);
+                //bossInfo.isSummonRock = false;//地団駄を踏むアニメーション終了
+                //bossAIState += (int)bossAIState * -1 + rnd.Next(0, bossAIStateNum + 1);
+                bossAIState = BossAIState.WAIT;
             }
         }
 
@@ -130,7 +141,8 @@ public class BossBattleBossCore : MonoBehaviour
             {
                 stateGUNATTACKTimeTemp = 0;
                 oneActionFinished = false;
-                bossAIState += (int)bossAIState * -1 + rnd.Next(0, bossAIStateNum + 1);
+                //bossAIState += (int)bossAIState * -1 + rnd.Next(0, bossAIStateNum + 1);
+                bossAIState = BossAIState.WAIT;
             }
         }
 
@@ -142,7 +154,8 @@ public class BossBattleBossCore : MonoBehaviour
                 stateDRONEATTACKTimeTemp = 0;
                 oneActionFinished = false;
                 //bossAIState = BossAIState.DRONEATTACK;
-                bossAIState += (int)bossAIState * -1 + rnd.Next(0, bossAIStateNum + 1);
+                //bossAIState += (int)bossAIState * -1 + rnd.Next(0, bossAIStateNum + 1);
+                bossAIState = BossAIState.WAIT;
             }
         }
 
@@ -153,7 +166,8 @@ public class BossBattleBossCore : MonoBehaviour
             {
                 stateBIGBEAMTimeTemp = 0;
                 oneActionFinished = false;
-                bossAIState += (int)bossAIState * -1 + rnd.Next(0, bossAIStateNum + 1);
+                //bossAIState += (int)bossAIState * -1 + rnd.Next(0, bossAIStateNum + 1);
+                bossAIState = BossAIState.WAIT;
             }
         }
 
@@ -189,34 +203,21 @@ public class BossBattleBossCore : MonoBehaviour
             case BossAIState.SUMMONGUARDS:
                 if (!oneActionFinished)
                 {
-                    Debug.Log(bossAIState);
-                    while (i < rnd.Next(3, 5))//3人か4人召喚
-                    {
-                        bossAttacker.SummonGuards();
-                        i++;
-                    }
-                    i = 0;
+                    StartCoroutine(SummonGuardsAction());
                     oneActionFinished = true;
                 }
                 break;
             case BossAIState.SUMMONROCK:
                 if (!oneActionFinished)
                 {
-                    Debug.Log(bossAIState);
-                    while (i < rnd.Next(3, 5))//3個か4個召喚
-                    {
-                        bossAttacker.SummonRock();
-                        i++;
-                    }
-                    i = 0;
+                    StartCoroutine(SummonRocksAction());
                     oneActionFinished = true;
                 }
                 break;
             case BossAIState.GUNATTACK:
                 if (!oneActionFinished)
                 {
-                    Debug.Log(bossAIState);
-                    bossAttacker.GunAttack();
+                    StartCoroutine(GunAttackAction());
                     oneActionFinished = true;
                 }
                 break;
@@ -239,6 +240,46 @@ public class BossBattleBossCore : MonoBehaviour
             
         }
     }
+
+    private IEnumerator SummonGuardsAction()
+    {
+        int i = 0;
+        Debug.Log(bossAIState);
+        bossInfo.isSummonGuards = true; //笛を吹くアニメーション開始
+        yield return new WaitForSeconds(blowAnimationTime);
+        bossInfo.isSummonGuards = false;//笛を吹くアニメーション自体は終了してIdleアニメーションにする
+        while (i < rnd.Next(3, 5))//3個か4個召喚
+        {
+            bossAttacker.SummonGuards();
+            i++;
+        }
+        i = 0;
+    }
+
+    private IEnumerator SummonRocksAction()
+    {
+        int i = 0;
+        Debug.Log(bossAIState);
+        bossInfo.isSummonRock = true; //地団駄を踏むアニメーション開始
+        yield return new WaitForSeconds(stompAnimationTime);
+        bossInfo.isSummonRock = false;//地団駄を踏むアニメーション自体は終了してIdleアニメーションにする
+        while (i < rnd.Next(3, 5))//3個か4個召喚
+        {
+            bossAttacker.SummonRock();
+            i++;
+        }
+        i = 0;
+    }
+
+    private IEnumerator GunAttackAction()
+    {
+        Debug.Log(bossAIState);
+        bossInfo.isGunAttack = true;//銃を撃つアニメーション開始
+        yield return new WaitForSeconds(gunAttackAnimationTime);
+        bossInfo.isGunAttack = false;//銃を撃つアニメーション自体は終了してIdleアニメーションにする
+        bossAttacker.GunAttack();
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {

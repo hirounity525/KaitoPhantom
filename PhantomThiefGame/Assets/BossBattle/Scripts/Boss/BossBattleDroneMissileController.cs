@@ -38,7 +38,7 @@ public class BossBattleDroneMissileController : MonoBehaviour
 
         if (isChase)
         {
-            chaseTimeTemp = Time.fixedDeltaTime;
+            chaseTimeTemp += Time.fixedDeltaTime;
             if(chaseTimeTemp < chaseTime)
             {
                 this.transform.LookAt(playerTrans);

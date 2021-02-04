@@ -6,4 +6,7 @@ public class BossBattleBossInfo : MonoBehaviour
 {
     public bool isMove;
     public bool isJump;
+    public bool isSummonGuards;
+    public bool isSummonRock;
+    public bool isGunAttack;
 }

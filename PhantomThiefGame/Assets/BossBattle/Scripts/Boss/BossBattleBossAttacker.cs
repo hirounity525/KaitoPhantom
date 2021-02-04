@@ -18,6 +18,9 @@ public class BossBattleBossAttacker : MonoBehaviour
     [SerializeField] private ObjectPool guardsPool;
 
     [SerializeField] private ObjectPool rocksPool;
+    [SerializeField] private ObjectPool statuePool;
+    [SerializeField] private ObjectPool paintingPool;
+    [SerializeField] private ObjectPool cardboardboxPool;
 
     [SerializeField] private ObjectPool bossBulletsPool;
     [SerializeField] private Transform bossGunNozzlePosTrans;
@@ -85,7 +88,6 @@ public class BossBattleBossAttacker : MonoBehaviour
 
     public void SummonGuards()
     {
-        //Instantiate(guardPrefab, new Vector3(Random.Range(summonGuardsXposMin,summonGuardsXposMax), summonGuardsYpos, 0), Quaternion.identity);
         GameObject guard = guardsPool.GetObject();
         guard.transform.position = new Vector3(Random.Range(summonGuardsXposMin, summonGuardsXposMax), summonGuardsYpos, 0);
         guard.transform.rotation = Quaternion.Euler(0,90,0);
@@ -93,10 +95,30 @@ public class BossBattleBossAttacker : MonoBehaviour
 
     public void SummonRock()
     {
-        //Instantiate(rockPrefabs, new Vector3(Random.Range(summonRockXposMin, summonRockXposMax), summonRockYpos, 0), Quaternion.identity);
+        int rockPattern = Random.Range(0, 3); //何が落ちてくるかは0～2の3パターンある
+        if(rockPattern == 0)//石像が落ちてくる
+        {
+            GameObject statue = statuePool.GetObject();
+            statue.transform.position = new Vector3(Random.Range(summonRockXposMin, summonRockXposMax), summonRockYpos, 0);
+            statue.transform.rotation = Quaternion.Euler(Random.Range(0, 90), Random.Range(0, 90), Random.Range(0, 90));
+        }
+        else if(rockPattern == 1)//絵画が落ちてくる
+        {
+            GameObject painting = paintingPool.GetObject();
+            painting.transform.position = new Vector3(Random.Range(summonRockXposMin, summonRockXposMax), summonRockYpos, 0);
+            painting.transform.rotation = Quaternion.Euler(Random.Range(0, 90), Random.Range(0, 90), Random.Range(0, 90));
+        }
+        else if(rockPattern == 2)//段ボールが落ちてくる
+        {
+            GameObject cardboardbox = cardboardboxPool.GetObject();
+            cardboardbox.transform.position = new Vector3(Random.Range(summonRockXposMin, summonRockXposMax), summonRockYpos, 0);
+            cardboardbox.transform.rotation = Quaternion.Euler(Random.Range(0, 90), Random.Range(0, 90), Random.Range(0, 90));
+        }
+        /*
         GameObject rock = rocksPool.GetObject();
         rock.transform.position = new Vector3(Random.Range(summonRockXposMin, summonRockXposMax), summonRockYpos, 0);
         rock.transform.rotation = Quaternion.Euler(Random.Range(0,90), Random.Range(0, 90), Random.Range(0, 90));
+        */
     }
 
     public void GunAttack()
@@ -160,7 +182,8 @@ public class BossBattleBossAttacker : MonoBehaviour
 
     public void DroneAttack()
     {
-        dronePattern = Random.Range(0, 3);
+        //dronePattern = Random.Range(0, 3);
+        dronePattern = 1;
         Debug.Log("ドローンパターン："+dronePattern);
 
         if(dronePattern == 0)//弾を前方に飛ばす
@@ -168,14 +191,16 @@ public class BossBattleBossAttacker : MonoBehaviour
             
             GameObject droneBullet = droneBulletPool.GetObject();
             droneBullet.transform.position = bossDroneNozzlePosTrans.position;
-            droneBullet.transform.rotation = bossDroneNozzlePosTrans.rotation;
+            //droneBullet.transform.rotation = bossDroneNozzlePosTrans.rotation;
             if(isBossPosRight)//ボスが画面の右側にいるならば
             {
+                droneBullet.transform.localEulerAngles = new Vector3(0, 0, 270);
                 droneBullet.GetComponent<BossBattleDroneBulletController>().one = -1;
             }
 
             else if (!isBossPosRight)//ボスが画面の左側にいるならば
             {
+                droneBullet.transform.localEulerAngles = new Vector3(0, 0, 90);
                 droneBullet.GetComponent<BossBattleDroneBulletController>().one = 1;
             }
             droneBullet.GetComponent<BossBattleDroneBulletController>().MoveDroneBullet();
@@ -216,14 +241,16 @@ public class BossBattleBossAttacker : MonoBehaviour
 
             GameObject droneBullet = droneBulletPool.GetObject();
             droneBullet.transform.position = bossDroneNozzlePosTrans.position;
-            droneBullet.transform.rotation = bossDroneNozzlePosTrans.rotation;
+            //droneBullet.transform.rotation = bossDroneNozzlePosTrans.rotation;
             if (isBossPosRight)//ボスが画面の右側にいるならば
             {
+                droneBullet.transform.localEulerAngles = new Vector3(0, 0, 270);
                 droneBullet.GetComponent<BossBattleDroneBulletController>().one = -1;
             }
 
             else if (!isBossPosRight)//ボスが画面の左側にいるならば
             {
+                droneBullet.transform.localEulerAngles = new Vector3(0, 0, 90);
                 droneBullet.GetComponent<BossBattleDroneBulletController>().one = 1;
             }
             droneBullet.GetComponent<BossBattleDroneBulletController>().MoveDroneBullet();
@@ -244,8 +271,8 @@ public class BossBattleBossAttacker : MonoBehaviour
 
             isMissileChase = true;
             GameObject droneMissile = droneMissilePool.GetObject();
-            droneMissilePool.transform.position = bossDroneNozzlePosTrans.position;
-            droneMissilePool.transform.rotation = bossDroneNozzlePosTrans.rotation;
+            droneMissile.transform.position = bossDroneNozzlePosTrans.position;
+            droneMissile.transform.rotation = bossDroneNozzlePosTrans.rotation;
             //droneMissile.GetComponent<BossBattleDroneMissileController>().droneMissileVec = droneMissileVec2.normalized;
             droneMissile.GetComponent<BossBattleDroneMissileController>().playerTrans = playerTrans;
             droneMissile.GetComponent<BossBattleDroneMissileController>().isChase = true;

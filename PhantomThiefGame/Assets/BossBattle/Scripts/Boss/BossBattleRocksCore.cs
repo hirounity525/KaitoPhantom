@@ -10,7 +10,7 @@ public class BossBattleRocksCore : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // StartCoroutine(DisappearRock());
+        
     }
 
     // Update is called once per frame
@@ -27,11 +27,5 @@ public class BossBattleRocksCore : MonoBehaviour
             DisappearRockTimeTemp = 0;
             gameObject.SetActive(false);
         }
-    }
-
-    IEnumerator DisappearRock()
-    {
-        yield return new WaitForSeconds(DisappearRockTime);
-        gameObject.SetActive(false);
     }
 }
