@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 7cf94a5c482bd3d49a6651e60aee90b3
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - defaultTex: {fileID: 2800000, guid: 840afac296fc7bf4abc551289a549b35, type: 3}
+  - surpriseTex: {fileID: 2800000, guid: 14b515077215e47408af7cdfc2df6b89, type: 3}
+  - seriousTex: {fileID: 2800000, guid: 875962b378fa5b043be2a0a91490d403, type: 3}
+  - angryTex: {fileID: 2800000, guid: 8296cd7f0ace0af4ebce0f81c04a30da, type: 3}
+  - motivationTex: {fileID: 2800000, guid: d2b12b404da6b7f478bb5305f310b3f5, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Fungus;
+using UnityEngine.SceneManagement;
 
 public class SneakingGameManager : MonoBehaviour
 {
@@ -16,14 +17,22 @@ public class SneakingGameManager : MonoBehaviour
 
     [Header("Main")]
     [SerializeField] private SneakingEnemyManager enemyManager;
+    [SerializeField] private SneakingPlayerManager playerManager;
+    [SerializeField] private SneakingUIManager uIManager;
+    [SerializeField] private float lifeDeleteWaitTime;
+    [SerializeField] private float fadeInTime;
+
+
+    private SneakingCameraChanger cameraChanger;
 
     private bool isFirstStatePlay;
     private bool isStartTimeline;
 
-    // Start is called before the first frame update
-    void Start()
+    private bool isFirstDiscoveryState;
+
+    private void Awake()
     {
-        
+        cameraChanger = GetComponent<SneakingCameraChanger>();
     }
 
     // Update is called once per frame
@@ -64,17 +73,50 @@ public class SneakingGameManager : MonoBehaviour
 
                 break;
             case GameState.MAIN:
-                //インプット使えるようにする
-                inputProvider.canInput = true;
 
-                //ポーズボタンを押したら、ポーズに移動する
+                if (!isFirstStatePlay)
+                {
+                    inputProvider.canInput = true;
 
-                //プレイヤーが見つかったら、ゲームオーバーに移動する
+                    isFirstStatePlay = true;
+                }
+
                 if (enemyManager.isPlayerDiscovery)
                 {
-                    gameState = GameState.GAMEOVER;
+                    if (!isFirstDiscoveryState)
+                    {
+                        inputProvider.canInput = false;
+
+                        playerManager.AddDamage();
+                        cameraChanger.ChangeMainCamera(enemyManager.discoverdLihgtVC);
+
+                        uIManager.StartLifeDelete(lifeDeleteWaitTime);
+
+                        isFirstDiscoveryState = true;
+                    }
+
+                    if (uIManager.isDeleteLife)
+                    {
+                        if (playerManager.NowHP() > 0)
+                        {
+                            cameraChanger.ChangeMainCamera(enemyManager.discoverdLihgtVC);
+                            uIManager.FadeOutPanel(fadeInTime);
+
+                            playerManager.ResetPlayer();
+                            enemyManager.ResetEnemies();
+                        }
+                        else
+                        {
+                            gameState = GameState.GAMEOVER;
+                        }
+
+                        isFirstDiscoveryState = false;
+                        enemyManager.isPlayerDiscovery = false;
+                        uIManager.isDeleteLife = false;
+
+                        isFirstStatePlay = false;
+                    }
                 }
-                //プレイヤーがゴールしたら、クリアに移動する
 
                 break;
             case GameState.PAUSE:
@@ -83,6 +125,9 @@ public class SneakingGameManager : MonoBehaviour
                 break;
             case GameState.GAMEOVER:
                 inputProvider.canInput = false;
+
+                SceneManager.LoadScene("GameOver");
+
                 break;
             case GameState.CLEAR:
                 inputProvider.canInput = false;

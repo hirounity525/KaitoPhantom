@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class SneakingEnemyDiscover : MonoBehaviour
 {
+    [SerializeField] private Light flashLight;
     [SerializeField] private float turnTime;
 
     private SneakingEnemyCore enemyCore;
@@ -17,6 +18,14 @@ public class SneakingEnemyDiscover : MonoBehaviour
         enemyTrans = GetComponent<Transform>();
     }
 
+    private void Update()
+    {
+        if (!enemyCore.isDiscovery)
+        {
+            flashLight.color = Color.white;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (!enemyCore.isDiscovery)
@@ -26,6 +35,7 @@ public class SneakingEnemyDiscover : MonoBehaviour
             if (collisionObj.tag == "Player")
             {
                 enemyCore.isDiscovery = true;
+                flashLight.color = Color.red;
 
                 Vector3 lookDir = collisionObj.transform.position - enemyTrans.position;
                 Quaternion lookQuaternion = Quaternion.LookRotation(lookDir);
@@ -44,6 +54,7 @@ public class SneakingEnemyDiscover : MonoBehaviour
             if (collisionObj.tag == "Player")
             {
                 enemyCore.isDiscovery = true;
+                flashLight.color = Color.red;
 
                 Vector3 lookDir = collisionObj.transform.position - enemyTrans.position;
                 Quaternion lookQuaternion = Quaternion.LookRotation(lookDir);

@@ -6,10 +6,9 @@ using DG.Tweening;
 public class SneakingPlayerHider : MonoBehaviour
 {
     [SerializeField] private SneakingInputProvider inputProvider;
+    [SerializeField] private SneakingCameraChanger cameraChanger;
 
     [SerializeField] private float hideTime;
-
-    [SerializeField] private GameObject mainVC;
 
     private SneakingPlayerCore playerCore;
     private Transform playerTrans;
@@ -67,8 +66,7 @@ public class SneakingPlayerHider : MonoBehaviour
                         beforeHideRotation = playerTrans.rotation;
                         playerTrans.DORotate(hideRotation.eulerAngles, hideTime);
 
-                        mainVC.SetActive(false);
-                        nowHideVC.SetActive(true);
+                        cameraChanger.ChangeMainCamera(nowHideVC);
 
                         isHide = true;
 
@@ -86,8 +84,7 @@ public class SneakingPlayerHider : MonoBehaviour
                     playerTrans.DOMove(beforeHidePoint, hideTime);
                     playerTrans.DORotate(beforeHideRotation.eulerAngles, hideTime);
 
-                    mainVC.SetActive(true);
-                    nowHideVC.SetActive(false);
+                    cameraChanger.ChangeMainCamera(nowHideVC);
 
                     isHide = false;
 
