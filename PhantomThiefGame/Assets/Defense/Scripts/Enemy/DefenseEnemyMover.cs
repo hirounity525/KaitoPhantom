@@ -40,7 +40,7 @@ public class DefenseEnemyMover : MonoBehaviour
         }
         else
         {
-            rb.velocity = new Vector3(0, 0, -enemySpeed * 2);
+            rb.velocity = new Vector3(0, 0, -enemySpeed * 3);
         }
     }
 

@@ -7052,6 +7052,8 @@ GameObject:
   - component: {fileID: 996821911}
   - component: {fileID: 996821910}
   - component: {fileID: 996821909}
+  - component: {fileID: 996821916}
+  - component: {fileID: 996821917}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -7200,6 +7202,32 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 996821907}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &996821916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996821907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1d60bedfb63cdc40ac1081826e68294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1561114909}
+--- !u!114 &996821917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996821907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a63ec0d6c15722459f689b2d2a4e9f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDamage: 0
 --- !u!1 &1017316918
 GameObject:
   m_ObjectHideFlags: 0
@@ -10307,6 +10335,11 @@ Transform:
   m_Father: {fileID: 791428954}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1561114909 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: a981b4e0edba01742a1e26c6c146536a, type: 3}
+  m_PrefabInstance: {fileID: 829896484}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1563112672
 PrefabInstance:
   m_ObjectHideFlags: 0

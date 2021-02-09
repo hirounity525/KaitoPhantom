@@ -57,27 +57,7 @@ public class DefenseEnemyCreater : MonoBehaviour
                 }
 
 
-                switch (currentEnemyData.createPos)
-                {
-                    case 0:
-                        enemyCore.enemyCreatePos = true;
-                        break;
-                    case 1:
-                        enemyCore.enemyCreatePos1 = true;
-                        break;
-                    case 2:
-                        enemyCore.enemyCreatePos2 = true;
-                        break;
-                    case 3:
-                        enemyCore.enemyCreatePos3 = true;
-                        break;
-                    case 4:
-                        enemyCore.enemyCreatePos4 = true;
-                        break;
-                    case 5:
-                        enemyCore.enemyCreatePos5 = true;
-                        break;
-                }
+
 
 
                 if (!stopCreate)
@@ -90,7 +70,7 @@ public class DefenseEnemyCreater : MonoBehaviour
 
                     if (createTimer >= currentEnemyData.createTime)
                     {
-                        enemyCore.isCreate = true;
+
 
                         switch (currentEnemyData.enemyType)
                         {
@@ -107,13 +87,30 @@ public class DefenseEnemyCreater : MonoBehaviour
 
                         createEnemyObj.transform.position = createTrans[currentEnemyData.createPos].position;
 
+                        switch (currentEnemyData.createPos)
+                        {
+                            case 0:
+                                enemyCore.enemyCreatePos = true;
+                                break;
+                            case 1:
+                                enemyCore.enemyCreatePos1 = true;
+                                break;
+                            case 2:
+                                enemyCore.enemyCreatePos2 = true;
+                                break;
+                            case 3:
+                                enemyCore.enemyCreatePos3 = true;
+                                break;
+                            case 4:
+                                enemyCore.enemyCreatePos4 = true;
+                                break;
+                            case 5:
+                                enemyCore.enemyCreatePos5 = true;
+                                break;
+                        }
 
-                        enemyCore.enemyCreatePos = false;
-                        enemyCore.enemyCreatePos1 = false;
-                        enemyCore.enemyCreatePos2 = false;
-                        enemyCore.enemyCreatePos3 = false;
-                        enemyCore.enemyCreatePos4 = false;
-                        enemyCore.enemyCreatePos5 = false;
+                        StartCoroutine(IsCreate());
+
                         currentDataNum++;
 
                     }
@@ -134,6 +131,13 @@ public class DefenseEnemyCreater : MonoBehaviour
         enemyCore.isCreate = true;
 
         yield return new WaitForSeconds(waitAnimation);
+
+        enemyCore.enemyCreatePos = false;
+        enemyCore.enemyCreatePos1 = false;
+        enemyCore.enemyCreatePos2 = false;
+        enemyCore.enemyCreatePos3 = false;
+        enemyCore.enemyCreatePos4 = false;
+        enemyCore.enemyCreatePos5 = false;
 
         enemyCore.isCreate = false;
 
