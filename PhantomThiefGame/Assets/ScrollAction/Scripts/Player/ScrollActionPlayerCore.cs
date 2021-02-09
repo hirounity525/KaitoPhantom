@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class ScrollActionPlayerCore : MonoBehaviour
 {
-    [SerializeField] private int life;
+    public int life;
+    public bool isInvicible;
     [SerializeField] private float invincibleTime;
     [SerializeField] private ScrollActionLaserAttacker scrollActionLaserAttacker;
     [SerializeField] private ScrollActionPlayerMover scrollActionPlayerMover;
-    //private bool isInvicible;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +32,7 @@ public class ScrollActionPlayerCore : MonoBehaviour
     {
         if(collision.gameObject.layer == LayerMask.NameToLayer("Hole"))
         {
+            isInvicible = true;
             life = 0;
             Debug.Log(life);
         }
@@ -52,11 +53,11 @@ public class ScrollActionPlayerCore : MonoBehaviour
 
     IEnumerator Invincible()
     {
-        //isInvicible = true;
+        isInvicible = true;
         scrollActionPlayerMover.KnockBack();
         gameObject.layer = LayerMask.NameToLayer("Invincible");
         yield return new WaitForSeconds(invincibleTime);
         gameObject.layer = LayerMask.NameToLayer("Player");
-        //isInvicible = false;
+        isInvicible = false;
     }
 }

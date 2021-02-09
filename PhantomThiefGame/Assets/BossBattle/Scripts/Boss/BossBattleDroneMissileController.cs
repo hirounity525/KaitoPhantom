@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossBattleDroneMissileController : MonoBehaviour
 {
     public Transform playerTrans;
-    //public Vector3 droneMissileVec;
+    public Vector3 droneMissileVec;
     public bool isChase;
     [SerializeField] private float chaseTime;
     [SerializeField] private float missileSpeed;
@@ -38,7 +38,7 @@ public class BossBattleDroneMissileController : MonoBehaviour
 
         if (isChase)
         {
-            chaseTimeTemp = Time.fixedDeltaTime;
+            chaseTimeTemp += Time.fixedDeltaTime;
             if(chaseTimeTemp < chaseTime)
             {
                 this.transform.LookAt(playerTrans);
