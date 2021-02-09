@@ -39,10 +39,13 @@ public class RunPlayerMover : MonoBehaviour
 
                 canSliding = false;
                 playerCore.firstJump = true;
+                playerCore.isGround = false;
 
                 if (jumpCount >= 2)
                 {
                     canJump = false;
+
+                    playerCore.firstJump = false;
                     playerCore.secondJump = true;
                 }
                
@@ -69,6 +72,7 @@ public class RunPlayerMover : MonoBehaviour
             canJump = true;
             playerCore.firstJump = false;
             playerCore.secondJump = false;
+            playerCore.isGround = true;
 
             jumpCount = 0;
         }
@@ -80,7 +84,7 @@ public class RunPlayerMover : MonoBehaviour
 
         canJump = false;
 
-        playerTrans.rotation = Quaternion.Euler(0, 0, rotationAngle);
+        playerTrans.rotation = Quaternion.Euler(0, rotationAngle, 0);
 
         yield return new WaitForSeconds(slidingTime);
 

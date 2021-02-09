@@ -1194,6 +1194,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd02c799f3f5c4c83b2fc26c105a3821, type: 3}
+--- !u!95 &529315092 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: a981b4e0edba01742a1e26c6c146536a, type: 3}
+  m_PrefabInstance: {fileID: 1067116592}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &538435237 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9195918419457990205, guid: fd02c799f3f5c4c83b2fc26c105a3821, type: 3}
@@ -1443,7 +1448,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: cb42b442869c160419822d69148e3c1e, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -2950,6 +2955,9 @@ GameObject:
   - component: {fileID: 1343117680}
   - component: {fileID: 1343117679}
   - component: {fileID: 1343117681}
+  - component: {fileID: 1343117682}
+  - component: {fileID: 1343117676}
+  - component: {fileID: 1343117683}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2971,6 +2979,19 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1343117676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343117674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a922a8daf0f00a4e989fd54a7100c20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 529315092}
 --- !u!33 &1343117677
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3008,7 +3029,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpPower: 7
   inputProvider: {fileID: 1797523079}
-  rotationAngle: 75
+  rotationAngle: -63.7
   slidingTime: 1.5
 --- !u!54 &1343117680
 Rigidbody:
@@ -3041,6 +3062,41 @@ MonoBehaviour:
   playerMaxHP: 3
   unavailableColliderTime: 3
   playerNowHP: 0
+--- !u!114 &1343117682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343117674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e202421bf0b44c04cbbe9e1e0bbd454c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstJump: 0
+  secondJump: 0
+  isSliding: 0
+  isGround: 1
+--- !u!95 &1343117683
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343117674}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fdc0c12afa9a91a4ead1f5f979ccecb5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1379815178
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3928,7 +3984,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: cb42b442869c160419822d69148e3c1e, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -4384,7 +4440,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: cb42b442869c160419822d69148e3c1e, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
