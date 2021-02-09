@@ -11,14 +11,15 @@ public class RunPlayerMover : MonoBehaviour
 
     private Rigidbody rb;
     private Transform playerTrans;
+    private RunPlayerCore playerCore;
 
-    private bool isSliding = false;
-    private bool isJump = true;
+    private bool canJump = true;
     private bool canSliding = true;
     private int jumpCount;
     // Start is called before the first frame update
     void Start()
     {
+        playerCore = GetComponent<RunPlayerCore>();
         rb = GetComponent<Rigidbody>();
         playerTrans = GetComponent<Transform>();
     }
@@ -27,24 +28,31 @@ public class RunPlayerMover : MonoBehaviour
     void Update()
     {
 
-        if (isJump)
+        if (canJump)
         {
             if (inputProvider.isJumpButtunDown)
             {
                 rb.velocity = new Vector3(0, 0, 0);
                 rb.AddForce(new Vector3(0, jumpPower, 0), ForceMode.Impulse);
+
                 jumpCount++;
+
                 canSliding = false;
+                playerCore.firstJump = true;
+                playerCore.isGround = false;
 
                 if (jumpCount >= 2)
                 {
-                    isJump = false;
+                    canJump = false;
+
+                    playerCore.firstJump = false;
+                    playerCore.secondJump = true;
                 }
                
             }
         }
 
-        if ((inputProvider.isSlidingButtunDown > 0 && canSliding)&&!isSliding)
+        if ((inputProvider.isSlidingButtunDown > 0 && canSliding)&&!playerCore.isSliding)
         {
 
 
@@ -61,26 +69,30 @@ public class RunPlayerMover : MonoBehaviour
         if (groundObj.tag == "Ground")
         {
             canSliding = true;
-            isJump = true;
+            canJump = true;
+            playerCore.firstJump = false;
+            playerCore.secondJump = false;
+            playerCore.isGround = true;
+
             jumpCount = 0;
         }
     }
 
     private IEnumerator StartSliding()
     {
-        isSliding = true;
+        playerCore.isSliding = true;
 
-        isJump = false;
+        canJump = false;
 
-        playerTrans.rotation = Quaternion.Euler(0, 0, rotationAngle);
+        playerTrans.rotation = Quaternion.Euler(0, rotationAngle, 0);
 
         yield return new WaitForSeconds(slidingTime);
 
         playerTrans.rotation = Quaternion.Euler(0, -35, 0);
 
-        isJump = true;
+        canJump = true;
 
-        isSliding = false;
+        playerCore.isSliding = false;
     }
 
 }

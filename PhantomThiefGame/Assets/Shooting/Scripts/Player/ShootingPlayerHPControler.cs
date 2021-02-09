@@ -6,13 +6,17 @@ public class ShootingPlayerHPControler : MonoBehaviour
 {
     [SerializeField] public int playerMaxHitPoint;
     [SerializeField] private float unavailableColliderTime;
+
     public int playerNowHitPoint;
 
+    private ShootingPlayerCore playerCore;
 
     // Start is called before the first frame update
     void Start()
     {
         playerNowHitPoint=playerMaxHitPoint;
+
+        playerCore = GetComponent<ShootingPlayerCore>();
     }
 
 
@@ -36,7 +40,11 @@ public class ShootingPlayerHPControler : MonoBehaviour
     {
         this.GetComponent<Collider>().enabled = false;
 
+        playerCore.isDamage = true;
+
         yield return new WaitForSeconds(unavailableColliderTime);
+
+        playerCore.isDamage = false;
 
         this.GetComponent<Collider>().enabled = true;
     }
