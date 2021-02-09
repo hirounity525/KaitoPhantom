@@ -10,17 +10,6 @@ public class SaveDataManager : MonoBehaviour
     [SerializeField] private int saveDataNum;
     [SerializeField] private SaveData saveData;
 
-    public bool isSave;
-
-    private void Update()
-    {
-        if (isSave)
-        {
-            Save(saveDataNum, saveData);
-            isSave = false;
-        }
-    }
-
     public void AllLoad()
     {
         foreach(SaveDataController saveDataController in saveDataControllers)
@@ -43,6 +32,8 @@ public class SaveDataManager : MonoBehaviour
 
         newSaveData.clearStageNum = 0;
         newSaveData.playerName = playerName;
+
+        CommonData.Instance.selectSaveData = newSaveData;
 
         Save(saveDataNum, newSaveData);
     }

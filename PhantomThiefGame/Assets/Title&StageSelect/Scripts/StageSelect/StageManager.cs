@@ -8,9 +8,30 @@ public class StageManager : MonoBehaviour
 
     public void SetActiveStages(int clearStageNum)
     {
-        for(int i = 0; i < clearStageNum; i++)
+        for (int i = 0; i < CommonData.Instance.maxStageNum; i++)
         {
-            stageObjs[i].SetActive(true);
+            if(i == CommonData.Instance.maxStageNum)
+            {
+                return;
+            }
+
+            if(i < clearStageNum + 1)
+            {
+                stageObjs[i].SetActive(true);
+
+                if (i == clearStageNum)
+                {
+                    stageObjs[i].GetComponent<SpriteRenderer>().color = Color.black;
+                }
+                else
+                {
+                    stageObjs[i].GetComponent<SpriteRenderer>().color = Color.white;
+                }
+            }
+            else
+            {
+                stageObjs[i].SetActive(false);
+            }
         }
     }
 

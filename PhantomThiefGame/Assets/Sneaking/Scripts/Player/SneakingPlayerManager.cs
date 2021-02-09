@@ -31,4 +31,9 @@ public class SneakingPlayerManager : MonoBehaviour
 
         playerCore.isDiscovered = false;
     }
+
+    public bool IsClear()
+    {
+        return playerCore.isClear;
+    }
 }

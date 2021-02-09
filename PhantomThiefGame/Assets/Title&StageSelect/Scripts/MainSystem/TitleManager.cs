@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum TitleState
 {
+    OPENING,
     TITLE,
     CONFIG,
     EXIT,
@@ -24,6 +25,11 @@ public class TitleManager : MonoBehaviour
     [SerializeField] private TitleInputProvider titleInput;
     [SerializeField] private TitleEventSystemController eventSystemController;
     [SerializeField] private TimelineController timelineController;
+    [SerializeField] private SoundManager soundManager;
+    [SerializeField] private SEPlayer sEPlayer;
+
+    [Header("Opening")]
+    [SerializeField] private float openingSkipTime;
 
     [Header("Title")]
     [SerializeField] private TitleMenuSelecter titleMenuSelecter;
@@ -50,26 +56,26 @@ public class TitleManager : MonoBehaviour
     [Header("StageInfo")]
     [SerializeField] private TimelineController stageStartTimeline;
 
+    private TitleStateBehavior stateBehavior;
+
     private bool isStateFirstPlay;
     private bool isTransitionFirstPlay;
     private bool isStateBack;
 
-    private int selectedStageNum;
-
     private bool startsTimeline;
 
-    private bool startsStageStartTimeline;
+    private void Awake()
+    {
+        stateBehavior = GetComponent<TitleStateBehavior>();
+    }
 
     private void Start()
     {
-        if (DebugModeInfo.Instance.isBackTitle)
+        if (CommonData.Instance.isClear)
         {
-            titleState = TitleState.SAVEDATASELECT;
-            stageManager.SetAllActiveStages();
-            return;
+            titleState = TitleState.STAGESELECT;
+            stateBehavior.ChangeStateBehavior(titleState);
         }
-
-        stageManager.SetActiveStages(clearStageNum);
     }
 
     // Update is called once per frame
@@ -77,11 +83,27 @@ public class TitleManager : MonoBehaviour
     {
         switch (titleState)
         {
+            case TitleState.OPENING:
+
+                StartStateTransition("Opening", TitleState.TITLE);
+
+                if (titleInput.isSelectButtonDown)
+                {
+                    if(timelineController.PlayTime() < openingSkipTime)
+                    {
+                        timelineController.Skip(openingSkipTime);
+                    }
+                }
+
+                break;
+
             case TitleState.TITLE:
 
                 if (!isStateFirstPlay)
                 {
+                    soundManager.Play("Title");
                     titleMenuSelecter.isSelect = false;
+
                     isStateFirstPlay = true;
                 }
 
@@ -90,12 +112,6 @@ public class TitleManager : MonoBehaviour
                     switch (titleMenuSelecter.nowSelectedTitleMenu)
                     {
                         case TitleMenu.START:
-
-                            if (DebugModeInfo.Instance.isTtoSSMode)
-                            {
-                                StartStateTransition("TitleToStageSelect", TitleState.STAGESELECT);
-                                return;
-                            }
 
                             if (!isTransitionFirstPlay)
                             {
@@ -160,16 +176,18 @@ public class TitleManager : MonoBehaviour
                     return;
                 }
 
-                if (titleInput.isCancelButtonDown)
+                if (!startsTimeline && titleInput.isCancelButtonDown)
                 {
+                    sEPlayer.Play("Cancel");
                     isStateBack = true;
+                    return;
                 }
 
                 if (saveDataSelecter.isSelect)
                 {
                     eventSystemController.DisableEventSystem();
 
-                    if (saveDataSelecter.isSelectNewData)
+                    if (CommonData.Instance.isSelectNewData)
                     {
                         if (!isTransitionFirstPlay)
                         {
@@ -181,7 +199,13 @@ public class TitleManager : MonoBehaviour
                     }
                     else
                     {
+                        if (!isTransitionFirstPlay)
+                        {
+                            stageManager.SetActiveStages(CommonData.Instance.selectSaveData.clearStageNum);
+                            isTransitionFirstPlay = true;
+                        }
 
+                        StartStateTransition("SaveDataToStageSelect", TitleState.STAGESELECT);
                     }
                 }
 
@@ -203,10 +227,12 @@ public class TitleManager : MonoBehaviour
                     return;
                 }
 
-                if (titleInput.isCancelButtonDown)
+                if (!startsTimeline && titleInput.isCancelButtonDown)
                 {
+                    sEPlayer.Play("Cancel");
                     eventSystemController.DisableEventSystem();
                     isStateBack = true;
+                    return;
                 }
 
                 if (nameSetter.isDecide)
@@ -236,11 +262,13 @@ public class TitleManager : MonoBehaviour
                     {
                         if (!isTransitionFirstPlay)
                         {
-                            saveDataManager.NewSave(saveDataSelecter.selectSaveDataNum, nameSetter.playerName);
+                            saveDataManager.NewSave(CommonData.Instance.selectSaveDataNum, nameSetter.playerName);
                             isTransitionFirstPlay = true;
                         }
 
+                        eventSystemController.DisableEventSystem();
 
+                        StartStateTransition("CheckToStageSelect", TitleState.STAGESELECT);
                     }
                     else
                     {
@@ -253,16 +281,45 @@ public class TitleManager : MonoBehaviour
 
                 if (!isStateFirstPlay)
                 {
+                    if (CommonData.Instance.isSelectNewData || CommonData.Instance.isClear)
+                    {
+                        if (!startsTimeline)
+                        {
+                            if (!CommonData.Instance.isSelectNewData)
+                            {
+                                stageManager.SetActiveStages(CommonData.Instance.selectSaveData.clearStageNum);
+                            }
+
+                            stageDrawer.DrawStage(CommonData.Instance.selectSaveData.clearStageNum);
+                            startsTimeline = true;
+                        }
+                        else
+                        {
+                            if (stageDrawer.FinishDraw())
+                            {
+                                CommonData.Instance.isSelectNewData = false;
+                                CommonData.Instance.isClear = false;
+
+                                saveDataManager.Save(CommonData.Instance.selectSaveDataNum, CommonData.Instance.selectSaveData);
+
+                                soundManager.Play("Title");
+
+                                startsTimeline = false;
+                            }
+                        }
+                        return;
+                    }
+
+                    stageSelecter.SetFirstStageCore();
                     stageSelecter.canSelect = true;
                     stageSelecter.isSelect = false;
 
                     isStateFirstPlay = true;
                 }
 
-                //修正対象
                 if (isStateBack)
                 {
-                    StartStateTransition("StageSelectToTitle", TitleState.TITLE);
+                    StartStateTransition("StageSelectToSaveData", TitleState.SAVEDATASELECT);
                     return;
                 }
 
@@ -270,24 +327,22 @@ public class TitleManager : MonoBehaviour
                 {
                     if (titleInput.isCancelButtonDown)
                     {
+                        sEPlayer.Play("Cancel");
+                        saveDataManager.AllLoad();
                         isStateBack = true;
                         return;
                     }
                 }
-                //
 
                 if (stageSelecter.isSelect)
                 {
-                    selectedStageNum = stageSelecter.nowViewStageCore.stageNum;
-                    //stageDataReader.ChangeStageInfo(selectedStageNum);
-                    //トランジション用のenum作るのあり
+                    stageDataReader.ChangeStageInfo(stageSelecter.selectedStageNum);
+
                     StartStateTransition("StageSelectToStageInfo", TitleState.STAGEINFO);
                 }
 
                 break;
             case TitleState.STAGEINFO:
-
-                //修正対象
 
                 if (isStateBack)
                 {
@@ -295,29 +350,30 @@ public class TitleManager : MonoBehaviour
                     return;
                 }
 
-                if (!startsStageStartTimeline)
+                if (!startsTimeline)
                 {
                     if (titleInput.isCancelButtonDown)
                     {
+                        sEPlayer.Play("Cancel");
                         isStateBack = true;
                         return;
                     }
 
                     if (titleInput.isSelectButtonDown)
                     {
+                        sEPlayer.Play("Select");
                         stageStartTimeline.Play();
-                        startsStageStartTimeline = true;
+                        startsTimeline = true;
                     }
                 }
                 else
                 {
                     if (stageStartTimeline.isFinish)
                     {
-                        stageDataReader.LoadStageScene(selectedStageNum);
+                        startsTimeline = false;
+                        stageDataReader.LoadStageScene(stageSelecter.selectedStageNum);
                     }
                 }
-                //
-
 
                 break;
         }

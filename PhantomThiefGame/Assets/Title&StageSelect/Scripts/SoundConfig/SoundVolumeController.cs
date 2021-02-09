@@ -11,6 +11,7 @@ public class SoundVolumeController : MonoBehaviour
     public bool isFinish;
 
     [SerializeField] private TitleInputProvider titleInput;
+    [SerializeField] private SEPlayer sEPlayer;
 
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private string volumeName;
@@ -38,6 +39,8 @@ public class SoundVolumeController : MonoBehaviour
 
             if (titleInput.isMoveButtonDown)
             {
+                sEPlayer.Play("ChokeSelect");
+
                 switch (titleInput.moveArrow)
                 {
                     case InputArrow.RIGHT:
@@ -55,6 +58,8 @@ public class SoundVolumeController : MonoBehaviour
 
             if(titleInput.isSelectButtonDown || titleInput.isCancelButtonDown)
             {
+                sEPlayer.Play("ChokeSelect");
+
                 canConfig = false;
                 firstSelected = true;
                 isFinish = true;

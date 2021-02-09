@@ -14,6 +14,8 @@ public class SoundManager : MonoBehaviour
 
     private AudioSource audioSource;
 
+    private AudioClip nowPlayAudioClip;
+
     private Tweener fadeTweener;
 
     private void Awake()
@@ -26,10 +28,11 @@ public class SoundManager : MonoBehaviour
     {
         AudioClip audioClip = audioDatas.FirstOrDefault(clip => clip.audioName == audioName).SEClip;
 
-        if (audioClip != null)
+        if (audioClip != null && nowPlayAudioClip != audioClip)
         {
             audioSource.clip = audioClip;
             audioSource.Play();
+            nowPlayAudioClip = audioClip;
         }
     }
 
@@ -48,6 +51,17 @@ public class SoundManager : MonoBehaviour
             audioSource.Play();
             fadeTweener = audioSource.DOFade(maxVolume, fadeTime).SetEase(Ease.InQuad);
         }
+    }
+
+    public void StopFade(string audioName)
+    {
+        fadeTweener.Kill();
+
+        fadeTweener = audioSource.DOFade(0, fadeTime).SetEase(Ease.InQuad).OnComplete(() =>
+        {
+            audioSource.Stop();
+            nowPlayAudioClip = null;
+        });
     }
 }
 

@@ -14,10 +14,7 @@ public class PlayerNameSetter : MonoBehaviour
 
     private void Update()
     {
-        if (titleInput.isCancelButtonDown)
-        {
-            RemoveOneCharacter();
-        }
+
     }
 
     public void SetSyllabary(string syllabary)

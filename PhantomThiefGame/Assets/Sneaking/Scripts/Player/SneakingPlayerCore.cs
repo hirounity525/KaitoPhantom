@@ -15,6 +15,7 @@ public class SneakingPlayerCore : MonoBehaviour
     public HideObjectType nowHideObjectType;
     public bool isDiscovered;
     public Transform checkPoint;
+    public bool isClear;
 
     private void Awake()
     {

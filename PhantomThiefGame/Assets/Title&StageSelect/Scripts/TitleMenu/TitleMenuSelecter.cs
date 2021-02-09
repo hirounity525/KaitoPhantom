@@ -18,6 +18,7 @@ public class TitleMenuSelecter : MonoBehaviour
     [SerializeField] private TitleMenu firstViewTitleMenu;
 
     [SerializeField] private TitleInputProvider titleInput;
+    [SerializeField] private SEPlayer sEPlayer;
 
     private void Start()
     {
@@ -30,6 +31,8 @@ public class TitleMenuSelecter : MonoBehaviour
         {
             if (titleInput.isMoveButtonDown)
             {
+                sEPlayer.Play("MenuMove");
+
                 switch (nowSelectedTitleMenu)
                 {
                     case TitleMenu.START:
@@ -87,6 +90,7 @@ public class TitleMenuSelecter : MonoBehaviour
 
             if (titleInput.isSelectButtonDown)
             {
+                sEPlayer.Play("Select");
                 isSelect = true;
             }
         }

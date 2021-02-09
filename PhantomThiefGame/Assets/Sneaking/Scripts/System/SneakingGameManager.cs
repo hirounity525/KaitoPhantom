@@ -22,6 +22,9 @@ public class SneakingGameManager : MonoBehaviour
     [SerializeField] private float lifeDeleteWaitTime;
     [SerializeField] private float fadeInTime;
 
+    [Header("Clear")]
+    [SerializeField] private TimelineController clearTimeline;
+
 
     private SneakingCameraChanger cameraChanger;
 
@@ -118,6 +121,11 @@ public class SneakingGameManager : MonoBehaviour
                     }
                 }
 
+                if (playerManager.IsClear())
+                {
+                    gameState = GameState.CLEAR;
+                }
+
                 break;
             case GameState.PAUSE:
                 inputProvider.canInput = true;
@@ -131,6 +139,23 @@ public class SneakingGameManager : MonoBehaviour
                 break;
             case GameState.CLEAR:
                 inputProvider.canInput = false;
+
+                if (!isStartTimeline)
+                {
+                    clearTimeline.Play();
+                    isStartTimeline = true;
+                }
+                else
+                {
+                    if (clearTimeline.isFinish)
+                    {
+                        isFirstStatePlay = false;
+                        isStartTimeline = false;
+
+                        //gameState = GameState.MAIN;
+                    }
+                }
+
                 break;
         }
     }
