@@ -5,17 +5,19 @@ using UnityEngine;
 public class StageSelecter : MonoBehaviour
 {
     public StageCore nowViewStageCore;
+    public int selectedStageNum;
     public bool canSelect;
     public bool isSelect;
 
     [SerializeField] private TitleInputProvider titleInput;
+    [SerializeField] private SEPlayer sEPlayer;
 
     [SerializeField] private StageCore firstViewStageCore;
 
     // Start is called before the first frame update
     void Start()
     {
-        nowViewStageCore = firstViewStageCore;
+        SetFirstStageCore();
     }
 
     private void Update()
@@ -26,7 +28,7 @@ public class StageSelecter : MonoBehaviour
         }
     }
 
-    public void SelectStage()
+    private void SelectStage()
     {
         if (!nowViewStageCore.isViewed)
         {
@@ -35,6 +37,8 @@ public class StageSelecter : MonoBehaviour
 
         if (titleInput.isMoveButtonDown)
         {
+            sEPlayer.Play("MenuMove");
+
             StageCore nextStageCore = null;
 
             switch (titleInput.moveArrow)
@@ -62,9 +66,20 @@ public class StageSelecter : MonoBehaviour
 
         if (titleInput.isSelectButtonDown)
         {
+            sEPlayer.Play("Select");
+
             nowViewStageCore.isViewed = false;
             canSelect = false;
+
+            selectedStageNum = nowViewStageCore.stageNum;
+            CommonData.Instance.selectedStageNum = selectedStageNum;
+
             isSelect = true;
         }
+    }
+
+    public void SetFirstStageCore()
+    {
+        nowViewStageCore = firstViewStageCore;
     }
 }

@@ -29,6 +29,9 @@ public class SneakingEnemyMover : MonoBehaviour
     private Transform enemyTrans;
     private Rigidbody rb;
 
+    private Vector3 firstPos;
+    private Quaternion firstRot;
+
     private SneakingEnemyMoveData nowMoveData;
     private int nowMoveDataNum;
 
@@ -50,11 +53,21 @@ public class SneakingEnemyMover : MonoBehaviour
         enemyCore = GetComponent<SneakingEnemyCore>();
         enemyTrans = GetComponent<Transform>();
         rb = GetComponent<Rigidbody>();
+
+        firstPos = enemyTrans.position;
+        firstRot = enemyTrans.rotation;
     }
 
     private void Update()
     {
         enemyCore.isMove = isMove;
+
+        if (enemyCore.isReset)
+        {
+            ResetMove();
+
+            enemyCore.isReset = false;
+        }
     }
 
     private void FixedUpdate()
@@ -131,6 +144,20 @@ public class SneakingEnemyMover : MonoBehaviour
 
         moveTimer = 0;
 
+        isLoadMoveData = false;
+    }
+
+    private void ResetMove()
+    {
+        enemyTrans.position = firstPos;
+        enemyTrans.rotation = firstRot;
+
+        rb.constraints = RigidbodyConstraints.FreezePositionY
+            | RigidbodyConstraints.FreezeRotationX
+            | RigidbodyConstraints.FreezeRotationZ;
+
+        moveTimer = 0;
+        nowMoveDataNum = 0;
         isLoadMoveData = false;
     }
 

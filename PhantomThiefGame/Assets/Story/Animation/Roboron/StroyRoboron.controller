@@ -12,7 +12,7 @@ AnimatorStateTransition:
     m_ConditionEvent: Motion
     m_EventTreshold: 1
   - m_ConditionMode: 2
-    m_ConditionEvent: finishDespair
+    m_ConditionEvent: isLoop
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5369310215483341585}
@@ -190,7 +190,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: finishDespair
+  - m_Name: isLoop
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0

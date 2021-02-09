@@ -5,7 +5,10 @@ using DG.Tweening;
 
 public class SneakingPlayerAnimator : MonoBehaviour
 {
+    [SerializeField] private PhantomFaceChanger faceChanger;
     [SerializeField] private float moveToIdleWaitTime;
+    [SerializeField] private float discoveredMoveDistance;
+    [SerializeField] private float discoveredMoveTime;
 
     private SneakingPlayerCore playerCore;
     private Transform playerTrans;
@@ -15,6 +18,8 @@ public class SneakingPlayerAnimator : MonoBehaviour
     private float moveToIdleTimer;
 
     private bool isHideAnim;
+
+    private bool isFirstDiscovered;
 
     private void Awake()
     {
@@ -38,6 +43,23 @@ public class SneakingPlayerAnimator : MonoBehaviour
         }
         else
         {
+            if (playerCore.isDiscovered)
+            {
+                if (!isFirstDiscovered)
+                {
+                    faceChanger.ChangeSurprise();
+                    playerTrans.DOMove(playerTrans.position - playerTrans.forward * discoveredMoveDistance, discoveredMoveTime);
+                    animator.SetBool("isDiscovered", true);
+                    isFirstDiscovered = true;
+                }
+            }
+            else
+            {
+                faceChanger.ChangeDefault();
+                animator.SetBool("isDiscovered", false);
+                isFirstDiscovered = false;
+            }
+
             if (isHideAnim)
             {
                 animator.SetBool("isHide", false);

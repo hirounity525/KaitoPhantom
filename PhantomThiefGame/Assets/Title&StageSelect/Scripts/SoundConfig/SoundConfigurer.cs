@@ -19,6 +19,7 @@ public class SoundConfigurer : MonoBehaviour
     public bool canSoundConfig;
 
     [SerializeField] private TitleInputProvider titleInput;
+    [SerializeField] private SEPlayer sEPlayer;
 
     [SerializeField] private SoundConfig firstSelectedSC;
 
@@ -49,12 +50,14 @@ public class SoundConfigurer : MonoBehaviour
                     case InputArrow.UP:
                         if (nowSelectedSC != SoundConfig.MASTER)
                         {
+                            sEPlayer.Play("ChokeCircle");
                             nowSelectedSC--;
                         }
                         break;
                     case InputArrow.DOWN:
                         if (nowSelectedSC != SoundConfig.BACK)
                         {
+                            sEPlayer.Play("ChokeCircle");
                             nowSelectedSC++;
                         }
                         break;
@@ -68,16 +71,20 @@ public class SoundConfigurer : MonoBehaviour
                     case SoundConfig.MASTER:
                         selectedVC = masterVC;
                         selectedVC.canConfig = true;
+                        sEPlayer.Play("ChokeSelect");
                         break;
                     case SoundConfig.BGM:
                         selectedVC = bgmVC;
                         selectedVC.canConfig = true;
+                        sEPlayer.Play("ChokeSelect");
                         break;
                     case SoundConfig.SE:
                         selectedVC = seVC;
                         selectedVC.canConfig = true;
+                        sEPlayer.Play("ChokeSelect");
                         break;
                     case SoundConfig.BACK:
+                        sEPlayer.Play("Select");
                         isBack = true;
                         break;
                 }
