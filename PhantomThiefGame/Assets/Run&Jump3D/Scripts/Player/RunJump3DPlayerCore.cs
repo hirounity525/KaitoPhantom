@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RunJump3DPlayerCore : MonoBehaviour
 {
-    [SerializeField] private int life;
+    public int life;
 
     // Start is called before the first frame update
     void Start()

@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossBattleDroneMissileController : MonoBehaviour
 {
     public Transform playerTrans;
-    //public Vector3 droneMissileVec;
+    public Vector3 droneMissileVec;
     public bool isChase;
     [SerializeField] private float chaseTime;
     [SerializeField] private float missileSpeed;

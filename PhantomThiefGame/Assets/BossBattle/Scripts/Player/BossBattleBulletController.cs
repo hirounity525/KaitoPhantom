@@ -50,6 +50,6 @@ public class BossBattleBulletController : MonoBehaviour
             rb.velocity = bulletTrans.right * -bulletSpeed;
         }
         */
-        rb.velocity = bulletTrans.right * bulletSpeed;
+        rb.velocity = bulletTrans.up * -bulletSpeed;
     }
 }

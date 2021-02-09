@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class BossBattlePlayerCore : MonoBehaviour
 {
-    [SerializeField] private int life;
+    public bool isInvicible;
+    public int life;
     [SerializeField] private float invincibleTime;
     //[SerializeField] private ScrollActionLaserAttacker scrollActionLaserAttacker;
     [SerializeField] private BossBattlePlayerMover bossBattlePlayerMover;
-    private bool isInvicible;
 
     // Start is called before the first frame update
     void Start()

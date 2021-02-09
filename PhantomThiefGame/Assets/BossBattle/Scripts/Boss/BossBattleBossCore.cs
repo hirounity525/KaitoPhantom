@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class BossBattleBossCore : MonoBehaviour
@@ -36,6 +37,10 @@ public class BossBattleBossCore : MonoBehaviour
     [SerializeField] private float blowAnimationTime; //この時間がたった後に警備員が呼び出される
     [SerializeField] private float stompAnimationTime;//この時間がたった後に物が降ってくる
     [SerializeField] private float gunAttackAnimationTime;//この時間がたった後に銃で攻撃する
+    [SerializeField] private float droneAttackAnimationTime;//この時間がたった後にドローンで攻撃する
+    [SerializeField] private float droneAttackAnimationTime2;//ドローンで攻撃を始めてから攻撃アニメーションが終わるまでの時間
+
+    public int dronePattern;
 
     public enum BossAIState
     {
@@ -52,7 +57,7 @@ public class BossBattleBossCore : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-         
+
     }
 
     // Update is called once per frame
@@ -76,8 +81,9 @@ public class BossBattleBossCore : MonoBehaviour
                 //bossAIState = BossAIState.SUMMONGUARDS;
                 //bossAIState = BossAIState.SUMMONROCK;
                 //bossAIState = BossAIState.GUNATTACK;
-                bossAIState = BossAIState.DRONEATTACK;
-                //bossAIState += (int)bossAIState * -1 + rnd.Next(0, bossAIStateNum + 1);
+                //bossAIState = BossAIState.DRONEATTACK;
+                //bossAIState += (int)bossAIState * -1 + rnd.Next(0, bossAIStateNum + 1);//連続でWAITが来ることがある
+                bossAIState += rnd.Next(1, bossAIStateNum + 1);//連続でWAITが来ないようにした(ほんの少しだけ難易度が高い)
             }
         }
 
@@ -224,8 +230,9 @@ public class BossBattleBossCore : MonoBehaviour
             case BossAIState.DRONEATTACK:
                 if (!oneActionFinished)
                 {
-                    Debug.Log(bossAIState);
-                    bossAttacker.DroneAttack();
+                    //Debug.Log(bossAIState);
+                    //bossAttacker.DroneAttack();
+                    StartCoroutine(DroneAttackAction());
                     oneActionFinished = true;
                 }
                 break;
@@ -280,6 +287,16 @@ public class BossBattleBossCore : MonoBehaviour
         bossAttacker.GunAttack();
     }
 
+    private IEnumerator DroneAttackAction()
+    {
+        Debug.Log(bossAIState);
+        dronePattern = UnityEngine.Random.Range(0, 3);
+        bossInfo.isDroneAttack = true;//ドローンで攻撃するアニメーション開始
+        yield return new WaitForSeconds(droneAttackAnimationTime);
+        bossAttacker.DroneAttack();
+        yield return new WaitForSeconds(droneAttackAnimationTime2);
+        bossInfo.isDroneAttack = false;//ドローンで攻撃するアニメーション自体は終了してIdleアニメーションにする
+    }
 
     private void OnTriggerEnter(Collider other)
     {

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BossBattleBossBulletCore : MonoBehaviour
 {
+    //public Transform playerTrans;
     [SerializeField] private float bossBulletSpeed;
     [SerializeField] private float DisappearBossBulletTime;
     private float DisappearBossBulletTimeTemp;
@@ -25,7 +26,7 @@ public class BossBattleBossBulletCore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //this.transform.LookAt(playerTrans);
     }
 
     private void FixedUpdate()

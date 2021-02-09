@@ -52,6 +52,7 @@ public class BossBattlePlayerAttacker : MonoBehaviour
         GameObject bullet = bulletPool.GetObject();
         bullet.transform.position = gunNozzlePosTrans.position;
         bullet.transform.rotation = gunNozzlePosTrans.rotation;
+        //bullet.transform.localEulerAngles = new Vector3(0, 0, 90);
         bullet.GetComponent<BossBattleBulletController>().playerMover = playerMover;
         bullet.GetComponent<BossBattleBulletController>().MoveBullet();
     }

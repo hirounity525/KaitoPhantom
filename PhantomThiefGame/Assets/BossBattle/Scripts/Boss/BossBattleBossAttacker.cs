@@ -45,6 +45,9 @@ public class BossBattleBossAttacker : MonoBehaviour
     [SerializeField] private int bulletShotNum;
     private int bulletShotNumTemp = 0;
     private Vector3 droneLaserVec2;
+    [SerializeField] private float laserIntervalTime;
+    [SerializeField] private int laserShotNum;
+    private int laserShotNumTemp;
     //private Vector3 droneMissileVec2;
     public bool isMissileChase;
     [SerializeField] private float missileIntervalTime;
@@ -52,6 +55,11 @@ public class BossBattleBossAttacker : MonoBehaviour
     private int missileShotNumTemp;
 
     private int dronePattern;
+
+    [SerializeField] private Transform gunNozzleTrans;
+
+    [SerializeField] private BossBattleBossCore bossCore;
+    //[SerializeField] private BossBattleBossBulletCore bossBulletCore;
 
     // Start is called before the first frame update
     void Start()
@@ -62,18 +70,23 @@ public class BossBattleBossAttacker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameObject.transform.position.x < maxLeftBossPos)
+        if (isBossPosRight)
         {
-            rb.velocity = Vector3.zero;
-            gameObject.transform.localEulerAngles = new Vector3(0,180,0);
-            isBossPosRight = false;
+            if (gameObject.transform.position.x < maxLeftBossPos)
+            {
+                rb.velocity = Vector3.zero;
+                gameObject.transform.localEulerAngles = new Vector3(0, 180, 0);
+                isBossPosRight = false;
+            }
         }
-
-        else if (gameObject.transform.position.x > maxRightBossPos)
+        else if (!isBossPosRight)
         {
-            rb.velocity = Vector3.zero;
-            gameObject.transform.localEulerAngles = new Vector3(0,0,0);
-            isBossPosRight = true;
+            if (gameObject.transform.position.x > maxRightBossPos)
+            {
+                rb.velocity = Vector3.zero;
+                gameObject.transform.localEulerAngles = new Vector3(0, 0, 0);
+                isBossPosRight = true;
+            }
         }
     }
 
@@ -123,10 +136,12 @@ public class BossBattleBossAttacker : MonoBehaviour
 
     public void GunAttack()
     {
-        bossBulletVec2 = playerTrans.position - gameObject.transform.position;
+        //bossBulletVec2 = playerTrans.position - gameObject.transform.position;
+        bossBulletVec2 = playerTrans.position - gunNozzleTrans.position;
         GameObject bossBullet = bossBulletsPool.GetObject();
         bossBullet.transform.position = bossGunNozzlePosTrans.position;
         bossBullet.transform.rotation = bossGunNozzlePosTrans.rotation;
+        //bossBulletCore.playerTrans = playerTrans;
         bossBullet.GetComponent<BossBattleBossBulletCore>().bossBalletVec = bossBulletVec2.normalized;
         bossBullet.GetComponent<BossBattleBossBulletCore>().MoveBossBullet();
     }
@@ -182,8 +197,8 @@ public class BossBattleBossAttacker : MonoBehaviour
 
     public void DroneAttack()
     {
-        //dronePattern = Random.Range(0, 3);
-        dronePattern = 1;
+        dronePattern = bossCore.dronePattern;
+        //dronePattern = 0;
         Debug.Log("ドローンパターン："+dronePattern);
 
         if(dronePattern == 0)//弾を前方に飛ばす
@@ -212,10 +227,12 @@ public class BossBattleBossAttacker : MonoBehaviour
             droneLaserVec2 = playerTrans.position - bossDroneNozzlePosTrans.position;
             GameObject droneLaser = droneLaserPool.GetObject();
             droneLaser.transform.position = bossDroneNozzlePosTrans.position;
-            droneLaser.transform.rotation = bossDroneNozzlePosTrans.rotation;
+            //droneLaser.transform.rotation = bossDroneNozzlePosTrans.rotation;
+            droneLaser.transform.localEulerAngles = new Vector3(0, 0, 0);
             droneLaser.GetComponent<BossBattleDroneLaserController>().playerTrans = playerTrans;
             droneLaser.GetComponent<BossBattleDroneLaserController>().droneLaserVec = droneLaserVec2.normalized;
             droneLaser.GetComponent<BossBattleDroneLaserController>().MoveDroneLaser();
+            StartCoroutine(DroneLaserIntervalTime());
         }
 
         else if (dronePattern == 2)//追尾するミサイルを発射する
@@ -259,6 +276,30 @@ public class BossBattleBossAttacker : MonoBehaviour
         else
         {
             bulletShotNumTemp = 0;
+        }
+    }
+
+    private IEnumerator DroneLaserIntervalTime()
+    {
+        laserShotNumTemp++;
+        if (laserShotNumTemp < laserShotNum)
+        {
+            yield return new WaitForSeconds(laserIntervalTime);
+
+            droneLaserVec2 = playerTrans.position - bossDroneNozzlePosTrans.position;
+            GameObject droneLaser = droneLaserPool.GetObject();
+            droneLaser.transform.position = bossDroneNozzlePosTrans.position;
+            //droneLaser.transform.rotation = bossDroneNozzlePosTrans.rotation;
+            droneLaser.transform.localEulerAngles = new Vector3(0, 0, 0);
+            droneLaser.GetComponent<BossBattleDroneLaserController>().playerTrans = playerTrans;
+            droneLaser.GetComponent<BossBattleDroneLaserController>().droneLaserVec = droneLaserVec2.normalized;
+            droneLaser.GetComponent<BossBattleDroneLaserController>().MoveDroneLaser();
+            StartCoroutine(DroneLaserIntervalTime());
+        }
+
+        else
+        {
+            laserShotNumTemp = 0;
         }
     }
 
