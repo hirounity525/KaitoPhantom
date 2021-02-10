@@ -22,10 +22,12 @@ public class StageManager : MonoBehaviour
                 if (i == clearStageNum)
                 {
                     stageObjs[i].GetComponent<SpriteRenderer>().color = Color.black;
+                    stageObjs[i].GetComponent<StageCore>().isClear = false;
                 }
                 else
                 {
                     stageObjs[i].GetComponent<SpriteRenderer>().color = Color.white;
+                    stageObjs[i].GetComponent<StageCore>().isClear = true;
                 }
             }
             else

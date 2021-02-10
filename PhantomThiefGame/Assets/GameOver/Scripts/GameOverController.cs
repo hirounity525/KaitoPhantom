@@ -21,12 +21,14 @@ public class GameOverController : MonoBehaviour
     [SerializeField] private float arrowPosX;
 
     private GameOverInputProvider inputProvider;
+    private SceneLoader sceneLoader;
 
     private bool isSelect;
 
     private void Awake()
     {
         inputProvider = GetComponent<GameOverInputProvider>();
+        sceneLoader = GetComponent<SceneLoader>();
     }
 
     // Start is called before the first frame update
@@ -75,8 +77,10 @@ public class GameOverController : MonoBehaviour
                 switch (selectMenu)
                 {
                     case GameOverMenu.CONTINUE:
+                        sceneLoader.LoadScene(CommonData.Instance.selectedStageName);
                         break;
                     case GameOverMenu.TOTITLE:
+                        sceneLoader.LoadScene("Title");
                         break;
                 }
 

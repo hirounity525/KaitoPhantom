@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1005a85b387770488fa751ead901eb0, type: 3}
   m_Name: Mission 6
   m_EditorClassIdentifier: 
-  stageNum: 6
+  stageNum: 11
   stageImage: {fileID: 21300000, guid: 5f0dbdd201596d841be3a58d6f497626, type: 3}
   stageName: "\u3060\u3063\u3057\u3085\u3064\u3057\u308D"
   stageType: 1
   outline: "\u306F\u304F\u3076\u3064\u304B\u3093\u304B\u3089\u3060\u3063\u3057\u3085\u3064\u3057\u3088\u3046"
-  sceneName: Run&Jump3D
+  sceneName: Run&Jump

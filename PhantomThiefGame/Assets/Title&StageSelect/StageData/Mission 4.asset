@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1005a85b387770488fa751ead901eb0, type: 3}
   m_Name: Mission 4
   m_EditorClassIdentifier: 
-  stageNum: 4
-  stageImage: {fileID: 21300000, guid: cce535e105dc6044299625c9ddd55a8f, type: 3}
-  stageName: "\u3051\u3044\u3073\u3057\u3085\u306B\u3093\u3092\u305F\u304A\u305B"
+  stageNum: 8
+  stageImage: {fileID: 21300000, guid: 76e3e4dc32205f94b83b423317799856, type: 3}
+  stageName: "\u3042\u3044\u307C\u3046\u3092\u307E\u3082\u308C"
   stageType: 1
-  outline: "\u304D\u3087\u3046\u3066\u304D\u3051\u3044\u3073\u3057\u3085\u306B\u3093\u3092\u305F\u304A\u305D\u3046"
-  sceneName: BossBattle
+  outline: "\u305B\u307E\u308A\u304F\u308B\u3066\u304D\u304B\u3089\u3042\u3044\u307C\u3046\u3092\u307E\u3082\u308D\u3046"
+  sceneName: Defense

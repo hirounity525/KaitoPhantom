@@ -17,8 +17,6 @@ public enum TitleState
 
 public class TitleManager : MonoBehaviour
 {
-    [SerializeField] private int clearStageNum;
-
     [SerializeField] private TitleState titleState;
 
     [Header("全体")]
@@ -48,6 +46,7 @@ public class TitleManager : MonoBehaviour
     [SerializeField] private YesNoSelecter checkYesNoSelecter;
 
     [Header("StageSelect")]
+    [SerializeField] private FadeAnimator whitePanelFade;
     [SerializeField] private StageManager stageManager;
     [SerializeField] private StageSelecter stageSelecter;
     [SerializeField] private StageDataReader stageDataReader;
@@ -71,10 +70,16 @@ public class TitleManager : MonoBehaviour
 
     private void Start()
     {
-        if (CommonData.Instance.isClear)
+        if (CommonData.Instance.isBack)
         {
             titleState = TitleState.STAGESELECT;
+
             stateBehavior.ChangeStateBehavior(titleState);
+            stageManager.SetActiveStages(CommonData.Instance.selectSaveData.clearStageNum);
+
+            whitePanelFade.FadeIn();
+
+            CommonData.Instance.isBack = false;
         }
     }
 
@@ -285,11 +290,6 @@ public class TitleManager : MonoBehaviour
                     {
                         if (!startsTimeline)
                         {
-                            if (!CommonData.Instance.isSelectNewData)
-                            {
-                                stageManager.SetActiveStages(CommonData.Instance.selectSaveData.clearStageNum);
-                            }
-
                             stageDrawer.DrawStage(CommonData.Instance.selectSaveData.clearStageNum);
                             startsTimeline = true;
                         }
@@ -302,13 +302,13 @@ public class TitleManager : MonoBehaviour
 
                                 saveDataManager.Save(CommonData.Instance.selectSaveDataNum, CommonData.Instance.selectSaveData);
 
-                                soundManager.Play("Title");
-
                                 startsTimeline = false;
                             }
                         }
                         return;
                     }
+
+                    soundManager.Play("Title");
 
                     stageSelecter.SetFirstStageCore();
                     stageSelecter.canSelect = true;
@@ -336,7 +336,7 @@ public class TitleManager : MonoBehaviour
 
                 if (stageSelecter.isSelect)
                 {
-                    stageDataReader.ChangeStageInfo(stageSelecter.selectedStageNum);
+                    stageDataReader.ChangeStageInfo(stageSelecter.selectedStageNum, stageSelecter.selectedStageIsClear);
 
                     StartStateTransition("StageSelectToStageInfo", TitleState.STAGEINFO);
                 }
@@ -362,6 +362,7 @@ public class TitleManager : MonoBehaviour
                     if (titleInput.isSelectButtonDown)
                     {
                         sEPlayer.Play("Select");
+                        soundManager.StopFade();
                         stageStartTimeline.Play();
                         startsTimeline = true;
                     }

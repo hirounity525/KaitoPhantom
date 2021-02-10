@@ -16,11 +16,21 @@ public class StageDataReader : MonoBehaviour
     [SerializeField] private GameObject missionTypeObj;
     [SerializeField] private TextMeshProUGUI outlineText;
 
-    public void ChangeStageInfo(int selectedStageNum)
+    public void ChangeStageInfo(int selectedStageNum, bool isClear)
     {
-        StageData selectedStageData = stageDatas[selectedStageNum];
+        StageData selectedStageData = stageDatas[selectedStageNum - 1];
 
         stageImage.sprite = selectedStageData.stageImage;
+
+        if (isClear)
+        {
+            stageImage.color = Color.white;
+        }
+        else
+        {
+            stageImage.color = Color.black;
+        }
+
         titleText.text = selectedStageData.stageName;
         switch (selectedStageData.stageType)
         {
@@ -39,6 +49,7 @@ public class StageDataReader : MonoBehaviour
 
     public void LoadStageScene(int selectedStageNum)
     {
-        SceneManager.LoadScene(stageDatas[selectedStageNum].sceneName);
+        CommonData.Instance.selectedStageName = stageDatas[selectedStageNum - 1].sceneName;
+        SceneManager.LoadScene(stageDatas[selectedStageNum - 1].sceneName);
     }
 }

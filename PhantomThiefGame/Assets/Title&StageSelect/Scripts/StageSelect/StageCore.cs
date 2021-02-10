@@ -16,4 +16,5 @@ public class StageCore : MonoBehaviour
     public int stageNum;
     public NextStageNum nextStages;
     public bool isViewed;
+    public bool isClear;
 }

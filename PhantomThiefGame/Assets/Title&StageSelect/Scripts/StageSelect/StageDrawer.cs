@@ -16,7 +16,7 @@ public class StageDrawer : MonoBehaviour
 
     public void DrawStage(int clearStageNum)
     {
-        if(stageDrawTimelines[clearStageNum] != null)
+        if (stageDrawTimelines[clearStageNum] != null)
         {
             stageTimeline.PlayableDirector.playableAsset = stageDrawTimelines[clearStageNum];
             stageTimeline.Play();

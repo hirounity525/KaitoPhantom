@@ -6,6 +6,7 @@ public class StageSelecter : MonoBehaviour
 {
     public StageCore nowViewStageCore;
     public int selectedStageNum;
+    public bool selectedStageIsClear;
     public bool canSelect;
     public bool isSelect;
 
@@ -72,6 +73,7 @@ public class StageSelecter : MonoBehaviour
             canSelect = false;
 
             selectedStageNum = nowViewStageCore.stageNum;
+            selectedStageIsClear = nowViewStageCore.isClear;
             CommonData.Instance.selectedStageNum = selectedStageNum;
 
             isSelect = true;

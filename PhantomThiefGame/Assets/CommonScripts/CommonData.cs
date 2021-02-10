@@ -13,7 +13,9 @@ public class CommonData : SingletonMonoBehaviour<CommonData>
 
     [Header("StageInfo")]
     public int selectedStageNum;
+    public string selectedStageName;
     public bool isClear;
+    public bool isBack;
 
     private void Start()
     {

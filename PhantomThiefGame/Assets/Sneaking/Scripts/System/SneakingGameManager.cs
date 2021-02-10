@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Fungus;
-using UnityEngine.SceneManagement;
 
 public class SneakingGameManager : MonoBehaviour
 {
@@ -22,11 +21,16 @@ public class SneakingGameManager : MonoBehaviour
     [SerializeField] private float lifeDeleteWaitTime;
     [SerializeField] private float fadeInTime;
 
+    [Header("Pause")]
+    [SerializeField] private PauseController pauseController;
+
     [Header("Clear")]
     [SerializeField] private TimelineController clearTimeline;
 
 
     private SneakingCameraChanger cameraChanger;
+    private SceneLoader sceneLoader;
+    private CommonDataController commonDataController;
 
     private bool isFirstStatePlay;
     private bool isStartTimeline;
@@ -36,6 +40,8 @@ public class SneakingGameManager : MonoBehaviour
     private void Awake()
     {
         cameraChanger = GetComponent<SneakingCameraChanger>();
+        sceneLoader = GetComponent<SceneLoader>();
+        commonDataController = GetComponent<CommonDataController>();
     }
 
     // Update is called once per frame
@@ -80,6 +86,7 @@ public class SneakingGameManager : MonoBehaviour
                 if (!isFirstStatePlay)
                 {
                     inputProvider.canInput = true;
+                    pauseController.canPause = true;
 
                     isFirstStatePlay = true;
                 }
@@ -119,25 +126,42 @@ public class SneakingGameManager : MonoBehaviour
 
                         isFirstStatePlay = false;
                     }
+
+                    return;
                 }
 
                 if (playerManager.IsClear())
                 {
                     gameState = GameState.CLEAR;
+                    return;
+                }
+
+                if (pauseController.isPause)
+                {
+                    gameState = GameState.PAUSE;
                 }
 
                 break;
             case GameState.PAUSE:
-                inputProvider.canInput = true;
+
+                inputProvider.canInput = false;
+
+                if (!pauseController.isPause)
+                {
+                    isFirstStatePlay = false;
+                    gameState = GameState.MAIN;
+                }
 
                 break;
             case GameState.GAMEOVER:
+
                 inputProvider.canInput = false;
 
-                SceneManager.LoadScene("GameOver");
+                sceneLoader.LoadScene("GameOver");
 
                 break;
             case GameState.CLEAR:
+
                 inputProvider.canInput = false;
 
                 if (!isStartTimeline)
@@ -152,7 +176,8 @@ public class SneakingGameManager : MonoBehaviour
                         isFirstStatePlay = false;
                         isStartTimeline = false;
 
-                        //gameState = GameState.MAIN;
+                        commonDataController.ClearStage();
+                        sceneLoader.LoadScene("Title");
                     }
                 }
 
