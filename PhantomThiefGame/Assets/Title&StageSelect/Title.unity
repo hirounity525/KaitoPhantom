@@ -601,8 +601,8 @@ MonoBehaviour:
   m_ActionsAsset: {fileID: -944628639613478452, guid: 6e4b68fb49dde764981b8371fb0206c7, type: 3}
   m_PointAction: {fileID: 0}
   m_MoveAction: {fileID: 5835938005057106613, guid: 6e4b68fb49dde764981b8371fb0206c7, type: 3}
-  m_SubmitAction: {fileID: 430286397046557509, guid: 6e4b68fb49dde764981b8371fb0206c7, type: 3}
-  m_CancelAction: {fileID: -6831579727838280591, guid: 6e4b68fb49dde764981b8371fb0206c7, type: 3}
+  m_SubmitAction: {fileID: 7379817025304047259, guid: 6e4b68fb49dde764981b8371fb0206c7, type: 3}
+  m_CancelAction: {fileID: 3776705632269265573, guid: 6e4b68fb49dde764981b8371fb0206c7, type: 3}
   m_LeftClickAction: {fileID: 0}
   m_MiddleClickAction: {fileID: 0}
   m_RightClickAction: {fileID: 0}
@@ -762,7 +762,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Title&StageSelect
+  m_DefaultActionMap: Menu
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 943287616}
 --- !u!4 &109489990
@@ -5154,8 +5154,8 @@ MonoBehaviour:
   m_UpdateMethod: 2
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
-    m_Style: 0
-    m_Time: 2
+    m_Style: 1
+    m_Time: 0.5
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -6196,7 +6196,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd5f0d5ac45cb634d87a151b19cc3318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearStageNum: 0
   titleState: 0
   titleInput: {fileID: 109489988}
   eventSystemController: {fileID: 46077812}
@@ -7091,13 +7090,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageDatas:
+  - {fileID: 11400000, guid: c28c6bb152b5c8c42aee9b7510ca9cf5, type: 2}
   - {fileID: 11400000, guid: b00880613c61c174cb2c46ec384634bc, type: 2}
+  - {fileID: 11400000, guid: d9f7ec8b10afc844da356a7bf608833c, type: 2}
   - {fileID: 11400000, guid: 41a5bbad1c5f9404f912fb321eb613a4, type: 2}
+  - {fileID: 11400000, guid: 702a7d868e94dd5429eb038a5039a753, type: 2}
   - {fileID: 11400000, guid: d3349f39dae16234fb2d79449e09f809, type: 2}
+  - {fileID: 11400000, guid: be6dbed76d9840b41b4c10d7d5cf6af0, type: 2}
   - {fileID: 11400000, guid: 9fa1ef59c2174ba428d1b3fc5349195d, type: 2}
+  - {fileID: 11400000, guid: 7ea122c789bf5b949a3d9263081bdbf3, type: 2}
   - {fileID: 11400000, guid: 185283e108d50e1469d20f8fe9c493bf, type: 2}
   - {fileID: 11400000, guid: f16fd762355dfe846b6fedccd5219397, type: 2}
-  - {fileID: 11400000, guid: f8e67e370a7a8d14bb9aa64094e209d7, type: 2}
+  - {fileID: 11400000, guid: 2a50bcba938582b4eb4877176b861825, type: 2}
   stageImage: {fileID: 1501558257}
   titleText: {fileID: 68966600}
   storyTypeObj: {fileID: 1677551280}
@@ -7117,6 +7121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nowViewStageCore: {fileID: 0}
   selectedStageNum: 0
+  selectedStageIsClear: 0
   canSelect: 0
   isSelect: 0
   titleInput: {fileID: 109489988}
@@ -8224,7 +8229,9 @@ MonoBehaviour:
     clearStageNum: 0
   isSelectNewData: 0
   selectedStageNum: 0
+  selectedStageName: 
   isClear: 0
+  isBack: 0
 --- !u!4 &1554900949
 Transform:
   m_ObjectHideFlags: 0
@@ -14001,6 +14008,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 109118749, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
+      propertyPath: stageNum
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 136095103, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -14135,6 +14146,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 365991211, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
       propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 365991212, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
+      propertyPath: stageNum
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 377425106, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
@@ -14707,7 +14722,7 @@ PrefabInstance:
       objectReference: {fileID: 21955191}
     - target: {fileID: 1321526561, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1331853353, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -15143,7 +15158,7 @@ PrefabInstance:
       objectReference: {fileID: 21955191}
     - target: {fileID: 1925166883, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1928958867, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -15241,6 +15256,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 943287616}
+    - target: {fileID: 882904406526004147, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
+      propertyPath: stageNum
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 959093679516815481, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -15252,6 +15271,14 @@ PrefabInstance:
     - target: {fileID: 1289618153079757308, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489642881309418843, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
+      propertyPath: stageNum
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1823109316498067487, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
+      propertyPath: stageNum
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2058103741211365370, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
       propertyPath: m_LocalRotation.x
@@ -15265,9 +15292,21 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 21955191}
+    - target: {fileID: 2911852747531522316, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
+      propertyPath: stageNum
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3137631538505064452, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3357947313362173224, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
+      propertyPath: stageNum
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964375359577459067, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
+      propertyPath: stageNum
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4413212563233781267, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
       propertyPath: m_Color.r
@@ -15279,6 +15318,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4413212563233781267, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
       propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413212563233781267, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 57afe5b5cd81b9940b14127ccbd87ff8, type: 3}
+    - target: {fileID: 4516499728768842839, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 28145e06bad83ca459b4dd739b072780, type: 3}
+    - target: {fileID: 4516499728768842839, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
+      propertyPath: m_Size.x
+      value: 2.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516499728768842839, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
+      propertyPath: m_Size.y
+      value: 2.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516499728768842839, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
+      propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4734442492381226151, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
@@ -15300,6 +15359,10 @@ PrefabInstance:
     - target: {fileID: 4844434387168968809, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
       propertyPath: m_LocalRotation.w
       value: -0.70020366
+      objectReference: {fileID: 0}
+    - target: {fileID: 4894646961434160420, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
+      propertyPath: stageNum
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5049685552945073128, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15429,10 +15492,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6351607811045948457, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8bb88597607c94e47bcdbdb41d0bdb88, type: 3}
     - target: {fileID: 6438070041258271336, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 943287616}
+    - target: {fileID: 6463079873226294726, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
+      propertyPath: stageNum
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 6526149722476403538, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
       propertyPath: m_Name
       value: Newnote
@@ -15440,6 +15511,14 @@ PrefabInstance:
     - target: {fileID: 7002497152368944980, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7709738362885891228, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
+      propertyPath: stageNum
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7797591651353508989, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
+      propertyPath: stageNum
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7890083453252326825, guid: 5902416aad475e441b7cd2fa071cedba, type: 3}
       propertyPath: playerNameSetter

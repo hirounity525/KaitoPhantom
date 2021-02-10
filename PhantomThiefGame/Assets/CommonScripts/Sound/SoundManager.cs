@@ -20,12 +20,14 @@ public class SoundManager : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
         audioSource = GetComponent<AudioSource>();
+        maxVolume = audioSource.volume;
     }
 
     public void Play(string audioName)
     {
+        audioSource.volume = maxVolume;
+
         AudioClip audioClip = audioDatas.FirstOrDefault(clip => clip.audioName == audioName).SEClip;
 
         if (audioClip != null && nowPlayAudioClip != audioClip)
@@ -53,7 +55,7 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void StopFade(string audioName)
+    public void StopFade()
     {
         fadeTweener.Kill();
 

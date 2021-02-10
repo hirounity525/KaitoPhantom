@@ -6,20 +6,26 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Title&StageSelect/Title&Stage.unity
+    path: Assets/Title&StageSelect/Title.unity
     guid: 683d8c65ff66b9440a769e23e133932a
   - enabled: 1
-    path: Assets/Defense/Defense.unity
-    guid: 5098c8c800bd26a41a2923bf648ce71d
+    path: Assets/Story/Scenes/Story.unity
+    guid: 91d3cf139fb4b4148b9d07372757e7ca
   - enabled: 1
     path: Assets/Shooting/Shooting.unity
     guid: de784b7fc9150f64c9388cddae825731
   - enabled: 1
-    path: Assets/BossBattle/BossBattle.unity
-    guid: e7e60fc693e84304cbc098f5f147d992
+    path: Assets/Sneaking/Sneaking.unity
+    guid: d902b04782b3c204b87c18e1bd112345
+  - enabled: 1
+    path: Assets/Defense/Defense.unity
+    guid: 5098c8c800bd26a41a2923bf648ce71d
   - enabled: 1
     path: Assets/ScrollAction/ScrollAction.unity
     guid: 7f0ac4429b083ef4ba2ece950530b47e
+  - enabled: 1
+    path: Assets/BossBattle/BossBattle.unity
+    guid: e7e60fc693e84304cbc098f5f147d992
   - enabled: 1
     path: Assets/GameOver/GameOver.unity
     guid: 24a39ee88ec55524e910ac475203503b
