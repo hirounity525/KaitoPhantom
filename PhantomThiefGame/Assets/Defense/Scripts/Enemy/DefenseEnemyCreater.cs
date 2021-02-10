@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DefenseEnemyCreater : MonoBehaviour
 {
+    [SerializeField] private SEPlayer sePlayer;
     public DefenseEnemyCreateData createData;
     [SerializeField] private GameObject friendObj;
     [SerializeField] private Transform[] createTrans;
@@ -81,7 +82,7 @@ public class DefenseEnemyCreater : MonoBehaviour
 
                         createEnemyObj.transform.rotation = Quaternion.Euler(0, 35, 0);
 
-
+                        sePlayer.Play("DoorOpen");
 
                         createEnemyObj.GetComponent<DefenseEnemyMover>().enemySpeed = currentEnemyData.moveSpeed;
 

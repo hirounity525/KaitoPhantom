@@ -9,7 +9,6 @@ public class ShootingEnemyMover : MonoBehaviour
     [SerializeField] private float moveRadius;
     [SerializeField] private float moveStraightSpeed;
     [SerializeField] private float moveCircleSpeed;
-    [SerializeField] private float returnMoveTime;
 
     private Rigidbody rb;
 
@@ -22,6 +21,8 @@ public class ShootingEnemyMover : MonoBehaviour
     private float countTime;
     private float nowReturnMoveTime;
 
+    private int accelaration = 1;
+
     private bool canMoveStraight=false;
     // Start is called before the first frame update
     void Start()
@@ -29,7 +30,6 @@ public class ShootingEnemyMover : MonoBehaviour
         enemyTrans = GetComponent<Transform>();
         rb = GetComponent<Rigidbody>();
 
-        nowReturnMoveTime = returnMoveTime;
 
         enemyLastTrans = enemyTrans.position;
 
@@ -42,7 +42,7 @@ public class ShootingEnemyMover : MonoBehaviour
     {
         if (!canMoveStraight)
         {
-            this.transform.position = new Vector3(moveRadius * Mathf.Cos(Mathf.PI / 180 * (startDegree+plusDegree)), startTransY, -moveRadius * Mathf.Sin(Mathf.PI / 180 * (startDegree+plusDegree)));
+            this.transform.position = new Vector3(moveRadius * Mathf.Cos(Mathf.PI / 180 * (startDegree+plusDegree*accelaration)), startTransY, -moveRadius * Mathf.Sin(Mathf.PI / 180 * (startDegree+plusDegree*accelaration)));
         }
         else
         {
@@ -51,13 +51,6 @@ public class ShootingEnemyMover : MonoBehaviour
 
         plusDegree = plusDegree + moveCircleSpeed;
 
-        countTime = Time.time;
-        if (countTime >= nowReturnMoveTime)
-        {
-            plusDegree = plusDegree * -1;
-            rb.velocity = rb.velocity * -1;
-            nowReturnMoveTime += returnMoveTime;
-        }
 
 
     }
@@ -78,6 +71,7 @@ public class ShootingEnemyMover : MonoBehaviour
                 canMoveStraight = false;
                 startDegree = 180;
                 plusDegree = 0;
+                accelaration = 4;
             }
         }
     }

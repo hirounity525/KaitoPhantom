@@ -10,6 +10,7 @@ public class ShootingEnemyAttacker : MonoBehaviour
     [SerializeField] private float attackWaitTime;
     [SerializeField] private float attackSpeed;
     [SerializeField] private int attackNum;
+    [SerializeField]private SEPlayer sePlayer;
 
     private ShootingAttackRange attackRange;
     private bool isShoot = false;
@@ -35,13 +36,20 @@ public class ShootingEnemyAttacker : MonoBehaviour
                         GameObject bullet = bulletPool.GetObject();
                         bullet.transform.position = gunNozzlePos.position;
 
+
                         if (bullet.tag=="Laser")
                         {
+                            sePlayer.Play("Laser");
                             bullet.GetComponent<ShootingLaserControler>().playerTrans = nowPlayerTrans;
                         }
                         else if (bullet.tag=="Missile")
                         {
+                            sePlayer.Play("Missile");
                             bullet.GetComponent<ShootingMissileControler>().playerTrans = nowPlayerTrans;
+                        }
+                        else
+                        {
+                            sePlayer.Play("Bullet");
                         }
 
                         StartCoroutine(AttackSpeed());

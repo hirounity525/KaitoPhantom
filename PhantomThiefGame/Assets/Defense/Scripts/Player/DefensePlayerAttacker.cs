@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DefensePlayerAttacker : MonoBehaviour
 {
+    [SerializeField] private SEPlayer sePlayer;
     [SerializeField] private ObjectPool bulletPool;
     [SerializeField] private DefenseInputProvider inputProvider;
     [SerializeField]private Transform gunNozzlePosTrans;
@@ -35,8 +36,10 @@ public class DefensePlayerAttacker : MonoBehaviour
     }
     private IEnumerator StartMove()
     {
-        isShoot = true;
+        sePlayer.Play("GunPlay");
 
+        isShoot = true;
+        
         yield return new WaitForSeconds(shootWaitTime);
 
         isShoot = false;
