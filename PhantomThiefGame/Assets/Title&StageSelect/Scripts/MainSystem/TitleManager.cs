@@ -46,6 +46,7 @@ public class TitleManager : MonoBehaviour
     [SerializeField] private YesNoSelecter checkYesNoSelecter;
 
     [Header("StageSelect")]
+    [SerializeField] private FadeAnimator whitePanelFade;
     [SerializeField] private StageManager stageManager;
     [SerializeField] private StageSelecter stageSelecter;
     [SerializeField] private StageDataReader stageDataReader;
@@ -72,8 +73,12 @@ public class TitleManager : MonoBehaviour
         if (CommonData.Instance.isBack)
         {
             titleState = TitleState.STAGESELECT;
+
             stateBehavior.ChangeStateBehavior(titleState);
             stageManager.SetActiveStages(CommonData.Instance.selectSaveData.clearStageNum);
+
+            whitePanelFade.FadeIn();
+
             CommonData.Instance.isBack = false;
         }
     }

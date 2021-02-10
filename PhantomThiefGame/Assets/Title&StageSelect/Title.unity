@@ -2417,6 +2417,7 @@ GameObject:
   - component: {fileID: 409627772}
   - component: {fileID: 409627771}
   - component: {fileID: 409627770}
+  - component: {fileID: 409627773}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -2500,6 +2501,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409627768}
   m_CullTransparentMesh: 0
+--- !u!114 &409627773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409627768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b8ca1a88aa2f1a4692d569317860db7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeTime: 1
 --- !u!1 &427725380
 GameObject:
   m_ObjectHideFlags: 0
@@ -3717,7 +3731,7 @@ PlayableDirector:
   m_GameObject: {fileID: 704762141}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: a30e49acaa5088c4c890413fbae576d4, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: 41293e3d38cdb8a46a8ce3f3ca48eeba, type: 2}
   m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
@@ -3881,16 +3895,6 @@ PlayableDirector:
     value: {fileID: 5881583173379277021}
   - key: {fileID: 907452421719840519, guid: 41293e3d38cdb8a46a8ce3f3ca48eeba, type: 2}
     value: {fileID: 21955189}
-  - key: {fileID: 3277566780131117256, guid: 89d2c97e22a8adb48b3ed84084ad7fe5, type: 2}
-    value: {fileID: 409627770}
-  - key: {fileID: -2196310604508111974, guid: a23cdfa5b058a144f89fb29d9f1bad44, type: 2}
-    value: {fileID: 409627770}
-  - key: {fileID: 95636998159226605, guid: 2db8b76fbbd0672488ebca804cf7c22a, type: 2}
-    value: {fileID: 409627770}
-  - key: {fileID: 3779550290853549302, guid: 6cf8e95203fb28146b1abd0062a90bd2, type: 2}
-    value: {fileID: 409627770}
-  - key: {fileID: 4002312673488285245, guid: 41293e3d38cdb8a46a8ce3f3ca48eeba, type: 2}
-    value: {fileID: 409627770}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &704762144
@@ -6209,6 +6213,7 @@ MonoBehaviour:
   saveDataSelecter: {fileID: 1044119197}
   nameSetter: {fileID: 1523798140}
   checkYesNoSelecter: {fileID: 1523798142}
+  whitePanelFade: {fileID: 409627773}
   stageManager: {fileID: 1387542225}
   stageSelecter: {fileID: 1387542224}
   stageDataReader: {fileID: 1387542223}
