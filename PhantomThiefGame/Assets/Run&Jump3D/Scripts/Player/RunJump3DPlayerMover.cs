@@ -106,7 +106,10 @@ public class RunJump3DPlayerMover : MonoBehaviour
         {
             if (isGround)
             {
-                rb.AddForce(Vector3.up * jumpPower);
+                if (!isCrouch)
+                {
+                    rb.AddForce(Vector3.up * jumpPower);
+                }
             }
         }
     }

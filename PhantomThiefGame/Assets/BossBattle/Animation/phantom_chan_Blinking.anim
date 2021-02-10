@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Phantom_chan_Blinking
+  m_Name: phantom_chan_Blinking
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0

@@ -20,5 +20,6 @@ public class BossBattlePlayerAnimation : MonoBehaviour
         playerAnimator.SetBool("isRun", playerInfo.isMove);
         playerAnimator.SetBool("isJump", playerInfo.isJump);
         playerAnimator.SetBool("isKnockBack", playerInfo.isKnockBack);
+        playerAnimator.SetBool("isShot", playerInfo.isShot);
     }
 }

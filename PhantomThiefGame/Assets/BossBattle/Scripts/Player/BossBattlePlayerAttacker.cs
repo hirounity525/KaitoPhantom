@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BossBattlePlayerAttacker : MonoBehaviour
 {
+    [SerializeField] private BossBattlePlayerInfo playerInfo;
     [SerializeField] private BossBattleInputProvider inputProvider2;
     [SerializeField] private ObjectPool bulletPool;
     [SerializeField] private Transform gunNozzlePosTrans;
@@ -35,6 +36,7 @@ public class BossBattlePlayerAttacker : MonoBehaviour
             {
                 ShootAttack();
                 isShoot = true;
+                playerInfo.isShot = true;
                 
             }
             shootRateTimeTemp += Time.deltaTime;
@@ -44,6 +46,7 @@ public class BossBattlePlayerAttacker : MonoBehaviour
         {
             shootRateTimeTemp = 0;
             isShoot = false;
+            playerInfo.isShot = false;
         }
     }
 
