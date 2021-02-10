@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RunPlayerMover : MonoBehaviour
 {
+    [SerializeField] private SEPlayer sePlayer;
     [SerializeField] private float jumpPower;
     [SerializeField] private RunInputProvider inputProvider;
     [SerializeField] private float rotationAngle;
@@ -32,6 +33,8 @@ public class RunPlayerMover : MonoBehaviour
         {
             if (inputProvider.isJumpButtunDown)
             {
+                sePlayer.Play("Jump");
+
                 rb.velocity = new Vector3(0, 0, 0);
                 rb.AddForce(new Vector3(0, jumpPower, 0), ForceMode.Impulse);
 
@@ -80,6 +83,8 @@ public class RunPlayerMover : MonoBehaviour
 
     private IEnumerator StartSliding()
     {
+        sePlayer.Play("Sliding");
+
         playerCore.isSliding = true;
 
         canJump = false;

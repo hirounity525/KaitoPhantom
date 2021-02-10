@@ -18,5 +18,6 @@ public class RunPlayerUIAnimator : MonoBehaviour
     void Update()
     {
         animator.SetBool("IsDamage", playerCore.isDamage);
+        animator.SetBool("IsDead", playerCore.isDead);
     }
 }

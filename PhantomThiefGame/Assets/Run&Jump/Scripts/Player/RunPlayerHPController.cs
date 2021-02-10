@@ -29,11 +29,13 @@ public class RunPlayerHPController : MonoBehaviour
         if (playerNowHP <= 0)
         {
             gameObject.SetActive(false);
+            playerCore.isDead = true;
         }
 
         if (playerTrans.position.y <= -8)
         {
             playerNowHP = 0;
+            playerCore.isDead = true;
         }
     }
 

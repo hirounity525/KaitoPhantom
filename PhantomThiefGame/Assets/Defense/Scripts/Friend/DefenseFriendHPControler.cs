@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DefenseFriendHPControler : MonoBehaviour
 {
+    [SerializeField] private SEPlayer sePlayer;
     [SerializeField] private float damageAnimationTime;
 
     public int maxHitpoints;
@@ -39,6 +40,8 @@ public class DefenseFriendHPControler : MonoBehaviour
 
     private IEnumerator DamageAnimation()
     {
+        sePlayer.Play("Damage");
+
         friendCore.isDamage = true;
 
         yield return new WaitForSeconds(damageAnimationTime);
