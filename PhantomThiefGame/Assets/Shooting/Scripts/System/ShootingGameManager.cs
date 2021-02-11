@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Fungus;
 
-public class DefenseGameManager : MonoBehaviour
+public class ShootingGameManager : MonoBehaviour
 {
     [SerializeField] private GameState gameState;
 
-    [SerializeField] private DefenseInputProvider inputProvider;
+    [SerializeField] private ShootingInputProvider inputProvider;
 
     [Header("Start")]
     [SerializeField] private Flowchart flowchart;
@@ -15,8 +15,8 @@ public class DefenseGameManager : MonoBehaviour
     [SerializeField] private TimelineController startTimeline;
 
     [Header("Main")]
-    [SerializeField] private DefenseFriendHPControler friendHPControlller;
-    [SerializeField] private DefenseEnemyCreater enemyCreater;
+    [SerializeField] private ShootingEnemyManager enemyManager;
+    [SerializeField] private ShootingPlayerHPControler playerHPControler;
 
     [Header("Pause")]
     [SerializeField] private PauseController pauseController;
@@ -51,6 +51,7 @@ public class DefenseGameManager : MonoBehaviour
                 if (!isFirstStatePlay)
                 {
                     inputProvider.canInput = false;
+                    enemyManager.DisableEnemies();
 
                     flowchart.SendFungusMessage(playBlockName);
 
@@ -84,20 +85,21 @@ public class DefenseGameManager : MonoBehaviour
                 {
                     inputProvider.canInput = true;
                     pauseController.canPause = true;
-                    enemyCreater.StartCreate();
+                    enemyManager.EnableEnemies();
 
                     isFirstStatePlay = true;
                 }
 
-                if (friendHPControlller.hitPoints <= 0)
+                if (playerHPControler.playerNowHitPoint <= 0)
                 {
                     gameState = GameState.GAMEOVER;
                     return;
                 }
 
-                if (enemyCreater.IsClear() && friendHPControlller.hitPoints > 0)
+                if (enemyManager.IsAllDestroy())
                 {
                     gameState = GameState.CLEAR;
+                    return;
                 }
 
                 if (pauseController.isPause)

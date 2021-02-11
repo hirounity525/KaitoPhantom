@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class ShootingInputProvider : MonoBehaviour
 {
+    public bool canInput;
+
     public float moveHorizon;
     public float moveVertical;
     public float isAttackButtunDown;
@@ -22,9 +24,12 @@ public class ShootingInputProvider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isAttackButtunDown = actionMap["Attack"].ReadValue<float>();
+        if (canInput)
+        {
+            isAttackButtunDown = actionMap["Attack"].ReadValue<float>();
 
-        moveHorizon = actionMap["MoveHorizon"].ReadValue<float>();
-        moveVertical = actionMap["MoveVertical"].ReadValue<float>();
+            moveHorizon = actionMap["MoveHorizon"].ReadValue<float>();
+            moveVertical = actionMap["MoveVertical"].ReadValue<float>();
+        }
     }
 }

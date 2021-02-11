@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageNum: 10
   stageImage: {fileID: 21300000, guid: cce535e105dc6044299625c9ddd55a8f, type: 3}
-  stageName: "\u3051\u3044\u3073\u3057\u3085\u306B\u3093\u3092\u305F\u304A\u305B"
+  stageName: "\u8B66\u5099\u4E3B\u4EFB\u3092\u5012\u305B"
   stageType: 1
-  outline: "\u304D\u3087\u3046\u3066\u304D\u3051\u3044\u3073\u3057\u3085\u306B\u3093\u3092\u305F\u304A\u305D\u3046"
+  outline: "\u5F37\u6575\n\u8B66\u5099\u4E3B\u4EFB\u3092\u5012\u305B"
   sceneName: BossBattle

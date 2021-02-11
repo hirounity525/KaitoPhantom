@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class RunInputProvider : MonoBehaviour
 {
+    public bool canInput;
     public bool isJumpButtunDown;
     public float isSlidingButtunDown;
 
@@ -21,8 +22,11 @@ public class RunInputProvider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isJumpButtunDown = actionMap["Jump"].triggered;
+        if (canInput)
+        {
+            isJumpButtunDown = actionMap["Jump"].triggered;
 
-        isSlidingButtunDown = actionMap["Sliding"].ReadValue<float>();
+            isSlidingButtunDown = actionMap["Sliding"].ReadValue<float>();
+        }
     }
 }

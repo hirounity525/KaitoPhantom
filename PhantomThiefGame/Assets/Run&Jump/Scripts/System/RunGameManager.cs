@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Fungus;
 
-public class DefenseGameManager : MonoBehaviour
+public class RunGameManager : MonoBehaviour
 {
     [SerializeField] private GameState gameState;
 
-    [SerializeField] private DefenseInputProvider inputProvider;
+    [SerializeField] private RunInputProvider inputProvider;
 
     [Header("Start")]
     [SerializeField] private Flowchart flowchart;
@@ -15,8 +15,8 @@ public class DefenseGameManager : MonoBehaviour
     [SerializeField] private TimelineController startTimeline;
 
     [Header("Main")]
-    [SerializeField] private DefenseFriendHPControler friendHPControlller;
-    [SerializeField] private DefenseEnemyCreater enemyCreater;
+    [SerializeField] private RunPlayerHPController playerHPController;
+    [SerializeField] private RunObjectManager objectManager;
 
     [Header("Pause")]
     [SerializeField] private PauseController pauseController;
@@ -83,27 +83,28 @@ public class DefenseGameManager : MonoBehaviour
                 if (!isFirstStatePlay)
                 {
                     inputProvider.canInput = true;
-                    pauseController.canPause = true;
-                    enemyCreater.StartCreate();
+                    //pauseController.canPause = true;
+
+                    objectManager.StartMove();
 
                     isFirstStatePlay = true;
                 }
 
-                if (friendHPControlller.hitPoints <= 0)
+                if (playerHPController.playerNowHP <= 0)
                 {
                     gameState = GameState.GAMEOVER;
                     return;
                 }
 
-                if (enemyCreater.IsClear() && friendHPControlller.hitPoints > 0)
+                /*if ()
                 {
                     gameState = GameState.CLEAR;
-                }
+                }*/
 
-                if (pauseController.isPause)
+                /*if (pauseController.isPause)
                 {
                     gameState = GameState.PAUSE;
-                }
+                }*/
 
                 break;
             case GameState.PAUSE:
@@ -126,6 +127,7 @@ public class DefenseGameManager : MonoBehaviour
                 break;
             case GameState.CLEAR:
 
+                objectManager.StopMove();
                 inputProvider.canInput = false;
 
                 if (!isStartTimeline)

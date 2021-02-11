@@ -16,5 +16,5 @@ MonoBehaviour:
   stageImage: {fileID: 21300000, guid: afce83a17b5313747bfe8653bd0bd507, type: 3}
   stageName: "\u535A\u7269\u9928\u3078\u4FB5\u5165\u305B\u3088"
   stageType: 1
-  outline: "\u30C9\u30ED\u30FC\u30F3\u3092\u3059\u3079\u3066\u5236\u5727\u3057\u3066\n\u535A\u7269\u9928\u306B\u305F\u3069\u308A\u7740\u3051"
+  outline: "\u30C9\u30ED\u30FC\u30F3\u3092\u3059\u3079\u3066\u5236\u5727\u3057\u3066\n\u535A\u7269\u9928\u3078\u4FB5\u5165\u305B\u3088"
   sceneName: Shooting

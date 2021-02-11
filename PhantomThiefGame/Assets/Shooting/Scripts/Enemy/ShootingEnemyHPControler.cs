@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShootingEnemyHPControler : MonoBehaviour
 {
+    [SerializeField] private ShootingEnemyManagerCore enemyManagerCore;
     [SerializeField] private SEPlayer sePlayer;
     [SerializeField] private int enemyMaxHitPoint;
 
@@ -19,6 +20,7 @@ public class ShootingEnemyHPControler : MonoBehaviour
     {
         if (enemyNowHitPoint <= 0)
         {
+            enemyManagerCore.enemyDestroyNum++;
             gameObject.SetActive(false);
             sePlayer.Play("Break");
         }

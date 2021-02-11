@@ -34,8 +34,11 @@ public class DefenseFriendHPControler : MonoBehaviour
 
     public void AddDamage()
     {
-        hitPoints--;
-        StartCoroutine(DamageAnimation());
+        if(hitPoints > 0)
+        {
+            hitPoints--;
+            StartCoroutine(DamageAnimation());
+        }
     }
 
     private IEnumerator DamageAnimation()
