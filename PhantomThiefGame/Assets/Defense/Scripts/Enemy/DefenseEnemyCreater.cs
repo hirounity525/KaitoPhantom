@@ -5,10 +5,15 @@ using UnityEngine;
 public class DefenseEnemyCreater : MonoBehaviour
 {
     [SerializeField] private SEPlayer sePlayer;
+
     public DefenseEnemyCreateData createData;
+
     [SerializeField] private GameObject friendObj;
     [SerializeField] private Transform[] createTrans;
     [SerializeField] private ObjectPool straighterPool;
+
+    [SerializeField] private float lastCreateWaitTime;
+
     private float createTimer;
     private DefenseEnemyData currentEnemyData;
     private int currentDataNum;
@@ -18,7 +23,10 @@ public class DefenseEnemyCreater : MonoBehaviour
     private DefenseWabeManager wabeManager;
     private DefenseEnemyCore enemyCore;
     [SerializeField] private float waitAnimation;
-    private bool gameStop = false;
+
+    private bool canCreate;
+    private bool isClear;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,13 +39,12 @@ public class DefenseEnemyCreater : MonoBehaviour
     {
         if (wabeManager.currentWabeNum == 4)
         {
-            gameStop = true;
-
-            //クリア
+            canCreate = false;
+            StartCoroutine(FinishCreate());
         }
 
 
-        if (!gameStop)
+        if (!canCreate)
         {
             if (friendObj.activeSelf)
             {
@@ -144,4 +151,20 @@ public class DefenseEnemyCreater : MonoBehaviour
 
     }
 
+    private IEnumerator FinishCreate()
+    {
+        yield return new WaitForSeconds(lastCreateWaitTime);
+
+        isClear = true;
+    }
+
+    public void StartCreate()
+    {
+        canCreate = true;
+    }
+
+    public bool IsClear()
+    {
+        return isClear;
+    }
 }

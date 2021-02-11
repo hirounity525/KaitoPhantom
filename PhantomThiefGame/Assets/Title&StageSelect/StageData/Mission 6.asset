@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageNum: 11
   stageImage: {fileID: 21300000, guid: 5f0dbdd201596d841be3a58d6f497626, type: 3}
-  stageName: "\u3060\u3063\u3057\u3085\u3064\u3057\u308D"
+  stageName: "\u8131\u51FA\u3057\u308D"
   stageType: 1
-  outline: "\u306F\u304F\u3076\u3064\u304B\u3093\u304B\u3089\u3060\u3063\u3057\u3085\u3064\u3057\u3088\u3046"
+  outline: "\u535A\u7269\u9928\u304B\u3089\u8131\u51FA\u3057\u308D"
   sceneName: Run&Jump

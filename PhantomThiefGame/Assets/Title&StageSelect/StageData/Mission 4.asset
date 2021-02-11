@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageNum: 8
   stageImage: {fileID: 21300000, guid: 76e3e4dc32205f94b83b423317799856, type: 3}
-  stageName: "\u3042\u3044\u307C\u3046\u3092\u307E\u3082\u308C"
+  stageName: "\u30ED\u30DC\u30ED\u30F3\u3092\u5B88\u308C"
   stageType: 1
-  outline: "\u305B\u307E\u308A\u304F\u308B\u3066\u304D\u304B\u3089\u3042\u3044\u307C\u3046\u3092\u307E\u3082\u308D\u3046"
+  outline: "\u8FEB\u308A\u304F\u308B\u8B66\u5099\u54E1\u304B\u3089\n\u30ED\u30DC\u30ED\u30F3\u3092\u5B88\u308C"
   sceneName: Defense

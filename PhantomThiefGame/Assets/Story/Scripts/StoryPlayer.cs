@@ -11,22 +11,22 @@ public class StoryPlayer : MonoBehaviour
     {
         switch (CommonData.Instance.selectedStageNum)
         {
-            case 0:
+            case 1:
                 flowchart.SendFungusMessage("Story1");
                 break;
-            case 2:
+            case 3:
                 flowchart.SendFungusMessage("Story2");
                 break;
-            case 4:
+            case 5:
                 flowchart.SendFungusMessage("Story3");
                 break;
-            case 6:
+            case 7:
                 flowchart.SendFungusMessage("Story4");
                 break;
-            case 8:
+            case 9:
                 flowchart.SendFungusMessage("Story5");
                 break;
-            case 11:
+            case 12:
                 flowchart.SendFungusMessage("Story6");
                 break;
         }

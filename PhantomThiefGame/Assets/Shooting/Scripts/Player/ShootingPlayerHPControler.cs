@@ -12,6 +12,7 @@ public class ShootingPlayerHPControler : MonoBehaviour
 
     [SerializeField] public int playerMaxHitPoint;
     [SerializeField] private float unavailableColliderTime;
+    [SerializeField] private int flashNum;
 
     public int playerNowHitPoint;
 
@@ -48,21 +49,21 @@ public class ShootingPlayerHPControler : MonoBehaviour
 
         this.GetComponent<Collider>().enabled = false;
 
-
-
         playerCore.isDamage = true;
 
-
-
-        for (int i=0;i<4;i++)
+        for (int i = 0; i < flashNum; i++)
         {
-
             playerBody.enabled = false;
-            Debug.Log("false");
-            yield return new WaitForSeconds(unavailableColliderTime);
+            playerFace.enabled = false;
+            playerGun.enabled = false;
+
+            yield return new WaitForSeconds(unavailableColliderTime / (flashNum * 2));
+
             playerBody.enabled = true;
-            Debug.Log("true");
-            yield return new WaitForSeconds(unavailableColliderTime / 4);
+            playerFace.enabled = true;
+            playerGun.enabled = true;
+
+            yield return new WaitForSeconds(unavailableColliderTime / (flashNum * 2));
         }
 
         playerCore.isDamage = false;

@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class RunObjectMover : MonoBehaviour
 {
+    public bool canMove;
+
     [SerializeField] private float moveSpeed;
     [SerializeField] private RunPlayerCore playerCore;
 
     private Rigidbody rb;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,13 +20,19 @@ public class RunObjectMover : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        rb.velocity = new Vector3(-moveSpeed, 0, 0);
-
-        if (playerCore.isDead)
+        if (canMove)
         {
-            rb.velocity = new Vector3(0, 0, 0);
+            rb.velocity = new Vector3(-moveSpeed, 0, 0);
+
+            if (playerCore.isDead)
+            {
+                rb.velocity = new Vector3(0, 0, 0);
+            }
+
         }
-
+        else
+        {
+            rb.velocity = Vector3.zero;
+        }
     }
-
 }
