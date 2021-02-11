@@ -9,6 +9,7 @@ public class SneakingEnemyFlasher : MonoBehaviour
     [SerializeField] private GameObject discoverColl;
 
     [SerializeField] private float lightIntensity;
+    [SerializeField] private float firstWaitTime;
 
     [SerializeField] private float flashTime;
     [SerializeField] private int flashNum;
@@ -68,6 +69,8 @@ public class SneakingEnemyFlasher : MonoBehaviour
 
     private IEnumerator FlashLight()
     {
+        yield return new WaitForSeconds(firstWaitTime);
+
         while (true)
         {
             flashLight.DOIntensity(lightIntensity, flashTime).SetLoops(flashNum * 2, LoopType.Yoyo);
