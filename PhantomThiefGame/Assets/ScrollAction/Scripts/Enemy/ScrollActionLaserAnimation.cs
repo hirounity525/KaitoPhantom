@@ -8,7 +8,15 @@ public class ScrollActionLaserAnimation : MonoBehaviour
     [SerializeField] private float laserIdleToLaserDisappearTime;
     [SerializeField] private float laserDisappearToLaserBlinkingTime;
     [SerializeField] private float laserBlinkingToLaserIdleTime;
+    private SEPlayer sEPlayer;
+    private MeshRenderer meshRenderer;
     private Animator laserAnimator;
+
+    private void Awake()
+    {
+        sEPlayer = GetComponent<SEPlayer>();
+        meshRenderer = GetComponent<MeshRenderer>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +35,11 @@ public class ScrollActionLaserAnimation : MonoBehaviour
         StartCoroutine(LaserBlinkingToLaserIdle());
         Debug.Log("3");
         */
+
+        if (meshRenderer.enabled)
+        {
+            sEPlayer.Play("Laser");
+        }
     }
 
     IEnumerator LaserIdleToLaserDisappear()

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ScrollActionClearArea : MonoBehaviour
 {
+    public bool isClear;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,7 @@ public class ScrollActionClearArea : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             Debug.Log("Clear!!!");
+            isClear = true;
         }
     }
 }

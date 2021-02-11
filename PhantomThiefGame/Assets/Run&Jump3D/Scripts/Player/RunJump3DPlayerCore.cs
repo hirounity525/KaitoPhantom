@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RunJump3DPlayerCore : MonoBehaviour
 {
+    public bool isGameOver;
     public int life;
 
     // Start is called before the first frame update
@@ -15,7 +16,10 @@ public class RunJump3DPlayerCore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (life <= 0)
+        {
+            isGameOver = true;
+        }
     }
 
     private void OnTriggerEnter(Collider other)

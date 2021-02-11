@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RunJump3DPlayerMover : MonoBehaviour
 {
+    [SerializeField] private bool isLimitMove;//trueなら移動しない
+
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpPower;
     //[SerializeField] private Transform rotationPointTrans;
@@ -47,6 +49,8 @@ public class RunJump3DPlayerMover : MonoBehaviour
     public bool goPlus;
     public bool goMinus;
 
+    [SerializeField] private SEPlayer sEPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -66,22 +70,29 @@ public class RunJump3DPlayerMover : MonoBehaviour
     private void FixedUpdate()
     {
         isGround = IsGround();
+        if (!isLimitMove)
+        {
+            if (playerMoveDirection == 0)
+            {
+                rb.velocity = new Vector3(-1 * moveSpeed, rb.velocity.y, 0);
+            }
+            else if (playerMoveDirection == 1)
+            {
+                rb.velocity = new Vector3(0, rb.velocity.y, 1 * moveSpeed);
+            }
+            else if (playerMoveDirection == 2)
+            {
+                rb.velocity = new Vector3(1 * moveSpeed, rb.velocity.y, 0);
+            }
+            else if (playerMoveDirection == 3)
+            {
+                rb.velocity = new Vector3(0, rb.velocity.y, -1 * moveSpeed);
+            }
+        }
 
-        if(playerMoveDirection == 0)
+        else
         {
-            rb.velocity = new Vector3(-1 * moveSpeed, rb.velocity.y, 0);
-        }
-        else if (playerMoveDirection == 1)
-        {
-            rb.velocity = new Vector3(0, rb.velocity.y, 1 * moveSpeed);
-        }
-        else if (playerMoveDirection == 2)
-        {
-            rb.velocity = new Vector3( 1 * moveSpeed, rb.velocity.y, 0);
-        }
-        else if (playerMoveDirection == 3)
-        {
-            rb.velocity = new Vector3(0, rb.velocity.y, -1 * moveSpeed);
+            rb.velocity = Vector3.zero;
         }
 
         Jump();//上入力時
@@ -108,6 +119,7 @@ public class RunJump3DPlayerMover : MonoBehaviour
             {
                 if (!isCrouch)
                 {
+                    sEPlayer.Play("Jump");
                     rb.AddForce(Vector3.up * jumpPower);
                 }
             }
@@ -139,6 +151,7 @@ public class RunJump3DPlayerMover : MonoBehaviour
                     //Debug.Log("!isCrouch");
                     //Debug.Log(isCrouch);
                     //rotationPointTrans.localEulerAngles = new Vector3(90, 0, 0);
+                    sEPlayer.Play("Crouch");
                     capsuleCollider.enabled = false;
                     boxCollider.enabled = true;
                     isCrouch = true;

@@ -58,6 +58,8 @@ public class BossBattlePlayerMover : MonoBehaviour
 
     [SerializeField] private BossBattlePlayerInfo playerInfo;
 
+    [SerializeField] private SEPlayer sEPlayer2;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -115,6 +117,8 @@ public class BossBattlePlayerMover : MonoBehaviour
 
                 if (startsJump)
                 {
+                    sEPlayer2.Play("Jump");
+
                     //即ジャンプ禁止
                     StartCoroutine(StartJump());
 

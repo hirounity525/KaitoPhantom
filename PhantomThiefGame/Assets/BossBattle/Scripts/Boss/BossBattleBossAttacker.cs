@@ -62,7 +62,7 @@ public class BossBattleBossAttacker : MonoBehaviour
     [SerializeField] private BossBattleBossCore bossCore;
 
     [SerializeField] private float rotateTime;
-    //[SerializeField] private BossBattleBossBulletCore bossBulletCore;
+    [SerializeField] private BossBattleBossBulletCore bossBulletCore;
 
     // Start is called before the first frame update
     void Start()
@@ -141,12 +141,14 @@ public class BossBattleBossAttacker : MonoBehaviour
 
     public void GunAttack()
     {
+        //Vector3 vector3 = new Vector3 (playerTrans.position.x, playerTrans.position.y, playerTrans.position.z);
         //bossBulletVec2 = playerTrans.position - gameObject.transform.position;
         bossBulletVec2 = playerTrans.position - gunNozzleTrans.position;
         GameObject bossBullet = bossBulletsPool.GetObject();
         bossBullet.transform.position = bossGunNozzlePosTrans.position;
         bossBullet.transform.rotation = bossGunNozzlePosTrans.rotation;
-        //bossBulletCore.playerTrans = playerTrans;
+        //bossBulletCore.playerTrans.position = vector3;
+        bossBullet.GetComponent<BossBattleBossBulletCore>().playerTrans = playerTrans;
         bossBullet.GetComponent<BossBattleBossBulletCore>().bossBalletVec = bossBulletVec2.normalized;
         bossBullet.GetComponent<BossBattleBossBulletCore>().MoveBossBullet();
     }
@@ -187,18 +189,6 @@ public class BossBattleBossAttacker : MonoBehaviour
         }
     }
 
-    public void BigBeam()
-    {
-        if (isBossPosRight)
-        {
-            rb.AddForce(bossJumpPowerToLeft);
-        }
-
-        else if (!isBossPosRight)
-        {
-            rb.AddForce(bossJumpPowerToRight);
-        }
-    }
 
     public void DroneAttack()
     {

@@ -6,14 +6,16 @@ using UnityEngine;
 
 public class BossBattleBossCore : MonoBehaviour
 {
-    [SerializeField] private int bossHP;
+    public bool isClear; //実際にシーンなどを切り替えるときに使う
+    public bool isClearTemp; //ボスバトルクリア
+    public int bossHP;
     [SerializeField] private float stateWAITTime;
     [SerializeField] private float stateMOVETime;
     [SerializeField] private float stateJUMPTime;
     [SerializeField] private float stateSUMMONGUARDSTime;
     [SerializeField] private float stateSUMMONROCKTime;
     [SerializeField] private float stateGUNATTACKTime;
-    [SerializeField] private float stateDYINGTime;
+    [SerializeField] private float stateDYINGTime;          //ボスを倒した後何秒でisClearをtrueにさせるかの時間
     [SerializeField] private float stateDRONEATTACKTime;
     private float stateWAITTimeTemp;
     private float stateMOVETimeTemp;
@@ -34,15 +36,26 @@ public class BossBattleBossCore : MonoBehaviour
 
     [SerializeField] private BossBattleBossInfo bossInfo;
 
-    [SerializeField] private float blowAnimationTime; //この時間がたった後に警備員が呼び出される
-    [SerializeField] private float stompAnimationTime;//この時間がたった後に物が降ってくる
+    //[SerializeField] private float blowAnimationTime =1; //この時間がたった後に警備員が呼び出される
+    //[SerializeField] private float stompAnimationTime = 1.5f;//この時間がたった後に物が降ってくる
     [SerializeField] private float gunAttackAnimationTime;//この時間がたった後に銃で攻撃する
     [SerializeField] private float droneAttackAnimationTime;//この時間がたった後にドローンで攻撃する
     [SerializeField] private float droneAttackAnimationTime2;//ドローンで攻撃を始めてから攻撃アニメーションが終わるまでの時間
 
     public int dronePattern;
 
-    private bool isClear;
+    [SerializeField] private SEPlayer sEPlayer;
+    [SerializeField] private float blowSETiming;
+    [SerializeField] private float blowSEToFinishBlowAnimationTime;
+    [SerializeField] private float stompSETiming;
+    [SerializeField] private float stompSEToFinishStompAnimationTime;
+
+    [SerializeField] private Rigidbody rb;
+
+
+    [SerializeField] private SEPlayer sEPlayer5;
+
+    //[SerializeField] private BossBattlePlayerCore playerCore;
 
     public enum BossAIState
     {
@@ -59,30 +72,52 @@ public class BossBattleBossCore : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
-    {/*
+    {
+        if (isClear)
+        {
+            Debug.Log("クリアしました");
+        }
+
         if (bossHP <= 0)//ボスのHPが0以下になったときDYING以外のStateを強制敵に外す必要があるため、それぞれのTempTimeを0とする
         {
             if (!isClear)
             {
-                stateWAITTimeTemp = 0;
-                stateMOVETimeTemp = 0;
-                stateJUMPTimeTemp = 0;
-                stateSUMMONGUARDSTimeTemp = 0;
-                stateSUMMONROCKTimeTemp = 0;
-                stateGUNATTACKTimeTemp = 0;
-                stateDRONEATTACKTimeTemp = 0;
-                //oneActionFinished = true;
-                oneActionFinished = false;
-                bossAIState = BossAIState.DYING;
-                //bossInfo.isDying = true;//倒れるアニメーション開始
-                isClear = true;
+                if (!isClearTemp)
+                {
+                    stateWAITTimeTemp = 0;
+                    stateMOVETimeTemp = 0;
+                    stateJUMPTimeTemp = 0;
+                    stateSUMMONGUARDSTimeTemp = 0;
+                    stateSUMMONROCKTimeTemp = 0;
+                    stateGUNATTACKTimeTemp = 0;
+                    stateDRONEATTACKTimeTemp = 0;
+                    //oneActionFinished = true;
+                    oneActionFinished = false;
+                    //bossAIState = BossAIState.DYING;
+                    //bossInfo.isDying = true;//倒れるアニメーション開始
+                    bossInfo.isMove = false;
+                    bossInfo.isJump = false;
+                    bossInfo.isSummonGuards = false;
+                    bossInfo.isSummonRock = false;
+                    bossInfo.isGunAttack = false;
+                    bossInfo.isDroneAttack = false;
+
+                    StopCoroutine(SummonGuardsAction());
+                    StopCoroutine(SummonRocksAction());
+                    StopCoroutine(GunAttackAction());
+                    StopCoroutine(DroneAttackAction());
+                    rb.velocity = Vector3.zero;
+                    bossAIState = BossAIState.DYING;
+                    Debug.Log(bossAIState);
+                    isClearTemp = true;
+                }
             }
-        }*/
+        }
     }
 
     private void FixedUpdate()
@@ -190,7 +225,8 @@ public class BossBattleBossCore : MonoBehaviour
             stateDYINGTimeTemp += Time.fixedDeltaTime;
             if (stateDYINGTime <= stateDYINGTimeTemp)
             {
-                stateDYINGTimeTemp = 0;
+                isClear = true;
+                //stateDYINGTimeTemp = 0;
                 //oneActionFinished = false;
                 //bossAIState += (int)bossAIState * -1 + rnd.Next(0, bossAIStateNum + 1);
                 //bossAIState = BossAIState.WAIT;
@@ -259,10 +295,10 @@ public class BossBattleBossCore : MonoBehaviour
             case BossAIState.DYING:
                 if (!oneActionFinished)
                 {
-                    Debug.Log(bossAIState);
+                    //Debug.Log(bossAIState);
                     //bossAttacker.BigBeam();
                     bossInfo.isDying = true;//倒れるアニメーション開始
-                    bossInfo.isDying = false;
+                    //bossInfo.isDying = false;
                     oneActionFinished = true;
                 }
                 break;
@@ -275,7 +311,10 @@ public class BossBattleBossCore : MonoBehaviour
         int i = 0;
         Debug.Log(bossAIState);
         bossInfo.isSummonGuards = true; //笛を吹くアニメーション開始
-        yield return new WaitForSeconds(blowAnimationTime);
+        yield return new WaitForSeconds(blowSETiming);
+        sEPlayer.Play("SummonGuards");
+        yield return new WaitForSeconds(blowSEToFinishBlowAnimationTime);
+        //yield return new WaitForSeconds(blowAnimationTime);
         bossInfo.isSummonGuards = false;//笛を吹くアニメーション自体は終了してIdleアニメーションにする
         while (i < rnd.Next(3, 5))//3個か4個召喚
         {
@@ -290,7 +329,10 @@ public class BossBattleBossCore : MonoBehaviour
         int i = 0;
         Debug.Log(bossAIState);
         bossInfo.isSummonRock = true; //地団駄を踏むアニメーション開始
-        yield return new WaitForSeconds(stompAnimationTime);
+        //yield return new WaitForSeconds(stompAnimationTime);
+        yield return new WaitForSeconds(stompSETiming);
+        sEPlayer.Play("SummonRocks");
+        yield return new WaitForSeconds(stompSEToFinishStompAnimationTime);
         bossInfo.isSummonRock = false;//地団駄を踏むアニメーション自体は終了してIdleアニメーションにする
         while (i < rnd.Next(3, 5))//3個か4個召喚
         {
@@ -324,6 +366,7 @@ public class BossBattleBossCore : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Bullet"))
         {
+            sEPlayer5.Play("BossDamage");
             bossHP--;
             Debug.Log("BossHP = " + bossHP);
         }

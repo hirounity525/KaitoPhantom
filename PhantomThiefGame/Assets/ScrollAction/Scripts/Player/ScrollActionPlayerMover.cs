@@ -54,6 +54,8 @@ public class ScrollActionPlayerMover : MonoBehaviour
 
     [SerializeField] private ScrollActionPlayerInfo playerInfo;
 
+    [SerializeField] private SEPlayer sEPlayer;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -99,6 +101,7 @@ public class ScrollActionPlayerMover : MonoBehaviour
         //地面についているか
         isGround = IsGround();
 
+
         if (!isKockBack)
         {
             //横方向の移動の入力・正規化
@@ -113,6 +116,8 @@ public class ScrollActionPlayerMover : MonoBehaviour
 
                 if (startsJump)
                 {
+                    sEPlayer.Play("Jump");
+
                     //即ジャンプ禁止
                     StartCoroutine(StartJump());
 
@@ -261,5 +266,13 @@ public class ScrollActionPlayerMover : MonoBehaviour
     {
         yield return new WaitForSeconds(canNotMoveTime);
         isKockBack = false;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            sEPlayer.Play("Landing");
+        }
     }
 }

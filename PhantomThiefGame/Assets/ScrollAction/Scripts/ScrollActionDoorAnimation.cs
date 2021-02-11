@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ScrollActionDoorAnimation : MonoBehaviour
 {
+    [SerializeField] private SEPlayer sEPlayer2;
     [SerializeField] private Animator doorAnimator;
     private bool isOneActionFinished;
 
@@ -25,6 +26,7 @@ public class ScrollActionDoorAnimation : MonoBehaviour
         {
             if (!isOneActionFinished)
             {
+                sEPlayer2.Play("Door");
                 doorAnimator.SetBool("isOpen",true);
                 isOneActionFinished = true;
             }

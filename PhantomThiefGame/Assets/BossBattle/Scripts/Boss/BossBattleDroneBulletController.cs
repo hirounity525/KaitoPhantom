@@ -9,9 +9,12 @@ public class BossBattleDroneBulletController : MonoBehaviour
     [SerializeField] private float disappearTime;
     private float disappearTimeTemp;
     private Rigidbody rb;
+    private SEPlayer sEPlayer;
+    private bool isOne;
 
     private void Awake()
     {
+        sEPlayer = GetComponent<SEPlayer>();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -20,7 +23,11 @@ public class BossBattleDroneBulletController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(!isOne)
+        {
+            sEPlayer.Play("DroneBullet");
+            isOne = true;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -28,6 +35,7 @@ public class BossBattleDroneBulletController : MonoBehaviour
         if(other.gameObject.layer == LayerMask.NameToLayer("Wall"))
         {
             gameObject.SetActive(false);
+            isOne = false;
         }
     }
 
@@ -36,5 +44,4 @@ public class BossBattleDroneBulletController : MonoBehaviour
         rb.velocity = new Vector3(one, 0, 0) * bulletSpeed;
     }
 
-    
 }
