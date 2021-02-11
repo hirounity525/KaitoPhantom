@@ -13,7 +13,7 @@ public class BossBattleBossCore : MonoBehaviour
     [SerializeField] private float stateSUMMONGUARDSTime;
     [SerializeField] private float stateSUMMONROCKTime;
     [SerializeField] private float stateGUNATTACKTime;
-    [SerializeField] private float stateBIGBEAMTime;
+    [SerializeField] private float stateDYINGTime;
     [SerializeField] private float stateDRONEATTACKTime;
     private float stateWAITTimeTemp;
     private float stateMOVETimeTemp;
@@ -21,7 +21,7 @@ public class BossBattleBossCore : MonoBehaviour
     private float stateSUMMONGUARDSTimeTemp;
     private float stateSUMMONROCKTimeTemp;
     private float stateGUNATTACKTimeTemp;
-    private float stateBIGBEAMTimeTemp;
+    private float stateDYINGTimeTemp;
     private float stateDRONEATTACKTimeTemp;
 
     [SerializeField] private BossAIState bossAIState = BossAIState.WAIT;
@@ -42,6 +42,8 @@ public class BossBattleBossCore : MonoBehaviour
 
     public int dronePattern;
 
+    private bool isClear;
+
     public enum BossAIState
     {
         WAIT = 0,  //行動を一旦停止
@@ -51,7 +53,7 @@ public class BossBattleBossCore : MonoBehaviour
         SUMMONROCK = 4, //岩召喚
         GUNATTACK = 5, //銃攻撃
         DRONEATTACK = 6,  //ドローン攻撃
-        BIGBEAM = 7 //大きいビーム
+        DYING = 7 //ボスHP0以下
     }
 
     // Start is called before the first frame update
@@ -62,8 +64,25 @@ public class BossBattleBossCore : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        
+    {/*
+        if (bossHP <= 0)//ボスのHPが0以下になったときDYING以外のStateを強制敵に外す必要があるため、それぞれのTempTimeを0とする
+        {
+            if (!isClear)
+            {
+                stateWAITTimeTemp = 0;
+                stateMOVETimeTemp = 0;
+                stateJUMPTimeTemp = 0;
+                stateSUMMONGUARDSTimeTemp = 0;
+                stateSUMMONROCKTimeTemp = 0;
+                stateGUNATTACKTimeTemp = 0;
+                stateDRONEATTACKTimeTemp = 0;
+                //oneActionFinished = true;
+                oneActionFinished = false;
+                bossAIState = BossAIState.DYING;
+                //bossInfo.isDying = true;//倒れるアニメーション開始
+                isClear = true;
+            }
+        }*/
     }
 
     private void FixedUpdate()
@@ -82,6 +101,7 @@ public class BossBattleBossCore : MonoBehaviour
                 //bossAIState = BossAIState.SUMMONROCK;
                 //bossAIState = BossAIState.GUNATTACK;
                 //bossAIState = BossAIState.DRONEATTACK;
+                //bossAIState = BossAIState.DYING;
                 //bossAIState += (int)bossAIState * -1 + rnd.Next(0, bossAIStateNum + 1);//連続でWAITが来ることがある
                 bossAIState += rnd.Next(1, bossAIStateNum + 1);//連続でWAITが来ないようにした(ほんの少しだけ難易度が高い)
             }
@@ -165,15 +185,15 @@ public class BossBattleBossCore : MonoBehaviour
             }
         }
 
-        else if (bossAIState == BossAIState.BIGBEAM)
+        else if (bossAIState == BossAIState.DYING)
         {
-            stateBIGBEAMTimeTemp += Time.fixedDeltaTime;
-            if (stateBIGBEAMTime <= stateBIGBEAMTimeTemp)
+            stateDYINGTimeTemp += Time.fixedDeltaTime;
+            if (stateDYINGTime <= stateDYINGTimeTemp)
             {
-                stateBIGBEAMTimeTemp = 0;
-                oneActionFinished = false;
+                stateDYINGTimeTemp = 0;
+                //oneActionFinished = false;
                 //bossAIState += (int)bossAIState * -1 + rnd.Next(0, bossAIStateNum + 1);
-                bossAIState = BossAIState.WAIT;
+                //bossAIState = BossAIState.WAIT;
             }
         }
 
@@ -236,11 +256,13 @@ public class BossBattleBossCore : MonoBehaviour
                     oneActionFinished = true;
                 }
                 break;
-            case BossAIState.BIGBEAM:
+            case BossAIState.DYING:
                 if (!oneActionFinished)
                 {
                     Debug.Log(bossAIState);
-                    bossAttacker.BigBeam();
+                    //bossAttacker.BigBeam();
+                    bossInfo.isDying = true;//倒れるアニメーション開始
+                    bossInfo.isDying = false;
                     oneActionFinished = true;
                 }
                 break;

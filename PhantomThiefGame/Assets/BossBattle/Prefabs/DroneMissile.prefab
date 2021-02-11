@@ -127,9 +127,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTrans: {fileID: 0}
+  droneMissileVec: {x: 0, y: 0, z: 0}
   isChase: 0
   chaseTime: 3
-  missileSpeed: 3
+  missileSpeed: 12
+  limitSpeed: 5
   disappearTime: 4
 --- !u!1 &2501449377381499182
 GameObject:

@@ -18,7 +18,7 @@ public class BossBattleDroneLaserController : MonoBehaviour
 
     private void Start()
     {
-        this.transform.LookAt(playerTrans);
+        
     }
 
     // Update is called once per frame

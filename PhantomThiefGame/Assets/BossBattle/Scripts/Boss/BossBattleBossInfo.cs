@@ -10,4 +10,5 @@ public class BossBattleBossInfo : MonoBehaviour
     public bool isSummonRock;
     public bool isGunAttack;
     public bool isDroneAttack;
+    public bool isDying;
 }

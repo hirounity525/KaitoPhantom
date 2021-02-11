@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
+using DG.Tweening;
 
 public class BossBattleBossAttacker : MonoBehaviour
 {
@@ -59,6 +60,8 @@ public class BossBattleBossAttacker : MonoBehaviour
     [SerializeField] private Transform gunNozzleTrans;
 
     [SerializeField] private BossBattleBossCore bossCore;
+
+    [SerializeField] private float rotateTime;
     //[SerializeField] private BossBattleBossBulletCore bossBulletCore;
 
     // Start is called before the first frame update
@@ -75,7 +78,8 @@ public class BossBattleBossAttacker : MonoBehaviour
             if (gameObject.transform.position.x < maxLeftBossPos)
             {
                 rb.velocity = Vector3.zero;
-                gameObject.transform.localEulerAngles = new Vector3(0, 180, 0);
+                gameObject.transform.DORotate(Vector3.up * -180, rotateTime);
+                //gameObject.transform.localEulerAngles = new Vector3(0, 180, 0);
                 isBossPosRight = false;
             }
         }
@@ -84,7 +88,8 @@ public class BossBattleBossAttacker : MonoBehaviour
             if (gameObject.transform.position.x > maxRightBossPos)
             {
                 rb.velocity = Vector3.zero;
-                gameObject.transform.localEulerAngles = new Vector3(0, 0, 0);
+                gameObject.transform.DORotate(Vector3.zero, rotateTime);
+                //gameObject.transform.localEulerAngles = new Vector3(0, 0, 0);
                 isBossPosRight = true;
             }
         }
@@ -198,7 +203,7 @@ public class BossBattleBossAttacker : MonoBehaviour
     public void DroneAttack()
     {
         dronePattern = bossCore.dronePattern;
-        //dronePattern = 0;
+        //dronePattern = 2;
         Debug.Log("ドローンパターン："+dronePattern);
 
         if(dronePattern == 0)//弾を前方に飛ばす
@@ -224,11 +229,12 @@ public class BossBattleBossAttacker : MonoBehaviour
 
         else if (dronePattern == 1)//プレイヤーを直接狙うレーザーを発射する
         {
-            droneLaserVec2 = playerTrans.position - bossDroneNozzlePosTrans.position;
             GameObject droneLaser = droneLaserPool.GetObject();
+            droneLaserVec2 = playerTrans.position - bossDroneNozzlePosTrans.position;
             droneLaser.transform.position = bossDroneNozzlePosTrans.position;
+            droneLaser.transform.rotation = Quaternion.identity;
             //droneLaser.transform.rotation = bossDroneNozzlePosTrans.rotation;
-            droneLaser.transform.localEulerAngles = new Vector3(0, 0, 0);
+            //droneLaser.transform.localEulerAngles = new Vector3(0, 0, 0);
             droneLaser.GetComponent<BossBattleDroneLaserController>().playerTrans = playerTrans;
             droneLaser.GetComponent<BossBattleDroneLaserController>().droneLaserVec = droneLaserVec2.normalized;
             droneLaser.GetComponent<BossBattleDroneLaserController>().MoveDroneLaser();
@@ -286,11 +292,11 @@ public class BossBattleBossAttacker : MonoBehaviour
         {
             yield return new WaitForSeconds(laserIntervalTime);
 
-            droneLaserVec2 = playerTrans.position - bossDroneNozzlePosTrans.position;
             GameObject droneLaser = droneLaserPool.GetObject();
+            droneLaserVec2 = playerTrans.position - bossDroneNozzlePosTrans.position;
             droneLaser.transform.position = bossDroneNozzlePosTrans.position;
-            //droneLaser.transform.rotation = bossDroneNozzlePosTrans.rotation;
-            droneLaser.transform.localEulerAngles = new Vector3(0, 0, 0);
+            droneLaser.transform.rotation = Quaternion.identity;
+            //droneLaser.transform.localEulerAngles = new Vector3(0, 0, 0);
             droneLaser.GetComponent<BossBattleDroneLaserController>().playerTrans = playerTrans;
             droneLaser.GetComponent<BossBattleDroneLaserController>().droneLaserVec = droneLaserVec2.normalized;
             droneLaser.GetComponent<BossBattleDroneLaserController>().MoveDroneLaser();
