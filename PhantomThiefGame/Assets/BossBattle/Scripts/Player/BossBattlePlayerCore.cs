@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class BossBattlePlayerCore : MonoBehaviour
 {
+    public bool isGameOver;
     public bool isInvicible;
     public int life;
     [SerializeField] private float invincibleTime;
     //[SerializeField] private ScrollActionLaserAttacker scrollActionLaserAttacker;
     [SerializeField] private BossBattlePlayerMover bossBattlePlayerMover;
+    [SerializeField] private SEPlayer sEPlayer4;
+    [SerializeField] private BossBattleBossCore bossCore;
 
     // Start is called before the first frame update
     void Start()
@@ -19,12 +22,14 @@ public class BossBattlePlayerCore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if (scrollActionLaserAttacker.isLaserHit)
+        if (!bossCore.isClear || !bossCore.isClearTemp)
         {
-            life -= 1;
-            StartCoroutine(Invincible());
-            Debug.Log(life);
-        }*/
+            if (life <= 0)
+            {
+                isGameOver = true;
+                Debug.Log("GameOver");
+            }
+        }
     }
 
 
@@ -32,12 +37,14 @@ public class BossBattlePlayerCore : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Hole"))
         {
+            sEPlayer4.Play("Damage");
             life = 0;
             Debug.Log(life);
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Rock"))
         {
+            sEPlayer4.Play("Damage");
             life--;
             StartCoroutine(Invincible());
             Debug.Log(life);
@@ -50,6 +57,7 @@ public class BossBattlePlayerCore : MonoBehaviour
         {
             if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
+                sEPlayer4.Play("Damage");
                 life -= 1;
                 StartCoroutine(Invincible());
                 Debug.Log(life);

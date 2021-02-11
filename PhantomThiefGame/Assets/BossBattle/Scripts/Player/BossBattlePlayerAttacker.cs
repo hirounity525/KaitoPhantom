@@ -13,6 +13,8 @@ public class BossBattlePlayerAttacker : MonoBehaviour
     private bool isShoot;
     private BossBattlePlayerMover playerMover;
 
+    [SerializeField] private SEPlayer sEPlayer3;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,5 +60,6 @@ public class BossBattlePlayerAttacker : MonoBehaviour
         //bullet.transform.localEulerAngles = new Vector3(0, 0, 90);
         bullet.GetComponent<BossBattleBulletController>().playerMover = playerMover;
         bullet.GetComponent<BossBattleBulletController>().MoveBullet();
+        sEPlayer3.Play("Attack");
     }
 }
