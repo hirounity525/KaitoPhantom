@@ -37756,7 +37756,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1149704111
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -38179,7 +38179,7 @@ MonoBehaviour:
   itemId: 497
   indentLevel: 0
   targetObject: {fileID: 1546336110}
-  methodName: ChangeSuprise
+  methodName: ChangeSurprise
   delay: 0
 --- !u!114 &1149704183
 MonoBehaviour:
@@ -39153,7 +39153,7 @@ MonoBehaviour:
   itemId: 502
   blockName: RunStory
   description: 
-  eventHandler: {fileID: 0}
+  eventHandler: {fileID: 1149704374}
   commandList:
   - {fileID: 1149704208}
   - {fileID: 1149704207}
@@ -39324,7 +39324,7 @@ MonoBehaviour:
   itemId: 424
   indentLevel: 0
   targetObject: {fileID: 1546336110}
-  methodName: ChangeSuprise
+  methodName: ChangeSurprise
   delay: 0
 --- !u!114 &1149704218
 MonoBehaviour:
@@ -39408,7 +39408,7 @@ MonoBehaviour:
   itemId: 420
   indentLevel: 0
   targetObject: {fileID: 1546336110}
-  methodName: ChangeSuprise
+  methodName: ChangeSurprise
   delay: 0
 --- !u!114 &1149704222
 MonoBehaviour:
@@ -40474,7 +40474,7 @@ MonoBehaviour:
   itemId: 503
   blockName: BossBattleStory
   description: 
-  eventHandler: {fileID: 0}
+  eventHandler: {fileID: 1149704375}
   commandList:
   - {fileID: 1149704249}
   - {fileID: 1149704248}
@@ -40576,7 +40576,7 @@ MonoBehaviour:
   itemId: 281
   indentLevel: 0
   targetObject: {fileID: 1546336110}
-  methodName: ChangeSuprise
+  methodName: ChangeSurprise
   delay: 0
 --- !u!114 &1149704254
 MonoBehaviour:
@@ -40668,7 +40668,7 @@ MonoBehaviour:
   itemId: 276
   indentLevel: 0
   targetObject: {fileID: 1546336110}
-  methodName: ChangeSuprise
+  methodName: ChangeSurprise
   delay: 0
 --- !u!114 &1149704258
 MonoBehaviour:
@@ -41871,7 +41871,7 @@ MonoBehaviour:
   itemId: 209
   indentLevel: 0
   targetObject: {fileID: 1546336110}
-  methodName: ChangeSuprise
+  methodName: ChangeSurprise
   delay: 0
 --- !u!114 &1149704298
 MonoBehaviour:
@@ -42145,7 +42145,7 @@ MonoBehaviour:
   itemId: 504
   blockName: DefenseStory
   description: 
-  eventHandler: {fileID: 0}
+  eventHandler: {fileID: 1149704376}
   commandList:
   - {fileID: 1149704302}
   - {fileID: 1149704301}
@@ -42443,7 +42443,7 @@ MonoBehaviour:
   itemId: 157
   indentLevel: 0
   targetObject: {fileID: 1546336110}
-  methodName: ChangeSuprise
+  methodName: ChangeSurprise
   delay: 0
 --- !u!114 &1149704315
 MonoBehaviour:
@@ -43544,7 +43544,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 152.95451
-    y: 182.04553
+    y: 183.14444
     width: 118
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -43552,7 +43552,7 @@ MonoBehaviour:
   itemId: 505
   blockName: ScrollAction
   description: 
-  eventHandler: {fileID: 0}
+  eventHandler: {fileID: 1149704377}
   commandList:
   - {fileID: 1149704338}
   - {fileID: 1149704337}
@@ -43687,7 +43687,7 @@ MonoBehaviour:
   itemId: 124
   indentLevel: 0
   targetObject: {fileID: 1546336110}
-  methodName: ChangeSuprise
+  methodName: ChangeSurprise
   delay: 0
 --- !u!114 &1149704345
 MonoBehaviour:
@@ -43821,7 +43821,7 @@ MonoBehaviour:
   itemId: 118
   indentLevel: 0
   targetObject: {fileID: 1546336110}
-  methodName: ChangeSuprise
+  methodName: ChangeSurprise
   delay: 0
 --- !u!114 &1149704351
 MonoBehaviour:
@@ -44488,6 +44488,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1149704374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149704109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d7d417659cd54a6787f70f763950c34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentBlock: {fileID: 1149704209}
+  suppressBlockAutoSelect: 0
+  message: RunStory
+--- !u!114 &1149704375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149704109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d7d417659cd54a6787f70f763950c34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentBlock: {fileID: 1149704250}
+  suppressBlockAutoSelect: 0
+  message: BossBattleStory
+--- !u!114 &1149704376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149704109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d7d417659cd54a6787f70f763950c34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentBlock: {fileID: 1149704303}
+  suppressBlockAutoSelect: 0
+  message: DefenseStory
+--- !u!114 &1149704377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149704109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d7d417659cd54a6787f70f763950c34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentBlock: {fileID: 1149704339}
+  suppressBlockAutoSelect: 0
+  message: ScrollAction
 --- !u!1 &1151242713
 GameObject:
   m_ObjectHideFlags: 0
@@ -44535,7 +44595,7 @@ MonoBehaviour:
   m_ShadowmapMode: 0
   m_Cameras:
   - {fileID: 1030018299}
-  m_CurrentCamera: {fileID: 0}
+  m_CurrentCamera: {fileID: 2079876953}
   m_Size: {x: 10, y: 10, z: 20}
   m_SpotNear: 0.1
   m_SpotFar: 1
@@ -53045,10 +53105,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4bb4d4ad3a96334d9bbc0b2389a0455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameState: 1
+  gameState: 0
   inputProvider: {fileID: 472802337}
   flowchart: {fileID: 2046027331}
-  playBlockName: ShootingStory
+  playBlockName: SneakingStory
   startTimeline: {fileID: 334450330}
   enemyManager: {fileID: 1827861413}
   playerManager: {fileID: 3855587151541227127}
@@ -69717,7 +69777,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6348123672665467917, guid: 4a434d29096f7d24091c46d8f2f08e12, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a434d29096f7d24091c46d8f2f08e12, type: 3}
@@ -70557,6 +70617,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78f3b0292970edb43b81675926045e36, type: 3}
+--- !u!20 &2079876953 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1512910404, guid: 4a434d29096f7d24091c46d8f2f08e12, type: 3}
+  m_PrefabInstance: {fileID: 1936454779}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2081119625
 PrefabInstance:
   m_ObjectHideFlags: 0
