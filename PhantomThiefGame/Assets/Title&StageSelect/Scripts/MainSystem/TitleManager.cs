@@ -269,7 +269,18 @@ public class TitleManager : MonoBehaviour
                     {
                         if (!isTransitionFirstPlay)
                         {
-                            saveDataManager.NewSave(CommonData.Instance.selectSaveDataNum, nameSetter.playerName);
+                            if(nameSetter.playerName == "ひろくんすき")
+                            {
+                                saveDataManager.AllClearSave(CommonData.Instance.selectSaveDataNum, nameSetter.playerName);
+                                stageManager.SetActiveStages(CommonData.Instance.selectSaveData.clearStageNum);
+                                CommonData.Instance.isSelectNewData = false;
+                            }
+                            else
+                            {
+                                saveDataManager.NewSave(CommonData.Instance.selectSaveDataNum, nameSetter.playerName);
+                                stageManager.SetActiveStages(CommonData.Instance.selectSaveData.clearStageNum);
+                            }
+
                             isTransitionFirstPlay = true;
                         }
 

@@ -37,4 +37,16 @@ public class SaveDataManager : MonoBehaviour
 
         Save(saveDataNum, newSaveData);
     }
+
+    public void AllClearSave(int saveDataNum, string playerName)
+    {
+        SaveData newSaveData;
+
+        newSaveData.clearStageNum = CommonData.Instance.maxStageNum;
+        newSaveData.playerName = playerName;
+
+        CommonData.Instance.selectSaveData = newSaveData;
+
+        Save(saveDataNum, newSaveData);
+    }
 }

@@ -5,12 +5,19 @@ using DG.Tweening;
 
 public class SneakingEnemyDiscover : MonoBehaviour
 {
+    public bool isLightOn = true;
+
     [SerializeField] private Light flashLight;
     [SerializeField] private float turnTime;
+
+    [SerializeField] private Transform centerTrans;
+    [SerializeField] private Vector3 halfExtents;
+    [SerializeField] private float maxDistance;
 
     private SneakingEnemyCore enemyCore;
     private Transform enemyTrans;
 
+    private RaycastHit raycastHit;
 
     private void Awake()
     {
@@ -24,9 +31,37 @@ public class SneakingEnemyDiscover : MonoBehaviour
         {
             flashLight.color = Color.white;
         }
+        else
+        {
+            flashLight.color = Color.red;
+        }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void FixedUpdate()
+    {
+        if (!enemyCore.isDiscovery)
+        {
+            if (isLightOn)
+            {
+                Physics.BoxCast(centerTrans.position, halfExtents, enemyTrans.forward, out raycastHit, Quaternion.identity, maxDistance);
+
+                if (raycastHit.transform != null)
+                {
+                    if (raycastHit.transform.gameObject.tag == "Player")
+                    {
+                        enemyCore.isDiscovery = true;
+
+                        Vector3 lookDir = raycastHit.transform.position - enemyTrans.position;
+                        Quaternion lookQuaternion = Quaternion.LookRotation(lookDir);
+                        lookQuaternion = Quaternion.Euler(0, lookQuaternion.eulerAngles.y, 0);
+                        enemyTrans.DORotateQuaternion(lookQuaternion, turnTime);
+                    }
+                }
+            }
+        }
+    }
+
+    /*private void OnTriggerEnter(Collider other)
     {
         if (!enemyCore.isDiscovery)
         {
@@ -43,7 +78,7 @@ public class SneakingEnemyDiscover : MonoBehaviour
                 enemyTrans.DORotateQuaternion(lookQuaternion, turnTime);
             }
         }
-    }
+    }*/
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -54,7 +89,6 @@ public class SneakingEnemyDiscover : MonoBehaviour
             if (collisionObj.tag == "Player")
             {
                 enemyCore.isDiscovery = true;
-                flashLight.color = Color.red;
 
                 Vector3 lookDir = collisionObj.transform.position - enemyTrans.position;
                 Quaternion lookQuaternion = Quaternion.LookRotation(lookDir);
@@ -62,5 +96,10 @@ public class SneakingEnemyDiscover : MonoBehaviour
                 enemyTrans.DORotateQuaternion(lookQuaternion, turnTime);
             }
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireCube(centerTrans.position + transform.forward * maxDistance, halfExtents);
     }
 }

@@ -20,6 +20,7 @@ public class SneakingEnemyFlasher : MonoBehaviour
 
     private SneakingEnemyCore enemyCore;
     private Transform enemyTrans;
+    private SneakingEnemyDiscover enemyDiscover;
 
     private Vector3 firstPos;
     private Quaternion firstRot;
@@ -30,6 +31,7 @@ public class SneakingEnemyFlasher : MonoBehaviour
     {
         enemyCore = GetComponent<SneakingEnemyCore>();
         enemyTrans = GetComponent<Transform>();
+        enemyDiscover = GetComponent<SneakingEnemyDiscover>();
 
         firstPos = enemyTrans.position;
         firstRot = enemyTrans.rotation;
@@ -39,7 +41,7 @@ public class SneakingEnemyFlasher : MonoBehaviour
     void Start()
     {
         flashLight.intensity = 0;
-        discoverColl.SetActive(false);
+        enemyDiscover.isLightOn = false;
 
         StartCoroutine(FlashLight());
     }
@@ -58,7 +60,7 @@ public class SneakingEnemyFlasher : MonoBehaviour
             enemyTrans.rotation = firstRot;
 
             flashLight.intensity = 0;
-            discoverColl.SetActive(false);
+            enemyDiscover.isLightOn = false;
             StartCoroutine(FlashLight());
 
             enemyCore.isReset = false;
@@ -77,12 +79,12 @@ public class SneakingEnemyFlasher : MonoBehaviour
 
             yield return new WaitForSeconds(flashTime * flashNum * 2 + afterFlashWaitTime);
 
-            discoverColl.SetActive(true);
+            enemyDiscover.isLightOn = true;
             flashLight.intensity = lightIntensity;
 
             yield return new WaitForSeconds(lightOnTime);
 
-            discoverColl.SetActive(false);
+            enemyDiscover.isLightOn = false;
             flashLight.intensity = 0;
 
             yield return new WaitForSeconds(lightOffTime);
