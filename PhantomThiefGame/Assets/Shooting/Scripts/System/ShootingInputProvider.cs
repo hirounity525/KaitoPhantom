@@ -31,5 +31,11 @@ public class ShootingInputProvider : MonoBehaviour
             moveHorizon = actionMap["MoveHorizon"].ReadValue<float>();
             moveVertical = actionMap["MoveVertical"].ReadValue<float>();
         }
+        else
+        {
+            isAttackButtunDown = 0;
+            moveHorizon = 0;
+            moveVertical = 0;
+        }
     }
 }

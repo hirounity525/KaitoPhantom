@@ -15,11 +15,16 @@ public class ShootingEnemyManager : MonoBehaviour
         enemyManagerCore = GetComponent<ShootingEnemyManagerCore>();
     }
 
+    private void Start()
+    {
+        enemyManagerCore.enemyNum = enemyObjs.Length;
+    }
+
     private void Update()
     {
         if (!isAllDestroy)
         {
-            if (enemyManagerCore.enemyDestroyNum == enemyObjs.Length)
+            if (enemyManagerCore.enemyDestroyNum >= enemyManagerCore.enemyNum)
             {
                 isAllDestroy = true;
             }

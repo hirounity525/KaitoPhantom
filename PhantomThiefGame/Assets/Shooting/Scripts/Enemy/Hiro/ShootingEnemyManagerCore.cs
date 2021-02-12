@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class ShootingEnemyManagerCore : MonoBehaviour
 {
+    public int enemyNum;
     public int enemyDestroyNum;
 }

@@ -8,7 +8,7 @@ public class ShootingEnemyHPControler : MonoBehaviour
     [SerializeField] private SEPlayer sePlayer;
     [SerializeField] private int enemyMaxHitPoint;
 
-    private int enemyNowHitPoint;
+    [SerializeField] private int enemyNowHitPoint;
     // Start is called before the first frame update
     void Start()
     {
