@@ -8,6 +8,7 @@ public class DefenseGameManager : MonoBehaviour
     [SerializeField] private GameState gameState;
 
     [SerializeField] private DefenseInputProvider inputProvider;
+    [SerializeField] private SoundManager soundManager;
 
     [Header("Start")]
     [SerializeField] private Flowchart flowchart;
@@ -84,6 +85,9 @@ public class DefenseGameManager : MonoBehaviour
                 {
                     inputProvider.canInput = true;
                     pauseController.canPause = true;
+
+                    soundManager.Play("Defense");
+
                     enemyCreater.StartCreate();
 
                     isFirstStatePlay = true;
@@ -102,13 +106,20 @@ public class DefenseGameManager : MonoBehaviour
 
                 if (pauseController.isPause)
                 {
+                    isFirstStatePlay = false;
                     gameState = GameState.PAUSE;
                 }
 
                 break;
             case GameState.PAUSE:
 
-                inputProvider.canInput = false;
+                if (!isFirstStatePlay)
+                {
+                    inputProvider.canInput = false;
+                    soundManager.Pause();
+
+                    isFirstStatePlay = true;
+                }
 
                 if (!pauseController.isPause)
                 {

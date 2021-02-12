@@ -63,6 +63,8 @@ public class TitleManager : MonoBehaviour
 
     private bool startsTimeline;
 
+    private bool isEnding;
+
     private void Awake()
     {
         stateBehavior = GetComponent<TitleStateBehavior>();
@@ -303,8 +305,18 @@ public class TitleManager : MonoBehaviour
                                 saveDataManager.Save(CommonData.Instance.selectSaveDataNum, CommonData.Instance.selectSaveData);
 
                                 startsTimeline = false;
+
+                                if(CommonData.Instance.selectSaveData.clearStageNum == CommonData.Instance.maxStageNum)
+                                {
+                                    isEnding = true;
+                                }
                             }
                         }
+                        return;
+                    }
+
+                    if (isEnding)
+                    {
                         return;
                     }
 

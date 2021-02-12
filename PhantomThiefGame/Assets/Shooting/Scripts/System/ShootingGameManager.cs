@@ -8,6 +8,7 @@ public class ShootingGameManager : MonoBehaviour
     [SerializeField] private GameState gameState;
 
     [SerializeField] private ShootingInputProvider inputProvider;
+    [SerializeField] private SoundManager soundManager;
 
     [Header("Start")]
     [SerializeField] private Flowchart flowchart;
@@ -87,6 +88,8 @@ public class ShootingGameManager : MonoBehaviour
                     pauseController.canPause = true;
                     enemyManager.EnableEnemies();
 
+                    soundManager.Play("ShootingBGM");
+
                     isFirstStatePlay = true;
                 }
 
@@ -104,13 +107,21 @@ public class ShootingGameManager : MonoBehaviour
 
                 if (pauseController.isPause)
                 {
+                    isFirstStatePlay = false;
                     gameState = GameState.PAUSE;
                 }
 
                 break;
             case GameState.PAUSE:
 
-                inputProvider.canInput = false;
+                if (!isFirstStatePlay)
+                {
+                    inputProvider.canInput = false;
+
+                    soundManager.Pause();
+
+                    isFirstStatePlay = true;
+                }
 
                 if (!pauseController.isPause)
                 {

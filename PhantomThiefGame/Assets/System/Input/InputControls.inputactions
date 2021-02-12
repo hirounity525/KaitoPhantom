@@ -1112,7 +1112,7 @@
                 {
                     "name": "positive",
                     "id": "b55b791d-5aa2-45c5-b35f-993c94b77af4",
-                    "path": "<Keyboard>/upArrow",
+                    "path": "<Keyboard>/z",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keybord",
@@ -1134,7 +1134,7 @@
                 {
                     "name": "positive",
                     "id": "4fb30b65-3651-4cee-b49c-c460e7048a3b",
-                    "path": "<Keyboard>/downArrow",
+                    "path": "<Keyboard>/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keybord",

@@ -27,6 +27,12 @@ EditorBuildSettings:
     path: Assets/BossBattle/BossBattle.unity
     guid: e7e60fc693e84304cbc098f5f147d992
   - enabled: 1
+    path: Assets/Run&Jump/Run&Jump.unity
+    guid: 87ac8ae5999e619459f95306a3e943a9
+  - enabled: 1
+    path: Assets/Run&Jump3D/Run&Jump3D.unity
+    guid: 2b6d1613ecf3ed147b51e98f3406608c
+  - enabled: 1
     path: Assets/GameOver/GameOver.unity
     guid: 24a39ee88ec55524e910ac475203503b
   m_configObjects:

@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class ScrollActionInputProvider : MonoBehaviour
 {
+    public bool canInput;
+
     public float moveHorizontal;
     public bool isJumpButtonDown;
     public bool isJumpButtonUp;
@@ -29,32 +31,39 @@ public class ScrollActionInputProvider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        //移動の入力
-        moveHorizontal = actionMap["Move"].ReadValue<float>();
-
-        //ジャンプボタンを押した瞬間
-        isJumpButtonDown = actionMap["Jump"].triggered;
-
-        //ジャンプボタンを離した瞬間
-        jumpButtonValue = actionMap["Jump"].ReadValue<float>();
-
-        if (jumpButtonValue >= defaultButtonPressPoint)
+        if (canInput)
         {
-            isJumpButton = true;
-        }
 
-        if (isJumpButton)
-        {
-            if (jumpButtonValue < defaultButtonPressPoint)
+            //移動の入力
+            moveHorizontal = actionMap["Move"].ReadValue<float>();
+
+            //ジャンプボタンを押した瞬間
+            isJumpButtonDown = actionMap["Jump"].triggered;
+
+            //ジャンプボタンを離した瞬間
+            jumpButtonValue = actionMap["Jump"].ReadValue<float>();
+
+            if (jumpButtonValue >= defaultButtonPressPoint)
             {
-                isJumpButtonUp = true;
-                isJumpButton = false;
+                isJumpButton = true;
+            }
+
+            if (isJumpButton)
+            {
+                if (jumpButtonValue < defaultButtonPressPoint)
+                {
+                    isJumpButtonUp = true;
+                    isJumpButton = false;
+                }
+            }
+            else
+            {
+                isJumpButtonUp = false;
             }
         }
         else
         {
-            isJumpButtonUp = false;
+            moveHorizontal = 0;
         }
     }
 }

@@ -8,6 +8,7 @@ public class RunGameManager : MonoBehaviour
     [SerializeField] private GameState gameState;
 
     [SerializeField] private RunInputProvider inputProvider;
+    [SerializeField] private SoundManager soundManager;
 
     [Header("Start")]
     [SerializeField] private Flowchart flowchart;
@@ -17,6 +18,7 @@ public class RunGameManager : MonoBehaviour
     [Header("Main")]
     [SerializeField] private RunPlayerHPController playerHPController;
     [SerializeField] private RunObjectManager objectManager;
+    [SerializeField] private RunClearManager clearManager;
 
     [Header("Pause")]
     [SerializeField] private PauseController pauseController;
@@ -82,8 +84,10 @@ public class RunGameManager : MonoBehaviour
 
                 if (!isFirstStatePlay)
                 {
+                    soundManager.Play("Run");
+
                     inputProvider.canInput = true;
-                    //pauseController.canPause = true;
+                    pauseController.canPause = true;
 
                     objectManager.StartMove();
 
@@ -96,20 +100,28 @@ public class RunGameManager : MonoBehaviour
                     return;
                 }
 
-                /*if ()
+                if (clearManager.IsClear())
                 {
                     gameState = GameState.CLEAR;
-                }*/
+                }
 
-                /*if (pauseController.isPause)
+                if (pauseController.isPause)
                 {
+                    isFirstStatePlay = false;
                     gameState = GameState.PAUSE;
-                }*/
+                }
 
                 break;
             case GameState.PAUSE:
 
-                inputProvider.canInput = false;
+                if (!isFirstStatePlay)
+                {
+                    inputProvider.canInput = false;
+
+                    soundManager.Pause();
+
+                    isFirstStatePlay = true;
+                }
 
                 if (!pauseController.isPause)
                 {
@@ -128,10 +140,12 @@ public class RunGameManager : MonoBehaviour
             case GameState.CLEAR:
 
                 objectManager.StopMove();
+
                 inputProvider.canInput = false;
 
                 if (!isStartTimeline)
                 {
+                    soundManager.StopFade();
                     clearTimeline.Play();
                     isStartTimeline = true;
                 }
@@ -142,8 +156,8 @@ public class RunGameManager : MonoBehaviour
                         isFirstStatePlay = false;
                         isStartTimeline = false;
 
-                        commonDataController.ClearStage();
-                        sceneLoader.LoadScene("Title");
+                        commonDataController.ChangeRunJump3D();
+                        sceneLoader.LoadScene("Run&Jump3D");
                     }
                 }
 

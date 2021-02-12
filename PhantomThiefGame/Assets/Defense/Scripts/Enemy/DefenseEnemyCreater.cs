@@ -44,7 +44,7 @@ public class DefenseEnemyCreater : MonoBehaviour
         }
 
 
-        if (!canCreate)
+        if (canCreate)
         {
             if (friendObj.activeSelf)
             {

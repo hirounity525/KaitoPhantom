@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2165627017961366640
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2165627017961366643}
+  - component: {fileID: 2165627017961366642}
+  - component: {fileID: 2165627017961366641}
+  m_Layer: 0
+  m_Name: StartTimeline
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2165627017961366643
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2165627017961366640}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2165627017961366642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2165627017961366640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e30625aa113a05429b8a9d4a6fee16f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timelineDatas: []
+  isFinish: 0
+--- !u!320 &2165627017961366641
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2165627017961366640}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: cab47d40e06bede47aaae920320d51e8, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: -7288324105388396990, guid: cab47d40e06bede47aaae920320d51e8, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -3097838320367125551, guid: cab47d40e06bede47aaae920320d51e8, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 2566813073911519429, guid: cab47d40e06bede47aaae920320d51e8, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -8220279983214590076, guid: cab47d40e06bede47aaae920320d51e8, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 7438784750624906437, guid: cab47d40e06bede47aaae920320d51e8, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -5568506629360665739, guid: cab47d40e06bede47aaae920320d51e8, type: 2}
+    value: {fileID: 0}
+  m_ExposedReferences:
+    m_References: []

@@ -31,6 +31,7 @@ public class PauseController : MonoBehaviour
     private PauseInputProvider inputProvider;
     private CommonDataController commonDataController;
     private SceneLoader sceneLoader;
+    private SEPlayer sEPlayer;
 
     private bool isSelect;
 
@@ -39,6 +40,7 @@ public class PauseController : MonoBehaviour
         inputProvider = GetComponent<PauseInputProvider>();
         commonDataController = GetComponent<CommonDataController>();
         sceneLoader = GetComponent<SceneLoader>();
+        sEPlayer = GetComponent<SEPlayer>();
     }
 
     // Update is called once per frame
@@ -63,20 +65,24 @@ public class PauseController : MonoBehaviour
             {
                 if (inputProvider.isUpButtonDown)
                 {
+                    sEPlayer.Play("移動");
                     pauseMenu = PauseMenu.RETURNGAME;
                     arrowTrans.localPosition = returnGameButtonTrans.localPosition + Vector3.right * arrowPosX;
                 }
                 else if (inputProvider.isDownButtonDown)
                 {
+                    sEPlayer.Play("移動");
                     pauseMenu = PauseMenu.TOSTAGESELECT;
                     arrowTrans.localPosition = toStageSelectButtonTrans.localPosition + Vector3.right * arrowPosX;
                 }
 
                 if (inputProvider.isSelectButtonDown)
                 {
+
                     switch (pauseMenu)
                     {
                         case PauseMenu.RETURNGAME:
+                            sEPlayer.Play("キャンセル");
 
                             Time.timeScale = 1;
                             pauseCanvas.SetActive(false);
@@ -84,6 +90,7 @@ public class PauseController : MonoBehaviour
 
                             break;
                         case PauseMenu.TOSTAGESELECT:
+                            sEPlayer.Play("決定");
 
                             Time.timeScale = 1;
 

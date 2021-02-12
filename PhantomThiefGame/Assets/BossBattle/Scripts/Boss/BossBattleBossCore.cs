@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class BossBattleBossCore : MonoBehaviour
 {
+    public bool canMove;
+
     public bool isClear; //実際にシーンなどを切り替えるときに使う
     public bool isClearTemp; //ボスバトルクリア
     public int bossHP;
@@ -122,6 +124,11 @@ public class BossBattleBossCore : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!canMove)
+        {
+            return;
+        }
+
         //Debug.Log(bossAIState);
         if(bossAIState == BossAIState.WAIT)
         {

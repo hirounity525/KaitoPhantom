@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class BossBattleInputProvider : MonoBehaviour
 {
+    public bool canInput;
+
     public float moveHorizontal2;
     public bool isJumpButtonDown2;
     public bool isJumpButtonUp2;
@@ -30,37 +32,44 @@ public class BossBattleInputProvider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        //移動の入力
-        moveHorizontal2 = actionMap["Move"].ReadValue<float>();
-
-        //ジャンプボタンを押した瞬間
-        isJumpButtonDown2 = actionMap["Jump"].triggered;
-
-        //ジャンプボタンを離した瞬間
-        jumpButtonValue = actionMap["Jump"].ReadValue<float>();
-        
-        //攻撃ボタンを押した瞬間
-        isAttackButtonDown = actionMap["Attack"].ReadValue<float>();
-
-
-
-        if (jumpButtonValue >= defaultButtonPressPoint)
+        if (canInput)
         {
-            isJumpButton = true;
-        }
+            //移動の入力
+            moveHorizontal2 = actionMap["Move"].ReadValue<float>();
 
-        if (isJumpButton)
-        {
-            if (jumpButtonValue < defaultButtonPressPoint)
+            //ジャンプボタンを押した瞬間
+            isJumpButtonDown2 = actionMap["Jump"].triggered;
+
+            //ジャンプボタンを離した瞬間
+            jumpButtonValue = actionMap["Jump"].ReadValue<float>();
+
+            //攻撃ボタンを押した瞬間
+            isAttackButtonDown = actionMap["Attack"].ReadValue<float>();
+
+
+
+            if (jumpButtonValue >= defaultButtonPressPoint)
             {
-                isJumpButtonUp2 = true;
-                isJumpButton = false;
+                isJumpButton = true;
+            }
+
+            if (isJumpButton)
+            {
+                if (jumpButtonValue < defaultButtonPressPoint)
+                {
+                    isJumpButtonUp2 = true;
+                    isJumpButton = false;
+                }
+            }
+            else
+            {
+                isJumpButtonUp2 = false;
             }
         }
         else
         {
-            isJumpButtonUp2 = false;
+            moveHorizontal2 = 0;
+            jumpButtonValue = 0;
         }
     }
 }

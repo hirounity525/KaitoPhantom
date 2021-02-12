@@ -6,6 +6,7 @@ public class ScrollActionPendulumMover : MonoBehaviour
 {
     [SerializeField] private float firstSpeed;
     [SerializeField] private Transform rotationCenterTrans;
+    [SerializeField] private SEPlayer sEPlayer;
     private Rigidbody rb;
     private bool isFirstAngle0 = true;
     private Vector3 addSpeed;
@@ -43,6 +44,7 @@ public class ScrollActionPendulumMover : MonoBehaviour
         {
             if(world_angle_z <= 5)
             {
+                sEPlayer.Play("Pendulum");
                 rb.velocity = addSpeed;
                 isLeft = false;
             }
@@ -51,6 +53,7 @@ public class ScrollActionPendulumMover : MonoBehaviour
         {
             if (world_angle_z >= 355)
             {
+                sEPlayer.Play("Pendulum");
                 rb.velocity = -addSpeed;
                 isLeft = true;
             }

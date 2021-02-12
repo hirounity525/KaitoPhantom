@@ -19,4 +19,9 @@ public class CommonDataController : MonoBehaviour
     {
         CommonData.Instance.isBack = true;
     }
+
+    public void ChangeRunJump3D()
+    {
+        CommonData.Instance.selectedStageName = "RunJump3D";
+    }
 }

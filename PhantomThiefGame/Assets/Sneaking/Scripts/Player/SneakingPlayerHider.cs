@@ -7,6 +7,7 @@ public class SneakingPlayerHider : MonoBehaviour
 {
     [SerializeField] private SneakingInputProvider inputProvider;
     [SerializeField] private SneakingCameraChanger cameraChanger;
+    [SerializeField] private SEPlayer sEPlayer;
 
     [SerializeField] private float hideTime;
 
@@ -55,6 +56,8 @@ public class SneakingPlayerHider : MonoBehaviour
                 {
                     if (inputProvider.isHideButtonDown)
                     {
+                        sEPlayer.Play("隠れる");
+
                         coll.enabled = false;
                         rb.useGravity = false;
                         rb.velocity = Vector3.zero;
@@ -78,6 +81,8 @@ public class SneakingPlayerHider : MonoBehaviour
             {
                 if (inputProvider.isHideButtonDown)
                 {
+                    sEPlayer.Play("隠れる");
+
                     coll.enabled = true;
                     rb.useGravity = true;
 

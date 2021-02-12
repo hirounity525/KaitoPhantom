@@ -65,5 +65,17 @@ public class SoundManager : MonoBehaviour
             nowPlayAudioClip = null;
         });
     }
+
+    public void Stop()
+    {
+        audioSource.Stop();
+        nowPlayAudioClip = null;
+    }
+
+    public void Pause()
+    {
+        audioSource.Pause();
+        nowPlayAudioClip = null;
+    }
 }
 

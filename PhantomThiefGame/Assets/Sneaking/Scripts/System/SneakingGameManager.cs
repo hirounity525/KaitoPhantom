@@ -8,6 +8,8 @@ public class SneakingGameManager : MonoBehaviour
     [SerializeField] private GameState gameState;
 
     [SerializeField] private SneakingInputProvider inputProvider;
+    [SerializeField] private SoundManager soundManager;
+    [SerializeField] private SEPlayer sEPlayer;
 
     [Header("Start")]
     [SerializeField] private Flowchart flowchart;
@@ -85,6 +87,8 @@ public class SneakingGameManager : MonoBehaviour
 
                 if (!isFirstStatePlay)
                 {
+                    soundManager.Play("SneakingBGM");
+
                     inputProvider.canInput = true;
                     pauseController.canPause = true;
 
@@ -95,6 +99,8 @@ public class SneakingGameManager : MonoBehaviour
                 {
                     if (!isFirstDiscoveryState)
                     {
+                        sEPlayer.Play("見つかる");
+
                         inputProvider.canInput = false;
 
                         playerManager.AddDamage();
@@ -138,13 +144,20 @@ public class SneakingGameManager : MonoBehaviour
 
                 if (pauseController.isPause)
                 {
+                    isFirstStatePlay = false;
                     gameState = GameState.PAUSE;
                 }
 
                 break;
             case GameState.PAUSE:
 
-                inputProvider.canInput = false;
+                if (!isFirstStatePlay)
+                {
+                    soundManager.Pause();
+                    inputProvider.canInput = false;
+
+                    isFirstStatePlay = true;
+                }
 
                 if (!pauseController.isPause)
                 {

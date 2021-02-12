@@ -13,6 +13,7 @@ public class GameOverController : MonoBehaviour
     [SerializeField] private GameOverMenu selectMenu;
 
     [SerializeField] private TimelineController timelineController;
+    [SerializeField] private SEPlayer sEPlayer;
 
     [SerializeField] private Transform arrowTrans;
     [SerializeField] private Transform continueButtonTrans;
@@ -44,17 +45,21 @@ public class GameOverController : MonoBehaviour
         {
             if (inputProvider.isRightButtonDown)
             {
+                sEPlayer.Play("移動");
                 selectMenu = GameOverMenu.TOTITLE;
                 arrowTrans.localPosition = toTitleButtonTrans.localPosition + Vector3.right * arrowPosX;
             }
             else if (inputProvider.isLeftButtonDown)
             {
+                sEPlayer.Play("移動");
                 selectMenu = GameOverMenu.CONTINUE;
                 arrowTrans.localPosition = continueButtonTrans.localPosition + Vector3.right * arrowPosX;
             }
 
             if (inputProvider.isSelectButtonDown)
             {
+                sEPlayer.Play("決定");
+
                 switch (selectMenu)
                 {
                     case GameOverMenu.CONTINUE:

@@ -109,7 +109,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8177312879103525050}
-  m_LocalRotation: {x: -0, y: -0, z: -0.5, w: 0.8660254}
+  m_LocalRotation: {x: 0, y: 0, z: -0.5, w: 0.8660254}
   m_LocalPosition: {x: 11.81822, y: 3.3907123, z: -0.80844355}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -340,6 +340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstSpeed: 12
   rotationCenterTrans: {fileID: 8177312879103524935}
+  sEPlayer: {fileID: 6230958219874022251}
 --- !u!1 &8177312879702919720
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,6 +453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstSpeed: 12
   rotationCenterTrans: {fileID: 8177312879103524935}
+  sEPlayer: {fileID: 0}
 --- !u!82 &5211991676139557228
 AudioSource:
   m_ObjectHideFlags: 0
@@ -472,10 +474,10 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  MinDistance: 0
+  MaxDistance: 60
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -491,6 +493,15 @@ AudioSource:
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.29285535
+      value: 0.110796094
+      inSlope: -0.5195058
+      outSlope: -0.5195058
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.363969
+      outWeight: 0.25593492
     - serializedVersion: 3
       time: 1
       value: 0
