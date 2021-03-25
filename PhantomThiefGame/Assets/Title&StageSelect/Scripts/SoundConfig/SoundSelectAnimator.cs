@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
+//音量設定全体のアニメーション処理
 public class SoundSelectAnimator : MonoBehaviour
 {
     [SerializeField] private SoundConfigurer soundConfigurer;
@@ -30,7 +31,7 @@ public class SoundSelectAnimator : MonoBehaviour
     private Vector3 firstScaleVec;
     private bool isBackAnimate;
 
-    SoundConfig nowSelectedSC;
+    SoundConfigMenu nowSelectedSCM;
 
     // Start is called before the first frame update
     void Start()
@@ -38,10 +39,12 @@ public class SoundSelectAnimator : MonoBehaviour
         circleTrans = circleObj.GetComponent<RectTransform>();
         circleImage = circleObj.GetComponent<Image>();
 
+        //リセット
         circleImage.fillAmount = 0f;
-        nowSelectedSC = soundConfigurer.nowSelectedSC;
+        nowSelectedSCM = soundConfigurer.nowSelectedSCM;
         firstScaleVec = backTrans.localScale;
 
+        //「戻る」のDoTweenアニメーションを設定し、止めておく
         scaleUpTweener = backTrans.DOScale(scaleUpVec, scaleUpTime).SetEase(ease).SetLoops(-1, LoopType.Yoyo);
         scaleUpTweener.Pause();
     }
@@ -49,10 +52,13 @@ public class SoundSelectAnimator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //音量設定ができる時
         if (soundConfigurer.canSoundConfig)
         {
-            if(nowSelectedSC != soundConfigurer.nowSelectedSC)
+            //選択しているメニューが変わった時
+            if(nowSelectedSCM != soundConfigurer.nowSelectedSCM)
             {
+                //戻るアニメーションを再生してたら、アニメーションを止め、元の大きさにリセット
                 if (isBackAnimate)
                 {
                     scaleUpTweener.Pause();
@@ -60,27 +66,35 @@ public class SoundSelectAnimator : MonoBehaviour
                     isBackAnimate = false;
                 }
 
-                nowSelectedSC = soundConfigurer.nowSelectedSC;
+                //選択してるメニューの更新
+                nowSelectedSCM = soundConfigurer.nowSelectedSCM;
+                
+                //リセット
                 circleImage.fillAmount = 0;
 
-                switch (nowSelectedSC)
+                switch (nowSelectedSCM)
                 {
-                    case SoundConfig.MASTER:
+                    //サークルUIをMASTERの位置に移動させる
+                    case SoundConfigMenu.MASTER:
                         circleTrans.position = masterTrans.position;
                         break;
-                    case SoundConfig.BGM:
+                    //サークルUIをBGMの位置に移動させる
+                    case SoundConfigMenu.BGM:
                         circleTrans.position = bgmTrans.position;
                         break;
-                    case SoundConfig.SE:
+                    //サークルUIをSEの位置に移動させる
+                    case SoundConfigMenu.SE:
                         circleTrans.position = seTrans.position;
                         break;
-                    case SoundConfig.BACK:
+                    //戻るアニメーションを再生させる
+                    case SoundConfigMenu.BACK:
                         scaleUpTweener.Restart();
                         isBackAnimate = true;
                         break;
                 }
             }
 
+            //戻るを選択していなかったら、サークルUIをアニメーションさせる
             if (!isBackAnimate)
             {
                 if(circleImage.fillAmount < 1.0f)
@@ -91,6 +105,7 @@ public class SoundSelectAnimator : MonoBehaviour
         }
         else
         {
+            //リセット
             if (isBackAnimate)
             {
                 scaleUpTweener.Pause();

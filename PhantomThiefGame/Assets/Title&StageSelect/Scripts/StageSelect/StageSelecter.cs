@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//ステージセレクト処理
 public class StageSelecter : MonoBehaviour
 {
     public StageCore nowViewStageCore;
@@ -23,19 +24,23 @@ public class StageSelecter : MonoBehaviour
 
     private void Update()
     {
+        //選択可能かつ決定していなければ
         if (canSelect && !isSelect)
         {
             SelectStage();
         }
     }
 
+    //ステージ選択
     private void SelectStage()
     {
+        //現在選択しているStageCoreに選択していることを知らせる
         if (!nowViewStageCore.isViewed)
         {
             nowViewStageCore.isViewed = true;
         }
 
+        //移動
         if (titleInput.isMoveButtonDown)
         {
             sEPlayer.Play("MenuMove");
@@ -65,6 +70,7 @@ public class StageSelecter : MonoBehaviour
             }
         }
 
+        //決定
         if (titleInput.isSelectButtonDown)
         {
             sEPlayer.Play("Select");
@@ -80,6 +86,7 @@ public class StageSelecter : MonoBehaviour
         }
     }
 
+    //選択する最初のStageCoreをセットする
     public void SetFirstStageCore()
     {
         nowViewStageCore = firstViewStageCore;

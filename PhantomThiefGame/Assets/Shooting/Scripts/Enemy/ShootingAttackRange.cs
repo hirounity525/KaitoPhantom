@@ -4,28 +4,20 @@ using UnityEngine;
 
 public class ShootingAttackRange : MonoBehaviour
 {
-    public Collider co;
-    public bool isAttack=false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public bool isAttack = false;
 
-    // Update is called once per frame
     private void OnTriggerEnter(Collider other)
     {
-        GameObject Enemy = other.gameObject;
-        if (Enemy.tag == "Attack")
+        GameObject hitObj = other.gameObject;
+
+        if (hitObj.tag == "Attack")
         {
             isAttack = true;
         }
-
-        if (Enemy.tag == "StopAttack")
+        else if (hitObj.tag == "StopAttack")
         {
             isAttack = false;
         }
     }
-
 
 }

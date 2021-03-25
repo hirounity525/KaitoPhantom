@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class ShootingBulletJudgment : MonoBehaviour
 {
-
     private void OnTriggerEnter(Collider other)
     {
-        GameObject Enemy = other.gameObject;
-        if (Enemy.tag == "Enemy")
+        GameObject hitObj = other.gameObject;
+
+        if (hitObj.tag == "Enemy")
         {
-            Enemy.GetComponent<ShootingEnemyHPControler>().AddDamage();
+            hitObj.GetComponent<ShootingEnemyHPControler>().AddDamage();
             gameObject.SetActive(false);
         }
-
-        if (Enemy.tag == "LimitAttackLine")
+        else if (hitObj.tag == "LimitAttackLine")
         {
             gameObject.SetActive(false);
         }

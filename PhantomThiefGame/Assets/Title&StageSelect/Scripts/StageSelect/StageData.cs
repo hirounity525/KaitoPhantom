@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//ステージの種類
 public enum StageType
 {
     STORY,
     MISSION
 }
 
+//ステージの情報
 [CreateAssetMenu(menuName = "Stage/StageData")]
 public class StageData : ScriptableObject
 {

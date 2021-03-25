@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class ShootingPlayerMover : MonoBehaviour
 {
+    [SerializeField] private ShootingInputProvider inputProvider;
     [SerializeField] private float moveSpeed;
 
     private Rigidbody rb;
 
-    [SerializeField] private ShootingInputProvider inputProvider;
     // Start is called before the first frame update
     void Start()
     {

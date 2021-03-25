@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+//プレイヤーの名前をTextで表示させる
 public class PlayerNameDrawer : MonoBehaviour
 {
     [SerializeField] private PlayerNameSetter playerNameSetter;

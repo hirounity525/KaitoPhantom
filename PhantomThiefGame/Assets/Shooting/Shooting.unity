@@ -146,11 +146,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 28588883}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.194, y: -2.3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.0184397, y: -0.6700001, z: 0}
+  m_LocalScale: {x: 0.76, y: 0.40000004, z: 1}
   m_Children: []
-  m_Father: {fileID: 1725821989}
+  m_Father: {fileID: 996821908}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &35383626
@@ -244,6 +244,14 @@ PrefabInstance:
       propertyPath: startDegree
       value: -82
       objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveCircleSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveStartTrans
+      value: 
+      objectReference: {fileID: 834660622}
     m_RemovedComponents:
     - {fileID: 2309665830137927953, guid: 473fd0939ab16574880092721166a8d3, type: 3}
     - {fileID: 5701436647833291436, guid: 473fd0939ab16574880092721166a8d3, type: 3}
@@ -387,10 +395,10 @@ MonoBehaviour:
   nowPlayerTrans: {fileID: 996821908}
   gunNozzlePos: {fileID: 1056767339}
   bulletPool: {fileID: 780030217}
+  sePlayer: {fileID: 1359064554}
   attackWaitTime: 3
   attackSpeed: 0
   attackNum: 1
-  sePlayer: {fileID: 1359064554}
 --- !u!114 &57297751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,7 +411,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61129a9b5757ddb49a5237f86a224786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  co: {fileID: 968948062}
   isAttack: 0
 --- !u!54 &57297752
 Rigidbody:
@@ -433,11 +440,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f8058bf53d356a4ea1598160e147ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveStartTrans: {fileID: 834660622}
   startTransY: 0
   startDegree: -80
   moveRadius: 23
   moveStraightSpeed: 2
-  moveCircleSpeed: 0.01
+  moveCircleSpeed: 0.02
 --- !u!136 &57297754
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -828,6 +836,14 @@ PrefabInstance:
       propertyPath: startDegree
       value: -42
       objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveCircleSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveStartTrans
+      value: 
+      objectReference: {fileID: 834660622}
     m_RemovedComponents:
     - {fileID: 2309665830137927953, guid: 473fd0939ab16574880092721166a8d3, type: 3}
     - {fileID: 5701436647833291436, guid: 473fd0939ab16574880092721166a8d3, type: 3}
@@ -1041,6 +1057,14 @@ PrefabInstance:
       propertyPath: startDegree
       value: -93
       objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveCircleSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveStartTrans
+      value: 
+      objectReference: {fileID: 834660622}
     m_RemovedComponents:
     - {fileID: 2309665830137927953, guid: 473fd0939ab16574880092721166a8d3, type: 3}
     - {fileID: 5701436647833291436, guid: 473fd0939ab16574880092721166a8d3, type: 3}
@@ -1200,6 +1224,14 @@ PrefabInstance:
       propertyPath: startDegree
       value: -161
       objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveCircleSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveStartTrans
+      value: 
+      objectReference: {fileID: 834660622}
     m_RemovedComponents:
     - {fileID: 2309665830137927953, guid: 473fd0939ab16574880092721166a8d3, type: 3}
     - {fileID: 5701436647833291436, guid: 473fd0939ab16574880092721166a8d3, type: 3}
@@ -1553,10 +1585,10 @@ MonoBehaviour:
   nowPlayerTrans: {fileID: 996821908}
   gunNozzlePos: {fileID: 1479710085}
   bulletPool: {fileID: 164437217}
+  sePlayer: {fileID: 2007090629}
   attackWaitTime: 3
   attackSpeed: 0.1
   attackNum: 3
-  sePlayer: {fileID: 2007090629}
 --- !u!114 &279963251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1569,7 +1601,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61129a9b5757ddb49a5237f86a224786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  co: {fileID: 968948062}
   isAttack: 0
 --- !u!54 &279963252
 Rigidbody:
@@ -1599,11 +1630,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f8058bf53d356a4ea1598160e147ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveStartTrans: {fileID: 834660622}
   startTransY: 2
   startDegree: -50
   moveRadius: 23
   moveStraightSpeed: 2
-  moveCircleSpeed: 0.01
+  moveCircleSpeed: 0.02
 --- !u!136 &279963254
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1956,6 +1988,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2024005092655087243, guid: 7a2dcabd7c977e342868257fbef2769c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a2dcabd7c977e342868257fbef2769c, type: 3}
 --- !u!114 &304828874 stripped
@@ -2285,6 +2321,14 @@ PrefabInstance:
       propertyPath: startDegree
       value: -162
       objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveCircleSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveStartTrans
+      value: 
+      objectReference: {fileID: 834660622}
     m_RemovedComponents:
     - {fileID: 2309665830137927953, guid: 473fd0939ab16574880092721166a8d3, type: 3}
     - {fileID: 5701436647833291436, guid: 473fd0939ab16574880092721166a8d3, type: 3}
@@ -2669,6 +2713,14 @@ PrefabInstance:
       propertyPath: startDegree
       value: -84
       objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveCircleSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveStartTrans
+      value: 
+      objectReference: {fileID: 834660622}
     m_RemovedComponents:
     - {fileID: 2309665830137927953, guid: 473fd0939ab16574880092721166a8d3, type: 3}
     - {fileID: 5701436647833291436, guid: 473fd0939ab16574880092721166a8d3, type: 3}
@@ -2828,6 +2880,14 @@ PrefabInstance:
       propertyPath: startDegree
       value: -100
       objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveCircleSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveStartTrans
+      value: 
+      objectReference: {fileID: 834660622}
     m_RemovedComponents:
     - {fileID: 2309665830137927953, guid: 473fd0939ab16574880092721166a8d3, type: 3}
     - {fileID: 5701436647833291436, guid: 473fd0939ab16574880092721166a8d3, type: 3}
@@ -3209,6 +3269,14 @@ PrefabInstance:
       propertyPath: startDegree
       value: -40
       objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveCircleSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveStartTrans
+      value: 
+      objectReference: {fileID: 834660622}
     m_RemovedComponents:
     - {fileID: 2309665830137927953, guid: 473fd0939ab16574880092721166a8d3, type: 3}
     - {fileID: 5701436647833291436, guid: 473fd0939ab16574880092721166a8d3, type: 3}
@@ -3958,6 +4026,14 @@ PrefabInstance:
       propertyPath: startDegree
       value: -161
       objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveCircleSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveStartTrans
+      value: 
+      objectReference: {fileID: 834660622}
     m_RemovedComponents:
     - {fileID: 2309665830137927953, guid: 473fd0939ab16574880092721166a8d3, type: 3}
     - {fileID: 5701436647833291436, guid: 473fd0939ab16574880092721166a8d3, type: 3}
@@ -4080,10 +4156,10 @@ MonoBehaviour:
   nowPlayerTrans: {fileID: 996821908}
   gunNozzlePos: {fileID: 1190952148}
   bulletPool: {fileID: 780030217}
+  sePlayer: {fileID: 1359064554}
   attackWaitTime: 3
   attackSpeed: 0
   attackNum: 1
-  sePlayer: {fileID: 1359064554}
 --- !u!114 &604430498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4096,7 +4172,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61129a9b5757ddb49a5237f86a224786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  co: {fileID: 968948062}
   isAttack: 0
 --- !u!54 &604430499
 Rigidbody:
@@ -4126,11 +4201,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f8058bf53d356a4ea1598160e147ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveStartTrans: {fileID: 834660622}
   startTransY: 2.5
   startDegree: -48
   moveRadius: 23
   moveStraightSpeed: 2
-  moveCircleSpeed: 0.01
+  moveCircleSpeed: 0.02
 --- !u!136 &604430501
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4335,6 +4411,14 @@ PrefabInstance:
       propertyPath: startDegree
       value: -30
       objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveCircleSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveStartTrans
+      value: 
+      objectReference: {fileID: 834660622}
     m_RemovedComponents:
     - {fileID: 2309665830137927953, guid: 473fd0939ab16574880092721166a8d3, type: 3}
     - {fileID: 5701436647833291436, guid: 473fd0939ab16574880092721166a8d3, type: 3}
@@ -4694,6 +4778,7 @@ Transform:
   m_Children:
   - {fileID: 1766490113}
   - {fileID: 961103447}
+  - {fileID: 834660622}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4788,6 +4873,14 @@ PrefabInstance:
       propertyPath: startDegree
       value: -30
       objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveCircleSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveStartTrans
+      value: 
+      objectReference: {fileID: 834660622}
     m_RemovedComponents:
     - {fileID: 2309665830137927953, guid: 473fd0939ab16574880092721166a8d3, type: 3}
     - {fileID: 5701436647833291436, guid: 473fd0939ab16574880092721166a8d3, type: 3}
@@ -5016,10 +5109,10 @@ MonoBehaviour:
   nowPlayerTrans: {fileID: 996821908}
   gunNozzlePos: {fileID: 96082193}
   bulletPool: {fileID: 164437217}
+  sePlayer: {fileID: 2007090629}
   attackWaitTime: 3
   attackSpeed: 0.1
   attackNum: 5
-  sePlayer: {fileID: 2007090629}
 --- !u!114 &702390885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5032,7 +5125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61129a9b5757ddb49a5237f86a224786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  co: {fileID: 968948062}
   isAttack: 0
 --- !u!54 &702390886
 Rigidbody:
@@ -5062,11 +5154,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f8058bf53d356a4ea1598160e147ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveStartTrans: {fileID: 834660622}
   startTransY: -2
   startDegree: -60
   moveRadius: 23
   moveStraightSpeed: 2
-  moveCircleSpeed: 0.01
+  moveCircleSpeed: 0.02
 --- !u!136 &702390888
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5159,10 +5252,10 @@ MonoBehaviour:
   nowPlayerTrans: {fileID: 996821908}
   gunNozzlePos: {fileID: 335574589}
   bulletPool: {fileID: 164437217}
+  sePlayer: {fileID: 2007090629}
   attackWaitTime: 3
   attackSpeed: 0.1
   attackNum: 5
-  sePlayer: {fileID: 2007090629}
 --- !u!114 &728364228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5175,7 +5268,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61129a9b5757ddb49a5237f86a224786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  co: {fileID: 968948062}
   isAttack: 0
 --- !u!54 &728364229
 Rigidbody:
@@ -5205,11 +5297,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f8058bf53d356a4ea1598160e147ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveStartTrans: {fileID: 834660622}
   startTransY: -4
   startDegree: -147
   moveRadius: 23
   moveStraightSpeed: 2
-  moveCircleSpeed: 0.01
+  moveCircleSpeed: 0.02
 --- !u!136 &728364231
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5302,10 +5395,10 @@ MonoBehaviour:
   nowPlayerTrans: {fileID: 996821908}
   gunNozzlePos: {fileID: 277657405}
   bulletPool: {fileID: 164437217}
+  sePlayer: {fileID: 2007090629}
   attackWaitTime: 3
   attackSpeed: 0.1
   attackNum: 5
-  sePlayer: {fileID: 2007090629}
 --- !u!114 &732059881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5318,7 +5411,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61129a9b5757ddb49a5237f86a224786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  co: {fileID: 968948062}
   isAttack: 0
 --- !u!54 &732059882
 Rigidbody:
@@ -5348,11 +5440,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f8058bf53d356a4ea1598160e147ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveStartTrans: {fileID: 834660622}
   startTransY: 0
   startDegree: -115
   moveRadius: 23
   moveStraightSpeed: 2
-  moveCircleSpeed: 0.01
+  moveCircleSpeed: 0.02
 --- !u!136 &732059884
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5496,6 +5589,14 @@ PrefabInstance:
       propertyPath: startDegree
       value: -130
       objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveCircleSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveStartTrans
+      value: 
+      objectReference: {fileID: 834660622}
     m_RemovedComponents:
     - {fileID: 2309665830137927953, guid: 473fd0939ab16574880092721166a8d3, type: 3}
     - {fileID: 5701436647833291436, guid: 473fd0939ab16574880092721166a8d3, type: 3}
@@ -5707,10 +5808,10 @@ MonoBehaviour:
   nowPlayerTrans: {fileID: 996821908}
   gunNozzlePos: {fileID: 87159087}
   bulletPool: {fileID: 164437217}
+  sePlayer: {fileID: 2007090629}
   attackWaitTime: 3
   attackSpeed: 0.1
   attackNum: 3
-  sePlayer: {fileID: 2007090629}
 --- !u!114 &769683364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5723,7 +5824,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61129a9b5757ddb49a5237f86a224786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  co: {fileID: 968948062}
   isAttack: 0
 --- !u!54 &769683365
 Rigidbody:
@@ -5753,11 +5853,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f8058bf53d356a4ea1598160e147ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveStartTrans: {fileID: 834660622}
   startTransY: 0
   startDegree: -20
   moveRadius: 23
   moveStraightSpeed: 2
-  moveCircleSpeed: 0.01
+  moveCircleSpeed: 0.02
 --- !u!136 &769683367
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5949,6 +6050,14 @@ PrefabInstance:
       propertyPath: startDegree
       value: -30
       objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveCircleSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveStartTrans
+      value: 
+      objectReference: {fileID: 834660622}
     m_RemovedComponents:
     - {fileID: 2309665830137927953, guid: 473fd0939ab16574880092721166a8d3, type: 3}
     - {fileID: 5701436647833291436, guid: 473fd0939ab16574880092721166a8d3, type: 3}
@@ -6008,6 +6117,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolObject: {fileID: 895094934495017609, guid: 5e704a7f34738bf46a01394fd06cb936, type: 3}
   initMaxCount: 10
+--- !u!1 &781615459
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 781615460}
+  - component: {fileID: 781615461}
+  m_Layer: 0
+  m_Name: GameObject (1)
+  m_TagString: StopAttack
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &781615460
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781615459}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2008292649}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &781615461
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781615459}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 10, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &783370164
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6095,6 +6248,14 @@ PrefabInstance:
       propertyPath: startTransY
       value: -4
       objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveCircleSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveStartTrans
+      value: 
+      objectReference: {fileID: 834660622}
     m_RemovedComponents:
     - {fileID: 2309665830137927953, guid: 473fd0939ab16574880092721166a8d3, type: 3}
     - {fileID: 5701436647833291436, guid: 473fd0939ab16574880092721166a8d3, type: 3}
@@ -6372,10 +6533,10 @@ MonoBehaviour:
   nowPlayerTrans: {fileID: 996821908}
   gunNozzlePos: {fileID: 934188184}
   bulletPool: {fileID: 780030217}
+  sePlayer: {fileID: 1359064554}
   attackWaitTime: 3
   attackSpeed: 0
   attackNum: 1
-  sePlayer: {fileID: 1359064554}
 --- !u!114 &795483443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6388,7 +6549,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61129a9b5757ddb49a5237f86a224786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  co: {fileID: 968948062}
   isAttack: 0
 --- !u!54 &795483444
 Rigidbody:
@@ -6418,11 +6578,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f8058bf53d356a4ea1598160e147ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveStartTrans: {fileID: 834660622}
   startTransY: 2.5
   startDegree: -135
   moveRadius: 23
   moveStraightSpeed: 2
-  moveCircleSpeed: 0.01
+  moveCircleSpeed: 0.02
 --- !u!136 &795483446
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6688,10 +6849,10 @@ MonoBehaviour:
   nowPlayerTrans: {fileID: 996821908}
   gunNozzlePos: {fileID: 1728399081}
   bulletPool: {fileID: 780030217}
+  sePlayer: {fileID: 1359064554}
   attackWaitTime: 3
   attackSpeed: 0
   attackNum: 1
-  sePlayer: {fileID: 1359064554}
 --- !u!114 &804697314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6704,7 +6865,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61129a9b5757ddb49a5237f86a224786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  co: {fileID: 968948062}
   isAttack: 0
 --- !u!54 &804697315
 Rigidbody:
@@ -6734,11 +6894,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f8058bf53d356a4ea1598160e147ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveStartTrans: {fileID: 834660622}
   startTransY: 0
   startDegree: -107
   moveRadius: 23
   moveStraightSpeed: 2
-  moveCircleSpeed: 0.01
+  moveCircleSpeed: 0.02
 --- !u!136 &804697317
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6831,10 +6992,10 @@ MonoBehaviour:
   nowPlayerTrans: {fileID: 996821908}
   gunNozzlePos: {fileID: 2100616164}
   bulletPool: {fileID: 164437217}
+  sePlayer: {fileID: 2007090629}
   attackWaitTime: 3
   attackSpeed: 0.1
   attackNum: 5
-  sePlayer: {fileID: 2007090629}
 --- !u!114 &807840517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6847,7 +7008,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61129a9b5757ddb49a5237f86a224786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  co: {fileID: 968948062}
   isAttack: 0
 --- !u!54 &807840518
 Rigidbody:
@@ -6877,11 +7037,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f8058bf53d356a4ea1598160e147ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveStartTrans: {fileID: 834660622}
   startTransY: 2
   startDegree: -145
   moveRadius: 23
   moveStraightSpeed: 2
-  moveCircleSpeed: 0.01
+  moveCircleSpeed: 0.02
 --- !u!136 &807840520
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7049,7 +7210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a981b4e0edba01742a1e26c6c146536a, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a981b4e0edba01742a1e26c6c146536a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7093,6 +7254,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a981b4e0edba01742a1e26c6c146536a, type: 3}
+--- !u!1 &834660621
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 834660622}
+  m_Layer: 0
+  m_Name: MoveStart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &834660622
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834660621}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.81, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 688890405}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &851099190
 GameObject:
   m_ObjectHideFlags: 0
@@ -7164,10 +7355,10 @@ MonoBehaviour:
   nowPlayerTrans: {fileID: 996821908}
   gunNozzlePos: {fileID: 1542611251}
   bulletPool: {fileID: 780030217}
+  sePlayer: {fileID: 1359064554}
   attackWaitTime: 3
   attackSpeed: 0
   attackNum: 1
-  sePlayer: {fileID: 1359064554}
 --- !u!114 &851099194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7180,7 +7371,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61129a9b5757ddb49a5237f86a224786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  co: {fileID: 968948062}
   isAttack: 0
 --- !u!54 &851099195
 Rigidbody:
@@ -7210,11 +7400,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f8058bf53d356a4ea1598160e147ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveStartTrans: {fileID: 834660622}
   startTransY: -2.5
   startDegree: -48
   moveRadius: 23
   moveStraightSpeed: 2
-  moveCircleSpeed: 0.01
+  moveCircleSpeed: 0.02
 --- !u!136 &851099197
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7499,6 +7690,14 @@ PrefabInstance:
       propertyPath: startTransY
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveCircleSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveStartTrans
+      value: 
+      objectReference: {fileID: 834660622}
     m_RemovedComponents:
     - {fileID: 2309665830137927953, guid: 473fd0939ab16574880092721166a8d3, type: 3}
     - {fileID: 5701436647833291436, guid: 473fd0939ab16574880092721166a8d3, type: 3}
@@ -7682,6 +7881,14 @@ PrefabInstance:
       propertyPath: startDegree
       value: -70
       objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveCircleSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveStartTrans
+      value: 
+      objectReference: {fileID: 834660622}
     m_RemovedComponents:
     - {fileID: 2309665830137927953, guid: 473fd0939ab16574880092721166a8d3, type: 3}
     - {fileID: 5701436647833291436, guid: 473fd0939ab16574880092721166a8d3, type: 3}
@@ -7764,8 +7971,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 10, z: 1}
-  m_Center: {x: 9, y: 0, z: 0}
+  m_Size: {x: 1.3415794, y: 10.986379, z: 1}
+  m_Center: {x: 9.620789, y: -0.49318933, z: 0}
 --- !u!4 &933763134
 Transform:
   m_ObjectHideFlags: 0
@@ -7774,7 +7981,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 933763132}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.19, y: 0, z: 0}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -7927,6 +8134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f8058bf53d356a4ea1598160e147ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveStartTrans: {fileID: 0}
   startTransY: 0
   startDegree: 180
   moveRadius: 23
@@ -8116,6 +8324,14 @@ PrefabInstance:
       propertyPath: startDegree
       value: -163
       objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveCircleSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveStartTrans
+      value: 
+      objectReference: {fileID: 834660622}
     m_RemovedComponents:
     - {fileID: 2309665830137927953, guid: 473fd0939ab16574880092721166a8d3, type: 3}
     - {fileID: 5701436647833291436, guid: 473fd0939ab16574880092721166a8d3, type: 3}
@@ -8231,8 +8447,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 996821908}
-  - component: {fileID: 996821915}
-  - component: {fileID: 996821914}
+  - component: {fileID: 996821918}
   - component: {fileID: 996821913}
   - component: {fileID: 996821912}
   - component: {fileID: 996821911}
@@ -8240,7 +8455,6 @@ GameObject:
   - component: {fileID: 996821909}
   - component: {fileID: 996821916}
   - component: {fileID: 996821917}
-  - component: {fileID: 996821918}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -8259,7 +8473,7 @@ Transform:
   m_LocalPosition: {x: -5.16, y: -0.04, z: 0}
   m_LocalScale: {x: 0.7, y: 0.55, z: 1}
   m_Children:
-  - {fileID: 1725821989}
+  - {fileID: 28588884}
   - {fileID: 1229178876}
   - {fileID: 1896489965}
   m_Father: {fileID: 1404810686}
@@ -8277,14 +8491,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a95817c93a5dcd441b80d49c9281272f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerMaxHitPoint: 5
+  playerNowHitPoint: 0
   sePlayer: {fileID: 290095993}
   playerBody: {fileID: 46414743}
   playerFace: {fileID: 1310340411}
   playerGun: {fileID: 1518838447}
-  playerMaxHitPoint: 5
   unavailableColliderTime: 2
   flashNum: 6
-  playerNowHitPoint: 0
 --- !u!114 &996821910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8314,8 +8528,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff836b3615932844eb1673ddb3795a22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 6
   inputProvider: {fileID: 360029261}
+  moveSpeed: 6
 --- !u!54 &996821912
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8342,59 +8556,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.35427296
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &996821914
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 996821907}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &996821915
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 996821907}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Radius: 0.13174479
+  m_Height: 1.6971316
+  m_Direction: 0
+  m_Center: {x: -0.13293403, y: -0.25981504, z: 0}
 --- !u!114 &996821916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8585,6 +8750,14 @@ PrefabInstance:
       propertyPath: startDegree
       value: -82
       objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveCircleSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveStartTrans
+      value: 
+      objectReference: {fileID: 834660622}
     m_RemovedComponents:
     - {fileID: 2309665830137927953, guid: 473fd0939ab16574880092721166a8d3, type: 3}
     - {fileID: 5701436647833291436, guid: 473fd0939ab16574880092721166a8d3, type: 3}
@@ -8720,6 +8893,14 @@ PrefabInstance:
       propertyPath: startDegree
       value: -84
       objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveCircleSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveStartTrans
+      value: 
+      objectReference: {fileID: 834660622}
     m_RemovedComponents:
     - {fileID: 2309665830137927953, guid: 473fd0939ab16574880092721166a8d3, type: 3}
     - {fileID: 5701436647833291436, guid: 473fd0939ab16574880092721166a8d3, type: 3}
@@ -8884,6 +9065,14 @@ PrefabInstance:
       propertyPath: startDegree
       value: -70
       objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveCircleSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveStartTrans
+      value: 
+      objectReference: {fileID: 834660622}
     m_RemovedComponents:
     - {fileID: 2309665830137927953, guid: 473fd0939ab16574880092721166a8d3, type: 3}
     - {fileID: 5701436647833291436, guid: 473fd0939ab16574880092721166a8d3, type: 3}
@@ -9281,10 +9470,10 @@ MonoBehaviour:
   nowPlayerTrans: {fileID: 996821908}
   gunNozzlePos: {fileID: 1236948620}
   bulletPool: {fileID: 164437217}
+  sePlayer: {fileID: 2007090629}
   attackWaitTime: 3
   attackSpeed: 0.1
   attackNum: 5
-  sePlayer: {fileID: 2007090629}
 --- !u!114 &1204723708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9297,7 +9486,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61129a9b5757ddb49a5237f86a224786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  co: {fileID: 968948062}
   isAttack: 0
 --- !u!54 &1204723709
 Rigidbody:
@@ -9327,11 +9515,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f8058bf53d356a4ea1598160e147ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveStartTrans: {fileID: 834660622}
   startTransY: -2
   startDegree: -145
   moveRadius: 23
   moveStraightSpeed: 2
-  moveCircleSpeed: 0.01
+  moveCircleSpeed: 0.02
 --- !u!136 &1204723711
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -9593,10 +9782,10 @@ MonoBehaviour:
   nowPlayerTrans: {fileID: 996821908}
   gunNozzlePos: {fileID: 665302562}
   bulletPool: {fileID: 780030217}
+  sePlayer: {fileID: 1359064554}
   attackWaitTime: 3
   attackSpeed: 0
   attackNum: 1
-  sePlayer: {fileID: 1359064554}
 --- !u!114 &1243408120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9609,7 +9798,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61129a9b5757ddb49a5237f86a224786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  co: {fileID: 968948062}
   isAttack: 0
 --- !u!54 &1243408121
 Rigidbody:
@@ -9639,11 +9827,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f8058bf53d356a4ea1598160e147ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveStartTrans: {fileID: 834660622}
   startTransY: 0
   startDegree: -106
   moveRadius: 23
   moveStraightSpeed: 2
-  moveCircleSpeed: 0.01
+  moveCircleSpeed: 0.02
 --- !u!136 &1243408123
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -9898,10 +10087,10 @@ MonoBehaviour:
   nowPlayerTrans: {fileID: 996821908}
   gunNozzlePos: {fileID: 796445707}
   bulletPool: {fileID: 780030217}
+  sePlayer: {fileID: 1359064554}
   attackWaitTime: 3
   attackSpeed: 0
   attackNum: 1
-  sePlayer: {fileID: 1359064554}
 --- !u!114 &1302611391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9914,7 +10103,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61129a9b5757ddb49a5237f86a224786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  co: {fileID: 968948062}
   isAttack: 0
 --- !u!54 &1302611392
 Rigidbody:
@@ -9944,11 +10132,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f8058bf53d356a4ea1598160e147ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveStartTrans: {fileID: 834660622}
   startTransY: 0
   startDegree: -85
   moveRadius: 23
   moveStraightSpeed: 2
-  moveCircleSpeed: 0.01
+  moveCircleSpeed: 0.02
 --- !u!136 &1302611394
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10369,6 +10558,14 @@ PrefabInstance:
       propertyPath: startDegree
       value: -40
       objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveCircleSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveStartTrans
+      value: 
+      objectReference: {fileID: 834660622}
     m_RemovedComponents:
     - {fileID: 2309665830137927953, guid: 473fd0939ab16574880092721166a8d3, type: 3}
     - {fileID: 5701436647833291436, guid: 473fd0939ab16574880092721166a8d3, type: 3}
@@ -10558,6 +10755,14 @@ PrefabInstance:
       propertyPath: startDegree
       value: -130
       objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveCircleSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveStartTrans
+      value: 
+      objectReference: {fileID: 834660622}
     m_RemovedComponents:
     - {fileID: 2309665830137927953, guid: 473fd0939ab16574880092721166a8d3, type: 3}
     - {fileID: 5701436647833291436, guid: 473fd0939ab16574880092721166a8d3, type: 3}
@@ -10728,10 +10933,10 @@ MonoBehaviour:
   nowPlayerTrans: {fileID: 996821908}
   gunNozzlePos: {fileID: 1374717330}
   bulletPool: {fileID: 164437217}
+  sePlayer: {fileID: 2007090629}
   attackWaitTime: 3
   attackSpeed: 0.1
   attackNum: 5
-  sePlayer: {fileID: 2007090629}
 --- !u!114 &1437856508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10744,7 +10949,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61129a9b5757ddb49a5237f86a224786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  co: {fileID: 968948062}
   isAttack: 0
 --- !u!54 &1437856509
 Rigidbody:
@@ -10774,11 +10978,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f8058bf53d356a4ea1598160e147ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveStartTrans: {fileID: 834660622}
   startTransY: 0
   startDegree: -143
   moveRadius: 23
   moveStraightSpeed: 2
-  moveCircleSpeed: 0.01
+  moveCircleSpeed: 0.02
 --- !u!136 &1437856511
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10892,6 +11097,14 @@ PrefabInstance:
       propertyPath: startDegree
       value: -130
       objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveCircleSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveStartTrans
+      value: 
+      objectReference: {fileID: 834660622}
     m_RemovedComponents:
     - {fileID: 2309665830137927953, guid: 473fd0939ab16574880092721166a8d3, type: 3}
     - {fileID: 5701436647833291436, guid: 473fd0939ab16574880092721166a8d3, type: 3}
@@ -10981,7 +11194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf602fb89d32a0a4aa7df8c7a6e229dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameState: 0
+  gameState: 1
   inputProvider: {fileID: 360029261}
   soundManager: {fileID: 699700571}
   flowchart: {fileID: 6348123672001326630}
@@ -11389,10 +11602,10 @@ MonoBehaviour:
   nowPlayerTrans: {fileID: 996821908}
   gunNozzlePos: {fileID: 1635048286}
   bulletPool: {fileID: 780030217}
+  sePlayer: {fileID: 1359064554}
   attackWaitTime: 3
   attackSpeed: 0
   attackNum: 1
-  sePlayer: {fileID: 1359064554}
 --- !u!114 &1535974805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11405,7 +11618,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61129a9b5757ddb49a5237f86a224786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  co: {fileID: 968948062}
   isAttack: 0
 --- !u!54 &1535974806
 Rigidbody:
@@ -11435,11 +11647,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f8058bf53d356a4ea1598160e147ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveStartTrans: {fileID: 834660622}
   startTransY: 0
   startDegree: -15
   moveRadius: 23
   moveStraightSpeed: 2
-  moveCircleSpeed: 0.01
+  moveCircleSpeed: 0.02
 --- !u!136 &1535974808
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -11737,6 +11950,14 @@ PrefabInstance:
       propertyPath: startDegree
       value: -70
       objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveCircleSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveStartTrans
+      value: 
+      objectReference: {fileID: 834660622}
     m_RemovedComponents:
     - {fileID: 2309665830137927953, guid: 473fd0939ab16574880092721166a8d3, type: 3}
     - {fileID: 5701436647833291436, guid: 473fd0939ab16574880092721166a8d3, type: 3}
@@ -12261,6 +12482,14 @@ PrefabInstance:
       propertyPath: startDegree
       value: -93
       objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveCircleSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveStartTrans
+      value: 
+      objectReference: {fileID: 834660622}
     m_RemovedComponents:
     - {fileID: 2309665830137927953, guid: 473fd0939ab16574880092721166a8d3, type: 3}
     - {fileID: 5701436647833291436, guid: 473fd0939ab16574880092721166a8d3, type: 3}
@@ -12287,7 +12516,6 @@ GameObject:
   - component: {fileID: 1645940714}
   - component: {fileID: 1645940713}
   - component: {fileID: 1645940712}
-  - component: {fileID: 1645940711}
   m_Layer: 5
   m_Name: UICanvas
   m_TagString: Untagged
@@ -12295,22 +12523,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1645940711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1645940710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd889b17169545741b00554036f019a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isDeleteLife: 0
-  lifeController: {fileID: 0}
-  blackPanel: {fileID: 0}
-  deleteWaitTime: 1
 --- !u!114 &1645940712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12558,7 +12770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abdc8ceb72a37e549b3552ceb1a4cca2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tuneSpeed: 0.03
+  tuneSpeed: 0.05
 --- !u!54 &1671739400
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12650,10 +12862,10 @@ MonoBehaviour:
   nowPlayerTrans: {fileID: 996821908}
   gunNozzlePos: {fileID: 825652097}
   bulletPool: {fileID: 780030217}
+  sePlayer: {fileID: 1359064554}
   attackWaitTime: 3
   attackSpeed: 0
   attackNum: 1
-  sePlayer: {fileID: 1359064554}
 --- !u!114 &1698929601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12666,7 +12878,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61129a9b5757ddb49a5237f86a224786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  co: {fileID: 968948062}
   isAttack: 0
 --- !u!54 &1698929602
 Rigidbody:
@@ -12696,11 +12907,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f8058bf53d356a4ea1598160e147ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveStartTrans: {fileID: 834660622}
   startTransY: 0
   startDegree: -105
   moveRadius: 23
   moveStraightSpeed: 2
-  moveCircleSpeed: 0.01
+  moveCircleSpeed: 0.02
 --- !u!136 &1698929604
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -12723,6 +12935,50 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1698929597}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1710391007
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1710391008}
+  - component: {fileID: 1710391009}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: StopAttack
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1710391008
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710391007}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2008292649}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1710391009
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710391007}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 10, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1716050734
 GameObject:
   m_ObjectHideFlags: 0
@@ -12798,102 +13054,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1725821988
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1725821989}
-  - component: {fileID: 1725821992}
-  - component: {fileID: 1725821991}
-  - component: {fileID: 1725821990}
-  m_Layer: 10
-  m_Name: Gun
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1725821989
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1725821988}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.871, y: 0.25, z: 0}
-  m_LocalScale: {x: 0.76, y: 0.4, z: 1}
-  m_Children:
-  - {fileID: 28588884}
-  m_Father: {fileID: 996821908}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1725821990
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1725821988}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1725821991
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1725821988}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1725821992
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1725821988}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1728399080
 GameObject:
   m_ObjectHideFlags: 0
@@ -13884,7 +14044,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 333.0623
     y: 189.13649
-    width: 75
+    width: 115
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -16074,7 +16234,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 333.04498
     y: 321.31827
-    width: 60
+    width: 94
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -17034,7 +17194,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 334.27255
     y: 248.68195
-    width: 86
+    width: 126
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -18273,7 +18433,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 152.95451
     y: 183.14444
-    width: 68
+    width: 108
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -19557,6 +19717,14 @@ PrefabInstance:
       propertyPath: startDegree
       value: -42
       objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveCircleSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveStartTrans
+      value: 
+      objectReference: {fileID: 834660622}
     m_RemovedComponents:
     - {fileID: 2309665830137927953, guid: 473fd0939ab16574880092721166a8d3, type: 3}
     - {fileID: 5701436647833291436, guid: 473fd0939ab16574880092721166a8d3, type: 3}
@@ -19662,6 +19830,14 @@ PrefabInstance:
       propertyPath: startDegree
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveCircleSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveStartTrans
+      value: 
+      objectReference: {fileID: 834660622}
     m_RemovedComponents:
     - {fileID: 2309665830137927953, guid: 473fd0939ab16574880092721166a8d3, type: 3}
     - {fileID: 5701436647833291436, guid: 473fd0939ab16574880092721166a8d3, type: 3}
@@ -19721,6 +19897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f8058bf53d356a4ea1598160e147ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveStartTrans: {fileID: 0}
   startTransY: 0
   startDegree: 0
   moveRadius: 23
@@ -20065,10 +20242,10 @@ MonoBehaviour:
   nowPlayerTrans: {fileID: 996821908}
   gunNozzlePos: {fileID: 546523760}
   bulletPool: {fileID: 164437217}
+  sePlayer: {fileID: 2007090629}
   attackWaitTime: 3
   attackSpeed: 0.1
   attackNum: 5
-  sePlayer: {fileID: 2007090629}
 --- !u!114 &1826434937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20081,7 +20258,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61129a9b5757ddb49a5237f86a224786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  co: {fileID: 968948062}
   isAttack: 0
 --- !u!54 &1826434938
 Rigidbody:
@@ -20111,11 +20287,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f8058bf53d356a4ea1598160e147ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveStartTrans: {fileID: 834660622}
   startTransY: 4
   startDegree: -147
   moveRadius: 23
   moveStraightSpeed: 2
-  moveCircleSpeed: 0.01
+  moveCircleSpeed: 0.02
 --- !u!136 &1826434940
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -20400,10 +20577,10 @@ MonoBehaviour:
   nowPlayerTrans: {fileID: 996821908}
   gunNozzlePos: {fileID: 1353960335}
   bulletPool: {fileID: 164437217}
+  sePlayer: {fileID: 2007090629}
   attackWaitTime: 3
   attackSpeed: 0.1
   attackNum: 3
-  sePlayer: {fileID: 2007090629}
 --- !u!114 &1889577406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20416,7 +20593,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61129a9b5757ddb49a5237f86a224786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  co: {fileID: 968948062}
   isAttack: 0
 --- !u!54 &1889577407
 Rigidbody:
@@ -20446,11 +20622,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f8058bf53d356a4ea1598160e147ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveStartTrans: {fileID: 834660622}
   startTransY: -2
   startDegree: -50
   moveRadius: 23
   moveStraightSpeed: 2
-  moveCircleSpeed: 0.01
+  moveCircleSpeed: 0.02
 --- !u!136 &1889577409
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -20801,10 +20978,10 @@ MonoBehaviour:
   nowPlayerTrans: {fileID: 996821908}
   gunNozzlePos: {fileID: 1251762408}
   bulletPool: {fileID: 780030217}
+  sePlayer: {fileID: 1359064554}
   attackWaitTime: 3
   attackSpeed: 0
   attackNum: 1
-  sePlayer: {fileID: 1359064554}
 --- !u!114 &1940923105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20817,7 +20994,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61129a9b5757ddb49a5237f86a224786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  co: {fileID: 968948062}
   isAttack: 0
 --- !u!54 &1940923106
 Rigidbody:
@@ -20847,11 +21023,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f8058bf53d356a4ea1598160e147ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveStartTrans: {fileID: 834660622}
   startTransY: -2.5
   startDegree: -135
   moveRadius: 23
   moveStraightSpeed: 2
-  moveCircleSpeed: 0.01
+  moveCircleSpeed: 0.02
 --- !u!136 &1940923108
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -20944,10 +21121,10 @@ MonoBehaviour:
   nowPlayerTrans: {fileID: 996821908}
   gunNozzlePos: {fileID: 1889561467}
   bulletPool: {fileID: 164437217}
+  sePlayer: {fileID: 2007090629}
   attackWaitTime: 3
   attackSpeed: 0.1
   attackNum: 5
-  sePlayer: {fileID: 2007090629}
 --- !u!114 &1964966144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20960,7 +21137,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61129a9b5757ddb49a5237f86a224786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  co: {fileID: 968948062}
   isAttack: 0
 --- !u!54 &1964966145
 Rigidbody:
@@ -20990,11 +21166,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f8058bf53d356a4ea1598160e147ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveStartTrans: {fileID: 834660622}
   startTransY: -3
   startDegree: -108
   moveRadius: 23
   moveStraightSpeed: 2
-  moveCircleSpeed: 0.01
+  moveCircleSpeed: 0.02
 --- !u!136 &1964966147
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -21112,6 +21289,14 @@ PrefabInstance:
       propertyPath: startDegree
       value: -163
       objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveCircleSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveStartTrans
+      value: 
+      objectReference: {fileID: 834660622}
     m_RemovedComponents:
     - {fileID: 2309665830137927953, guid: 473fd0939ab16574880092721166a8d3, type: 3}
     - {fileID: 5701436647833291436, guid: 473fd0939ab16574880092721166a8d3, type: 3}
@@ -21196,10 +21381,10 @@ MonoBehaviour:
   nowPlayerTrans: {fileID: 996821908}
   gunNozzlePos: {fileID: 1801029536}
   bulletPool: {fileID: 780030217}
+  sePlayer: {fileID: 1359064554}
   attackWaitTime: 3
   attackSpeed: 0
   attackNum: 1
-  sePlayer: {fileID: 1359064554}
 --- !u!114 &1994667914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21212,7 +21397,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61129a9b5757ddb49a5237f86a224786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  co: {fileID: 968948062}
   isAttack: 0
 --- !u!54 &1994667915
 Rigidbody:
@@ -21242,11 +21426,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f8058bf53d356a4ea1598160e147ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveStartTrans: {fileID: 834660622}
   startTransY: 0
   startDegree: -135
   moveRadius: 23
   moveStraightSpeed: 2
-  moveCircleSpeed: 0.01
+  moveCircleSpeed: 0.02
 --- !u!136 &1994667917
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -21421,8 +21606,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2008292649}
-  - component: {fileID: 2008292648}
-  - component: {fileID: 2008292650}
   m_Layer: 0
   m_Name: EnemyStopAttackLine
   m_TagString: StopAttack
@@ -21430,19 +21613,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &2008292648
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2008292647}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1, y: 10, z: 0}
-  m_Center: {x: -9, y: 0, z: 0}
 --- !u!4 &2008292649
 Transform:
   m_ObjectHideFlags: 0
@@ -21453,23 +21623,12 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1710391008}
+  - {fileID: 781615460}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2008292650
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2008292647}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1, y: 10, z: 1}
-  m_Center: {x: 9.5, y: 0, z: 0}
 --- !u!1 &2014024407
 GameObject:
   m_ObjectHideFlags: 0
@@ -21619,6 +21778,14 @@ PrefabInstance:
       propertyPath: startDegree
       value: -162
       objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveCircleSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveStartTrans
+      value: 
+      objectReference: {fileID: 834660622}
     m_RemovedComponents:
     - {fileID: 2309665830137927953, guid: 473fd0939ab16574880092721166a8d3, type: 3}
     - {fileID: 5701436647833291436, guid: 473fd0939ab16574880092721166a8d3, type: 3}
@@ -22452,10 +22619,10 @@ MonoBehaviour:
   nowPlayerTrans: {fileID: 996821908}
   gunNozzlePos: {fileID: 747206128}
   bulletPool: {fileID: 164437217}
+  sePlayer: {fileID: 2007090629}
   attackWaitTime: 3
   attackSpeed: 0.1
   attackNum: 5
-  sePlayer: {fileID: 2007090629}
 --- !u!114 &2084905486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22468,7 +22635,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61129a9b5757ddb49a5237f86a224786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  co: {fileID: 968948062}
   isAttack: 0
 --- !u!54 &2084905487
 Rigidbody:
@@ -22498,11 +22664,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f8058bf53d356a4ea1598160e147ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveStartTrans: {fileID: 834660622}
   startTransY: 3
   startDegree: -108
   moveRadius: 23
   moveStraightSpeed: 2
-  moveCircleSpeed: 0.01
+  moveCircleSpeed: 0.02
 --- !u!136 &2084905489
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -22655,6 +22822,14 @@ PrefabInstance:
       propertyPath: startDegree
       value: -161
       objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveCircleSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveStartTrans
+      value: 
+      objectReference: {fileID: 834660622}
     m_RemovedComponents:
     - {fileID: 2309665830137927953, guid: 473fd0939ab16574880092721166a8d3, type: 3}
     - {fileID: 5701436647833291436, guid: 473fd0939ab16574880092721166a8d3, type: 3}
@@ -24943,6 +25118,14 @@ PrefabInstance:
       propertyPath: enemyManagerCore
       value: 
       objectReference: {fileID: 791428956}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveCircleSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235784482057521527, guid: 473fd0939ab16574880092721166a8d3, type: 3}
+      propertyPath: moveStartTrans
+      value: 
+      objectReference: {fileID: 834660622}
     m_RemovedComponents:
     - {fileID: 2309665830137927953, guid: 473fd0939ab16574880092721166a8d3, type: 3}
     - {fileID: 5701436647833291436, guid: 473fd0939ab16574880092721166a8d3, type: 3}
@@ -25329,6 +25512,14 @@ PrefabInstance:
       propertyPath: startDegree
       value: -60
       objectReference: {fileID: 0}
+    - target: {fileID: 4677168300697364471, guid: bd813e990b8cbdb4ba047e2e6a031236, type: 3}
+      propertyPath: moveCircleSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677168300697364471, guid: bd813e990b8cbdb4ba047e2e6a031236, type: 3}
+      propertyPath: moveStartTrans
+      value: 
+      objectReference: {fileID: 834660622}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd813e990b8cbdb4ba047e2e6a031236, type: 3}
 --- !u!1 &4677168300579995602 stripped
@@ -27032,7 +27223,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 150.09082
     y: 26.272774
-    width: 78
+    width: 118
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -27140,7 +27331,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 6348123672001326629}
   selectedCommands:
-  - {fileID: 6348123672001326661}
+  - {fileID: 1734170162}
   variables:
   - {fileID: 1512679432}
   description: 
@@ -28016,7 +28207,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 145.00002
     y: 105.90909
-    width: 79
+    width: 119
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -28093,7 +28284,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6348123672081031745
 Transform:
   m_ObjectHideFlags: 0

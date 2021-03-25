@@ -7,15 +7,19 @@ public class ShootingEnemyAttacker : MonoBehaviour
     [SerializeField] private Transform nowPlayerTrans;
     [SerializeField] private Transform gunNozzlePos;
     [SerializeField] private ObjectPool bulletPool;
+    [SerializeField] private SEPlayer sePlayer;
+
     [SerializeField] private float attackWaitTime;
     [SerializeField] private float attackSpeed;
     [SerializeField] private int attackNum;
-    [SerializeField]private SEPlayer sePlayer;
 
     private ShootingAttackRange attackRange;
+
     private bool isShoot = false;
     private bool rapidFire = true;
+
     private int attackNowNum;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +31,7 @@ public class ShootingEnemyAttacker : MonoBehaviour
     {
         if (!isShoot)//攻撃速度
         {
-            if (attackRange.isAttack == true)//攻撃範囲にはいったら
+            if (attackRange.isAttack)//攻撃範囲にはいったら
             {
                 if (attackNowNum < attackNum)
                 {
@@ -35,21 +39,27 @@ public class ShootingEnemyAttacker : MonoBehaviour
                     {
                         GameObject bullet = bulletPool.GetObject();
                         bullet.transform.position = gunNozzlePos.position;
+                        ShootingEnemyWeaponCore weaponCore = bullet.GetComponent<ShootingEnemyWeaponCore>();
 
+                        switch (weaponCore.weaponType)
+                        {
+                            case ShootingEnemyWeaponType.LASER:
 
-                        if (bullet.tag=="Laser")
-                        {
-                            sePlayer.Play("Laser");
-                            bullet.GetComponent<ShootingLaserControler>().playerTrans = nowPlayerTrans;
-                        }
-                        else if (bullet.tag=="Missile")
-                        {
-                            sePlayer.Play("Missile");
-                            bullet.GetComponent<ShootingMissileControler>().playerTrans = nowPlayerTrans;
-                        }
-                        else
-                        {
-                            sePlayer.Play("Bullet");
+                                sePlayer.Play("Laser");
+                                bullet.GetComponent<ShootingLaserControler>().playerTrans = nowPlayerTrans;
+
+                                break;
+                            case ShootingEnemyWeaponType.MISSILE:
+
+                                sePlayer.Play("Missile");
+                                bullet.GetComponent<ShootingMissileControler>().playerTrans = nowPlayerTrans;
+
+                                break;
+                            case ShootingEnemyWeaponType.BULLET:
+
+                                sePlayer.Play("Bullet");
+
+                                break;
                         }
 
                         StartCoroutine(AttackSpeed());

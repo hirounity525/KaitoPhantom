@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
+//セーブデータ全体を扱う
 public class SaveDataManager : MonoBehaviour
 {
     [SerializeField] private SaveDataController[] saveDataControllers;
@@ -10,6 +11,7 @@ public class SaveDataManager : MonoBehaviour
     [SerializeField] private int saveDataNum;
     [SerializeField] private SaveData saveData;
 
+    //すべてのセーブデータをロードさせる
     public void AllLoad()
     {
         foreach(SaveDataController saveDataController in saveDataControllers)
@@ -18,6 +20,7 @@ public class SaveDataManager : MonoBehaviour
         }
     }
 
+    //データセーブ
     public void Save(int saveDataNum, SaveData saveData)
     {
         StreamWriter streamWriter = new StreamWriter(Application.dataPath + "/SaveData/SaveData" + saveDataNum + ".json");
@@ -26,6 +29,7 @@ public class SaveDataManager : MonoBehaviour
         streamWriter.Close();
     }
 
+    //新しいセーブデータを作って、セーブする
     public void NewSave(int saveDataNum, string playerName)
     {
         SaveData newSaveData;
@@ -38,6 +42,7 @@ public class SaveDataManager : MonoBehaviour
         Save(saveDataNum, newSaveData);
     }
 
+    //クリアしたデータを作って、セーブする
     public void AllClearSave(int saveDataNum, string playerName)
     {
         SaveData newSaveData;

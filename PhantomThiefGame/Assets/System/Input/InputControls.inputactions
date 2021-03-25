@@ -744,17 +744,17 @@
             "actions": [
                 {
                     "name": "MoveHorizon",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "276cc0af-345f-4d92-8573-808d8c4fc8d7",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": ""
                 },
                 {
                     "name": "MoveVertical",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "0b662160-3edb-46ce-8dc6-e1cc34962162",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": ""
                 },
@@ -802,6 +802,28 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "",
+                    "id": "18087615-308e-44b8-b804-451b3882a623",
+                    "path": "<Gamepad>/leftStick/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "MoveHorizon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e179b06d-5c77-4450-899d-77ea66742054",
+                    "path": "<Gamepad>/dpad/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "MoveHorizon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "1D Axis",
                     "id": "2574f7e5-a76b-4e79-be25-149db3211724",
                     "path": "1DAxis",
@@ -836,11 +858,44 @@
                 },
                 {
                     "name": "",
+                    "id": "274c5bbc-7bae-4f80-ba70-7d68e18c7fc3",
+                    "path": "<Gamepad>/dpad/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "MoveVertical",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f5f46755-4e23-4697-a441-877e1f57d585",
+                    "path": "<Gamepad>/leftStick/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "MoveVertical",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "fcaa5db5-7871-427b-aae5-d050f30a7723",
                     "path": "<Keyboard>/z",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keybord",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "769b5f5a-a341-4702-a990-8238292665c1",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
                     "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false

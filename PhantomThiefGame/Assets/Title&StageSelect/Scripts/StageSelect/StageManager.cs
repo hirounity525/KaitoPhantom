@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//ステージのコマの管理
 public class StageManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] stageObjs;
 
+    //クリア数に応じて、ステージコマを表示する
     public void SetActiveStages(int clearStageNum)
     {
         for (int i = 0; i < CommonData.Instance.maxStageNum; i++)
@@ -37,11 +39,21 @@ public class StageManager : MonoBehaviour
         }
     }
 
-    public void SetAllActiveStages()
+    //すべてのステージコマを表示する
+    public void AllActivateStages()
     {
         for (int i = 0; i < stageObjs.Length; i++)
         {
             stageObjs[i].SetActive(true);
+        }
+    }
+
+    //すべてのステージコマを非表示する
+    public void AllDeactivateStages()
+    {
+        for (int i = 0; i < stageObjs.Length; i++)
+        {
+            stageObjs[i].SetActive(false);
         }
     }
 }

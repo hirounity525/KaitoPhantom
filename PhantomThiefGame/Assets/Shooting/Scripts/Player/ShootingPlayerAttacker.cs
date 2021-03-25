@@ -5,13 +5,14 @@ using UnityEngine;
 public class ShootingPlayerAttacker : MonoBehaviour
 {
     [SerializeField] private SEPlayer sePlayer;
-    [SerializeField]private ShootingInputProvider inputProvider;
-    [SerializeField]private ObjectPool bulletPool;
+    [SerializeField] private ShootingInputProvider inputProvider;
+    [SerializeField] private ObjectPool bulletPool;
     [SerializeField] private Transform gunNozzlePos;
+
+    [SerializeField] private float attackWaitTime;
 
     private bool isAttack=false;
 
-    [SerializeField] private float attackWaitTime;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +22,6 @@ public class ShootingPlayerAttacker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (!isAttack)
         {
             if (inputProvider.isAttackButtunDown > 0)

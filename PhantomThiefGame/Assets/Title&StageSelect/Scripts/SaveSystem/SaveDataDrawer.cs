@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+//セーブデータ選択画面でのデータの表示
 public class SaveDataDrawer : MonoBehaviour
 {
     [SerializeField] private SaveDataCore saveDataCore;
@@ -17,6 +18,7 @@ public class SaveDataDrawer : MonoBehaviour
         {
             nameText.text = saveDataCore.saveData.playerName;
 
+            //クリア数→％表記
             int progressPercentage = (int)(((float)saveDataCore.saveData.clearStageNum / CommonData.Instance.maxStageNum) * 100);
             progressText.text = progressPercentage.ToString();
 

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//タイトルメニュー
 public enum TitleMenu
 {
     START,
@@ -10,6 +11,7 @@ public enum TitleMenu
     EXIT
 }
 
+//タイトルメニュー選択処理
 public class TitleMenuSelecter : MonoBehaviour
 {
     public bool isSelect;
@@ -27,8 +29,10 @@ public class TitleMenuSelecter : MonoBehaviour
 
     private void Update()
     {
+        //決定していない時
         if (!isSelect)
         {
+            //移動
             if (titleInput.isMoveButtonDown)
             {
                 sEPlayer.Play("MenuMove");
@@ -88,6 +92,7 @@ public class TitleMenuSelecter : MonoBehaviour
                 }
             }
 
+            //決定
             if (titleInput.isSelectButtonDown)
             {
                 sEPlayer.Play("Select");

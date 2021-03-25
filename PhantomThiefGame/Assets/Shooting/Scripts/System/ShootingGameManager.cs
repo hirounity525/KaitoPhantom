@@ -33,7 +33,7 @@ public class ShootingGameManager : MonoBehaviour
     private bool isFirstStatePlay;
     private bool isStartTimeline;
 
-    private bool isFirstDiscoveryState;
+    private bool isFirstMainState;
 
     private void Awake()
     {
@@ -86,7 +86,12 @@ public class ShootingGameManager : MonoBehaviour
                 {
                     inputProvider.canInput = true;
                     pauseController.canPause = true;
-                    enemyManager.EnableEnemies();
+
+                    if (!isFirstMainState)
+                    {
+                        enemyManager.EnableEnemies();
+                        isFirstMainState = true;
+                    }
 
                     soundManager.Play("ShootingBGM");
 

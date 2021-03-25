@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//セーブデータ
 [System.Serializable]
 public struct SaveData
 {

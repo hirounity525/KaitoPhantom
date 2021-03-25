@@ -9,12 +9,12 @@ public class ShootingLaserControler : MonoBehaviour
 
     private Rigidbody rb;
     private bool chasePlayer=true;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
-
 
     // Update is called once per frame
     void Update()
@@ -24,6 +24,7 @@ public class ShootingLaserControler : MonoBehaviour
             this.transform.LookAt(playerTrans);
             chasePlayer = false;
         }
+
         rb.velocity = transform.forward * laserSpeed;//弾の速度
     }
 }

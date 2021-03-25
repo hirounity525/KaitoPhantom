@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
+//タイトルメニューのアニメーション
 public class TitleMenuAnimator : MonoBehaviour
 {
     [SerializeField] private TitleMenuSelecter titleMenuSelecter;
@@ -31,8 +32,10 @@ public class TitleMenuAnimator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //最初のサイズを記録する
         firstScaleVec = titleMenuTrans.localScale;
 
+        //DoTweenをセットする
         scaleUpTweener = titleMenuTrans.DOScale(scaleUpVec, scaleUpTime).SetEase(ease).SetLoops(-1, LoopType.Yoyo);
         scaleUpTweener.Pause();
     }
@@ -40,12 +43,15 @@ public class TitleMenuAnimator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //決定していない時
         if (!titleMenuSelecter.isSelect)
         {
+            //選択しているのが自身と一致していたら
             if (titleMenu == titleMenuSelecter.nowSelectedTitleMenu)
             {
                 if (!isAnimate)
                 {
+                    //アニメーション開始
                     scaleUpTweener.Restart();
                     isAnimate = true;
                 }
@@ -54,6 +60,7 @@ public class TitleMenuAnimator : MonoBehaviour
             {
                 if (isAnimate)
                 {
+                    //アニメーションストップ・元の大きさに戻す
                     scaleUpTweener.Pause();
                     titleMenuTrans.DOScale(firstScaleVec, returnTime);
                     isAnimate = false;

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
+//フェードアニメーション
 public class FadeAnimator : MonoBehaviour
 {
     [SerializeField] private float fadeTime;

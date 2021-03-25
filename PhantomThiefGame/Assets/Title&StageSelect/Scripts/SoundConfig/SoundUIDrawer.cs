@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//各音量の状態をUIで表示
 public class SoundUIDrawer : MonoBehaviour
 {
     [SerializeField] private Slider volumeSlider;
@@ -21,8 +22,10 @@ public class SoundUIDrawer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //現在のボリュームで更新する
         volumeSlider.value = volumeController.nowVolume;
 
+        //選択・非選択でカラーを変える
         if (volumeController.canConfig)
         {
             handle.color = selectColor;

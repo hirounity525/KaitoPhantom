@@ -2,21 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//名前入力処理
 public class PlayerNameSetter : MonoBehaviour
 {
     public string playerName;
 
     public bool isDecide;
 
-    [SerializeField] private int maxNameLength;
+    [SerializeField,Tooltip("最大の名前数")] private int maxNameLength;
 
     [SerializeField] private TitleInputProvider titleInput;
 
-    private void Update()
-    {
-
-    }
-
+    //1文字入力
     public void SetSyllabary(string syllabary)
     {
         if(playerName.Length != maxNameLength)
@@ -25,6 +22,7 @@ public class PlayerNameSetter : MonoBehaviour
         }
     }
 
+    //1文字消す
     public void RemoveOneCharacter()
     {
         if (playerName.Length != 0)
@@ -33,6 +31,7 @@ public class PlayerNameSetter : MonoBehaviour
         }
     }
 
+    //決定
     public void Decide()
     {
         if(playerName != "")
@@ -41,6 +40,7 @@ public class PlayerNameSetter : MonoBehaviour
         }
     }
 
+    //名前をリセットする
     public void ResetName()
     {
         playerName = "";

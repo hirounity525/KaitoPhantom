@@ -4,7 +4,5 @@ using UnityEngine;
 
 public class ShootingPlayerCore : MonoBehaviour
 {
-
     public bool isDamage = false;
-
 }

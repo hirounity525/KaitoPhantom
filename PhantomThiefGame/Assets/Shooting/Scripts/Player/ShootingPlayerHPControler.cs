@@ -5,25 +5,30 @@ using DG.Tweening;
 
 public class ShootingPlayerHPControler : MonoBehaviour
 {
+    [Header("HP")]
+    public int playerMaxHitPoint;
+    public int playerNowHitPoint;
+
+    [Header("Component")]
     [SerializeField] private SEPlayer sePlayer;
     [SerializeField] private Renderer playerBody;
     [SerializeField] private Renderer playerFace;
     [SerializeField] private Renderer playerGun;
 
-    [SerializeField] public int playerMaxHitPoint;
+    [Header("Damage")]
     [SerializeField] private float unavailableColliderTime;
     [SerializeField] private int flashNum;
 
-    public int playerNowHitPoint;
-
     private ShootingPlayerCore playerCore;
+    private Collider playerColl;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerNowHitPoint=playerMaxHitPoint;
+        playerNowHitPoint = playerMaxHitPoint;
 
         playerCore = GetComponent<ShootingPlayerCore>();
+        playerColl = GetComponent<Collider>();
     }
 
 
@@ -47,7 +52,7 @@ public class ShootingPlayerHPControler : MonoBehaviour
     {
         sePlayer.Play("Damage");
 
-        this.GetComponent<Collider>().enabled = false;
+        playerColl.enabled = false;
 
         playerCore.isDamage = true;
 
@@ -68,6 +73,6 @@ public class ShootingPlayerHPControler : MonoBehaviour
 
         playerCore.isDamage = false;
 
-        this.GetComponent<Collider>().enabled = true;
+        playerColl.enabled = true;
     }
 }

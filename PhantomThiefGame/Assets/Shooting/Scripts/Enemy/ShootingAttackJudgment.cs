@@ -13,10 +13,15 @@ public class ShootingAttackJudgment : MonoBehaviour
     // Update is called once per frame
     private void OnTriggerEnter(Collider other)
     {
-        GameObject Player = other.gameObject;
-        if (Player.tag == "Player")
+        GameObject hitObj = other.gameObject;
+
+        if (hitObj.tag == "Player")
         {
-            Player.GetComponent<ShootingPlayerHPControler>().AddDamage();
+            hitObj.GetComponent<ShootingPlayerHPControler>().AddDamage();
+            gameObject.SetActive(false);
+        }
+        else if(hitObj.tag == "StopAttack")
+        {
             gameObject.SetActive(false);
         }
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+//EventSystemを扱う
 public class TitleEventSystemController : MonoBehaviour
 {
     [SerializeField] private GameObject firstSelectedSaveDataButton;
@@ -16,11 +17,7 @@ public class TitleEventSystemController : MonoBehaviour
         eventSystem = GetComponent<EventSystem>();
     }
 
-    private void Update()
-    {
-
-    }
-
+    //EventSystemのfirstSelectedButtonに各ステートに対応するGameObjectをセットする
     public void SetSelected(TitleState titleState)
     {
         GameObject firstSelectedButton = null;
@@ -44,17 +41,20 @@ public class TitleEventSystemController : MonoBehaviour
         }
     }
 
+    //EventSystemを使用不可にする
     public void DisableEventSystem()
     {
         eventSystem.enabled = false;
     }
 
+    //EventSystemを使用可にする
     public void EnableEventSystem()
     {
         eventSystem.enabled = true;
         eventSystem.SetSelectedGameObject(null);
     }
 
+    //現在選んでいるGameObject
     public GameObject GetSelectedGameObject()
     {
         return eventSystem.currentSelectedGameObject;

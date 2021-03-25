@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ShootingEnemyMover : MonoBehaviour
 {
+    [SerializeField] private Transform moveStartTrans;
+
+    [Header("設定")]
     [SerializeField] private float startTransY;
     [SerializeField] private float startDegree;
     [SerializeField] private float moveRadius;
@@ -30,10 +33,9 @@ public class ShootingEnemyMover : MonoBehaviour
         enemyTrans = GetComponent<Transform>();
         rb = GetComponent<Rigidbody>();
 
-
         enemyLastTrans = enemyTrans.position;
 
-        this.transform.position = new Vector3(moveRadius*Mathf.Cos(Mathf.PI/180*startDegree),startTransY, -moveRadius * Mathf.Sin(Mathf.PI / 180 * startDegree));
+        enemyTrans.position = new Vector3(moveRadius * Mathf.Cos(Mathf.PI / 180 * startDegree), startTransY, -moveRadius * Mathf.Sin(Mathf.PI / 180 * startDegree));
 
     }
 
@@ -42,17 +44,21 @@ public class ShootingEnemyMover : MonoBehaviour
     {
         if (!canMoveStraight)
         {
-            this.transform.position = new Vector3(moveRadius * Mathf.Cos(Mathf.PI / 180 * (startDegree+plusDegree*accelaration)), startTransY, -moveRadius * Mathf.Sin(Mathf.PI / 180 * (startDegree+plusDegree*accelaration)));
+            enemyTrans.position = new Vector3(moveRadius * Mathf.Cos(Mathf.PI / 180 * (startDegree + plusDegree * accelaration)), startTransY, -moveRadius * Mathf.Sin(Mathf.PI / 180 * (startDegree + plusDegree * accelaration)));
+        }
+
+    }
+
+    private void FixedUpdate()
+    {
+        if (!canMoveStraight)
+        {
+            plusDegree += moveCircleSpeed;
         }
         else
         {
             rb.velocity = new Vector3(-moveStraightSpeed, 0, 0);
         }
-
-        plusDegree = plusDegree + moveCircleSpeed;
-
-
-
     }
 
     private void OnTriggerEnter(Collider other)
@@ -63,15 +69,17 @@ public class ShootingEnemyMover : MonoBehaviour
         {
             if (!canMoveStraight)
             {
+                enemyTrans.position = new Vector3(moveStartTrans.position.x, enemyTrans.position.y, 0);
+
                 canMoveStraight = true;
-                this.transform.position = new Vector3(enemyTrans.position.x, enemyTrans.position.y, 0);
             }
             else
             {
-                canMoveStraight = false;
                 startDegree = 180;
                 plusDegree = 0;
                 accelaration = 4;
+
+                canMoveStraight = false;
             }
         }
     }

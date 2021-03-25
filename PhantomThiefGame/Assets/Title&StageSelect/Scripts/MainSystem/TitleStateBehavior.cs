@@ -2,19 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//ステートに合わせて、状態を変える処理
 public class TitleStateBehavior : MonoBehaviour
 {
+    [Header("Camera")]
     [SerializeField] private GameObject titleVC;
     [SerializeField] private GameObject stageSelectVC;
 
-    [SerializeField] private GameObject stageObjLeft;
-    [SerializeField] private GameObject stageObjRight;
+    [Header("Title")]
     [SerializeField] private GameObject titleCanvas;
 
-    [SerializeField] private Transform[] notePageTrans;
+    [Header("StageSelect")]
+    [SerializeField] private GameObject stageObjLeft;
+    [SerializeField] private GameObject stageObjRight;
 
+    [Header("Note")]
+    [SerializeField] private Transform[] notePageTrans;
     [SerializeField] private Transform[] pageOpenTrans;
 
+    //ステートに合わせて、カメラ・ノートの状態を変える
     public void ChangeStateBehavior(TitleState nowState)
     {
         if(nowState == TitleState.STAGESELECT)

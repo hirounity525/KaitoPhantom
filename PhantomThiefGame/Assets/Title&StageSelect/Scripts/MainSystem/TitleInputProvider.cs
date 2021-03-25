@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+//タイトル時の入力を受け取る
 public class TitleInputProvider : MonoBehaviour
 {
     public InputArrow moveArrow;

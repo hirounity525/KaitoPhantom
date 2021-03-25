@@ -9,6 +9,8 @@ public class ShootingEnemyHPControler : MonoBehaviour
     [SerializeField] private int enemyMaxHitPoint;
 
     [SerializeField] private int enemyNowHitPoint;
+
+    private bool isDestroy;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,11 +20,16 @@ public class ShootingEnemyHPControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enemyNowHitPoint <= 0)
+        if (!isDestroy)
         {
-            enemyManagerCore.enemyDestroyNum++;
-            gameObject.SetActive(false);
-            sePlayer.Play("Break");
+            if (enemyNowHitPoint <= 0)
+            {
+                enemyManagerCore.enemyDestroyNum++;
+                gameObject.SetActive(false);
+                sePlayer.Play("Break");
+
+                isDestroy = true;
+            }
         }
     }
 

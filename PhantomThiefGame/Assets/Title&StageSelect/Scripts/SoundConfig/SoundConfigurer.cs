@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum SoundConfig
+//音量設定メニュー
+public enum SoundConfigMenu
 {
     MASTER,
     BGM,
@@ -10,9 +11,10 @@ public enum SoundConfig
     BACK
 }
 
+//音量設定全体の処理
 public class SoundConfigurer : MonoBehaviour
 {
-    public SoundConfig nowSelectedSC;
+    public SoundConfigMenu nowSelectedSCM;
 
     public bool isBack;
 
@@ -21,7 +23,7 @@ public class SoundConfigurer : MonoBehaviour
     [SerializeField] private TitleInputProvider titleInput;
     [SerializeField] private SEPlayer sEPlayer;
 
-    [SerializeField] private SoundConfig firstSelectedSC;
+    [SerializeField] private SoundConfigMenu firstSelectedSC;
 
     [SerializeField] private SoundVolumeController masterVC;
     [SerializeField] private SoundVolumeController bgmVC;
@@ -29,61 +31,72 @@ public class SoundConfigurer : MonoBehaviour
 
     private SoundVolumeController selectedVC;
 
+    private SoundConfigData nowSoundConfigData;
+
     private void Start()
     {
-        nowSelectedSC = firstSelectedSC;
+        nowSelectedSCM = firstSelectedSC;
     }
 
     private void Update()
     {
+        //設定をできなくする
         if (!canSoundConfig)
         {
             return;
         }
 
+        //選択をしていない時
         if(selectedVC == null)
         {
+            //移動ボタン入力時
             if (titleInput.isMoveButtonDown)
             {
+                //選択しているメニューの切り替え
                 switch (titleInput.moveArrow)
                 {
                     case InputArrow.UP:
-                        if (nowSelectedSC != SoundConfig.MASTER)
+                        if (nowSelectedSCM != SoundConfigMenu.MASTER)
                         {
                             sEPlayer.Play("ChokeCircle");
-                            nowSelectedSC--;
+                            nowSelectedSCM--;
                         }
                         break;
                     case InputArrow.DOWN:
-                        if (nowSelectedSC != SoundConfig.BACK)
+                        if (nowSelectedSCM != SoundConfigMenu.BACK)
                         {
                             sEPlayer.Play("ChokeCircle");
-                            nowSelectedSC++;
+                            nowSelectedSCM++;
                         }
                         break;
                 }
             }
 
+            //選択ボタン入力時
             if (titleInput.isSelectButtonDown)
             {
-                switch (nowSelectedSC)
+                switch (nowSelectedSCM)
                 {
-                    case SoundConfig.MASTER:
+                    //マスターボリュームを設定できるようにする
+                    case SoundConfigMenu.MASTER:
                         selectedVC = masterVC;
                         selectedVC.canConfig = true;
                         sEPlayer.Play("ChokeSelect");
                         break;
-                    case SoundConfig.BGM:
+                    //BGMボリュームを設定できるようにする
+                    case SoundConfigMenu.BGM:
                         selectedVC = bgmVC;
                         selectedVC.canConfig = true;
                         sEPlayer.Play("ChokeSelect");
                         break;
-                    case SoundConfig.SE:
+                    //SEボリュームを設定できるようにする
+                    case SoundConfigMenu.SE:
                         selectedVC = seVC;
                         selectedVC.canConfig = true;
                         sEPlayer.Play("ChokeSelect");
                         break;
-                    case SoundConfig.BACK:
+                    //戻る
+                    case SoundConfigMenu.BACK:
                         sEPlayer.Play("Select");
                         isBack = true;
                         break;
@@ -92,11 +105,34 @@ public class SoundConfigurer : MonoBehaviour
         }
         else
         {
+            //選択した設定が終了したら、選択できるようにする
             if (selectedVC.isFinish)
             {
                 selectedVC.isFinish = false;
                 selectedVC = null;
             }
         }
+    }
+
+    //現在の各ボリューム
+    public SoundConfigData NowSoundConfigData()
+    {
+        nowSoundConfigData.masterVolume = masterVC.nowVolume;
+        nowSoundConfigData.bgmVolume = bgmVC.nowVolume;
+        nowSoundConfigData.seVolume = seVC.nowVolume;
+
+        return nowSoundConfigData;
+    }
+
+    //各ボリュームのデータロード
+    public void LoadSoundCofigData(SoundConfigData soundConfigData)
+    {
+        masterVC.nowVolume = soundConfigData.masterVolume;
+        bgmVC.nowVolume = soundConfigData.bgmVolume;
+        seVC.nowVolume = soundConfigData.seVolume;
+
+        masterVC.SetMixerVolume();
+        bgmVC.SetMixerVolume();
+        seVC.SetMixerVolume();
     }
 }

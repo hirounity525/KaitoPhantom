@@ -14,7 +14,7 @@ public class ShootingBulletControler : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         rb.velocity = new Vector3(bulletSpeed, 0, 0);//弾の速さ
     }
