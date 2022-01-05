@@ -364,7 +364,7 @@ public class TitleManager : MonoBehaviour
                         if (!isTransitionFirstPlay)
                         {
                             //裏技（100%セーブデータ）
-                            if(nameSetter.playerName == "ひろくんすき")
+                            if(nameSetter.playerName == "うらわざ")
                             {
                                 //選択したセーブデータにステージをすべて開放して、セーブ
                                 saveDataManager.AllClearSave(CommonData.Instance.selectSaveDataNum, nameSetter.playerName);

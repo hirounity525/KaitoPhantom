@@ -11194,7 +11194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf602fb89d32a0a4aa7df8c7a6e229dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameState: 1
+  gameState: 0
   inputProvider: {fileID: 360029261}
   soundManager: {fileID: 699700571}
   flowchart: {fileID: 6348123672001326630}
@@ -28284,7 +28284,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6348123672081031745
 Transform:
   m_ObjectHideFlags: 0
